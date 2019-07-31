@@ -1,0 +1,35 @@
+{
+  "name": "gatsby-plugin-advanced-pages",
+  "version": "1.0",
+  "description": "Wrapper around createPage action for easy creation of pages with advanced features like pagination and custom routing",
+  "main": "index.js",
+  "scripts": {
+    "lint": "standard"
+  },
+  "keywords": [
+    "gatsby",
+    "gatsby-plugin",
+    "routing"
+  ],
+  "author": "Mohamed Elkholy <mohatt@pm.me>",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/mohatt/gatsby-plugin-advanced-pages.git"
+  },
+  "homepage": "https://github.com/mohatt/gatsby-plugin-advanced-pages",
+  "dependencies": {
+    "fs-exists-cached": "^1.0.0",
+    "lodash": "^4.17.15",
+    "path-to-regexp": "^3.0.0"
+  },
+  "peerDependencies": {
+    "gatsby": "^2.0.0"
+  },
+  "devDependencies": {
+    "standard": "^13.1.0"
+  },
+  "engines": {
+    "node": ">=8.0.0"
+  }
+}

@@ -1,0 +1,14 @@
+# Logs
+logs
+*.log
+
+# Dependencies
+/node_modules
+
+# Build artifacts
+dist
+
+# IDE stuff
+.idea
+*.sublime-project
+*.sublime-workspace
