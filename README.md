@@ -1,6 +1,4 @@
-
-
-# Gatsby Advanced Pages
+# Gatsby Advanced Pages ![npm](https://img.shields.io/npm/v/gatsby-plugin-advanced-pages)
 
 Wrapper around [`createPage`](https://www.gatsbyjs.org/docs/actions/#createPage) action for easy creation of pages with dynamic features like pagination and custom routing.
 
@@ -47,8 +45,8 @@ $ yarn add gatsby-plugin-advanced-pages
 
 Add the plugin to your `gatsby-config.js` file in order to activate it
 
+`gatsby-config.js`
 ```javascript
-// gatsby-config.js
 plugins: [
   {
     resolve: `gatsby-plugin-advanced-pages`,
@@ -77,6 +75,7 @@ This is a demo page for `gatsby-plugin-advanced-pages`.
 Delete me, and get writing!
 ```
 Run `gatsby develop` and open http://localhost/hello to see your new page.
+
 
 ## Configuration
 
