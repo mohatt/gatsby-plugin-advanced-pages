@@ -1,12 +1,23 @@
+
+
 # Gatsby Advanced Pages
 
-Wrapper around [`createPage`](https://www.gatsbyjs.org/docs/actions/#createPage) action for easy creation of pages with advanced features like pagination and custom routing.
+Wrapper around [`createPage`](https://www.gatsbyjs.org/docs/actions/#createPage) action for easy creation of pages with dynamic features like pagination and custom routing.
 
 > **Note:** The following documentation is incomplete and will be updated at a later time.
 
 - [Prerequisites](#prerequisites)
 - [Installation](#installation)
 - [Usage](#usage)
+  - [Creating pages](#creating-pages)
+    - [Simple pages](#simple-pages)
+    - Page helpers
+    - Custom routing
+    - Adding pagination
+    - Frontmatter metadata
+    - `createAdvancedPage()`
+  - Generating URLs
+- Example project
 - [Configuration](#configuration)
   - [Defaults](#defaults)
   - [Base Path](#basepath)
@@ -34,7 +45,7 @@ $ yarn add gatsby-plugin-advanced-pages
 
 ## Usage
 
-First, add the plugin to your `gatsby-config.js` file in order to activate it
+Add the plugin to your `gatsby-config.js` file in order to activate it
 
 ```javascript
 // gatsby-config.js
@@ -48,6 +59,24 @@ plugins: [
 ]
 ```
 
+### Creating pages
+
+#### Simple pages
+In order to create your first page, create a new Markdown file for the new page under `content/pages`
+
+`content/pages/hello.mdx`
+```markdown
+---
+title: Hello, Wordld
+template: page
+routes:
+  hello: /hello
+---
+## Hello, world!
+This is a demo page for `gatsby-plugin-advanced-pages`.
+Delete me, and get writing!
+```
+Run `gatsby develop` and open http://localhost/hello to see your new page.
 
 ## Configuration
 
