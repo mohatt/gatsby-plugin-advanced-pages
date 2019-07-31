@@ -1,6 +1,6 @@
 # Gatsby Advanced Pages ![npm](https://img.shields.io/npm/v/gatsby-plugin-advanced-pages)
 
-Wrapper around [`createPage`](https://www.gatsbyjs.org/docs/actions/#createPage) action for easy creation of pages with dynamic features like pagination and custom routing.
+Gatsby Advanced Pages is a wrapper around [MDX](https://www.gatsbyjs.org/docs/mdx/) and [`createPage`](https://www.gatsbyjs.org/docs/actions/#createPage) action that allows easy creation of pages with dynamic features like pagination and custom routing.
 
 > **Note:** The following documentation is incomplete and will be updated at a later time.
 
@@ -27,7 +27,7 @@ Wrapper around [`createPage`](https://www.gatsbyjs.org/docs/actions/#createPage)
 
 
 ## Prerequisites
-This plugin needs [gatsby-plugin-mdx](https://www.gatsbyjs.org/packages/gatsby-plugin-mdx/) to be installed in order to transform Markdown files into pages.
+The plugin uses [gatsby-plugin-mdx](https://www.gatsbyjs.org/packages/gatsby-plugin-mdx/) to transform Markdown files into pages, so make sure you have it installed and configured before starting using this plugin.
 [Read more about Gatsby MDX plugin and how to install it](https://www.gatsbyjs.org/docs/mdx/)
 
 

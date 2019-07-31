@@ -1,7 +1,7 @@
 {
   "name": "gatsby-plugin-advanced-pages",
   "version": "1.0",
-  "description": "Wrapper around createPage action for easy creation of pages with dynamic features like pagination and custom routing",
+  "description": "Gatsby plugin that allows easy creation of pages with dynamic features like pagination and custom routing",
   "main": "index.js",
   "scripts": {
     "lint": "standard"
