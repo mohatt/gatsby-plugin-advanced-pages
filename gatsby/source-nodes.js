@@ -20,10 +20,10 @@ exports.sourceNodes = ({ actions, schema }) => {
         routes: {
           type: `[${types.route}]!`,
           resolve: (source, args, context, info) => {
-          	return context.nodeModel.getNodesByIds({
-            	ids: source.children,
-            	type: types.route,
-          	})
+            return context.nodeModel.getNodesByIds({
+              ids: source.children,
+              type: types.route,
+            })
           },
         },
         path: {
@@ -49,8 +49,8 @@ exports.sourceNodes = ({ actions, schema }) => {
         },
       },
       extensions: {
-    		infer: false,
-  		},
+        infer: false,
+      },
       interfaces: [`Node`],
     }),
     schema.buildObjectType({
@@ -61,24 +61,24 @@ exports.sourceNodes = ({ actions, schema }) => {
         page: {
           type: types.page,
           resolve: (source, args, context, info) => {
-          	return context.nodeModel.getNodeById({
-            	id: source.parent,
-            	type: types.page,
-          	})
+            return context.nodeModel.getNodeById({
+              id: source.parent,
+              type: types.page,
+            })
           },
         },
       },
       extensions: {
-    		infer: false
-  		},
+        infer: false
+      },
       interfaces: [`Node`],
     }),
     schema.buildObjectType({
       name: types.mdxFrontmatter,
       fields: {
-      	title: 'String',
-      	routes: 'JSON',
-      	template: 'String',
+        title: 'String',
+        routes: 'JSON',
+        template: 'String',
         helper: 'String',
         data: 'JSON',
       },

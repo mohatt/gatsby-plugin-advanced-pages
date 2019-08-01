@@ -20,7 +20,7 @@ module.exports = ({ node, actions, getNode, createNodeId, createContentDigest })
   }
 
   const page = {
-  	id: createNodeId(`${node.id} >>> Page`),
+    id: createNodeId(`${node.id} >>> Page`),
     title: node.frontmatter.title,
     template: node.frontmatter.template,
     helper: node.frontmatter.helper,
@@ -46,27 +46,27 @@ module.exports = ({ node, actions, getNode, createNodeId, createContentDigest })
   }
 
   for(const routeName of Object.keys(routes)) {
-  	const routePath = routes[routeName]
-  	if(typeof routePath !== 'string' || '/' !== routePath.charAt(0)){
-    	throw new Error(`Value assigned to 'routes[${routeName}]' in ${fileNode.relativePath} must be a string starting with '/'`)
-  	}
+    const routePath = routes[routeName]
+    if(typeof routePath !== 'string' || '/' !== routePath.charAt(0)){
+      throw new Error(`Value assigned to 'routes[${routeName}]' in ${fileNode.relativePath} must be a string starting with '/'`)
+    }
 
-  	const route = {
-  		id: createNodeId(routePath),
-  		name: routeName,
-  		path: routePath,
-	    parent: page.id,
-	    children: [],
-	    internal: {
-	      type: options.typeNames.route,
-	      description: `Advanced Pages (Route): ${routePath}`,
-	    },
-  	}
+    const route = {
+      id: createNodeId(routePath),
+      name: routeName,
+      path: routePath,
+      parent: page.id,
+      children: [],
+      internal: {
+        type: options.typeNames.route,
+        description: `Advanced Pages (Route): ${routePath}`,
+      },
+    }
 
-		route.internal.contentDigest = createContentDigest(route)
-  	createNode(route)
+    route.internal.contentDigest = createContentDigest(route)
+    createNode(route)
 
-  	page.children.push(route.id)
+    page.children.push(route.id)
   }
 
   page.internal.contentDigest = createContentDigest(page)
