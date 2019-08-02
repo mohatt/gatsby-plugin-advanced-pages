@@ -1,7 +1,8 @@
 const pathToRegexp = require('path-to-regexp')
 const routes = require('./routes')
 
-function getRoutePathGenerator (route) {
+// Returns a function to be used to generate paths for a specific route
+function compileRoute (route) {
   if (typeof route !== 'string' || !route) {
     throw new TypeError(`Expected route name to be a non-empty string (got '${typeof route}')`)
   }
@@ -14,8 +15,9 @@ function getRoutePathGenerator (route) {
   return pathToRegexp.compile(path)
 }
 
-function getRoutePath (route, args = {}) {
-  const generator = getRoutePathGenerator(route)
+// Generates a path for a specific route based on the given parameters.
+function generatePath (route, args = {}) {
+  const generator = compileRoute(route)
   if (!generator) {
     return false
   }

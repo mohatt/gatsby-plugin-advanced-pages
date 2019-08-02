@@ -1,13 +1,5 @@
 const { getOption } = require('./util')
 
-const getMdxResolver = fieldName => async (source, args, context, info) => {
-  const type = info.schema.getType(`Mdx`)
-  const mdxNode = context.nodeModel.getNodeById({ id: source.parent })
-  const mdxResolver = type.getFields()[fieldName].resolve
-  const result = await mdxResolver(mdxNode, args, context, { fieldName })
-  return result
-}
-
 exports.sourceNodes = ({ actions, schema }) => {
   const { createTypes } = actions
   const types = getOption('typeNames')
@@ -29,14 +21,7 @@ exports.sourceNodes = ({ actions, schema }) => {
         path: {
           type: `String!`,
           resolve: (source, args, context, info) => {
-            const mdxNode = context.nodeModel.getNodeById({
-              id: source.parent,
-              type: 'Mdx',
-            })
-            const fileNode = mdxNode && context.nodeModel.getNodeById({
-              id: mdxNode.parent,
-              type: 'File',
-            })
+            const fileNode = context.nodeModel.findRootNodeAncestor(source)
             return fileNode && fileNode.absolutePath
           },
         },
@@ -45,7 +30,14 @@ exports.sourceNodes = ({ actions, schema }) => {
         data: 'JSON',
         body: {
           type: 'String',
-          resolve: getMdxResolver('body'),
+          resolve: async function (source, args, context, info) {
+            const fieldName = getOption('engine.bodyFieldName')
+            const type = info.schema.getType(getOption('engine.typeName'))
+            const resolver = type.getFields()[fieldName].resolve
+            const node = context.nodeModel.getNodeById({ id: source.parent })
+            const result = await resolver(node, args, context, { fieldName })
+            return result
+          },
         },
       },
       extensions: {
@@ -72,26 +64,19 @@ exports.sourceNodes = ({ actions, schema }) => {
         infer: false
       },
       interfaces: [`Node`],
-    }),
-    schema.buildObjectType({
-      name: types.mdxFrontmatter,
-      fields: {
-        title: 'String',
-        routes: 'JSON',
-        template: 'String',
-        helper: 'String',
-        data: 'JSON',
-      },
-    }),
+    })
   ])
 }
 
-// Mdx doesn't allow extending his own type definitions
-// so we have to to it this way
+// Extend frontmatter type definition
 exports.setFieldsOnGraphQLNodeType = ({ type }) => {
-  if (type.name === `Mdx`) {
+  if (type.name === getOption('engine.typeName')) {
     return {
-      frontmatter: getOption('typeNames.mdxFrontmatter'),
+      'frontmatter.title': 'String',
+      'frontmatter.routes': 'JSON',
+      'frontmatter.template': 'String',
+      'frontmatter.helper': 'String',
+      'frontmatter.data': 'JSON',
     }
   }
 

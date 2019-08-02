@@ -6,20 +6,21 @@ const onPreBootstrap = ({ store, reporter }, pluginOptions) => {
   // Default values for options
   const defaultOptions = {
     basePath: '/',
+    engine: 'remark',
     template: null,
-    typeNames: {
-      page: 'Page',
-      route: 'Route'
+    directories: {
+      pages: 'content/pages',
+      templates: 'src/templates',
+      helpers: 'gatsby/pages'
     },
     pagination: {
       limit: 10,
       suffix: '/page/:page'
     },
-    directories: {
-      pages: 'content/pages',
-      templates: 'src/templates',
-      helpers: 'gatsby/pages',
-    },
+    typeNames: {
+      page: 'Page',
+      route: 'Route'
+    }
   }
 
   // Initializes and validates options

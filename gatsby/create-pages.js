@@ -47,7 +47,10 @@ module.exports = async function ({ graphql, actions }) {
     const { name } = route
     const exists = routeMap[name]
     if(exists) {
-      throw new Error(`Page '${route.page.path}' is trying to define a route named '${name}' which is already defined in '${exists.page.path}'`)      
+      throw new Error(
+        `Page '${route.page.path}' is trying to define a route named '${name}' ` +
+        `which is already defined in '${exists.page.path}'`
+      )      
     }
     route.path = SystemPath.join(options.basePath, route.path)
     route.pathGenerator = getPathGenerator(route)
@@ -58,8 +61,14 @@ module.exports = async function ({ graphql, actions }) {
   let page
   for (page of result.data[`all${options.typeNames.page}`].nodes) {
     // Set file paths
-    page.templatePath = SystemPath.join(options.directories.templates, `${page.template}.js`)
-    page.helperPath = page.helper && SystemPath.join(options.directories.helpers, `${page.helper}.js`)
+    page.templatePath = SystemPath.join(
+      options.directories.templates,
+      `${page.template}.js`
+    )
+    page.helperPath = page.helper && SystemPath.join(
+      options.directories.helpers,
+      `${page.helper}.js`
+    )
 
     // Run page helper if defined
     if(page.helper){
@@ -83,7 +92,10 @@ module.exports = async function ({ graphql, actions }) {
       try {
         return pathGenerator(data, options)
       } catch(e) {
-        throw new TypeError(`Error generating a path for route '${route.name}' with params '${JSON.stringify(data)}':\n${e.message}`)
+        throw new TypeError(
+          `Error generating a path for route '${route.name}' ` +
+          `with params '${JSON.stringify(data)}':\n${e.message}`
+        )
       }
     }
   }
@@ -98,7 +110,9 @@ module.exports = async function ({ graphql, actions }) {
           path = SystemPath.join(routeMap[parent].path, options.pagination.suffix)
           break
         default:
-            throw new TypeError(`Unrecognized route scope '${scope}' passed to generateRoute()`)
+            throw new TypeError(
+              `Unrecognized route scope '${scope}' passed to generateRoute()`
+            )
       }
       const route = {
         name,
@@ -125,7 +139,10 @@ module.exports = async function ({ graphql, actions }) {
       Object.freeze(page)
       await helperFunction({ graphql, page, createAdvancedPage })
     } catch(e) {
-      const error = new Error(`Error occured while running page helper function at '${page.helperPath}':\n${e.message}`)
+      const error = new Error(
+        `Error occured while running page helper function at '${page.helperPath}':\n` +
+        `${e.message}`
+      )
       error.stack = e.stack
       throw error
     }
@@ -133,12 +150,17 @@ module.exports = async function ({ graphql, actions }) {
 
   function createAdvancedPage({ route, params = {}, pagination }) {
     if(typeof route !== 'string' || !route) {
-      throw new TypeError(`Route name passed to createAdvancedPage() at '${page.helperPath}' must be a non-empty string`)
+      throw new TypeError(
+        `Route name passed to createAdvancedPage() at '${page.helperPath}' ` +
+        `must be a non-empty string`
+      )
     }
 
     const routeNode = routeMap[route]
     if(!routeNode) {
-      throw new TypeError(`Unrecognized route '${route}' passed to createAdvancedPage() at '${page.helperPath}'`)
+      throw new TypeError(
+        `Unrecognized route '${route}' passed to createAdvancedPage() at '${page.helperPath}'`
+      )
     }
     
     const gatsbyPage = {
@@ -151,24 +173,29 @@ module.exports = async function ({ graphql, actions }) {
     }
 
     if(pagination){
-      const errInvalidPagination = `Invalid pagination object passed to createAdvancedPage() at '${page.helperPath}'`
       if(typeof pagination.count === 'undefined'){
-        throw new TypeError(`${errInvalidPagination}: 'count' paramater is missing`)
+        throw new TypeError(
+          `Invalid pagination object passed to createAdvancedPage() at '${page.helperPath}': ` +
+          `'count' paramater is missing`
+        )
       }
       pagination.count = parseInt(pagination.count)
       if (isNaN(pagination.count) || pagination.count < 0){
-        // Count is defiend and has invalid value
-        throw new TypeError(`${errInvalidPagination}: 'count' paramater must be a valid number with a zero or more value`)
+        throw new TypeError(
+          `Invalid pagination object passed to createAdvancedPage() at '${page.helperPath}': ` +
+          `'count' paramater must be a valid number with a zero or more value`
+        )
       }
 
       pagination.limit = typeof pagination.limit !== 'undefined' && parseInt(pagination.limit)
       if(pagination.limit === false){
-        // Limit is undefined, use default limit
         pagination.limit = options.pagination.limit
       }
       else if (isNaN(pagination.limit) || pagination.limit <= 0){
-        // Limit is defiend and has invalid value
-        throw new TypeError(`${errInvalidPagination}: 'limit' paramater must be a positive number`)
+        throw new TypeError(
+          `Invalid pagination object passed to createAdvancedPage() at '${page.helperPath}': ` +
+          `'limit' paramater must be a positive number`
+        )
       }
       
       // Auto generate a paginated route for main route
@@ -176,7 +203,10 @@ module.exports = async function ({ graphql, actions }) {
         const getPaginatedPath = generateRoute(route, 'paginated').pathGenerator
       } else {
         if(!routeMap[pagination.route]) {
-          throw new TypeError(`${errInvalidPagination}; Unrecognized route '${pagination.route}' provided`)
+          throw new TypeError(
+            `Invalid pagination object passed to createAdvancedPage() at '${page.helperPath}': ` +
+            `Unrecognized route '${pagination.route}' provided`
+          )
         }
         const getPaginatedPath = routeMap[pagination.route].pathGenerator
       }

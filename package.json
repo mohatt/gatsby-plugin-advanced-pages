@@ -1,6 +1,6 @@
 {
   "name": "gatsby-plugin-advanced-pages",
-  "version": "1.0",
+  "version": "1.0.0",
   "description": "Gatsby plugin that allows easy creation of pages with dynamic features like pagination and custom routing",
   "main": "index.js",
   "scripts": {
@@ -18,6 +18,7 @@
     "url": "https://github.com/mohatt/gatsby-plugin-advanced-pages.git"
   },
   "homepage": "https://github.com/mohatt/gatsby-plugin-advanced-pages",
+  "bugs": "https://github.com/mohatt/gatsby-plugin-advanced-pages/issues",
   "dependencies": {
     "fs-exists-cached": "^1.0.0",
     "lodash": "^4.17.15",
