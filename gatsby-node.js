@@ -1,7 +1,6 @@
 const {
   onPreBootstrap,
-  onPreExtractQueries,
-  onCreateWebpackConfig
+  onPreExtractQueries
 } = require('./gatsby/util')
 
 module.exports = {
@@ -10,6 +9,5 @@ module.exports = {
   setFieldsOnGraphQLNodeType: require('./gatsby/extend-nodes'),
   onCreateNode: require('./gatsby/on-create-node'),
   createPages: require('./gatsby/create-pages'),
-  onPreExtractQueries,
-  onCreateWebpackConfig,
+  onPreExtractQueries
 }

@@ -2,7 +2,7 @@
 
 Gatsby Advanced Pages is a wrapper around Gatsby's [`createPage`](https://www.gatsbyjs.org/docs/actions/#createPage) API and [path-to-regexp](https://github.com/pillarjs/path-to-regexp) that allows easy creation of pages with dynamic features like pagination and custom routing.
 
-> **Note:** The following documentation is incomplete and will be updated at a later time.
+> **Note:** The project is still a work in progress and the following documentation is incomplete.
 
 - [Prerequisites](#prerequisites)
 - [Installation](#installation)
@@ -14,7 +14,6 @@ Gatsby Advanced Pages is a wrapper around Gatsby's [`createPage`](https://www.ga
     - Custom routing
     - Adding pagination
     - Frontmatter metadata
-    - `createAdvancedPage()`
   - Generating paths
 - API
   - Functions

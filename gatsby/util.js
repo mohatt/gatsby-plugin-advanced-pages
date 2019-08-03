@@ -45,18 +45,7 @@ const onPreExtractQueries = async ({ store, getNodesByType }) => {
   )
 }
 
-// Add local plugins to webapck modules path
-const onCreateWebpackConfig = ({ store, actions }) => {
-  const { program } = store.getState()
-  actions.setWebpackConfig({
-    resolve: {
-      modules: [path.resolve(program.directory, 'plugins'), 'node_modules'],
-    },
-  })
-}
-
 module.exports = {
   onPreBootstrap,
-  onPreExtractQueries,
-  onCreateWebpackConfig
+  onPreExtractQueries
 }
