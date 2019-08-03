@@ -1,5 +1,4 @@
-const { getOptions } = require('../util/options')
-const { isPathChildof } = require('../util/helpers')
+const { getOptions, isPathChildof } = require('./util')
 
 // Create Page and Route nodes
 module.exports = ({ node, actions, getNode, createNodeId, createContentDigest }) => {

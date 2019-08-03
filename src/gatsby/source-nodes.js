@@ -1,4 +1,4 @@
-const { getOption } = require('../util/options')
+const { getOption } = require('./util')
 
 module.exports = ({ actions, schema }) => {
   const { createTypes } = actions

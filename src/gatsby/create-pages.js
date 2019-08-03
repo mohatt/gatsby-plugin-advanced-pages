@@ -3,7 +3,7 @@ const systemPath = require('path')
 const _ = require("lodash")
 const existsSync = require(`fs-exists-cached`).sync
 const compileRoute = require('../lib/route-compiler')
-const { getOptions } = require('../util/options')
+const { getOptions } = require('./util')
 
 module.exports = async function ({ graphql, actions }) {
   const options = getOptions()
@@ -222,7 +222,7 @@ module.exports = async function ({ graphql, actions }) {
         path: route.path,
         scopes: _.mapValues(route.scopes, 'path') 
       }))
-      const content = `module.exports = ${JSON.stringify(map, null, 2)}\n`
+      const content = `"use strict";\n\nmodule.exports = ${JSON.stringify(map, null, 2)};`
       fs.writeFile(systemPath.resolve(__dirname, '../routes.js'), content, err => {
          if (err) reject(err)
          else resolve(content)

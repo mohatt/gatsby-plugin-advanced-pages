@@ -1,4 +1,4 @@
-const { getOption } = require('../util/options')
+const { getOption } = require('./util')
 
 // Extend frontmatter type definition
 module.exports = ({ type }) => {

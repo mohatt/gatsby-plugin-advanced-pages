@@ -1,6 +1,6 @@
 const path = require('path')
 const _ = require("lodash")
-const { debug } = require('./helpers')
+const debug = require("debug")("gatsby-plugin-advanced-pages")
 
 // Available transformer engines
 const ENGINES = {
@@ -66,8 +66,16 @@ function getOption (optionName) {
   return _.get(getOptions(), optionName)
 }
 
+// Checks if a path is a child of another one
+function isPathChildof (child, parent) {
+  const relative = path.relative(parent, child)
+  return relative && !relative.startsWith('..') && !path.isAbsolute(relative)
+}
+
 module.exports = {
   initializeOptions,
   getOptions,
-  getOption
+  getOption,
+  isPathChildof,
+  debug
 }
