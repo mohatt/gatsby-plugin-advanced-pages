@@ -1,32 +1,37 @@
-const pathToRegexp = require('path-to-regexp')
+const compileRoute = require('./lib/route-compiler')
 const routes = require('./routes')
 
 // Returns a function to be used to generate paths for a specific route
-function compileRoute (route) {
-  if (typeof route !== 'string' || !route) {
-    throw new TypeError(`Expected route name to be a non-empty string (got '${typeof route}')`)
+function getPathGenerator (routeName, scope) {
+  if (typeof routeName !== 'string' || !routeName) {
+    throw new TypeError(
+      `Expected route name to be a non-empty string (got '${typeof routeName}')`
+    )
   }
 
-  const path = routes[route]
-  if (!path) {
-    throw new TypeError(`Unrecognized route name '${route}'`)
+  const route = routes[routeName]
+  if (!route) {
+    throw new TypeError(`Unrecognized route name '${routeName}'`)
   }
 
-  return pathToRegexp.compile(path)
+  if (!scope) {
+    return compileRoute(route.path)
+  }
+
+  if (!route.scopes[scope]) {
+    throw new TypeError(`Unrecognized scope '${scope}' on route '${routeName}'`)
+  }
+
+  return compileRoute(route.scopes[scope])
 }
 
 // Generates a path for a specific route based on the given parameters.
-function generatePath (route, args = {}) {
-  const generator = compileRoute(route)
-  if (!generator) {
-    return false
-  }
-
-  return generator(args)
+function generatePath (routeName, args = {}, scope) {
+  return getPathGenerator(routeName, scope)(args)
 }
 
 module.exports = {
   routes,
-  getRoutePath,
-  getRoutePathGenerator
+  getPathGenerator,
+  generatePath
 }

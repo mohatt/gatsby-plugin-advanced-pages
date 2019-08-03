@@ -1,9 +1,9 @@
 const fs = require(`fs`)
-const SystemPath = require('path')
+const systemPath = require('path')
 const _ = require("lodash")
 const existsSync = require(`fs-exists-cached`).sync
-const pathToRegexp = require('path-to-regexp')
-const { getOptions } = require('./util')
+const compileRoute = require('../lib/route-compiler')
+const { getOptions } = require('../util/options')
 
 module.exports = async function ({ graphql, actions }) {
   const options = getOptions()
@@ -37,23 +37,22 @@ module.exports = async function ({ graphql, actions }) {
     throw result.errors
   }
 
-  const routeMap = {}
-  const generatedRouteMap = {}
-
   // Add basePath prefix to all route paths
   // Detect any duplicates
   // Update route map
+  const routeMap = {}
   for (const route of result.data[`all${options.typeNames.route}`].nodes) {
     const { name } = route
     const exists = routeMap[name]
     if(exists) {
       throw new Error(
-        `Page '${route.page.path}' is trying to define a route named '${name}' ` +
+        `'${route.page.path}' is trying to define a route named '${name}' ` +
         `which is already defined in '${exists.page.path}'`
-      )      
+      )
     }
-    route.path = SystemPath.join(options.basePath, route.path)
-    route.pathGenerator = getPathGenerator(route)
+    route.path = systemPath.join(options.basePath, route.path)
+    route.scopes = {}
+    route.pathGenerator = compileRoute(route.path)
     routeMap[name] = route
   }
 
@@ -61,11 +60,11 @@ module.exports = async function ({ graphql, actions }) {
   let page
   for (page of result.data[`all${options.typeNames.page}`].nodes) {
     // Set file paths
-    page.templatePath = SystemPath.join(
+    page.templatePath = systemPath.join(
       options.directories.templates,
       `${page.template}.js`
     )
-    page.helperPath = page.helper && SystemPath.join(
+    page.helperPath = page.helper && systemPath.join(
       options.directories.helpers,
       `${page.helper}.js`
     )
@@ -85,47 +84,26 @@ module.exports = async function ({ graphql, actions }) {
     throw new Error(`Error writing route map export file:\n${err}`)
   })
 
-  // Wraps pathToRegexp to handle errors thrown
-  function getPathGenerator(route) {
-    const pathGenerator = pathToRegexp.compile(route.path)
-    return function (data, options) {
-      try {
-        return pathGenerator(data, options)
-      } catch(e) {
-        throw new TypeError(
-          `Error generating a path for route '${route.name}' ` +
-          `with params '${JSON.stringify(data)}':\n${e.message}`
-        )
-      }
-    }
-  }
-
   // Auto generates a new route based scope and parent route
   function generateRoute(parent, scope) {
-    const name = parent + '.' + scope
-    if(!generatedRouteMap[name]) {
-      let path
-      switch(scope) {
-        case 'paginated':
-          path = SystemPath.join(routeMap[parent].path, options.pagination.suffix)
-          break
-        default:
-            throw new TypeError(
-              `Unrecognized route scope '${scope}' passed to generateRoute()`
-            )
-      }
-      const route = {
-        name,
-        path,
-        page: {
-          path: page.path
-        }
-      }
-      route.pathGenerator = getPathGenerator(route)
-      generatedRouteMap[name] = route
+    let path
+    switch(scope) {
+      case 'pagination':
+        path = systemPath.join(routeMap[parent].path, options.pagination.suffix)
+        break
+      default:
+          throw new TypeError(
+            `Unrecognized route scope '${scope}' passed to generateRoute()`
+          )
     }
-
-    return generatedRouteMap[name]
+    return {
+      name: parent + '.' + scope,
+      path,
+      page: {
+        path: page.path
+      },
+      pathGenerator: compileRoute(path)
+    }
   }
 
   async function runPageHelper() {
@@ -168,7 +146,7 @@ module.exports = async function ({ graphql, actions }) {
       component: page.templatePath,
       context: {
         id: page.id,
-        ...params,
+        ...params
       }
     }
 
@@ -197,21 +175,25 @@ module.exports = async function ({ graphql, actions }) {
           `'limit' paramater must be a positive number`
         )
       }
-      
-      // Auto generate a paginated route for main route
-      if(typeof pagination.route === 'undefined') {
-        const getPaginatedPath = generateRoute(route, 'paginated').pathGenerator
-      } else {
-        if(!routeMap[pagination.route]) {
-          throw new TypeError(
-            `Invalid pagination object passed to createAdvancedPage() at '${page.helperPath}': ` +
-            `Unrecognized route '${pagination.route}' provided`
-          )
+
+      if(!routeNode.scopes.pagination) {
+        if(typeof pagination.route === 'undefined') {
+          // Auto generate a paginated route for main route
+          routeNode.scopes.pagination = generateRoute(route, 'pagination')
+        } else {
+          if(!routeMap[pagination.route]) {
+            throw new TypeError(
+              `Invalid pagination object passed to createAdvancedPage() at '${page.helperPath}': ` +
+              `Unrecognized route '${pagination.route}'`
+            )
+          }
+          routeNode.scopes.pagination = routeMap[pagination.route]
         }
-        const getPaginatedPath = routeMap[pagination.route].pathGenerator
       }
 
-      const generatePagePath = n => getPaginatedPath({ page: n, ...params })
+      const generatePagePath = n => routeNode.scopes.pagination.pathGenerator(
+        { page: n, ...params }
+      )
       const pagesCount = Math.ceil(pagination.count / pagination.limit)
       for (let i = 1; i <= pagesCount; i++) {
         const gatsbyPaginatedPage = {
@@ -221,14 +203,7 @@ module.exports = async function ({ graphql, actions }) {
             ...gatsbyPage.context,
             limit: pagination.limit,
             offset: (i-1) * pagination.limit,
-            filter: pagination.filter,
-            pagination: {
-              page: i,
-              prevPath: i === 1 ? null : generatePagePath(i-1),
-              nextPath: i === pagesCount ? null : generatePagePath(i+1),
-              hasPrev: i !== 1,
-              hasNext: i < pagesCount,
-            }
+            filter: pagination.filter
           }
         }
 
@@ -243,9 +218,12 @@ module.exports = async function ({ graphql, actions }) {
 
   function writeRouteMap() {
     return new Promise((resolve, reject) => {
-      const map = _.mapValues(routeMap, 'path')
+      const map = _.mapValues(routeMap, route => ({
+        path: route.path,
+        scopes: _.mapValues(route.scopes, 'path') 
+      }))
       const content = `module.exports = ${JSON.stringify(map, null, 2)}\n`
-      fs.writeFile(SystemPath.resolve(__dirname, '../routes.js'), content, err => {
+      fs.writeFile(systemPath.resolve(__dirname, '../routes.js'), content, err => {
          if (err) reject(err)
          else resolve(content)
       })

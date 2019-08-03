@@ -1,4 +1,5 @@
-const { getOptions, isPathChildof } = require('./util')
+const { getOptions } = require('../util/options')
+const { isPathChildof } = require('../util/helpers')
 
 // Create Page and Route nodes
 module.exports = ({ node, actions, getNode, createNodeId, createContentDigest }) => {
@@ -15,7 +16,8 @@ module.exports = ({ node, actions, getNode, createNodeId, createContentDigest })
 
   // Ignore files outside contentPath 
   const contentPath = options.directories.pages
-  if (!fileNode.dir || (contentPath !== fileNode.dir && !isPathChildof(fileNode.dir, contentPath))) {
+  if (!fileNode.dir ||
+    (contentPath !== fileNode.dir && !isPathChildof(fileNode.dir, contentPath))) {
     return
   }
 

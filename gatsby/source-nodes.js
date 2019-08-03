@@ -1,6 +1,6 @@
-const { getOption } = require('./util')
+const { getOption } = require('../util/options')
 
-exports.sourceNodes = ({ actions, schema }) => {
+module.exports = ({ actions, schema }) => {
   const { createTypes } = actions
   const types = getOption('typeNames')
 
@@ -66,19 +66,4 @@ exports.sourceNodes = ({ actions, schema }) => {
       interfaces: [`Node`],
     })
   ])
-}
-
-// Extend frontmatter type definition
-exports.setFieldsOnGraphQLNodeType = ({ type }) => {
-  if (type.name === getOption('engine.typeName')) {
-    return {
-      'frontmatter.title': 'String',
-      'frontmatter.routes': 'JSON',
-      'frontmatter.template': 'String',
-      'frontmatter.helper': 'String',
-      'frontmatter.data': 'JSON',
-    }
-  }
-
-  return {}
 }
