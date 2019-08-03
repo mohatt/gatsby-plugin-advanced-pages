@@ -1,11 +1,12 @@
 # Gatsby Advanced Pages ![npm](https://img.shields.io/npm/v/gatsby-plugin-advanced-pages)
 
-Gatsby Advanced Pages is a wrapper around Gatsby's [`createPage`](https://www.gatsbyjs.org/docs/actions/#createPage) action and [path-to-regexp](https://github.com/pillarjs/path-to-regexp) that allows easy creation of pages with dynamic features like pagination and custom routing.
+Gatsby Advanced Pages is a wrapper around Gatsby's [`createPage`](https://www.gatsbyjs.org/docs/actions/#createPage) API and [path-to-regexp](https://github.com/pillarjs/path-to-regexp) that allows easy creation of pages with dynamic features like pagination and custom routing.
 
 > **Note:** The following documentation is incomplete and will be updated at a later time.
 
 - [Prerequisites](#prerequisites)
 - [Installation](#installation)
+- Example project
 - [Usage](#usage)
   - [Creating pages](#creating-pages)
     - [Simple pages](#simple-pages)
@@ -15,8 +16,14 @@ Gatsby Advanced Pages is a wrapper around Gatsby's [`createPage`](https://www.ga
     - Frontmatter metadata
     - `createAdvancedPage()`
   - Generating paths
+- API
+  - Functions
+    - createAdvancedPage()
+    - generatePath()
+    - getPathGenerator()
+  - Compoentns
     - Link component
-- Example project
+    - Pagination component
 - [Configuration](#configuration)
   - [Defaults](#defaults)
   - [Markdown Engine](#engine)
