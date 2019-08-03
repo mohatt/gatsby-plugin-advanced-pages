@@ -1,6 +1,6 @@
 # Gatsby Advanced Pages ![npm](https://img.shields.io/npm/v/gatsby-plugin-advanced-pages)
 
-Gatsby Advanced Pages is a wrapper around [`createPage`](https://www.gatsbyjs.org/docs/actions/#createPage) action that allows easy creation of pages with dynamic features like pagination and custom routing.
+Gatsby Advanced Pages is a wrapper around Gatsby's [`createPage`](https://www.gatsbyjs.org/docs/actions/#createPage) action and [path-to-regexp](https://github.com/pillarjs/path-to-regexp) that allows easy creation of pages with dynamic features like pagination and custom routing.
 
 > **Note:** The following documentation is incomplete and will be updated at a later time.
 
@@ -19,6 +19,7 @@ Gatsby Advanced Pages is a wrapper around [`createPage`](https://www.gatsbyjs.or
 - Example project
 - [Configuration](#configuration)
   - [Defaults](#defaults)
+  - [Markdown Engine](#engine)
   - [Base Path](#basepath)
   - [Default Template](#template)
   - [Directory Locations](#directories)
@@ -28,9 +29,10 @@ Gatsby Advanced Pages is a wrapper around [`createPage`](https://www.gatsbyjs.or
 
 
 ## Prerequisites
-You need to have a Markdown transformer plugin installed and configured before starting using this plugin. Currently, the following plugins are supported:
+Before getting started, you need to ensure that you have a Markdown transformer plugin installed and configured. Currently, the following plugins are supported:
  - [gatsby-plugin-mdx](https://www.gatsbyjs.org/packages/gatsby-plugin-mdx/) — Supports using React components from within Markdown ([Official guide](https://www.gatsbyjs.org/docs/mdx/))
  - [gatsby-transformer-remark](https://www.gatsbyjs.org/packages/gatsby-transformer-remark/)
+
 
 ## Installation
 Install with [npm](https://www.npmjs.com/)
@@ -41,6 +43,7 @@ or [yarn](https://yarnpkg.com/)
 ```sh
 $ yarn add gatsby-plugin-advanced-pages
 ```
+
 
 ## Usage
 
@@ -76,7 +79,7 @@ This is a demo page for `gatsby-plugin-advanced-pages`.
 Delete me, and get writing!
 ```
 
-Create a template under `src/templates` to be used to render the page 
+Create a template component under `src/templates` to be used to render the page 
 
 `src/templates/page.js`
 ```javascript
