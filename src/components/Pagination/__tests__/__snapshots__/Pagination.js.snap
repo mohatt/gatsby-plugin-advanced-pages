@@ -1,6 +1,22 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<Pagination /> should render correctly 1`] = `
+exports[`<Pagination /> should log console error when called with invalid pageInfo prop 1`] = `
+Array [
+  Array [
+    "Warning: Invalid pageInfo prop supplied to \`Pagination\` component: {\\"perPage\\":0,\\"itemCount\\":10,\\"currentPage\\":4}",
+  ],
+]
+`;
+
+exports[`<Pagination /> should log console error when called with invalid pageInfo prop 2`] = `
+Array [
+  Array [
+    "Warning: Invalid pageInfo prop supplied to \`Pagination\` component: {\\"perPage\\":0,\\"itemCount\\":0,\\"currentPage\\":4}",
+  ],
+]
+`;
+
+exports[`<Pagination /> should render correctly with custom labels 1`] = `
 <nav
   aria-label="Pagination Navigation"
   role="navigation"
@@ -13,9 +29,9 @@ exports[`<Pagination /> should render correctly 1`] = `
     >
       <a
         className="page-link"
-        href="/blog/page/1"
+        href="/blog"
       >
-        « First
+        « First custom
       </a>
     </li>
     <li
@@ -23,9 +39,9 @@ exports[`<Pagination /> should render correctly 1`] = `
     >
       <a
         className="page-link"
-        href="/blog/page/2"
+        href="/blog/page/3"
       >
-        ⟨ Previous
+        ⟨ Previous custom
       </a>
     </li>
     <li
@@ -33,7 +49,7 @@ exports[`<Pagination /> should render correctly 1`] = `
     >
       <a
         className="page-link"
-        href="/blog/page/1"
+        href="/blog"
       >
         1
       </a>
@@ -49,7 +65,967 @@ exports[`<Pagination /> should render correctly 1`] = `
       </a>
     </li>
     <li
+      className="page-item"
+    >
+      <a
+        className="page-link"
+        href="/blog/page/3"
+      >
+        3
+      </a>
+    </li>
+    <li
       className="page-item active"
+    >
+      <a
+        className="page-link"
+        href="/blog/page/4"
+      >
+        4
+      </a>
+    </li>
+    <li
+      className="page-item"
+    >
+      <a
+        className="page-link"
+        href="/blog/page/5"
+      >
+        5
+      </a>
+    </li>
+    <li
+      className="page-item"
+    >
+      <a
+        className="page-link"
+        href="/blog/page/6"
+      >
+        6
+      </a>
+    </li>
+    <li
+      className="page-item page-item__next"
+    >
+      <a
+        className="page-link"
+        href="/blog/page/5"
+      >
+        Next ⟩ custom
+      </a>
+    </li>
+    <li
+      className="page-item page-item__last"
+    >
+      <a
+        className="page-link"
+        href="/blog/page/9"
+      >
+        Last » custom
+      </a>
+    </li>
+  </ul>
+</nav>
+`;
+
+exports[`<Pagination /> should render correctly with custom range 1`] = `
+<nav
+  aria-label="Pagination Navigation"
+  role="navigation"
+>
+  <ul
+    className="pagination"
+  >
+    <li
+      className="page-item page-item__first"
+    >
+      <a
+        className="page-link"
+        href="/blog"
+      >
+        « First
+      </a>
+    </li>
+    <li
+      className="page-item page-item__prev"
+    >
+      <a
+        className="page-link"
+        href="/blog/page/3"
+      >
+        ⟨ Previous
+      </a>
+    </li>
+    <li
+      className="page-item active"
+    >
+      <a
+        className="page-link"
+        href="/blog/page/4"
+      >
+        4
+      </a>
+    </li>
+    <li
+      className="page-item page-item__next"
+    >
+      <a
+        className="page-link"
+        href="/blog/page/5"
+      >
+        Next ⟩
+      </a>
+    </li>
+    <li
+      className="page-item page-item__last"
+    >
+      <a
+        className="page-link"
+        href="/blog/page/9"
+      >
+        Last »
+      </a>
+    </li>
+  </ul>
+</nav>
+`;
+
+exports[`<Pagination /> should render correctly with custom range 2`] = `
+<nav
+  aria-label="Pagination Navigation"
+  role="navigation"
+>
+  <ul
+    className="pagination"
+  >
+    <li
+      className="page-item page-item__first"
+    >
+      <a
+        className="page-link"
+        href="/blog"
+      >
+        « First
+      </a>
+    </li>
+    <li
+      className="page-item page-item__prev"
+    >
+      <a
+        className="page-link"
+        href="/blog/page/3"
+      >
+        ⟨ Previous
+      </a>
+    </li>
+    <li
+      className="page-item"
+    >
+      <a
+        className="page-link"
+        href="/blog/page/3"
+      >
+        3
+      </a>
+    </li>
+    <li
+      className="page-item active"
+    >
+      <a
+        className="page-link"
+        href="/blog/page/4"
+      >
+        4
+      </a>
+    </li>
+    <li
+      className="page-item"
+    >
+      <a
+        className="page-link"
+        href="/blog/page/5"
+      >
+        5
+      </a>
+    </li>
+    <li
+      className="page-item page-item__next"
+    >
+      <a
+        className="page-link"
+        href="/blog/page/5"
+      >
+        Next ⟩
+      </a>
+    </li>
+    <li
+      className="page-item page-item__last"
+    >
+      <a
+        className="page-link"
+        href="/blog/page/9"
+      >
+        Last »
+      </a>
+    </li>
+  </ul>
+</nav>
+`;
+
+exports[`<Pagination /> should render correctly with custom range 3`] = `
+<nav
+  aria-label="Pagination Navigation"
+  role="navigation"
+>
+  <ul
+    className="pagination"
+  >
+    <li
+      className="page-item page-item__first"
+    >
+      <a
+        className="page-link"
+        href="/blog"
+      >
+        « First
+      </a>
+    </li>
+    <li
+      className="page-item page-item__prev"
+    >
+      <a
+        className="page-link"
+        href="/blog/page/3"
+      >
+        ⟨ Previous
+      </a>
+    </li>
+    <li
+      className="page-item"
+    >
+      <a
+        className="page-link"
+        href="/blog"
+      >
+        1
+      </a>
+    </li>
+    <li
+      className="page-item"
+    >
+      <a
+        className="page-link"
+        href="/blog/page/2"
+      >
+        2
+      </a>
+    </li>
+    <li
+      className="page-item"
+    >
+      <a
+        className="page-link"
+        href="/blog/page/3"
+      >
+        3
+      </a>
+    </li>
+    <li
+      className="page-item active"
+    >
+      <a
+        className="page-link"
+        href="/blog/page/4"
+      >
+        4
+      </a>
+    </li>
+    <li
+      className="page-item"
+    >
+      <a
+        className="page-link"
+        href="/blog/page/5"
+      >
+        5
+      </a>
+    </li>
+    <li
+      className="page-item"
+    >
+      <a
+        className="page-link"
+        href="/blog/page/6"
+      >
+        6
+      </a>
+    </li>
+    <li
+      className="page-item"
+    >
+      <a
+        className="page-link"
+        href="/blog/page/7"
+      >
+        7
+      </a>
+    </li>
+    <li
+      className="page-item page-item__next"
+    >
+      <a
+        className="page-link"
+        href="/blog/page/5"
+      >
+        Next ⟩
+      </a>
+    </li>
+    <li
+      className="page-item page-item__last"
+    >
+      <a
+        className="page-link"
+        href="/blog/page/9"
+      >
+        Last »
+      </a>
+    </li>
+  </ul>
+</nav>
+`;
+
+exports[`<Pagination /> should render correctly with custom range 4`] = `
+<nav
+  aria-label="Pagination Navigation"
+  role="navigation"
+>
+  <ul
+    className="pagination"
+  >
+    <li
+      className="page-item page-item__first"
+    >
+      <a
+        className="page-link"
+        href="/blog"
+      >
+        « First
+      </a>
+    </li>
+    <li
+      className="page-item page-item__prev"
+    >
+      <a
+        className="page-link"
+        href="/blog/page/3"
+      >
+        ⟨ Previous
+      </a>
+    </li>
+    <li
+      className="page-item"
+    >
+      <a
+        className="page-link"
+        href="/blog"
+      >
+        1
+      </a>
+    </li>
+    <li
+      className="page-item"
+    >
+      <a
+        className="page-link"
+        href="/blog/page/2"
+      >
+        2
+      </a>
+    </li>
+    <li
+      className="page-item"
+    >
+      <a
+        className="page-link"
+        href="/blog/page/3"
+      >
+        3
+      </a>
+    </li>
+    <li
+      className="page-item active"
+    >
+      <a
+        className="page-link"
+        href="/blog/page/4"
+      >
+        4
+      </a>
+    </li>
+    <li
+      className="page-item"
+    >
+      <a
+        className="page-link"
+        href="/blog/page/5"
+      >
+        5
+      </a>
+    </li>
+    <li
+      className="page-item"
+    >
+      <a
+        className="page-link"
+        href="/blog/page/6"
+      >
+        6
+      </a>
+    </li>
+    <li
+      className="page-item"
+    >
+      <a
+        className="page-link"
+        href="/blog/page/7"
+      >
+        7
+      </a>
+    </li>
+    <li
+      className="page-item"
+    >
+      <a
+        className="page-link"
+        href="/blog/page/8"
+      >
+        8
+      </a>
+    </li>
+    <li
+      className="page-item"
+    >
+      <a
+        className="page-link"
+        href="/blog/page/9"
+      >
+        9
+      </a>
+    </li>
+    <li
+      className="page-item page-item__next"
+    >
+      <a
+        className="page-link"
+        href="/blog/page/5"
+      >
+        Next ⟩
+      </a>
+    </li>
+    <li
+      className="page-item page-item__last"
+    >
+      <a
+        className="page-link"
+        href="/blog/page/9"
+      >
+        Last »
+      </a>
+    </li>
+  </ul>
+</nav>
+`;
+
+exports[`<Pagination /> should render correctly with custom theme 1`] = `
+<nav
+  aria-label="Pagination Navigation"
+  role="navigation"
+>
+  <ul
+    className="pagination-custom"
+  >
+    <li
+      className="page-item-custom page-item__first-custom"
+    >
+      <a
+        className="page-link-custom"
+        href="/blog"
+      >
+        « First
+      </a>
+    </li>
+    <li
+      className="page-item-custom page-item__prev-custom"
+    >
+      <a
+        className="page-link-custom"
+        href="/blog/page/3"
+      >
+        ⟨ Previous
+      </a>
+    </li>
+    <li
+      className="page-item-custom"
+    >
+      <a
+        className="page-link-custom"
+        href="/blog"
+      >
+        1
+      </a>
+    </li>
+    <li
+      className="page-item-custom"
+    >
+      <a
+        className="page-link-custom"
+        href="/blog/page/2"
+      >
+        2
+      </a>
+    </li>
+    <li
+      className="page-item-custom"
+    >
+      <a
+        className="page-link-custom"
+        href="/blog/page/3"
+      >
+        3
+      </a>
+    </li>
+    <li
+      className="page-item-custom active-custom"
+    >
+      <a
+        className="page-link-custom"
+        href="/blog/page/4"
+      >
+        4
+      </a>
+    </li>
+    <li
+      className="page-item-custom"
+    >
+      <a
+        className="page-link-custom"
+        href="/blog/page/5"
+      >
+        5
+      </a>
+    </li>
+    <li
+      className="page-item-custom"
+    >
+      <a
+        className="page-link-custom"
+        href="/blog/page/6"
+      >
+        6
+      </a>
+    </li>
+    <li
+      className="page-item-custom page-item__next-custom"
+    >
+      <a
+        className="page-link-custom"
+        href="/blog/page/5"
+      >
+        Next ⟩
+      </a>
+    </li>
+    <li
+      className="page-item-custom page-item__last-custom"
+    >
+      <a
+        className="page-link-custom"
+        href="/blog/page/9"
+      >
+        Last »
+      </a>
+    </li>
+  </ul>
+</nav>
+`;
+
+exports[`<Pagination /> should render correctly with defaults 1`] = `
+<nav
+  aria-label="Pagination Navigation"
+  role="navigation"
+>
+  <ul
+    className="pagination"
+  >
+    <li
+      className="page-item page-item__first"
+    >
+      <a
+        className="page-link"
+        href="/blog"
+      >
+        « First
+      </a>
+    </li>
+    <li
+      className="page-item page-item__prev"
+    >
+      <a
+        className="page-link"
+        href="/blog/page/3"
+      >
+        ⟨ Previous
+      </a>
+    </li>
+    <li
+      className="page-item"
+    >
+      <a
+        className="page-link"
+        href="/blog"
+      >
+        1
+      </a>
+    </li>
+    <li
+      className="page-item"
+    >
+      <a
+        className="page-link"
+        href="/blog/page/2"
+      >
+        2
+      </a>
+    </li>
+    <li
+      className="page-item"
+    >
+      <a
+        className="page-link"
+        href="/blog/page/3"
+      >
+        3
+      </a>
+    </li>
+    <li
+      className="page-item active"
+    >
+      <a
+        className="page-link"
+        href="/blog/page/4"
+      >
+        4
+      </a>
+    </li>
+    <li
+      className="page-item"
+    >
+      <a
+        className="page-link"
+        href="/blog/page/5"
+      >
+        5
+      </a>
+    </li>
+    <li
+      className="page-item"
+    >
+      <a
+        className="page-link"
+        href="/blog/page/6"
+      >
+        6
+      </a>
+    </li>
+    <li
+      className="page-item page-item__next"
+    >
+      <a
+        className="page-link"
+        href="/blog/page/5"
+      >
+        Next ⟩
+      </a>
+    </li>
+    <li
+      className="page-item page-item__last"
+    >
+      <a
+        className="page-link"
+        href="/blog/page/9"
+      >
+        Last »
+      </a>
+    </li>
+  </ul>
+</nav>
+`;
+
+exports[`<Pagination /> should render correctly with full ui 1`] = `
+<nav
+  aria-label="Pagination Navigation"
+  role="navigation"
+>
+  <ul
+    className="pagination"
+  >
+    <li
+      className="page-item page-item__first"
+    >
+      <a
+        className="page-link"
+        href="/blog"
+      >
+        « First
+      </a>
+    </li>
+    <li
+      className="page-item page-item__prev"
+    >
+      <a
+        className="page-link"
+        href="/blog/page/3"
+      >
+        ⟨ Previous
+      </a>
+    </li>
+    <li
+      className="page-item"
+    >
+      <a
+        className="page-link"
+        href="/blog"
+      >
+        1
+      </a>
+    </li>
+    <li
+      className="page-item"
+    >
+      <a
+        className="page-link"
+        href="/blog/page/2"
+      >
+        2
+      </a>
+    </li>
+    <li
+      className="page-item"
+    >
+      <a
+        className="page-link"
+        href="/blog/page/3"
+      >
+        3
+      </a>
+    </li>
+    <li
+      className="page-item active"
+    >
+      <a
+        className="page-link"
+        href="/blog/page/4"
+      >
+        4
+      </a>
+    </li>
+    <li
+      className="page-item"
+    >
+      <a
+        className="page-link"
+        href="/blog/page/5"
+      >
+        5
+      </a>
+    </li>
+    <li
+      className="page-item"
+    >
+      <a
+        className="page-link"
+        href="/blog/page/6"
+      >
+        6
+      </a>
+    </li>
+    <li
+      className="page-item page-item__next"
+    >
+      <a
+        className="page-link"
+        href="/blog/page/5"
+      >
+        Next ⟩
+      </a>
+    </li>
+    <li
+      className="page-item page-item__last"
+    >
+      <a
+        className="page-link"
+        href="/blog/page/9"
+      >
+        Last »
+      </a>
+    </li>
+  </ul>
+</nav>
+`;
+
+exports[`<Pagination /> should render correctly with mini ui 1`] = `
+<nav
+  aria-label="Pagination Navigation"
+  role="navigation"
+>
+  <ul
+    className="pagination"
+  >
+    <li
+      className="page-item page-item__prev"
+    >
+      <a
+        className="page-link"
+        href="/blog/page/3"
+      >
+        ⟨ Previous
+      </a>
+    </li>
+    <li
+      className="page-item page-item__next"
+    >
+      <a
+        className="page-link"
+        href="/blog/page/5"
+      >
+        Next ⟩
+      </a>
+    </li>
+  </ul>
+</nav>
+`;
+
+exports[`<Pagination /> should render correctly with simple ui 1`] = `
+<nav
+  aria-label="Pagination Navigation"
+  role="navigation"
+>
+  <ul
+    className="pagination"
+  >
+    <li
+      className="page-item page-item__prev"
+    >
+      <a
+        className="page-link"
+        href="/blog/page/3"
+      >
+        ⟨ Previous
+      </a>
+    </li>
+    <li
+      className="page-item"
+    >
+      <a
+        className="page-link"
+        href="/blog"
+      >
+        1
+      </a>
+    </li>
+    <li
+      className="page-item"
+    >
+      <a
+        className="page-link"
+        href="/blog/page/2"
+      >
+        2
+      </a>
+    </li>
+    <li
+      className="page-item"
+    >
+      <a
+        className="page-link"
+        href="/blog/page/3"
+      >
+        3
+      </a>
+    </li>
+    <li
+      className="page-item active"
+    >
+      <a
+        className="page-link"
+        href="/blog/page/4"
+      >
+        4
+      </a>
+    </li>
+    <li
+      className="page-item"
+    >
+      <a
+        className="page-link"
+        href="/blog/page/5"
+      >
+        5
+      </a>
+    </li>
+    <li
+      className="page-item"
+    >
+      <a
+        className="page-link"
+        href="/blog/page/6"
+      >
+        6
+      </a>
+    </li>
+    <li
+      className="page-item page-item__next"
+    >
+      <a
+        className="page-link"
+        href="/blog/page/5"
+      >
+        Next ⟩
+      </a>
+    </li>
+  </ul>
+</nav>
+`;
+
+exports[`<Pagination /> shouldn't render disabled nav items when renderDisabled is false 1`] = `
+<nav
+  aria-label="Pagination Navigation"
+  role="navigation"
+>
+  <ul
+    className="pagination"
+  >
+    <li
+      className="page-item active"
+    >
+      <a
+        className="page-link"
+        href="/blog"
+      >
+        1
+      </a>
+    </li>
+    <li
+      className="page-item"
+    >
+      <a
+        className="page-link"
+        href="/blog/page/2"
+      >
+        2
+      </a>
+    </li>
+    <li
+      className="page-item"
     >
       <a
         className="page-link"
@@ -93,7 +1069,7 @@ exports[`<Pagination /> should render correctly 1`] = `
     >
       <a
         className="page-link"
-        href="/blog/page/4"
+        href="/blog/page/2"
       >
         Next ⟩
       </a>
@@ -103,9 +1079,123 @@ exports[`<Pagination /> should render correctly 1`] = `
     >
       <a
         className="page-link"
-        href="/blog/page/8"
+        href="/blog/page/9"
       >
         Last »
+      </a>
+    </li>
+  </ul>
+</nav>
+`;
+
+exports[`<Pagination /> shouldn't render disabled nav items when renderDisabled is false 2`] = `
+<nav
+  aria-label="Pagination Navigation"
+  role="navigation"
+>
+  <ul
+    className="pagination"
+  >
+    <li
+      className="page-item page-item__first"
+    >
+      <a
+        className="page-link"
+        href="/blog"
+      >
+        « First
+      </a>
+    </li>
+    <li
+      className="page-item page-item__prev"
+    >
+      <a
+        className="page-link"
+        href="/blog/page/8"
+      >
+        ⟨ Previous
+      </a>
+    </li>
+    <li
+      className="page-item"
+    >
+      <a
+        className="page-link"
+        href="/blog/page/4"
+      >
+        4
+      </a>
+    </li>
+    <li
+      className="page-item"
+    >
+      <a
+        className="page-link"
+        href="/blog/page/5"
+      >
+        5
+      </a>
+    </li>
+    <li
+      className="page-item"
+    >
+      <a
+        className="page-link"
+        href="/blog/page/6"
+      >
+        6
+      </a>
+    </li>
+    <li
+      className="page-item"
+    >
+      <a
+        className="page-link"
+        href="/blog/page/7"
+      >
+        7
+      </a>
+    </li>
+    <li
+      className="page-item"
+    >
+      <a
+        className="page-link"
+        href="/blog/page/8"
+      >
+        8
+      </a>
+    </li>
+    <li
+      className="page-item active"
+    >
+      <a
+        className="page-link"
+        href="/blog/page/9"
+      >
+        9
+      </a>
+    </li>
+  </ul>
+</nav>
+`;
+
+exports[`<Pagination /> shouldn't render disabled nav items when renderDisabled is false 3`] = `
+<nav
+  aria-label="Pagination Navigation"
+  role="navigation"
+>
+  <ul
+    className="pagination"
+  >
+    <li
+      className="page-item active"
+    >
+      <a
+        className="page-link"
+        href="/blog"
+      >
+        1
       </a>
     </li>
   </ul>

@@ -31,7 +31,7 @@ export default class Pagination extends React.Component {
       'item.last': string,
       link: string,
       active: string,
-      disabld: string
+      disabled: string
     }),
     renderDisabled: bool
   };
@@ -54,7 +54,7 @@ export default class Pagination extends React.Component {
       'item.last': 'page-item__last',
       link: 'page-link',
       active: 'active',
-      disabld: 'disabled'
+      disabled: 'disabled'
     },
     renderDisabled: true
   }
@@ -70,30 +70,6 @@ export default class Pagination extends React.Component {
     })
   }
 
-  shallRenderPrev() {
-    return this.props.renderDisabled && !this.state.hasPreviousPage
-      ? false
-      : true
-  }
-
-  shallRenderNext() {
-    return this.props.renderDisabled && !this.state.hasNextPage
-      ? false
-      : true
-  }
-
-  shallRenderFirst() {
-    return this.props.ui !== 'full' || !this.shallRenderPrev()
-      ? false
-      : true
-  }
-
-  shallRenderLast() {
-    return this.props.ui !== 'full' || !this.shallRenderNext()
-      ? false
-      : true
-  }
-
   render() {
     const {
       totalPages,
@@ -105,31 +81,40 @@ export default class Pagination extends React.Component {
       lastPage,
       currentPage
     } = this.state
-    const labels = Object.assign(Pagination.defaultProps.labels, this.props.labels)
-    const theme = Object.assign(Pagination.defaultProps.theme, this.props.theme)
+
+    if(!totalPages || !/^\d+$/.test(totalPages)){
+      if(process.env.NODE_ENV !== `production`){
+        console.error(
+          'Warning: Invalid pageInfo prop supplied to `Pagination`' +
+          ' component: ' + JSON.stringify(this.props.pageInfo))
+      }
+      return <div className={this.props.className}>Pagination not available</div>
+    }
+
+    const { ui } = this.props
+    const labels = Object.assign({}, Pagination.defaultProps.labels, this.props.labels)
+    const theme = Object.assign({}, Pagination.defaultProps.theme, this.props.theme)
     const pages = []
 
-    if(this.shallRenderFirst()) {
+    if(ui === 'full') {
       pages.push({
         key: 'first',
         number: 1,
         type: 'first',
         label: labels.first,
-        disabld: !hasPreviousPage
+        disabled: !hasPreviousPage
       })
     }
 
-    if(this.shallRenderPrev()) {
-      pages.push({
-        key: 'prev',
-        number: previousPage,
-        type: 'prev',
-        label: labels.prev,
-        disabld: !hasPreviousPage
-      })
-    }
+    pages.push({
+      key: 'prev',
+      number: previousPage,
+      type: 'prev',
+      label: labels.prev,
+      disabled: !hasPreviousPage
+    })
 
-    if(this.props.ui !== 'mini') {
+    if(ui !== 'mini') {
       for (let i = firstPage; i <= lastPage; i++) {
         pages.push({
           key: i,
@@ -141,23 +126,21 @@ export default class Pagination extends React.Component {
       }
     }
 
-    if(this.shallRenderNext()) {
-      pages.push({
-        key: 'next',
-        number: nextPage,
-        type: 'next',
-        label: labels.next,
-        disabld: !hasNextPage
-      })
-    }
+    pages.push({
+      key: 'next',
+      number: nextPage,
+      type: 'next',
+      label: labels.next,
+      disabled: !hasNextPage
+    })
 
-    if(this.shallRenderLast()) {
+    if(ui === 'full') {
       pages.push({
         key: 'last',
         number: totalPages,
         type: 'last',
         label: labels.last,
-        disabld: !hasNextPage
+        disabled: !hasNextPage
       })
     }
 
@@ -165,6 +148,10 @@ export default class Pagination extends React.Component {
       <nav className={this.props.className} role="navigation" aria-label="Pagination Navigation">
         <ul className={theme.inner}>
         {pages.map((page) => {
+          if(page.disabled && !this.props.renderDisabled){
+            return
+          }
+
           const classes = [theme.item]
           const typeClass = theme['item.' + page.type]
           if(typeClass){
@@ -176,12 +163,25 @@ export default class Pagination extends React.Component {
             [theme.disabled]: page.disabled
           })
 
+          if(page.disabled){
+            return (
+              <li key={page.key} className={classNames(classes)}>
+                <a className={theme.link}>{page.label}</a>
+              </li>
+            )
+          }
+
+          // Use non-paginated route for first page 
+          const [ params, scope ] = page.number === 1
+            ? [ this.props.params, null ]
+            : [ { ...this.props.params, page: page.number }, 'pagination' ]
+
           return (
             <li key={page.key} className={classNames(classes)}>
               <Link
                 to={this.props.route}
-                params={{...this.props.params, page: page.number}}
-                scope="pagination"
+                params={params}
+                scope={scope}
                 className={theme.link}
                 children={page.label}
               />
