@@ -11,9 +11,12 @@
   "scripts": {
     "lint": "standard",
     "prebuild": "rimraf dist/*",
-    "build": "babel src --out-dir dist --ignore **/__tests__",
+    "build": "babel src --out-dir dist --ignore src/**/__tests__,src/**/__mocks__",
     "prepare": "cross-env NODE_ENV=production npm run build",
-    "watch": "babel -w src --out-dir dist --ignore **/__tests__"
+    "watch": "babel -w src --out-dir dist --ignore src/**/__tests__,src/**/__mocks__",
+    "test": "jest",
+    "test:coverage": "jest --coverage",
+    "test:watch": "jest --watch --runInBand"
   },
   "keywords": [
     "gatsby",
@@ -32,22 +35,30 @@
   "bugs": "https://github.com/mohatt/gatsby-plugin-advanced-pages/issues",
   "dependencies": {
     "@babel/runtime": "^7.0.0",
+    "classnames": "^2.2.6",
+    "fs-exists-cached": "^1.0.0",
     "lodash": "^4.17.15",
-    "prop-types": "^15.6.1",
-    "path-to-regexp": "^3.0.0",
-    "fs-exists-cached": "^1.0.0"
+    "paging-algorithm": "^1.0.1",
+    "path-to-regexp": "^3.0.0"
   },
   "devDependencies": {
     "@babel/cli": "^7.0.0",
     "@babel/core": "^7.0.0",
     "babel-preset-gatsby-package": "^0.2.2",
-    "@testing-library/react": "^8.0.6",
-    "standard": "^13.1.0",
     "cross-env": "^5.1.4",
-    "rimraf": "^2.6.2"
+    "jest": "^24.8.0",
+    "prop-types": "^15.6.1",
+    "react": "^16.4.2",
+    "react-dom": "^16.4.2",
+    "react-test-renderer": "^16.4.2",
+    "rimraf": "^2.6.2",
+    "standard": "^13.1.0"
   },
   "peerDependencies": {
-    "gatsby": "^2.7.0"
+    "gatsby": ">=2.7.0",
+    "react": ">=16.4.2",
+    "react-dom": ">=16.4.2",
+    "prop-types": ">=15.6.1"
   },
   "engines": {
     "node": ">=8.5.0"

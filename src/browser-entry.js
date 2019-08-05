@@ -1,8 +1,8 @@
-const compileRoute = require('./lib/route-compiler')
-const routes = require('./routes')
+import compileRoute from './lib/route-compiler'
+import routes from './routes'
 
 // Returns a function to be used to generate paths for a specific route
-function getPathGenerator (routeName, scope) {
+export function getPathGenerator (routeName, scope) {
   if (typeof routeName !== 'string' || !routeName) {
     throw new TypeError(
       `Expected route name to be a non-empty string (got '${typeof routeName}')`
@@ -26,12 +26,10 @@ function getPathGenerator (routeName, scope) {
 }
 
 // Generates a path for a specific route based on the given parameters.
-function generatePath (routeName, args = {}, scope) {
+export function generatePath (routeName, args = {}, scope) {
   return getPathGenerator(routeName, scope)(args)
 }
 
-module.exports = {
-  routes,
-  getPathGenerator,
-  generatePath
-}
+export { routes }
+
+export { Pagination, Link } from './components'

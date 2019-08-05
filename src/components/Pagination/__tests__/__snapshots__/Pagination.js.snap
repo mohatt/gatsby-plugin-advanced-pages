@@ -1,0 +1,113 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Pagination /> should render correctly 1`] = `
+<nav
+  aria-label="Pagination Navigation"
+  role="navigation"
+>
+  <ul
+    className="pagination"
+  >
+    <li
+      className="page-item page-item__first"
+    >
+      <a
+        className="page-link"
+        href="/blog/page/1"
+      >
+        « First
+      </a>
+    </li>
+    <li
+      className="page-item page-item__prev"
+    >
+      <a
+        className="page-link"
+        href="/blog/page/2"
+      >
+        ⟨ Previous
+      </a>
+    </li>
+    <li
+      className="page-item"
+    >
+      <a
+        className="page-link"
+        href="/blog/page/1"
+      >
+        1
+      </a>
+    </li>
+    <li
+      className="page-item"
+    >
+      <a
+        className="page-link"
+        href="/blog/page/2"
+      >
+        2
+      </a>
+    </li>
+    <li
+      className="page-item active"
+    >
+      <a
+        className="page-link"
+        href="/blog/page/3"
+      >
+        3
+      </a>
+    </li>
+    <li
+      className="page-item"
+    >
+      <a
+        className="page-link"
+        href="/blog/page/4"
+      >
+        4
+      </a>
+    </li>
+    <li
+      className="page-item"
+    >
+      <a
+        className="page-link"
+        href="/blog/page/5"
+      >
+        5
+      </a>
+    </li>
+    <li
+      className="page-item"
+    >
+      <a
+        className="page-link"
+        href="/blog/page/6"
+      >
+        6
+      </a>
+    </li>
+    <li
+      className="page-item page-item__next"
+    >
+      <a
+        className="page-link"
+        href="/blog/page/4"
+      >
+        Next ⟩
+      </a>
+    </li>
+    <li
+      className="page-item page-item__last"
+    >
+      <a
+        className="page-link"
+        href="/blog/page/8"
+      >
+        Last »
+      </a>
+    </li>
+  </ul>
+</nav>
+`;

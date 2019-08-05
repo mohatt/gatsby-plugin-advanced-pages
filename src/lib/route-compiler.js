@@ -1,9 +1,9 @@
-const pathToRegexp = require('path-to-regexp')
+import pathToRegexp from 'path-to-regexp'
 
 // Wraps pathToRegexp to handle errors thrown
 // Uses Memoization to improve performance
 // Returns a function to be used to generate paths for specific route
-function compileRoute(routePath) {
+export default function compileRoute (routePath) {
   if(!compileRoute.cache) {
     compileRoute.cache = {}
   }
@@ -24,5 +24,3 @@ function compileRoute(routePath) {
     }
   }
 }
-
-module.exports = compileRoute

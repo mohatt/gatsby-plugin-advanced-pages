@@ -56,7 +56,8 @@ module.exports = async function ({ graphql, actions }) {
     routeMap[name] = route
   }
 
-  // Use let to allow inner functions to access page object
+  // Declare page object outside the loop to allow 
+  // inner functions like runPageHelper and createAdvancedPage to access it
   let page
   for (page of result.data[`all${options.typeNames.page}`].nodes) {
     // Set file paths
