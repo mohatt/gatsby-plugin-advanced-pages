@@ -2,15 +2,13 @@ import React from "react"
 import TestRenderer from 'react-test-renderer';
 import Pagination from "../Pagination"
 
-const setup = (props = {}) => {
-  return TestRenderer.create(
-    <Pagination {...props} />
-  ).toJSON()
+const render = (props = {}) => {
+  return TestRenderer.create(<Pagination {...props} />)
 }
 
 describe(`<Pagination />`, () => {
   it(`should render correctly`, () => {
-    const result = setup({
+    const tree = render({
       route: 'blog',
       pageInfo: {
         perPage: 10,
@@ -18,6 +16,6 @@ describe(`<Pagination />`, () => {
         currentPage: 3,
       }
     })
-    expect(result).toMatchSnapshot()
+    expect(tree.toJSON()).toMatchSnapshot()
   })
 })

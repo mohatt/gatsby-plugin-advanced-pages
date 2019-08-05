@@ -12,10 +12,10 @@ export default class Pagination extends React.Component {
     range: number,
     className: string,
     pageInfo: shape({
-      perPage: number.isRequired,
       itemCount: number.isRequired,
       currentPage: number.isRequired,
-    }),
+      perPage: number.isRequired
+    }).isRequired,
     labels: shape({
       prev: oneOfType([string, element]),
       next: oneOfType([string, element]),
@@ -31,7 +31,7 @@ export default class Pagination extends React.Component {
       'item.last': string,
       link: string,
       active: string,
-      disabld: string,
+      disabld: string
     }),
     renderDisabled: bool
   };
@@ -95,7 +95,18 @@ export default class Pagination extends React.Component {
   }
 
   render() {
-    const { labels, theme } = this.props
+    const {
+      totalPages,
+      hasPreviousPage,
+      hasNextPage,
+      previousPage,
+      nextPage,
+      firstPage,
+      lastPage,
+      currentPage
+    } = this.state
+    const labels = Object.assign(Pagination.defaultProps.labels, this.props.labels)
+    const theme = Object.assign(Pagination.defaultProps.theme, this.props.theme)
     const pages = []
 
     if(this.shallRenderFirst()) {
@@ -104,28 +115,28 @@ export default class Pagination extends React.Component {
         number: 1,
         type: 'first',
         label: labels.first,
-        disabld: !this.state.hasPreviousPage
+        disabld: !hasPreviousPage
       })
     }
 
     if(this.shallRenderPrev()) {
       pages.push({
         key: 'prev',
-        number: this.state.previousPage,
+        number: previousPage,
         type: 'prev',
         label: labels.prev,
-        disabld: !this.state.hasPreviousPage
+        disabld: !hasPreviousPage
       })
     }
 
     if(this.props.ui !== 'mini') {
-      for (let i = this.state.firstPage; i <= this.state.lastPage; i++) {
+      for (let i = firstPage; i <= lastPage; i++) {
         pages.push({
           key: i,
           number: i,
           type: 'page',
           label: i.toString(),
-          active: i === this.state.currentPage
+          active: i === currentPage
         })
       }
     }
@@ -133,20 +144,20 @@ export default class Pagination extends React.Component {
     if(this.shallRenderNext()) {
       pages.push({
         key: 'next',
-        number: this.state.nextPage,
+        number: nextPage,
         type: 'next',
         label: labels.next,
-        disabld: !this.state.hasNextPage
+        disabld: !hasNextPage
       })
     }
 
     if(this.shallRenderLast()) {
       pages.push({
         key: 'last',
-        number: this.state.totalPages,
+        number: totalPages,
         type: 'last',
         label: labels.last,
-        disabld: !this.state.hasNextPage
+        disabld: !hasNextPage
       })
     }
 
