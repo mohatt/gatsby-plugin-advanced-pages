@@ -2,11 +2,11 @@ import React from "react"
 import TestRenderer from 'react-test-renderer';
 import Pagination from "../Pagination"
 
-const render = (props = {}) => {
-  return TestRenderer.create(<Pagination {...props} />)
-}
-
 describe(`<Pagination />`, () => {
+  const render = (props = {}) => {
+    return TestRenderer.create(<Pagination {...props} />)
+  }
+
   it(`should render correctly`, () => {
     const tree = render({
       route: 'blog',

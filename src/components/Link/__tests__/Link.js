@@ -2,11 +2,11 @@ import React from "react"
 import TestRenderer from 'react-test-renderer';
 import Link from "../Link"
 
-const render = (props = {}) => {
-  return TestRenderer.create(<Link {...props} />).toJSON()
-}
-
 describe(`<Link />`, () => {
+  const render = (props = {}) => {
+    return TestRenderer.create(<Link {...props} />).toJSON()
+  }
+  
   it(`should render correctly`, () => {
     expect(render({ to: 'home' })).toMatchSnapshot()
   })
