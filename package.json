@@ -14,8 +14,8 @@
     "build": "babel src --out-dir dist --ignore src/**/__tests__,src/**/__mocks__",
     "prepare": "cross-env NODE_ENV=production yarn build",
     "watch": "babel -w src --out-dir dist --ignore src/**/__tests__,src/**/__mocks__",
-    "test": "jest",
-    "test:coverage": "jest --coverage",
+    "test": "jest --runInBand",
+    "test:coverage": "jest --runInBand --coverage",
     "test:watch": "jest --watch --runInBand"
   },
   "keywords": [
