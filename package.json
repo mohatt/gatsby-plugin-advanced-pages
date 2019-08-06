@@ -12,7 +12,7 @@
     "lint": "standard",
     "prebuild": "rimraf dist/*",
     "build": "babel src --out-dir dist --ignore src/**/__tests__,src/**/__mocks__",
-    "prepare": "cross-env NODE_ENV=production npm run build",
+    "prepare": "cross-env NODE_ENV=production yarn build",
     "watch": "babel -w src --out-dir dist --ignore src/**/__tests__,src/**/__mocks__",
     "test": "jest",
     "test:coverage": "jest --coverage",
