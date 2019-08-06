@@ -1,7 +1,7 @@
-const { getOptions, isPathChildof } = require('./util')
+import { getOptions, isPathChildof } from './util'
 
 // Create Page and Route nodes
-module.exports = ({ node, actions, getNode, createNodeId, createContentDigest }) => {
+export default function ({ node, actions, getNode, createNodeId, createContentDigest }) {
   const { createNode, createParentChildLink } = actions
   const options = getOptions()
 

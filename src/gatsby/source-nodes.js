@@ -1,6 +1,6 @@
-const { getOption } = require('./util')
+import { getOption } from './util'
 
-module.exports = ({ actions, schema }) => {
+export default function ({ actions, schema }) {
   const { createTypes } = actions
   const types = getOption('typeNames')
 

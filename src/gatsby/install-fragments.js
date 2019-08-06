@@ -1,7 +1,7 @@
-const fs = require('fs')
-const path = require('path')
+import fs from 'fs'
+import path from 'path'
 
-module.exports = async ({ store, getNodesByType }) => {
+export default async function ({ store, getNodesByType }) {
   const { program } = store.getState()
   // Add pagination fragment to .cache/fragments.
   await fs.copyFile(

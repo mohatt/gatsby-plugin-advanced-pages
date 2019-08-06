@@ -1,0 +1,6 @@
+export { default as onPreBootstrap } from './bootstrap'
+export { default as sourceNodes } from './source-nodes'
+export { default as setFieldsOnGraphQLNodeType } from './extend-nodes'
+export { default as onCreateNode } from './on-create-node'
+export { default as createPages } from './create-pages'
+export { default as onPreExtractQueries } from './install-fragments'

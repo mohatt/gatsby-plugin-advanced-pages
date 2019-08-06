@@ -1,8 +1,8 @@
 import compileRoute from './lib/route-compiler'
 import routes from './routes'
 
-// Returns a function to be used to generate paths for a specific route
-export function getPathGenerator (routeName, scope) {
+// Gets the route object
+export function getRoute (routeName) {
   if (typeof routeName !== 'string' || !routeName) {
     throw new TypeError(
       `Expected route name to be a non-empty string (got '${typeof routeName}')`
@@ -12,6 +12,16 @@ export function getPathGenerator (routeName, scope) {
   const route = routes[routeName]
   if (!route) {
     throw new TypeError(`Unrecognized route name '${routeName}'`)
+  }
+  
+  return route
+}
+
+// Returns a function to be used to generate paths for a specific route
+export function getPathGenerator (routeName, scope) {
+  const route = getRoute(routeName)
+  if (!route) {
+    return false
   }
 
   if (!scope) {
@@ -29,7 +39,5 @@ export function getPathGenerator (routeName, scope) {
 export function generatePath (routeName, args = {}, scope) {
   return getPathGenerator(routeName, scope)(args)
 }
-
-export { routes }
 
 export { Pagination, Link } from './components'

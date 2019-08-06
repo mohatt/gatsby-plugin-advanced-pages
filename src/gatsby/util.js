@@ -1,6 +1,6 @@
-const path = require('path')
-const _ = require("lodash")
-const debug = require("debug")("gatsby-plugin-advanced-pages")
+import path from 'path'
+import _ from 'lodash'
+import debug from 'debug'
 
 // Available transformer engines
 const ENGINES = {
@@ -19,7 +19,7 @@ const ENGINES = {
 // Initializes options
 // The function only runs at first call
 // Subsequent calls return the cached options object
-const initializeOptions = _.once(({ store, reporter, defaultOptions, userOptions }) => {
+export const initializeOptions = _.once(({ store, reporter, defaultOptions, userOptions }) => {
   const { program } = store.getState()
   const o = _.merge(defaultOptions, userOptions)
 
@@ -51,31 +51,23 @@ const initializeOptions = _.once(({ store, reporter, defaultOptions, userOptions
   o.typeNames = _.mapValues(o.typeNames, _.upperFirst)
 
   // Debug final options object
-  debug("Options", o)
+  debug('gatsby-plugin-advanced-pages')("Options", o)
 
   return o
 })
 
 // Gets the initialized options object
-function getOptions () {
+export function getOptions () {
   return initializeOptions()
 }
 
 // Gets the value of a single option
-function getOption (optionName) {
+export function getOption (optionName) {
   return _.get(getOptions(), optionName)
 }
 
 // Checks if a path is a child of another one
-function isPathChildof (child, parent) {
+export function isPathChildof (child, parent) {
   const relative = path.relative(parent, child)
   return relative && !relative.startsWith('..') && !path.isAbsolute(relative)
-}
-
-module.exports = {
-  initializeOptions,
-  getOptions,
-  getOption,
-  isPathChildof,
-  debug
 }

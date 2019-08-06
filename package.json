@@ -36,7 +36,6 @@
   "dependencies": {
     "@babel/runtime": "^7.0.0",
     "classnames": "^2.2.6",
-    "fs-exists-cached": "^1.0.0",
     "lodash": "^4.17.15",
     "paging-algorithm": "^1.0.1",
     "path-to-regexp": "^3.0.0"
@@ -49,7 +48,6 @@
     "jest": "^24.8.0",
     "prop-types": "^15.6.1",
     "react": "^16.4.2",
-    "react-dom": "^16.4.2",
     "react-test-renderer": "^16.4.2",
     "rimraf": "^2.6.2",
     "standard": "^13.1.0"
@@ -57,7 +55,6 @@
   "peerDependencies": {
     "gatsby": ">=2.7.0",
     "react": ">=16.4.2",
-    "react-dom": ">=16.4.2",
     "prop-types": ">=15.6.1"
   },
   "engines": {

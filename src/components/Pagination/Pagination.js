@@ -1,8 +1,8 @@
 import React from 'react'
 import { shape, number, string, object, bool, element, oneOf, oneOfType } from 'prop-types'
 import classNames from 'classnames'
-import Link from '../Link'
 import { getPageInfo } from 'paging-algorithm'
+import Link from '../Link'
 
 export default class Pagination extends React.Component {
   static propTypes = {

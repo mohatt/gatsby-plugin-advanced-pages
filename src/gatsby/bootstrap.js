@@ -1,6 +1,6 @@
-const { initializeOptions } = require('./util')
+import { initializeOptions } from './util'
 
-module.exports = ({ store, reporter }, pluginOptions) => {
+export default function ({ store, reporter }, pluginOptions) {
   // Default values for options
   const defaultOptions = {
     basePath: '/',

@@ -1,7 +1,7 @@
 import React from 'react'
 import { Link as GatsbyLink } from 'gatsby'
 import { string, object } from 'prop-types'
-import { generatePath } from '../../browser-entry'
+import { generatePath } from '../../api'
 
 const Link = ({ to, params, scope, ...props }) => {
   let href

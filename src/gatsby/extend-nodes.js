@@ -1,7 +1,7 @@
-const { getOption } = require('./util')
+import { getOption } from './util'
 
 // Extend frontmatter type definition
-module.exports = ({ type }) => {
+export default function ({ type }) {
   if (type.name === getOption('engine.typeName')) {
     return {
       'frontmatter.title': 'String',

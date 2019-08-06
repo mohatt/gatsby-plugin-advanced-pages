@@ -1,11 +1,10 @@
-const fs = require(`fs`)
-const systemPath = require('path')
-const _ = require("lodash")
-const existsSync = require(`fs-exists-cached`).sync
-const compileRoute = require('../lib/route-compiler')
-const { getOptions } = require('./util')
+import fs from 'fs'
+import systemPath from 'path'
+import _ from 'lodash'
+import compileRoute from '../lib/route-compiler'
+import { getOptions } from './util'
 
-module.exports = async function ({ graphql, actions }) {
+export default async function ({ graphql, actions }) {
   const options = getOptions()
   const result = await graphql(`
     {
@@ -108,7 +107,7 @@ module.exports = async function ({ graphql, actions }) {
   }
 
   async function runPageHelper() {
-    if (!existsSync(page.helperPath)) {
+    if (!fs.existsSync(page.helperPath)) {
       throw new Error(`Page helper file does not exist at '${page.helperPath}'`)
     }
 
