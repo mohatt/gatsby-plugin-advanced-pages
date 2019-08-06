@@ -1,0 +1,55 @@
+// @flow
+import * as React from "react";
+
+export interface Route {
+  path: string;
+  scopes: {
+    [index: string]: string
+  };
+}
+
+export interface RouteParams {
+  [index: string]: string;
+}
+
+export interface PaginationInfo {
+  itemCount: number;
+  currentPage: number;
+  perPage: number;
+}
+
+export interface PaginationProps {
+  route: string;
+  params?: RouteParams;
+  ui?: string;
+  range?: number;
+  className?: string;
+  renderDisabled?: boolean;
+  pageInfo: PaginationInfo;
+  labels?: {
+    [index: string]: string | React.Node
+  };
+  theme?: {
+    [index: string]: string
+  };
+}
+
+export interface LinkProps {
+  to: string;
+  params?: RouteParams;
+  scope?: string;
+}
+
+declare export var Pagination: React.ComponentType<PaginationProps>;
+declare export var Link: React.ComponentType<LinkProps>;
+
+declare export function getRoute(routeName: string): Route;
+declare export function getPathGenerator(
+  routeName: number,
+  scope?: string
+): (args?: RouteParams) => string;
+declare export function generatePath(
+  routeName: number,
+  args?: RouteParams,
+  scope?: string
+): string;
