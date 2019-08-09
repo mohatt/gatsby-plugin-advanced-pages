@@ -1,6 +1,4 @@
-'use strict';
-
-module.exports = [
+export default [
   {
       title: 'testCase1',
       node: {
@@ -24,4 +22,4 @@ module.exports = [
         relativePath: 'pages/home.md'
       }
   }
-];
+]

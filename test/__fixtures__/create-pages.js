@@ -1,4 +1,4 @@
-const fixture = {
+export default {
 	routes: [
   	{ name: 'home', path: '/', page: { path: 'pages/home.md' } },
 		{ name: 'blog', path: '/blog', page: { path: 'pages/blog.md' } },
@@ -69,5 +69,3 @@ const fixture = {
 		}
 	}
 }
-
-export default fixture
