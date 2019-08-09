@@ -1,6 +1,6 @@
 import fs from 'fs'
 import path from 'path'
-import { createPages } from '../index'
+import { createPages } from '../'
 import { getOption } from '../util'
 import { mountOptions, mountFile, mountDir, mountModule } from '../../../test/helpers'
 import testCase from '../../../test/__fixtures__/create-pages'

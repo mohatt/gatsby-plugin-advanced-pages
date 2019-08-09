@@ -1,4 +1,4 @@
-import { onCreateNode } from '../index'
+import { onCreateNode } from '../'
 import { mountOptions } from '../../../test/helpers'
 import testCases from '../../../test/__fixtures__/on-create-node'
 
