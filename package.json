@@ -6,6 +6,8 @@
   "files": [
     "dist",
     "index.js",
+    "index.js.flow",
+    "index.d.ts",
     "gatsby-node.js"
   ],
   "scripts": {
