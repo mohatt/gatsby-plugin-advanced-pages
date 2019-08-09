@@ -1,6 +1,6 @@
 import { initializeOptions } from './util'
 
-export default function ({ store, reporter }, pluginOptions) {
+export default function ({ store }, pluginOptions) {
   // Default values for options
   const defaultOptions = {
     basePath: '/',
@@ -25,7 +25,6 @@ export default function ({ store, reporter }, pluginOptions) {
   // Only runs once at bootstrap
   initializeOptions({
     store,
-    reporter,
     defaultOptions,
     pluginOptions
   })
