@@ -1,7 +1,7 @@
-import React from "react"
-import TestRenderer from 'react-test-renderer';
+import React from 'react'
+import ShallowRenderer from 'react-test-renderer/shallow'
 import { mapValues, merge } from 'lodash'
-import Pagination from "../Pagination"
+import Pagination from '../Pagination'
 
 describe(`<Pagination />`, () => {
   const render = (props = {}) => {
@@ -13,7 +13,9 @@ describe(`<Pagination />`, () => {
         currentPage: 4,
       }
     }, props)
-    return TestRenderer.create(<Pagination {...props} />).toJSON()
+    return ShallowRenderer.createRenderer().render(
+      <Pagination {...props} />
+    )
   }
 
   it(`should render correctly with defaults`, () => {

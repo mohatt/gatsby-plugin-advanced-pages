@@ -27,102 +27,152 @@ exports[`<Pagination /> should render correctly with custom labels 1`] = `
     <li
       className="page-item page-item__first"
     >
-      <a
+      <Link
         className="page-link"
-        href="/blog"
+        scope={null}
+        to="blog"
       >
         « First custom
-      </a>
+      </Link>
     </li>
     <li
       className="page-item page-item__prev"
     >
-      <a
+      <Link
         className="page-link"
-        href="/blog/page/3"
+        params={
+          Object {
+            "page": 3,
+          }
+        }
+        scope="pagination"
+        to="blog"
       >
         ⟨ Previous custom
-      </a>
+      </Link>
     </li>
     <li
       className="page-item"
     >
-      <a
+      <Link
         className="page-link"
-        href="/blog"
+        scope={null}
+        to="blog"
       >
         1
-      </a>
+      </Link>
     </li>
     <li
       className="page-item"
     >
-      <a
+      <Link
         className="page-link"
-        href="/blog/page/2"
+        params={
+          Object {
+            "page": 2,
+          }
+        }
+        scope="pagination"
+        to="blog"
       >
         2
-      </a>
+      </Link>
     </li>
     <li
       className="page-item"
     >
-      <a
+      <Link
         className="page-link"
-        href="/blog/page/3"
+        params={
+          Object {
+            "page": 3,
+          }
+        }
+        scope="pagination"
+        to="blog"
       >
         3
-      </a>
+      </Link>
     </li>
     <li
       className="page-item active"
     >
-      <a
+      <Link
         className="page-link"
-        href="/blog/page/4"
+        params={
+          Object {
+            "page": 4,
+          }
+        }
+        scope="pagination"
+        to="blog"
       >
         4
-      </a>
+      </Link>
     </li>
     <li
       className="page-item"
     >
-      <a
+      <Link
         className="page-link"
-        href="/blog/page/5"
+        params={
+          Object {
+            "page": 5,
+          }
+        }
+        scope="pagination"
+        to="blog"
       >
         5
-      </a>
+      </Link>
     </li>
     <li
       className="page-item"
     >
-      <a
+      <Link
         className="page-link"
-        href="/blog/page/6"
+        params={
+          Object {
+            "page": 6,
+          }
+        }
+        scope="pagination"
+        to="blog"
       >
         6
-      </a>
+      </Link>
     </li>
     <li
       className="page-item page-item__next"
     >
-      <a
+      <Link
         className="page-link"
-        href="/blog/page/5"
+        params={
+          Object {
+            "page": 5,
+          }
+        }
+        scope="pagination"
+        to="blog"
       >
         Next ⟩ custom
-      </a>
+      </Link>
     </li>
     <li
       className="page-item page-item__last"
     >
-      <a
+      <Link
         className="page-link"
-        href="/blog/page/9"
+        params={
+          Object {
+            "page": 9,
+          }
+        }
+        scope="pagination"
+        to="blog"
       >
         Last » custom
-      </a>
+      </Link>
     </li>
   </ul>
 </nav>
@@ -139,52 +189,77 @@ exports[`<Pagination /> should render correctly with custom range 1`] = `
     <li
       className="page-item page-item__first"
     >
-      <a
+      <Link
         className="page-link"
-        href="/blog"
+        scope={null}
+        to="blog"
       >
         « First
-      </a>
+      </Link>
     </li>
     <li
       className="page-item page-item__prev"
     >
-      <a
+      <Link
         className="page-link"
-        href="/blog/page/3"
+        params={
+          Object {
+            "page": 3,
+          }
+        }
+        scope="pagination"
+        to="blog"
       >
         ⟨ Previous
-      </a>
+      </Link>
     </li>
     <li
       className="page-item active"
     >
-      <a
+      <Link
         className="page-link"
-        href="/blog/page/4"
+        params={
+          Object {
+            "page": 4,
+          }
+        }
+        scope="pagination"
+        to="blog"
       >
         4
-      </a>
+      </Link>
     </li>
     <li
       className="page-item page-item__next"
     >
-      <a
+      <Link
         className="page-link"
-        href="/blog/page/5"
+        params={
+          Object {
+            "page": 5,
+          }
+        }
+        scope="pagination"
+        to="blog"
       >
         Next ⟩
-      </a>
+      </Link>
     </li>
     <li
       className="page-item page-item__last"
     >
-      <a
+      <Link
         className="page-link"
-        href="/blog/page/9"
+        params={
+          Object {
+            "page": 9,
+          }
+        }
+        scope="pagination"
+        to="blog"
       >
         Last »
-      </a>
+      </Link>
     </li>
   </ul>
 </nav>
@@ -201,72 +276,109 @@ exports[`<Pagination /> should render correctly with custom range 2`] = `
     <li
       className="page-item page-item__first"
     >
-      <a
+      <Link
         className="page-link"
-        href="/blog"
+        scope={null}
+        to="blog"
       >
         « First
-      </a>
+      </Link>
     </li>
     <li
       className="page-item page-item__prev"
     >
-      <a
+      <Link
         className="page-link"
-        href="/blog/page/3"
+        params={
+          Object {
+            "page": 3,
+          }
+        }
+        scope="pagination"
+        to="blog"
       >
         ⟨ Previous
-      </a>
+      </Link>
     </li>
     <li
       className="page-item"
     >
-      <a
+      <Link
         className="page-link"
-        href="/blog/page/3"
+        params={
+          Object {
+            "page": 3,
+          }
+        }
+        scope="pagination"
+        to="blog"
       >
         3
-      </a>
+      </Link>
     </li>
     <li
       className="page-item active"
     >
-      <a
+      <Link
         className="page-link"
-        href="/blog/page/4"
+        params={
+          Object {
+            "page": 4,
+          }
+        }
+        scope="pagination"
+        to="blog"
       >
         4
-      </a>
+      </Link>
     </li>
     <li
       className="page-item"
     >
-      <a
+      <Link
         className="page-link"
-        href="/blog/page/5"
+        params={
+          Object {
+            "page": 5,
+          }
+        }
+        scope="pagination"
+        to="blog"
       >
         5
-      </a>
+      </Link>
     </li>
     <li
       className="page-item page-item__next"
     >
-      <a
+      <Link
         className="page-link"
-        href="/blog/page/5"
+        params={
+          Object {
+            "page": 5,
+          }
+        }
+        scope="pagination"
+        to="blog"
       >
         Next ⟩
-      </a>
+      </Link>
     </li>
     <li
       className="page-item page-item__last"
     >
-      <a
+      <Link
         className="page-link"
-        href="/blog/page/9"
+        params={
+          Object {
+            "page": 9,
+          }
+        }
+        scope="pagination"
+        to="blog"
       >
         Last »
-      </a>
+      </Link>
     </li>
   </ul>
 </nav>
@@ -283,112 +395,168 @@ exports[`<Pagination /> should render correctly with custom range 3`] = `
     <li
       className="page-item page-item__first"
     >
-      <a
+      <Link
         className="page-link"
-        href="/blog"
+        scope={null}
+        to="blog"
       >
         « First
-      </a>
+      </Link>
     </li>
     <li
       className="page-item page-item__prev"
     >
-      <a
+      <Link
         className="page-link"
-        href="/blog/page/3"
+        params={
+          Object {
+            "page": 3,
+          }
+        }
+        scope="pagination"
+        to="blog"
       >
         ⟨ Previous
-      </a>
+      </Link>
     </li>
     <li
       className="page-item"
     >
-      <a
+      <Link
         className="page-link"
-        href="/blog"
+        scope={null}
+        to="blog"
       >
         1
-      </a>
+      </Link>
     </li>
     <li
       className="page-item"
     >
-      <a
+      <Link
         className="page-link"
-        href="/blog/page/2"
+        params={
+          Object {
+            "page": 2,
+          }
+        }
+        scope="pagination"
+        to="blog"
       >
         2
-      </a>
+      </Link>
     </li>
     <li
       className="page-item"
     >
-      <a
+      <Link
         className="page-link"
-        href="/blog/page/3"
+        params={
+          Object {
+            "page": 3,
+          }
+        }
+        scope="pagination"
+        to="blog"
       >
         3
-      </a>
+      </Link>
     </li>
     <li
       className="page-item active"
     >
-      <a
+      <Link
         className="page-link"
-        href="/blog/page/4"
+        params={
+          Object {
+            "page": 4,
+          }
+        }
+        scope="pagination"
+        to="blog"
       >
         4
-      </a>
+      </Link>
     </li>
     <li
       className="page-item"
     >
-      <a
+      <Link
         className="page-link"
-        href="/blog/page/5"
+        params={
+          Object {
+            "page": 5,
+          }
+        }
+        scope="pagination"
+        to="blog"
       >
         5
-      </a>
+      </Link>
     </li>
     <li
       className="page-item"
     >
-      <a
+      <Link
         className="page-link"
-        href="/blog/page/6"
+        params={
+          Object {
+            "page": 6,
+          }
+        }
+        scope="pagination"
+        to="blog"
       >
         6
-      </a>
+      </Link>
     </li>
     <li
       className="page-item"
     >
-      <a
+      <Link
         className="page-link"
-        href="/blog/page/7"
+        params={
+          Object {
+            "page": 7,
+          }
+        }
+        scope="pagination"
+        to="blog"
       >
         7
-      </a>
+      </Link>
     </li>
     <li
       className="page-item page-item__next"
     >
-      <a
+      <Link
         className="page-link"
-        href="/blog/page/5"
+        params={
+          Object {
+            "page": 5,
+          }
+        }
+        scope="pagination"
+        to="blog"
       >
         Next ⟩
-      </a>
+      </Link>
     </li>
     <li
       className="page-item page-item__last"
     >
-      <a
+      <Link
         className="page-link"
-        href="/blog/page/9"
+        params={
+          Object {
+            "page": 9,
+          }
+        }
+        scope="pagination"
+        to="blog"
       >
         Last »
-      </a>
+      </Link>
     </li>
   </ul>
 </nav>
@@ -405,132 +573,200 @@ exports[`<Pagination /> should render correctly with custom range 4`] = `
     <li
       className="page-item page-item__first"
     >
-      <a
+      <Link
         className="page-link"
-        href="/blog"
+        scope={null}
+        to="blog"
       >
         « First
-      </a>
+      </Link>
     </li>
     <li
       className="page-item page-item__prev"
     >
-      <a
+      <Link
         className="page-link"
-        href="/blog/page/3"
+        params={
+          Object {
+            "page": 3,
+          }
+        }
+        scope="pagination"
+        to="blog"
       >
         ⟨ Previous
-      </a>
+      </Link>
     </li>
     <li
       className="page-item"
     >
-      <a
+      <Link
         className="page-link"
-        href="/blog"
+        scope={null}
+        to="blog"
       >
         1
-      </a>
+      </Link>
     </li>
     <li
       className="page-item"
     >
-      <a
+      <Link
         className="page-link"
-        href="/blog/page/2"
+        params={
+          Object {
+            "page": 2,
+          }
+        }
+        scope="pagination"
+        to="blog"
       >
         2
-      </a>
+      </Link>
     </li>
     <li
       className="page-item"
     >
-      <a
+      <Link
         className="page-link"
-        href="/blog/page/3"
+        params={
+          Object {
+            "page": 3,
+          }
+        }
+        scope="pagination"
+        to="blog"
       >
         3
-      </a>
+      </Link>
     </li>
     <li
       className="page-item active"
     >
-      <a
+      <Link
         className="page-link"
-        href="/blog/page/4"
+        params={
+          Object {
+            "page": 4,
+          }
+        }
+        scope="pagination"
+        to="blog"
       >
         4
-      </a>
+      </Link>
     </li>
     <li
       className="page-item"
     >
-      <a
+      <Link
         className="page-link"
-        href="/blog/page/5"
+        params={
+          Object {
+            "page": 5,
+          }
+        }
+        scope="pagination"
+        to="blog"
       >
         5
-      </a>
+      </Link>
     </li>
     <li
       className="page-item"
     >
-      <a
+      <Link
         className="page-link"
-        href="/blog/page/6"
+        params={
+          Object {
+            "page": 6,
+          }
+        }
+        scope="pagination"
+        to="blog"
       >
         6
-      </a>
+      </Link>
     </li>
     <li
       className="page-item"
     >
-      <a
+      <Link
         className="page-link"
-        href="/blog/page/7"
+        params={
+          Object {
+            "page": 7,
+          }
+        }
+        scope="pagination"
+        to="blog"
       >
         7
-      </a>
+      </Link>
     </li>
     <li
       className="page-item"
     >
-      <a
+      <Link
         className="page-link"
-        href="/blog/page/8"
+        params={
+          Object {
+            "page": 8,
+          }
+        }
+        scope="pagination"
+        to="blog"
       >
         8
-      </a>
+      </Link>
     </li>
     <li
       className="page-item"
     >
-      <a
+      <Link
         className="page-link"
-        href="/blog/page/9"
+        params={
+          Object {
+            "page": 9,
+          }
+        }
+        scope="pagination"
+        to="blog"
       >
         9
-      </a>
+      </Link>
     </li>
     <li
       className="page-item page-item__next"
     >
-      <a
+      <Link
         className="page-link"
-        href="/blog/page/5"
+        params={
+          Object {
+            "page": 5,
+          }
+        }
+        scope="pagination"
+        to="blog"
       >
         Next ⟩
-      </a>
+      </Link>
     </li>
     <li
       className="page-item page-item__last"
     >
-      <a
+      <Link
         className="page-link"
-        href="/blog/page/9"
+        params={
+          Object {
+            "page": 9,
+          }
+        }
+        scope="pagination"
+        to="blog"
       >
         Last »
-      </a>
+      </Link>
     </li>
   </ul>
 </nav>
@@ -547,102 +783,152 @@ exports[`<Pagination /> should render correctly with custom theme 1`] = `
     <li
       className="page-item-custom page-item__first-custom"
     >
-      <a
+      <Link
         className="page-link-custom"
-        href="/blog"
+        scope={null}
+        to="blog"
       >
         « First
-      </a>
+      </Link>
     </li>
     <li
       className="page-item-custom page-item__prev-custom"
     >
-      <a
+      <Link
         className="page-link-custom"
-        href="/blog/page/3"
+        params={
+          Object {
+            "page": 3,
+          }
+        }
+        scope="pagination"
+        to="blog"
       >
         ⟨ Previous
-      </a>
+      </Link>
     </li>
     <li
       className="page-item-custom"
     >
-      <a
+      <Link
         className="page-link-custom"
-        href="/blog"
+        scope={null}
+        to="blog"
       >
         1
-      </a>
+      </Link>
     </li>
     <li
       className="page-item-custom"
     >
-      <a
+      <Link
         className="page-link-custom"
-        href="/blog/page/2"
+        params={
+          Object {
+            "page": 2,
+          }
+        }
+        scope="pagination"
+        to="blog"
       >
         2
-      </a>
+      </Link>
     </li>
     <li
       className="page-item-custom"
     >
-      <a
+      <Link
         className="page-link-custom"
-        href="/blog/page/3"
+        params={
+          Object {
+            "page": 3,
+          }
+        }
+        scope="pagination"
+        to="blog"
       >
         3
-      </a>
+      </Link>
     </li>
     <li
       className="page-item-custom active-custom"
     >
-      <a
+      <Link
         className="page-link-custom"
-        href="/blog/page/4"
+        params={
+          Object {
+            "page": 4,
+          }
+        }
+        scope="pagination"
+        to="blog"
       >
         4
-      </a>
+      </Link>
     </li>
     <li
       className="page-item-custom"
     >
-      <a
+      <Link
         className="page-link-custom"
-        href="/blog/page/5"
+        params={
+          Object {
+            "page": 5,
+          }
+        }
+        scope="pagination"
+        to="blog"
       >
         5
-      </a>
+      </Link>
     </li>
     <li
       className="page-item-custom"
     >
-      <a
+      <Link
         className="page-link-custom"
-        href="/blog/page/6"
+        params={
+          Object {
+            "page": 6,
+          }
+        }
+        scope="pagination"
+        to="blog"
       >
         6
-      </a>
+      </Link>
     </li>
     <li
       className="page-item-custom page-item__next-custom"
     >
-      <a
+      <Link
         className="page-link-custom"
-        href="/blog/page/5"
+        params={
+          Object {
+            "page": 5,
+          }
+        }
+        scope="pagination"
+        to="blog"
       >
         Next ⟩
-      </a>
+      </Link>
     </li>
     <li
       className="page-item-custom page-item__last-custom"
     >
-      <a
+      <Link
         className="page-link-custom"
-        href="/blog/page/9"
+        params={
+          Object {
+            "page": 9,
+          }
+        }
+        scope="pagination"
+        to="blog"
       >
         Last »
-      </a>
+      </Link>
     </li>
   </ul>
 </nav>
@@ -659,102 +945,152 @@ exports[`<Pagination /> should render correctly with defaults 1`] = `
     <li
       className="page-item page-item__first"
     >
-      <a
+      <Link
         className="page-link"
-        href="/blog"
+        scope={null}
+        to="blog"
       >
         « First
-      </a>
+      </Link>
     </li>
     <li
       className="page-item page-item__prev"
     >
-      <a
+      <Link
         className="page-link"
-        href="/blog/page/3"
+        params={
+          Object {
+            "page": 3,
+          }
+        }
+        scope="pagination"
+        to="blog"
       >
         ⟨ Previous
-      </a>
+      </Link>
     </li>
     <li
       className="page-item"
     >
-      <a
+      <Link
         className="page-link"
-        href="/blog"
+        scope={null}
+        to="blog"
       >
         1
-      </a>
+      </Link>
     </li>
     <li
       className="page-item"
     >
-      <a
+      <Link
         className="page-link"
-        href="/blog/page/2"
+        params={
+          Object {
+            "page": 2,
+          }
+        }
+        scope="pagination"
+        to="blog"
       >
         2
-      </a>
+      </Link>
     </li>
     <li
       className="page-item"
     >
-      <a
+      <Link
         className="page-link"
-        href="/blog/page/3"
+        params={
+          Object {
+            "page": 3,
+          }
+        }
+        scope="pagination"
+        to="blog"
       >
         3
-      </a>
+      </Link>
     </li>
     <li
       className="page-item active"
     >
-      <a
+      <Link
         className="page-link"
-        href="/blog/page/4"
+        params={
+          Object {
+            "page": 4,
+          }
+        }
+        scope="pagination"
+        to="blog"
       >
         4
-      </a>
+      </Link>
     </li>
     <li
       className="page-item"
     >
-      <a
+      <Link
         className="page-link"
-        href="/blog/page/5"
+        params={
+          Object {
+            "page": 5,
+          }
+        }
+        scope="pagination"
+        to="blog"
       >
         5
-      </a>
+      </Link>
     </li>
     <li
       className="page-item"
     >
-      <a
+      <Link
         className="page-link"
-        href="/blog/page/6"
+        params={
+          Object {
+            "page": 6,
+          }
+        }
+        scope="pagination"
+        to="blog"
       >
         6
-      </a>
+      </Link>
     </li>
     <li
       className="page-item page-item__next"
     >
-      <a
+      <Link
         className="page-link"
-        href="/blog/page/5"
+        params={
+          Object {
+            "page": 5,
+          }
+        }
+        scope="pagination"
+        to="blog"
       >
         Next ⟩
-      </a>
+      </Link>
     </li>
     <li
       className="page-item page-item__last"
     >
-      <a
+      <Link
         className="page-link"
-        href="/blog/page/9"
+        params={
+          Object {
+            "page": 9,
+          }
+        }
+        scope="pagination"
+        to="blog"
       >
         Last »
-      </a>
+      </Link>
     </li>
   </ul>
 </nav>
@@ -771,102 +1107,152 @@ exports[`<Pagination /> should render correctly with full ui 1`] = `
     <li
       className="page-item page-item__first"
     >
-      <a
+      <Link
         className="page-link"
-        href="/blog"
+        scope={null}
+        to="blog"
       >
         « First
-      </a>
+      </Link>
     </li>
     <li
       className="page-item page-item__prev"
     >
-      <a
+      <Link
         className="page-link"
-        href="/blog/page/3"
+        params={
+          Object {
+            "page": 3,
+          }
+        }
+        scope="pagination"
+        to="blog"
       >
         ⟨ Previous
-      </a>
+      </Link>
     </li>
     <li
       className="page-item"
     >
-      <a
+      <Link
         className="page-link"
-        href="/blog"
+        scope={null}
+        to="blog"
       >
         1
-      </a>
+      </Link>
     </li>
     <li
       className="page-item"
     >
-      <a
+      <Link
         className="page-link"
-        href="/blog/page/2"
+        params={
+          Object {
+            "page": 2,
+          }
+        }
+        scope="pagination"
+        to="blog"
       >
         2
-      </a>
+      </Link>
     </li>
     <li
       className="page-item"
     >
-      <a
+      <Link
         className="page-link"
-        href="/blog/page/3"
+        params={
+          Object {
+            "page": 3,
+          }
+        }
+        scope="pagination"
+        to="blog"
       >
         3
-      </a>
+      </Link>
     </li>
     <li
       className="page-item active"
     >
-      <a
+      <Link
         className="page-link"
-        href="/blog/page/4"
+        params={
+          Object {
+            "page": 4,
+          }
+        }
+        scope="pagination"
+        to="blog"
       >
         4
-      </a>
+      </Link>
     </li>
     <li
       className="page-item"
     >
-      <a
+      <Link
         className="page-link"
-        href="/blog/page/5"
+        params={
+          Object {
+            "page": 5,
+          }
+        }
+        scope="pagination"
+        to="blog"
       >
         5
-      </a>
+      </Link>
     </li>
     <li
       className="page-item"
     >
-      <a
+      <Link
         className="page-link"
-        href="/blog/page/6"
+        params={
+          Object {
+            "page": 6,
+          }
+        }
+        scope="pagination"
+        to="blog"
       >
         6
-      </a>
+      </Link>
     </li>
     <li
       className="page-item page-item__next"
     >
-      <a
+      <Link
         className="page-link"
-        href="/blog/page/5"
+        params={
+          Object {
+            "page": 5,
+          }
+        }
+        scope="pagination"
+        to="blog"
       >
         Next ⟩
-      </a>
+      </Link>
     </li>
     <li
       className="page-item page-item__last"
     >
-      <a
+      <Link
         className="page-link"
-        href="/blog/page/9"
+        params={
+          Object {
+            "page": 9,
+          }
+        }
+        scope="pagination"
+        to="blog"
       >
         Last »
-      </a>
+      </Link>
     </li>
   </ul>
 </nav>
@@ -883,22 +1269,34 @@ exports[`<Pagination /> should render correctly with mini ui 1`] = `
     <li
       className="page-item page-item__prev"
     >
-      <a
+      <Link
         className="page-link"
-        href="/blog/page/3"
+        params={
+          Object {
+            "page": 3,
+          }
+        }
+        scope="pagination"
+        to="blog"
       >
         ⟨ Previous
-      </a>
+      </Link>
     </li>
     <li
       className="page-item page-item__next"
     >
-      <a
+      <Link
         className="page-link"
-        href="/blog/page/5"
+        params={
+          Object {
+            "page": 5,
+          }
+        }
+        scope="pagination"
+        to="blog"
       >
         Next ⟩
-      </a>
+      </Link>
     </li>
   </ul>
 </nav>
@@ -915,82 +1313,125 @@ exports[`<Pagination /> should render correctly with simple ui 1`] = `
     <li
       className="page-item page-item__prev"
     >
-      <a
+      <Link
         className="page-link"
-        href="/blog/page/3"
+        params={
+          Object {
+            "page": 3,
+          }
+        }
+        scope="pagination"
+        to="blog"
       >
         ⟨ Previous
-      </a>
+      </Link>
     </li>
     <li
       className="page-item"
     >
-      <a
+      <Link
         className="page-link"
-        href="/blog"
+        scope={null}
+        to="blog"
       >
         1
-      </a>
+      </Link>
     </li>
     <li
       className="page-item"
     >
-      <a
+      <Link
         className="page-link"
-        href="/blog/page/2"
+        params={
+          Object {
+            "page": 2,
+          }
+        }
+        scope="pagination"
+        to="blog"
       >
         2
-      </a>
+      </Link>
     </li>
     <li
       className="page-item"
     >
-      <a
+      <Link
         className="page-link"
-        href="/blog/page/3"
+        params={
+          Object {
+            "page": 3,
+          }
+        }
+        scope="pagination"
+        to="blog"
       >
         3
-      </a>
+      </Link>
     </li>
     <li
       className="page-item active"
     >
-      <a
+      <Link
         className="page-link"
-        href="/blog/page/4"
+        params={
+          Object {
+            "page": 4,
+          }
+        }
+        scope="pagination"
+        to="blog"
       >
         4
-      </a>
+      </Link>
     </li>
     <li
       className="page-item"
     >
-      <a
+      <Link
         className="page-link"
-        href="/blog/page/5"
+        params={
+          Object {
+            "page": 5,
+          }
+        }
+        scope="pagination"
+        to="blog"
       >
         5
-      </a>
+      </Link>
     </li>
     <li
       className="page-item"
     >
-      <a
+      <Link
         className="page-link"
-        href="/blog/page/6"
+        params={
+          Object {
+            "page": 6,
+          }
+        }
+        scope="pagination"
+        to="blog"
       >
         6
-      </a>
+      </Link>
     </li>
     <li
       className="page-item page-item__next"
     >
-      <a
+      <Link
         className="page-link"
-        href="/blog/page/5"
+        params={
+          Object {
+            "page": 5,
+          }
+        }
+        scope="pagination"
+        to="blog"
       >
         Next ⟩
-      </a>
+      </Link>
     </li>
   </ul>
 </nav>
@@ -1007,82 +1448,125 @@ exports[`<Pagination /> shouldn't render disabled nav items when renderDisabled 
     <li
       className="page-item active"
     >
-      <a
+      <Link
         className="page-link"
-        href="/blog"
+        scope={null}
+        to="blog"
       >
         1
-      </a>
+      </Link>
     </li>
     <li
       className="page-item"
     >
-      <a
+      <Link
         className="page-link"
-        href="/blog/page/2"
+        params={
+          Object {
+            "page": 2,
+          }
+        }
+        scope="pagination"
+        to="blog"
       >
         2
-      </a>
+      </Link>
     </li>
     <li
       className="page-item"
     >
-      <a
+      <Link
         className="page-link"
-        href="/blog/page/3"
+        params={
+          Object {
+            "page": 3,
+          }
+        }
+        scope="pagination"
+        to="blog"
       >
         3
-      </a>
+      </Link>
     </li>
     <li
       className="page-item"
     >
-      <a
+      <Link
         className="page-link"
-        href="/blog/page/4"
+        params={
+          Object {
+            "page": 4,
+          }
+        }
+        scope="pagination"
+        to="blog"
       >
         4
-      </a>
+      </Link>
     </li>
     <li
       className="page-item"
     >
-      <a
+      <Link
         className="page-link"
-        href="/blog/page/5"
+        params={
+          Object {
+            "page": 5,
+          }
+        }
+        scope="pagination"
+        to="blog"
       >
         5
-      </a>
+      </Link>
     </li>
     <li
       className="page-item"
     >
-      <a
+      <Link
         className="page-link"
-        href="/blog/page/6"
+        params={
+          Object {
+            "page": 6,
+          }
+        }
+        scope="pagination"
+        to="blog"
       >
         6
-      </a>
+      </Link>
     </li>
     <li
       className="page-item page-item__next"
     >
-      <a
+      <Link
         className="page-link"
-        href="/blog/page/2"
+        params={
+          Object {
+            "page": 2,
+          }
+        }
+        scope="pagination"
+        to="blog"
       >
         Next ⟩
-      </a>
+      </Link>
     </li>
     <li
       className="page-item page-item__last"
     >
-      <a
+      <Link
         className="page-link"
-        href="/blog/page/9"
+        params={
+          Object {
+            "page": 9,
+          }
+        }
+        scope="pagination"
+        to="blog"
       >
         Last »
-      </a>
+      </Link>
     </li>
   </ul>
 </nav>
@@ -1099,82 +1583,125 @@ exports[`<Pagination /> shouldn't render disabled nav items when renderDisabled 
     <li
       className="page-item page-item__first"
     >
-      <a
+      <Link
         className="page-link"
-        href="/blog"
+        scope={null}
+        to="blog"
       >
         « First
-      </a>
+      </Link>
     </li>
     <li
       className="page-item page-item__prev"
     >
-      <a
+      <Link
         className="page-link"
-        href="/blog/page/8"
+        params={
+          Object {
+            "page": 8,
+          }
+        }
+        scope="pagination"
+        to="blog"
       >
         ⟨ Previous
-      </a>
+      </Link>
     </li>
     <li
       className="page-item"
     >
-      <a
+      <Link
         className="page-link"
-        href="/blog/page/4"
+        params={
+          Object {
+            "page": 4,
+          }
+        }
+        scope="pagination"
+        to="blog"
       >
         4
-      </a>
+      </Link>
     </li>
     <li
       className="page-item"
     >
-      <a
+      <Link
         className="page-link"
-        href="/blog/page/5"
+        params={
+          Object {
+            "page": 5,
+          }
+        }
+        scope="pagination"
+        to="blog"
       >
         5
-      </a>
+      </Link>
     </li>
     <li
       className="page-item"
     >
-      <a
+      <Link
         className="page-link"
-        href="/blog/page/6"
+        params={
+          Object {
+            "page": 6,
+          }
+        }
+        scope="pagination"
+        to="blog"
       >
         6
-      </a>
+      </Link>
     </li>
     <li
       className="page-item"
     >
-      <a
+      <Link
         className="page-link"
-        href="/blog/page/7"
+        params={
+          Object {
+            "page": 7,
+          }
+        }
+        scope="pagination"
+        to="blog"
       >
         7
-      </a>
+      </Link>
     </li>
     <li
       className="page-item"
     >
-      <a
+      <Link
         className="page-link"
-        href="/blog/page/8"
+        params={
+          Object {
+            "page": 8,
+          }
+        }
+        scope="pagination"
+        to="blog"
       >
         8
-      </a>
+      </Link>
     </li>
     <li
       className="page-item active"
     >
-      <a
+      <Link
         className="page-link"
-        href="/blog/page/9"
+        params={
+          Object {
+            "page": 9,
+          }
+        }
+        scope="pagination"
+        to="blog"
       >
         9
-      </a>
+      </Link>
     </li>
   </ul>
 </nav>
@@ -1191,12 +1718,13 @@ exports[`<Pagination /> shouldn't render disabled nav items when renderDisabled 
     <li
       className="page-item active"
     >
-      <a
+      <Link
         className="page-link"
-        href="/blog"
+        scope={null}
+        to="blog"
       >
         1
-      </a>
+      </Link>
     </li>
   </ul>
 </nav>
