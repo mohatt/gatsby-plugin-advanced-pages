@@ -1,0 +1,79 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`onCreateNode correctly creates a Page node from a markdown node (testCase1) 1`] = `
+Array [
+  Array [
+    Object {
+      "children": Array [],
+      "id": "ID-/WHATEVER/PATH",
+      "internal": Object {
+        "contentDigest": "{\\"id\\":\\"ID-/WHATEVER/PATH\\",\\"name\\":\\"whatever\\",\\"path\\":\\"/whatever/path\\",\\"parent\\":\\"ID-WHATEVER >>> PAGE\\",\\"children\\":[],\\"internal\\":{\\"type\\":\\"Route\\",\\"description\\":\\"Advanced Pages (Route): /whatever/path\\"}}",
+        "description": "Advanced Pages (Route): /whatever/path",
+        "type": "Route",
+      },
+      "name": "whatever",
+      "parent": "ID-WHATEVER >>> PAGE",
+      "path": "/whatever/path",
+    },
+  ],
+  Array [
+    Object {
+      "children": Array [
+        "ID-/WHATEVER/PATH",
+      ],
+      "data": "whatever",
+      "helper": "whatever",
+      "id": "ID-WHATEVER >>> PAGE",
+      "internal": Object {
+        "contentDigest": "{\\"id\\":\\"ID-WHATEVER >>> PAGE\\",\\"title\\":\\"whatever\\",\\"template\\":\\"whatever\\",\\"helper\\":\\"whatever\\",\\"data\\":\\"whatever\\",\\"parent\\":\\"whatever\\",\\"children\\":[\\"ID-/WHATEVER/PATH\\"],\\"internal\\":{\\"type\\":\\"Page\\",\\"description\\":\\"Advanced Pages (Page): whatever\\"}}",
+        "description": "Advanced Pages (Page): whatever",
+        "type": "Page",
+      },
+      "parent": "whatever",
+      "template": "whatever",
+      "title": "whatever",
+    },
+  ],
+]
+`;
+
+exports[`onCreateNode correctly creates a Page node from a markdown node (testCase1) 2`] = `
+Array [
+  Array [
+    Object {
+      "child": Object {
+        "children": Array [
+          "ID-/WHATEVER/PATH",
+        ],
+        "data": "whatever",
+        "helper": "whatever",
+        "id": "ID-WHATEVER >>> PAGE",
+        "internal": Object {
+          "contentDigest": "{\\"id\\":\\"ID-WHATEVER >>> PAGE\\",\\"title\\":\\"whatever\\",\\"template\\":\\"whatever\\",\\"helper\\":\\"whatever\\",\\"data\\":\\"whatever\\",\\"parent\\":\\"whatever\\",\\"children\\":[\\"ID-/WHATEVER/PATH\\"],\\"internal\\":{\\"type\\":\\"Page\\",\\"description\\":\\"Advanced Pages (Page): whatever\\"}}",
+          "description": "Advanced Pages (Page): whatever",
+          "type": "Page",
+        },
+        "parent": "whatever",
+        "template": "whatever",
+        "title": "whatever",
+      },
+      "parent": Object {
+        "frontmatter": Object {
+          "data": "whatever",
+          "helper": "whatever",
+          "routes": Object {
+            "whatever": "/whatever/path",
+          },
+          "template": "whatever",
+          "title": "whatever",
+        },
+        "id": "whatever",
+        "internal": Object {
+          "type": "MarkdownRemark",
+        },
+        "parent": "whatever",
+      },
+    },
+  ],
+]
+`;

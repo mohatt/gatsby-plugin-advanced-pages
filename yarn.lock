@@ -3428,6 +3428,11 @@ merge-stream@^1.0.1:
   dependencies:
     readable-stream "^2.0.1"
 
+metro-memory-fs@^0.55.0:
+  version "0.55.0"
+  resolved "https://registry.yarnpkg.com/metro-memory-fs/-/metro-memory-fs-0.55.0.tgz#f9a5508dfdc84d5e0bee54fce8516e40e87c377e"
+  integrity sha512-0hSOHSDjhQXNs3Po3t9JcJa218fV7+UGf34KT//WnV3Sx2UW04avbEOrtWh8ZlXxvGpaL0SMNPCdb6/LjVwytA==
+
 micromatch@^3.1.10, micromatch@^3.1.4:
   version "3.1.10"
   resolved "https://registry.yarnpkg.com/micromatch/-/micromatch-3.1.10.tgz#70859bc95c9840952f359a068a3fc49f9ecfac23"

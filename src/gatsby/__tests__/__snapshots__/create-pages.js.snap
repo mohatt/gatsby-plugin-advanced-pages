@@ -1,0 +1,115 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`createPages correctly creates pages 1`] = `
+Array [
+  Array [
+    Object {
+      "component": "/virtual/project/src/templates/index.js",
+      "context": Object {
+        "id": "home-id",
+      },
+      "path": "/",
+    },
+  ],
+  Array [
+    Object {
+      "component": "/virtual/project/src/templates/blog.js",
+      "context": Object {
+        "id": "blog-id",
+        "limit": 10,
+        "offset": 0,
+      },
+      "path": "/blog",
+    },
+  ],
+  Array [
+    Object {
+      "component": "/virtual/project/src/templates/blog.js",
+      "context": Object {
+        "id": "blog-id",
+        "limit": 10,
+        "offset": 10,
+      },
+      "path": "/blog/page/2",
+    },
+  ],
+  Array [
+    Object {
+      "component": "/virtual/project/src/templates/blog.js",
+      "context": Object {
+        "id": "blog-id",
+        "limit": 10,
+        "offset": 20,
+      },
+      "path": "/blog/page/3",
+    },
+  ],
+  Array [
+    Object {
+      "component": "/virtual/project/src/templates/blog-post.js",
+      "context": Object {
+        "id": "post-id",
+        "post": "hello-world",
+      },
+      "path": "/blog/hello-world",
+    },
+  ],
+  Array [
+    Object {
+      "component": "/virtual/project/src/templates/blog-post.js",
+      "context": Object {
+        "id": "post-id",
+        "post": "how-to-write-post",
+      },
+      "path": "/blog/how-to-write-post",
+    },
+  ],
+  Array [
+    Object {
+      "component": "/virtual/project/src/templates/page.js",
+      "context": Object {
+        "id": "about-id",
+      },
+      "path": "/about",
+    },
+  ],
+  Array [
+    Object {
+      "component": "/virtual/project/src/templates/page.js",
+      "context": Object {
+        "id": "about-id",
+      },
+      "path": "/aboutme",
+    },
+  ],
+]
+`;
+
+exports[`createPages correctly creates pages 2`] = `
+"\\"use strict\\";
+
+module.exports = {
+  \\"home\\": {
+    \\"path\\": \\"/\\",
+    \\"scopes\\": {}
+  },
+  \\"blog\\": {
+    \\"path\\": \\"/blog\\",
+    \\"scopes\\": {
+      \\"pagination\\": \\"/blog/page/:page\\"
+    }
+  },
+  \\"post\\": {
+    \\"path\\": \\"/blog/:post\\",
+    \\"scopes\\": {}
+  },
+  \\"about\\": {
+    \\"path\\": \\"/about\\",
+    \\"scopes\\": {}
+  },
+  \\"aboutme\\": {
+    \\"path\\": \\"/aboutme\\",
+    \\"scopes\\": {}
+  }
+};"
+`;
