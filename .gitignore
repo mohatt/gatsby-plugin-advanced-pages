@@ -11,6 +11,9 @@ yarn-error.log*
 # Build artifacts
 dist
 
+# Output of 'npm pack'
+*.tgz
+
 # Test stuff
 coverage
 

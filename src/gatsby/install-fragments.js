@@ -8,7 +8,7 @@ export default async function ({ store, getNodesByType }) {
     path.resolve(__dirname, '../components/Pagination/Pagination.fragment'),
     path.resolve(program.directory, '.cache/fragments/pagination-fragment.js'),
     err => {
-      if (err) throw err;
+      if (err) throw err
     }
   )
 }

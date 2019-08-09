@@ -11,7 +11,7 @@
     "gatsby-node.js"
   ],
   "scripts": {
-    "lint": "standard",
+    "lint": "standard src/**/*.js",
     "prebuild": "rimraf dist/*",
     "build": "babel src --out-dir dist --copy-files --ignore src/**/__tests__",
     "postbuild": "rimraf dist/**/__tests__",

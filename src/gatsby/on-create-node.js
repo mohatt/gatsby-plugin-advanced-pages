@@ -13,7 +13,7 @@ export default function ({ node, actions, getNode, createNodeId, createContentDi
   // Get parent file node
   const fileNode = getNode(node.parent)
 
-  // Ignore files outside contentPath 
+  // Ignore files outside contentPath
   const contentPath = options.directories.pages
   if (!fileNode.dir ||
     (contentPath !== fileNode.dir && !isPathChildof(fileNode.dir, contentPath))) {
@@ -30,12 +30,12 @@ export default function ({ node, actions, getNode, createNodeId, createContentDi
     children: [],
     internal: {
       type: options.typeNames.page,
-      description: `Advanced Pages (Page): ${node.frontmatter.title}`,
-    },
+      description: `Advanced Pages (Page): ${node.frontmatter.title}`
+    }
   }
 
-  if(!page.template){
-    if(!options.template){
+  if (!page.template) {
+    if (!options.template) {
       throw new Error(
         `Missing 'template' metadata at '${fileNode.relativePath}'. No default ` +
         `template is set in plugin options either.`
@@ -45,16 +45,16 @@ export default function ({ node, actions, getNode, createNodeId, createContentDi
   }
 
   const routes = node.frontmatter.routes
-  if(typeof routes !== 'object'){
+  if (typeof routes !== 'object') {
     throw new Error(
       `Expected 'routes' metadata in ${fileNode.relativePath} to be an ` +
       `Object (got ${typeof routes})`
     )
   }
 
-  for(const routeName of Object.keys(routes)) {
+  for (const routeName of Object.keys(routes)) {
     const routePath = routes[routeName]
-    if(typeof routePath !== 'string' || '/' !== routePath.charAt(0)){
+    if (typeof routePath !== 'string' || routePath.charAt(0) !== '/') {
       throw new Error(
         `Value assigned to 'routes[${routeName}]' in ${fileNode.relativePath} ` +
         `must be a string starting with '/'`
@@ -69,8 +69,8 @@ export default function ({ node, actions, getNode, createNodeId, createContentDi
       children: [],
       internal: {
         type: options.typeNames.route,
-        description: `Advanced Pages (Route): ${routePath}`,
-      },
+        description: `Advanced Pages (Route): ${routePath}`
+      }
     }
 
     route.internal.contentDigest = createContentDigest(route)

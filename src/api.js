@@ -13,7 +13,7 @@ export function getRoute (routeName) {
   if (!route) {
     throw new TypeError(`Unrecognized route name '${routeName}'`)
   }
-  
+
   return route
 }
 

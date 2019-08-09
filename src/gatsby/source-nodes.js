@@ -14,16 +14,16 @@ export default function ({ actions, schema }) {
           resolve: (source, args, context, info) => {
             return context.nodeModel.getNodesByIds({
               ids: source.children,
-              type: types.route,
+              type: types.route
             })
-          },
+          }
         },
         path: {
           type: `String!`,
           resolve: (source, args, context, info) => {
             const fileNode = context.nodeModel.findRootNodeAncestor(source)
             return fileNode && fileNode.absolutePath
-          },
+          }
         },
         template: 'String',
         helper: 'String',
@@ -37,13 +37,13 @@ export default function ({ actions, schema }) {
             const node = context.nodeModel.getNodeById({ id: source.parent })
             const result = await resolver(node, args, context, { fieldName })
             return result
-          },
-        },
+          }
+        }
       },
       extensions: {
-        infer: false,
+        infer: false
       },
-      interfaces: [`Node`],
+      interfaces: [`Node`]
     }),
     schema.buildObjectType({
       name: types.route,
@@ -55,15 +55,15 @@ export default function ({ actions, schema }) {
           resolve: (source, args, context, info) => {
             return context.nodeModel.getNodeById({
               id: source.parent,
-              type: types.page,
+              type: types.page
             })
-          },
-        },
+          }
+        }
       },
       extensions: {
         infer: false
       },
-      interfaces: [`Node`],
+      interfaces: [`Node`]
     })
   ])
 }

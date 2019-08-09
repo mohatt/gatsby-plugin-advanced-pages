@@ -8,7 +8,7 @@ export default function ({ type }) {
       'frontmatter.routes': 'JSON',
       'frontmatter.template': 'String',
       'frontmatter.helper': 'String',
-      'frontmatter.data': 'JSON',
+      'frontmatter.data': 'JSON'
     }
   }
 
