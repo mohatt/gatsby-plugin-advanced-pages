@@ -6,7 +6,7 @@ import testCases from '../../../test/__fixtures__/on-create-node'
 jest.mock('fs')
 
 // Mount default options
-beforeAll(() => { 
+beforeAll(() => {
   mountOptions()
 })
 

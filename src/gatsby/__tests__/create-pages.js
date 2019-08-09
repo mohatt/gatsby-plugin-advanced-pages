@@ -16,12 +16,12 @@ beforeAll(() => {
   const { files } = testCase
   const { templates, helpers } = getOption('directories')
   // Create virtual templates
-  if(files.templates) {
+  if (files.templates) {
     files.templates.map(name => mountFile(path.join(templates, `${name}.js`), '//noop'))
   }
   // Create virtual helpers
-  if(files.helpers) {
-   for (const name in files.helpers){
+  if (files.helpers) {
+    for (const name in files.helpers) {
       const file = path.join(helpers, `${name}.js`)
       mountFile(file, '//noop')
       mountModule(file, files.helpers[name])
@@ -30,7 +30,7 @@ beforeAll(() => {
 
   // Create a virtual directory for the 'src' folder
   // so that routes.js file can be written virtually
-  mountDir(path.resolve(__dirname, '../../')) 
+  mountDir(path.resolve(__dirname, '../../'))
 })
 
 describe(`createPages`, () => {

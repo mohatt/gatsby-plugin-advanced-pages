@@ -11,12 +11,12 @@
     "gatsby-node.js"
   ],
   "scripts": {
-    "lint": "standard src/**/*.js",
-    "prebuild": "rimraf dist/*",
-    "build": "babel src --out-dir dist --copy-files --ignore src/**/__tests__",
-    "postbuild": "rimraf dist/**/__tests__",
+    "lint": "standard 'src/**/*.js'",
+    "prebuild": "rimraf 'dist/*'",
+    "build": "babel src --out-dir dist --copy-files --ignore '**/__tests__'",
+    "postbuild": "rimraf 'dist/**/__tests__'",
     "prepare": "cross-env NODE_ENV=production npm run build",
-    "watch": "babel -w src --out-dir dist --copy-files --ignore src/**/__tests__",
+    "watch": "babel -w src --out-dir dist --copy-files --ignore '**/__tests__'",
     "test": "jest --runInBand",
     "test:coverage": "jest --runInBand --coverage",
     "test:watch": "jest --watch --runInBand",
@@ -49,6 +49,7 @@
     "@babel/cli": "^7.0.0",
     "@babel/core": "^7.0.0",
     "babel-preset-gatsby-package": "^0.2.2",
+    "babel-eslint": "^10.0.2",
     "cross-env": "^5.1.4",
     "jest": "^24.8.0",
     "metro-memory-fs": "^0.55.0",
@@ -69,6 +70,10 @@
   },
   "engines": {
     "node": ">=8.0.0"
+  },
+  "standard": {
+    "parser": "babel-eslint",
+    "env": [ "jest" ]
   },
   "release": {
     "verifyConditions": [

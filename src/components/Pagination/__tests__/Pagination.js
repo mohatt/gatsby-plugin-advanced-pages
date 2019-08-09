@@ -10,7 +10,7 @@ describe(`<Pagination />`, () => {
       pageInfo: {
         perPage: 10,
         itemCount: 90,
-        currentPage: 4,
+        currentPage: 4
       }
     }, props)
     return ShallowRenderer.createRenderer().render(
@@ -53,7 +53,7 @@ describe(`<Pagination />`, () => {
     expect(render({ range: 9 })).toMatchSnapshot()
   })
 
-  it(`shouldn\'t render disabled nav items when renderDisabled is false`, () => {
+  it(`shouldn't render disabled nav items when renderDisabled is false`, () => {
     expect(render({
       pageInfo: { currentPage: 1 },
       renderDisabled: false

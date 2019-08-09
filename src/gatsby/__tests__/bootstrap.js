@@ -1,6 +1,6 @@
 import { getOptions } from '../util'
 import { mountOptions } from '../../../test/helpers'
-    
+
 // Use in-memory file system
 jest.mock('fs')
 
@@ -12,7 +12,7 @@ describe(`onPreBootstrap`, () => {
 
   it(`correctly initializes custom options`, () => {
     expect(() => mountOptions({
-      basePath: '/blog',
+      basePath: '/blog'
     })).not.toThrow()
     expect(getOptions()).toMatchSnapshot()
   })

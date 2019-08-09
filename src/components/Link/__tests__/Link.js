@@ -10,7 +10,7 @@ describe(`<Link />`, () => {
   const render = (props = {}) => {
     return TestRenderer.create(<Link {...props} />).toJSON()
   }
-  
+
   it(`should render correctly`, () => {
     expect(render({ to: 'home' })).toMatchSnapshot()
   })

@@ -59,7 +59,7 @@ export default class Pagination extends React.Component {
     renderDisabled: true
   }
 
-  constructor(props) {
+  constructor (props) {
     super(props)
 
     this.state = getPageInfo({
@@ -70,7 +70,7 @@ export default class Pagination extends React.Component {
     })
   }
 
-  render() {
+  render () {
     const {
       totalPages,
       hasPreviousPage,
@@ -82,8 +82,8 @@ export default class Pagination extends React.Component {
       currentPage
     } = this.state
 
-    if(!totalPages || !/^\d+$/.test(totalPages)){
-      if(process.env.NODE_ENV !== `production`){
+    if (!totalPages || !/^\d+$/.test(totalPages)) {
+      if (process.env.NODE_ENV !== `production`) {
         console.error(
           'Warning: Invalid pageInfo prop supplied to `Pagination`' +
           ' component: ' + JSON.stringify(this.props.pageInfo))
@@ -96,7 +96,7 @@ export default class Pagination extends React.Component {
     const theme = Object.assign({}, Pagination.defaultProps.theme, this.props.theme)
     const pages = []
 
-    if(ui === 'full') {
+    if (ui === 'full') {
       pages.push({
         key: 'first',
         number: 1,
@@ -114,7 +114,7 @@ export default class Pagination extends React.Component {
       disabled: !hasPreviousPage
     })
 
-    if(ui !== 'mini') {
+    if (ui !== 'mini') {
       for (let i = firstPage; i <= lastPage; i++) {
         pages.push({
           key: i,
@@ -134,7 +134,7 @@ export default class Pagination extends React.Component {
       disabled: !hasNextPage
     })
 
-    if(ui === 'full') {
+    if (ui === 'full') {
       pages.push({
         key: 'last',
         number: totalPages,
@@ -145,49 +145,49 @@ export default class Pagination extends React.Component {
     }
 
     return (
-      <nav className={this.props.className} role="navigation" aria-label="Pagination Navigation">
+      <nav className={this.props.className} role='navigation' aria-label='Pagination Navigation'>
         <ul className={theme.inner}>
-        {pages.map((page) => {
-          if(page.disabled && !this.props.renderDisabled){
-            return
-          }
+          {pages.map((page) => {
+            if (page.disabled && !this.props.renderDisabled) {
+              return
+            }
 
-          const classes = [theme.item]
-          const typeClass = theme['item.' + page.type]
-          if(typeClass){
-            classes.push(typeClass)
-          }
+            const classes = [theme.item]
+            const typeClass = theme['item.' + page.type]
+            if (typeClass) {
+              classes.push(typeClass)
+            }
 
-          classes.push({
-            [theme.active]: page.active,
-            [theme.disabled]: page.disabled
-          })
+            classes.push({
+              [theme.active]: page.active,
+              [theme.disabled]: page.disabled
+            })
 
-          if(page.disabled){
+            if (page.disabled) {
+              return (
+                <li key={page.key} className={classNames(classes)}>
+                  <a className={theme.link}>{page.label}</a>
+                </li>
+              )
+            }
+
+            // Use non-paginated route for first page
+            const [params, scope] = page.number === 1
+              ? [this.props.params, null]
+              : [{ ...this.props.params, page: page.number }, 'pagination']
+
             return (
               <li key={page.key} className={classNames(classes)}>
-                <a className={theme.link}>{page.label}</a>
+                <Link
+                  to={this.props.route}
+                  params={params}
+                  scope={scope}
+                  className={theme.link}
+                  children={page.label}
+                />
               </li>
             )
-          }
-
-          // Use non-paginated route for first page 
-          const [ params, scope ] = page.number === 1
-            ? [ this.props.params, null ]
-            : [ { ...this.props.params, page: page.number }, 'pagination' ]
-
-          return (
-            <li key={page.key} className={classNames(classes)}>
-              <Link
-                to={this.props.route}
-                params={params}
-                scope={scope}
-                className={theme.link}
-                children={page.label}
-              />
-            </li>
-          )
-        })}
+          })}
         </ul>
       </nav>
     )
