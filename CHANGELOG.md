@@ -1,3 +1,10 @@
+## [1.0.1](https://github.com/mohatt/gatsby-plugin-advanced-pages/compare/v1.0.0...v1.0.1) (2019-08-09)
+
+
+### Bug Fixes
+
+* fixed build and lint scripts ([6e5c2f1](https://github.com/mohatt/gatsby-plugin-advanced-pages/commit/6e5c2f1))
+
 # 1.0.0 (2019-08-09)
 
 
