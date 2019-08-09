@@ -4,8 +4,12 @@ import * as React from "react";
 export interface Route {
   path: string;
   scopes: {
-    [index: string]: string
+    [index: string]: string;
   };
+}
+
+export interface RouteMap {
+  [index: string]: Route;
 }
 
 export interface RouteParams {
@@ -43,6 +47,7 @@ export interface LinkProps {
 declare export var Pagination: React.ComponentType<PaginationProps>;
 declare export var Link: React.ComponentType<LinkProps>;
 
+declare export function getRouteMap(): RouteMap;
 declare export function getRoute(routeName: string): Route;
 declare export function getPathGenerator(
   routeName: number,

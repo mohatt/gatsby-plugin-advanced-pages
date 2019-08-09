@@ -1,7 +1,11 @@
 import compileRoute from './lib/route-compiler'
-import routes from './routes'
 
-// Gets the route object
+// Gets the route map object
+export function getRouteMap () {
+  return require('./routes')
+}
+
+// Gets a specific route
 export function getRoute (routeName) {
   if (typeof routeName !== 'string' || !routeName) {
     throw new TypeError(
@@ -9,6 +13,7 @@ export function getRoute (routeName) {
     )
   }
 
+  const routes = getRouteMap()
   const route = routes[routeName]
   if (!route) {
     throw new TypeError(`Unrecognized route name '${routeName}'`)

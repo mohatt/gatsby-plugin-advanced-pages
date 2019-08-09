@@ -7,6 +7,10 @@ export interface Route {
   }
 }
 
+export interface RouteMap {
+  [index: string]: Route;
+}
+
 export interface RouteParams {
   [index: string]: string;
 }
@@ -42,6 +46,7 @@ export interface LinkProps {
 export const Pagination: React.ComponentType<PaginationProps>;
 export const Link: React.ComponentType<LinkProps>;
 
+export function getRouteMap(): RouteMap;
 export function getRoute(routeName: string): Route;
 export function getPathGenerator(
   routeName: number,
