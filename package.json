@@ -1,6 +1,6 @@
 {
   "name": "gatsby-plugin-advanced-pages",
-  "version": "1.0.0",
+  "version": "1.0.0-development",
   "description": "Gatsby plugin that allows easy creation of pages with dynamic features like pagination and custom routing",
   "main": "index.js",
   "files": [
@@ -19,7 +19,8 @@
     "watch": "babel -w src --out-dir dist --copy-files --ignore src/**/__tests__",
     "test": "jest --runInBand",
     "test:coverage": "jest --runInBand --coverage",
-    "test:watch": "jest --watch --runInBand"
+    "test:watch": "jest --watch --runInBand",
+    "semantic-release": "semantic-release"
   },
   "keywords": [
     "gatsby",
@@ -40,9 +41,9 @@
     "@babel/runtime": "^7.0.0",
     "classnames": "^2.2.6",
     "lodash": "^4.17.15",
+    "mkdirp": "^0.5.1",
     "paging-algorithm": "^1.0.1",
-    "path-to-regexp": "^3.0.0",
-    "mkdirp": "^0.5.1"
+    "path-to-regexp": "^3.0.0"
   },
   "devDependencies": {
     "@babel/cli": "^7.0.0",
@@ -55,7 +56,11 @@
     "react": "^16.4.2",
     "react-test-renderer": "^16.4.2",
     "rimraf": "^2.6.2",
-    "standard": "^13.1.0"
+    "standard": "^13.1.0",
+    "semantic-release": "^15.13.19",
+    "@semantic-release/changelog": "^3.0.4",
+    "@semantic-release/git": "^7.0.16",
+    "@semantic-release/npm": "^5.1.13"
   },
   "peerDependencies": {
     "gatsby": ">=2.7.0",
@@ -63,6 +68,18 @@
     "react": ">=16.4.2"
   },
   "engines": {
-    "node": ">=8.5.0"
+    "node": ">=8.0.0"
+  },
+  "release": {
+    "verifyConditions": [
+      "@semantic-release/changelog",
+      "@semantic-release/npm",
+      "@semantic-release/git"
+    ],
+    "prepare": [
+      "@semantic-release/changelog",
+      "@semantic-release/npm",
+      "@semantic-release/git"
+    ]
   }
 }
