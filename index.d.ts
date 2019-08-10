@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { PathFunction as PathGeneratorFunction } from 'path-to-regexp'
 
 export interface Route {
   path: string;
@@ -51,9 +52,10 @@ export function getRoute(routeName: string): Route;
 export function getPathGenerator(
   routeName: number,
   scope?: string
-): (args?: RouteParams) => string;
+): PathGeneratorFunction<RouteParams>;
 export function generatePath(
   routeName: number,
   args?: RouteParams,
   scope?: string
 ): string;
+export function compilePath(path: string): PathGeneratorFunction;

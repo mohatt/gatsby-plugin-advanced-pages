@@ -45,4 +45,5 @@ export function generatePath (routeName, args = {}, scope) {
   return getPathGenerator(routeName, scope)(args)
 }
 
+export { compilePath }
 export { Pagination, Link } from './components'

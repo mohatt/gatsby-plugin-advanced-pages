@@ -44,6 +44,11 @@ export interface LinkProps {
   scope?: string;
 }
 
+export type PathGeneratorFunction = (
+  data?: RouteParams,
+  options?: {}
+) => string;
+
 declare export var Pagination: React.ComponentType<PaginationProps>;
 declare export var Link: React.ComponentType<LinkProps>;
 
@@ -52,9 +57,10 @@ declare export function getRoute(routeName: string): Route;
 declare export function getPathGenerator(
   routeName: number,
   scope?: string
-): (args?: RouteParams) => string;
+): PathGeneratorFunction;
 declare export function generatePath(
   routeName: number,
   args?: RouteParams,
   scope?: string
 ): string;
+declare export function compilePath(path: string): PathGeneratorFunction;
