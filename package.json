@@ -11,16 +11,18 @@
     "gatsby-node.js"
   ],
   "scripts": {
-    "lint": "standard 'src/**/*.js'",
+    "prepare": "cross-env NODE_ENV=production npm run build",
     "prebuild": "rimraf 'dist/*'",
     "build": "babel src --out-dir dist --copy-files --ignore '**/__tests__'",
     "postbuild": "rimraf 'dist/**/__tests__'",
-    "prepare": "cross-env NODE_ENV=production npm run build",
     "watch": "babel -w src --out-dir dist --copy-files --ignore '**/__tests__'",
     "test": "jest --runInBand",
     "test:coverage": "jest --runInBand --coverage",
     "test:watch": "jest --watch --runInBand",
-    "semantic-release": "semantic-release"
+    "release": "semantic-release",
+    "release:inspect": "semantic-release --dry-run",
+    "release:manual": "semantic-release --no-ci",
+    "lint": "standard 'src/**/*.js'"
   },
   "keywords": [
     "gatsby",

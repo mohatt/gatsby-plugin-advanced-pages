@@ -12,13 +12,12 @@ install:
   - yarn
 script:
   - npm run test:coverage
-  - npm run build
+  - codecov
 matrix:
   allow_failures: []
   fast_finish: true
 after_success:
-  - yarn semantic-release
-  - codecov
+  - npm run release
 branches:
   except:
     - /^v\d+\.\d+\.\d+$/
