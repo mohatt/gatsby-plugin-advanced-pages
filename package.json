@@ -41,6 +41,7 @@
   "bugs": "https://github.com/mohatt/gatsby-plugin-advanced-pages/issues",
   "dependencies": {
     "@babel/runtime": "^7.0.0",
+    "prop-types": "^15.6.1",
     "classnames": "^2.2.6",
     "lodash": "^4.17.15",
     "mkdirp": "^0.5.1",
@@ -55,7 +56,6 @@
     "cross-env": "5.2.0",
     "jest": "24.8.0",
     "metro-memory-fs": "0.55.0",
-    "prop-types": "15.7.2",
     "react": "16.9.0",
     "react-test-renderer": "16.9.0",
     "rimraf": "2.6.3",
@@ -67,7 +67,6 @@
   },
   "peerDependencies": {
     "gatsby": ">=2.7.0",
-    "prop-types": ">=15.6.1",
     "react": ">=16.4.2"
   },
   "engines": {
