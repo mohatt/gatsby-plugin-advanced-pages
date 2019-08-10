@@ -1,3 +1,10 @@
+## [1.1.1](https://github.com/mohatt/gatsby-plugin-advanced-pages/compare/v1.1.0...v1.1.1) (2019-08-10)
+
+
+### Bug Fixes
+
+* **pagination:** removed 'paging-algorithm', added function to calc pages range ([fc710fb](https://github.com/mohatt/gatsby-plugin-advanced-pages/commit/fc710fb))
+
 # [1.1.0](https://github.com/mohatt/gatsby-plugin-advanced-pages/compare/v1.0.1...v1.1.0) (2019-08-10)
 
 
