@@ -1,5 +1,5 @@
 import path from 'path'
-import PagesCreator from './lib/PagesCreator'
+import PagesCreator from './lib/pages-creator'
 import { getOption } from './util'
 
 export default async function ({ graphql, actions }) {
