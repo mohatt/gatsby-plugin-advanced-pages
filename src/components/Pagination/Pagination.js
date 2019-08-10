@@ -1,7 +1,6 @@
 import React from 'react'
 import { shape, number, string, object, bool, element, oneOf, oneOfType } from 'prop-types'
 import classNames from 'classnames'
-import { getPageInfo } from 'paging-algorithm'
 import Link from '../Link'
 
 export default class Pagination extends React.Component {
@@ -13,8 +12,11 @@ export default class Pagination extends React.Component {
     className: string,
     pageInfo: shape({
       itemCount: number.isRequired,
+      perPage: number.isRequired,
+      pageCount: number.isRequired,
       currentPage: number.isRequired,
-      perPage: number.isRequired
+      hasNextPage: bool.isRequired,
+      hasPreviousPage: bool.isRequired
     }).isRequired,
     labels: shape({
       prev: oneOfType([string, element]),
@@ -41,8 +43,8 @@ export default class Pagination extends React.Component {
     range: 6,
     labels: {
       first: '« First',
-      prev: '⟨ Previous',
-      next: 'Next ⟩',
+      prev: '← Previous',
+      next: 'Next →',
       last: 'Last »'
     },
     theme: {
@@ -59,39 +61,19 @@ export default class Pagination extends React.Component {
     renderDisabled: true
   }
 
-  constructor (props) {
-    super(props)
-
-    this.state = getPageInfo({
-      limit: props.pageInfo.perPage,
-      pageCount: props.range,
-      total: props.pageInfo.itemCount,
-      page: props.pageInfo.currentPage
-    })
-  }
-
   render () {
     const {
-      totalPages,
-      hasPreviousPage,
-      hasNextPage,
-      previousPage,
-      nextPage,
-      firstPage,
-      lastPage,
-      currentPage
-    } = this.state
-
-    if (!totalPages || !/^\d+$/.test(totalPages)) {
-      if (process.env.NODE_ENV !== `production`) {
-        console.error(
-          'Warning: Invalid pageInfo prop supplied to `Pagination`' +
-          ' component: ' + JSON.stringify(this.props.pageInfo))
+      ui,
+      pageInfo: {
+        perPage,
+        pageCount,
+        itemCount,
+        currentPage,
+        hasNextPage,
+        hasPreviousPage
       }
-      return <div className={this.props.className}>Pagination not available</div>
-    }
+    } = this.props
 
-    const { ui } = this.props
     const labels = Object.assign({}, Pagination.defaultProps.labels, this.props.labels)
     const theme = Object.assign({}, Pagination.defaultProps.theme, this.props.theme)
     const pages = []
@@ -108,14 +90,15 @@ export default class Pagination extends React.Component {
 
     pages.push({
       key: 'prev',
-      number: previousPage,
+      number: currentPage - 1,
       type: 'prev',
       label: labels.prev,
       disabled: !hasPreviousPage
     })
 
     if (ui !== 'mini') {
-      for (let i = firstPage; i <= lastPage; i++) {
+      const [fp, lp] = this.calcRange()
+      for (let i = fp; i <= lp; i++) {
         pages.push({
           key: i,
           number: i,
@@ -128,7 +111,7 @@ export default class Pagination extends React.Component {
 
     pages.push({
       key: 'next',
-      number: nextPage,
+      number: currentPage + 1,
       type: 'next',
       label: labels.next,
       disabled: !hasNextPage
@@ -137,7 +120,7 @@ export default class Pagination extends React.Component {
     if (ui === 'full') {
       pages.push({
         key: 'last',
-        number: totalPages,
+        number: pageCount,
         type: 'last',
         label: labels.last,
         disabled: !hasNextPage
@@ -191,5 +174,33 @@ export default class Pagination extends React.Component {
         </ul>
       </nav>
     )
+  }
+
+  calcRange () {
+    const { range, pageInfo: { currentPage, pageCount } } = this.props
+
+    let fp = Math.max(1, currentPage - Math.floor(range / 2));
+    let lp = Math.min(pageCount, currentPage + Math.floor(range / 2));
+
+    if (lp - fp + 1 < range) {
+      if (currentPage < pageCount / 2) {
+        lp = Math.min(
+          pageCount,
+          lp + (range - (lp - fp))
+        );
+      } else {
+        fp = Math.max(1, fp - (range - (lp - fp)));
+      }
+    }
+
+    if (lp - fp + 1 > range) {
+      if (currentPage > pageCount / 2) {
+        fp = fp + 1;
+      } else {
+        lp = lp - 1;
+      }
+    }
+
+    return [fp, lp]
   }
 }

@@ -2,17 +2,11 @@ import React from 'react'
 import ShallowRenderer from 'react-test-renderer/shallow'
 import { mapValues, merge } from 'lodash'
 import Pagination from '../Pagination'
+import testCases, { defaultTestCase } from '../../../../test/__fixtures__/pagination'
 
 describe(`<Pagination />`, () => {
   const render = (props = {}) => {
-    props = merge({
-      route: 'blog',
-      pageInfo: {
-        perPage: 10,
-        itemCount: 90,
-        currentPage: 4
-      }
-    }, props)
+    props = merge({}, defaultTestCase, props)
     return ShallowRenderer.createRenderer().render(
       <Pagination {...props} />
     )
@@ -55,26 +49,29 @@ describe(`<Pagination />`, () => {
 
   it(`shouldn't render disabled nav items when renderDisabled is false`, () => {
     expect(render({
-      pageInfo: { currentPage: 1 },
+      pageInfo: { currentPage: 1, hasPreviousPage: false },
       renderDisabled: false
     })).toMatchSnapshot()
     expect(render({
-      pageInfo: { currentPage: 9 },
+      pageInfo: { currentPage: defaultTestCase.pageInfo.pageCount, hasNextPage: false },
       renderDisabled: false
     })).toMatchSnapshot()
     expect(render({
-      pageInfo: { itemCount: 5, currentPage: 1 },
+      pageInfo: {
+        itemCount: 1,
+        perPage: 10,
+        pageCount: 1,
+        currentPage: 1,
+        hasNextPage: false,
+        hasPreviousPage: false
+      },
       renderDisabled: false
     })).toMatchSnapshot()
   })
 
-  it(`should log console error when called with invalid pageInfo prop`, () => {
-    const spy = jest.spyOn(console, 'error').mockImplementation()
-    render({ pageInfo: { perPage: 0, itemCount: 10 } })
-    expect(spy.mock.calls).toMatchSnapshot()
-    spy.mockClear()
-    render({ pageInfo: { perPage: 0, itemCount: 0 } })
-    expect(spy.mock.calls).toMatchSnapshot()
-    spy.mockRestore()
+  it(`should be able to handle different pageInfos`, () => {
+    for (const testCase of testCases) {
+      expect(render(testCase)).toMatchSnapshot()
+    }
   })
 })

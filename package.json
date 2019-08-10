@@ -45,7 +45,6 @@
     "classnames": "^2.2.6",
     "lodash": "^4.17.15",
     "mkdirp": "^0.5.1",
-    "paging-algorithm": "^1.0.1",
     "path-to-regexp": "^3.0.0"
   },
   "devDependencies": {

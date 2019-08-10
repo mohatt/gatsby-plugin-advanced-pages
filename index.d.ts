@@ -18,8 +18,11 @@ export interface RouteParams {
 
 export interface PaginationInfo {
   itemCount: number;
-  currentPage: number;
   perPage: number;
+  pageCount: number;
+  currentPage: number;
+  hasNextPage: boolean;
+  hasPreviousPage: boolean;
 }
 
 export interface PaginationProps {

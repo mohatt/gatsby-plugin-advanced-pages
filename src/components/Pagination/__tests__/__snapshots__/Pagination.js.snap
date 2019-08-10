@@ -1,19 +1,329 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<Pagination /> should log console error when called with invalid pageInfo prop 1`] = `
-Array [
-  Array [
-    "Warning: Invalid pageInfo prop supplied to \`Pagination\` component: {\\"perPage\\":0,\\"itemCount\\":10,\\"currentPage\\":4}",
-  ],
-]
+exports[`<Pagination /> should be able to handle different pageInfos 1`] = `
+<nav
+  aria-label="Pagination Navigation"
+  role="navigation"
+>
+  <ul
+    className="pagination"
+  >
+    <li
+      className="page-item page-item__first disabled"
+    >
+      <a
+        className="page-link"
+      >
+        « First
+      </a>
+    </li>
+    <li
+      className="page-item page-item__prev disabled"
+    >
+      <a
+        className="page-link"
+      >
+        ← Previous
+      </a>
+    </li>
+    <li
+      className="page-item active"
+    >
+      <Link
+        className="page-link"
+        scope={null}
+        to="whatever"
+      >
+        1
+      </Link>
+    </li>
+    <li
+      className="page-item page-item__next disabled"
+    >
+      <a
+        className="page-link"
+      >
+        Next →
+      </a>
+    </li>
+    <li
+      className="page-item page-item__last disabled"
+    >
+      <a
+        className="page-link"
+      >
+        Last »
+      </a>
+    </li>
+  </ul>
+</nav>
 `;
 
-exports[`<Pagination /> should log console error when called with invalid pageInfo prop 2`] = `
-Array [
-  Array [
-    "Warning: Invalid pageInfo prop supplied to \`Pagination\` component: {\\"perPage\\":0,\\"itemCount\\":0,\\"currentPage\\":4}",
-  ],
-]
+exports[`<Pagination /> should be able to handle different pageInfos 2`] = `
+<nav
+  aria-label="Pagination Navigation"
+  role="navigation"
+>
+  <ul
+    className="pagination"
+  >
+    <li
+      className="page-item page-item__first"
+    >
+      <Link
+        className="page-link"
+        scope={null}
+        to="whatever"
+      >
+        « First
+      </Link>
+    </li>
+    <li
+      className="page-item page-item__prev"
+    >
+      <Link
+        className="page-link"
+        params={
+          Object {
+            "page": 2,
+          }
+        }
+        scope="pagination"
+        to="whatever"
+      >
+        ← Previous
+      </Link>
+    </li>
+    <li
+      className="page-item"
+    >
+      <Link
+        className="page-link"
+        scope={null}
+        to="whatever"
+      >
+        1
+      </Link>
+    </li>
+    <li
+      className="page-item"
+    >
+      <Link
+        className="page-link"
+        params={
+          Object {
+            "page": 2,
+          }
+        }
+        scope="pagination"
+        to="whatever"
+      >
+        2
+      </Link>
+    </li>
+    <li
+      className="page-item active"
+    >
+      <Link
+        className="page-link"
+        params={
+          Object {
+            "page": 3,
+          }
+        }
+        scope="pagination"
+        to="whatever"
+      >
+        3
+      </Link>
+    </li>
+    <li
+      className="page-item page-item__next disabled"
+    >
+      <a
+        className="page-link"
+      >
+        Next →
+      </a>
+    </li>
+    <li
+      className="page-item page-item__last disabled"
+    >
+      <a
+        className="page-link"
+      >
+        Last »
+      </a>
+    </li>
+  </ul>
+</nav>
+`;
+
+exports[`<Pagination /> should be able to handle different pageInfos 3`] = `
+<nav
+  aria-label="Pagination Navigation"
+  role="navigation"
+>
+  <ul
+    className="pagination"
+  >
+    <li
+      className="page-item page-item__first"
+    >
+      <Link
+        className="page-link"
+        scope={null}
+        to="whatever"
+      >
+        « First
+      </Link>
+    </li>
+    <li
+      className="page-item page-item__prev"
+    >
+      <Link
+        className="page-link"
+        params={
+          Object {
+            "page": 7,
+          }
+        }
+        scope="pagination"
+        to="whatever"
+      >
+        ← Previous
+      </Link>
+    </li>
+    <li
+      className="page-item"
+    >
+      <Link
+        className="page-link"
+        params={
+          Object {
+            "page": 6,
+          }
+        }
+        scope="pagination"
+        to="whatever"
+      >
+        6
+      </Link>
+    </li>
+    <li
+      className="page-item"
+    >
+      <Link
+        className="page-link"
+        params={
+          Object {
+            "page": 7,
+          }
+        }
+        scope="pagination"
+        to="whatever"
+      >
+        7
+      </Link>
+    </li>
+    <li
+      className="page-item active"
+    >
+      <Link
+        className="page-link"
+        params={
+          Object {
+            "page": 8,
+          }
+        }
+        scope="pagination"
+        to="whatever"
+      >
+        8
+      </Link>
+    </li>
+    <li
+      className="page-item"
+    >
+      <Link
+        className="page-link"
+        params={
+          Object {
+            "page": 9,
+          }
+        }
+        scope="pagination"
+        to="whatever"
+      >
+        9
+      </Link>
+    </li>
+    <li
+      className="page-item"
+    >
+      <Link
+        className="page-link"
+        params={
+          Object {
+            "page": 10,
+          }
+        }
+        scope="pagination"
+        to="whatever"
+      >
+        10
+      </Link>
+    </li>
+    <li
+      className="page-item"
+    >
+      <Link
+        className="page-link"
+        params={
+          Object {
+            "page": 11,
+          }
+        }
+        scope="pagination"
+        to="whatever"
+      >
+        11
+      </Link>
+    </li>
+    <li
+      className="page-item page-item__next"
+    >
+      <Link
+        className="page-link"
+        params={
+          Object {
+            "page": 9,
+          }
+        }
+        scope="pagination"
+        to="whatever"
+      >
+        Next →
+      </Link>
+    </li>
+    <li
+      className="page-item page-item__last"
+    >
+      <Link
+        className="page-link"
+        params={
+          Object {
+            "page": 12,
+          }
+        }
+        scope="pagination"
+        to="whatever"
+      >
+        Last »
+      </Link>
+    </li>
+  </ul>
+</nav>
 `;
 
 exports[`<Pagination /> should render correctly with custom labels 1`] = `
@@ -30,7 +340,7 @@ exports[`<Pagination /> should render correctly with custom labels 1`] = `
       <Link
         className="page-link"
         scope={null}
-        to="blog"
+        to="whatever"
       >
         « First custom
       </Link>
@@ -46,9 +356,9 @@ exports[`<Pagination /> should render correctly with custom labels 1`] = `
           }
         }
         scope="pagination"
-        to="blog"
+        to="whatever"
       >
-        ⟨ Previous custom
+        ← Previous custom
       </Link>
     </li>
     <li
@@ -57,7 +367,7 @@ exports[`<Pagination /> should render correctly with custom labels 1`] = `
       <Link
         className="page-link"
         scope={null}
-        to="blog"
+        to="whatever"
       >
         1
       </Link>
@@ -73,7 +383,7 @@ exports[`<Pagination /> should render correctly with custom labels 1`] = `
           }
         }
         scope="pagination"
-        to="blog"
+        to="whatever"
       >
         2
       </Link>
@@ -89,7 +399,7 @@ exports[`<Pagination /> should render correctly with custom labels 1`] = `
           }
         }
         scope="pagination"
-        to="blog"
+        to="whatever"
       >
         3
       </Link>
@@ -105,7 +415,7 @@ exports[`<Pagination /> should render correctly with custom labels 1`] = `
           }
         }
         scope="pagination"
-        to="blog"
+        to="whatever"
       >
         4
       </Link>
@@ -121,7 +431,7 @@ exports[`<Pagination /> should render correctly with custom labels 1`] = `
           }
         }
         scope="pagination"
-        to="blog"
+        to="whatever"
       >
         5
       </Link>
@@ -137,7 +447,7 @@ exports[`<Pagination /> should render correctly with custom labels 1`] = `
           }
         }
         scope="pagination"
-        to="blog"
+        to="whatever"
       >
         6
       </Link>
@@ -153,9 +463,9 @@ exports[`<Pagination /> should render correctly with custom labels 1`] = `
           }
         }
         scope="pagination"
-        to="blog"
+        to="whatever"
       >
-        Next ⟩ custom
+        Next → custom
       </Link>
     </li>
     <li
@@ -169,7 +479,7 @@ exports[`<Pagination /> should render correctly with custom labels 1`] = `
           }
         }
         scope="pagination"
-        to="blog"
+        to="whatever"
       >
         Last » custom
       </Link>
@@ -192,7 +502,7 @@ exports[`<Pagination /> should render correctly with custom range 1`] = `
       <Link
         className="page-link"
         scope={null}
-        to="blog"
+        to="whatever"
       >
         « First
       </Link>
@@ -208,9 +518,9 @@ exports[`<Pagination /> should render correctly with custom range 1`] = `
           }
         }
         scope="pagination"
-        to="blog"
+        to="whatever"
       >
-        ⟨ Previous
+        ← Previous
       </Link>
     </li>
     <li
@@ -224,7 +534,7 @@ exports[`<Pagination /> should render correctly with custom range 1`] = `
           }
         }
         scope="pagination"
-        to="blog"
+        to="whatever"
       >
         4
       </Link>
@@ -240,9 +550,9 @@ exports[`<Pagination /> should render correctly with custom range 1`] = `
           }
         }
         scope="pagination"
-        to="blog"
+        to="whatever"
       >
-        Next ⟩
+        Next →
       </Link>
     </li>
     <li
@@ -256,7 +566,7 @@ exports[`<Pagination /> should render correctly with custom range 1`] = `
           }
         }
         scope="pagination"
-        to="blog"
+        to="whatever"
       >
         Last »
       </Link>
@@ -279,7 +589,7 @@ exports[`<Pagination /> should render correctly with custom range 2`] = `
       <Link
         className="page-link"
         scope={null}
-        to="blog"
+        to="whatever"
       >
         « First
       </Link>
@@ -295,9 +605,9 @@ exports[`<Pagination /> should render correctly with custom range 2`] = `
           }
         }
         scope="pagination"
-        to="blog"
+        to="whatever"
       >
-        ⟨ Previous
+        ← Previous
       </Link>
     </li>
     <li
@@ -311,7 +621,7 @@ exports[`<Pagination /> should render correctly with custom range 2`] = `
           }
         }
         scope="pagination"
-        to="blog"
+        to="whatever"
       >
         3
       </Link>
@@ -327,7 +637,7 @@ exports[`<Pagination /> should render correctly with custom range 2`] = `
           }
         }
         scope="pagination"
-        to="blog"
+        to="whatever"
       >
         4
       </Link>
@@ -343,7 +653,7 @@ exports[`<Pagination /> should render correctly with custom range 2`] = `
           }
         }
         scope="pagination"
-        to="blog"
+        to="whatever"
       >
         5
       </Link>
@@ -359,9 +669,9 @@ exports[`<Pagination /> should render correctly with custom range 2`] = `
           }
         }
         scope="pagination"
-        to="blog"
+        to="whatever"
       >
-        Next ⟩
+        Next →
       </Link>
     </li>
     <li
@@ -375,7 +685,7 @@ exports[`<Pagination /> should render correctly with custom range 2`] = `
           }
         }
         scope="pagination"
-        to="blog"
+        to="whatever"
       >
         Last »
       </Link>
@@ -398,7 +708,7 @@ exports[`<Pagination /> should render correctly with custom range 3`] = `
       <Link
         className="page-link"
         scope={null}
-        to="blog"
+        to="whatever"
       >
         « First
       </Link>
@@ -414,9 +724,9 @@ exports[`<Pagination /> should render correctly with custom range 3`] = `
           }
         }
         scope="pagination"
-        to="blog"
+        to="whatever"
       >
-        ⟨ Previous
+        ← Previous
       </Link>
     </li>
     <li
@@ -425,7 +735,7 @@ exports[`<Pagination /> should render correctly with custom range 3`] = `
       <Link
         className="page-link"
         scope={null}
-        to="blog"
+        to="whatever"
       >
         1
       </Link>
@@ -441,7 +751,7 @@ exports[`<Pagination /> should render correctly with custom range 3`] = `
           }
         }
         scope="pagination"
-        to="blog"
+        to="whatever"
       >
         2
       </Link>
@@ -457,7 +767,7 @@ exports[`<Pagination /> should render correctly with custom range 3`] = `
           }
         }
         scope="pagination"
-        to="blog"
+        to="whatever"
       >
         3
       </Link>
@@ -473,7 +783,7 @@ exports[`<Pagination /> should render correctly with custom range 3`] = `
           }
         }
         scope="pagination"
-        to="blog"
+        to="whatever"
       >
         4
       </Link>
@@ -489,7 +799,7 @@ exports[`<Pagination /> should render correctly with custom range 3`] = `
           }
         }
         scope="pagination"
-        to="blog"
+        to="whatever"
       >
         5
       </Link>
@@ -505,7 +815,7 @@ exports[`<Pagination /> should render correctly with custom range 3`] = `
           }
         }
         scope="pagination"
-        to="blog"
+        to="whatever"
       >
         6
       </Link>
@@ -521,7 +831,7 @@ exports[`<Pagination /> should render correctly with custom range 3`] = `
           }
         }
         scope="pagination"
-        to="blog"
+        to="whatever"
       >
         7
       </Link>
@@ -537,9 +847,9 @@ exports[`<Pagination /> should render correctly with custom range 3`] = `
           }
         }
         scope="pagination"
-        to="blog"
+        to="whatever"
       >
-        Next ⟩
+        Next →
       </Link>
     </li>
     <li
@@ -553,7 +863,7 @@ exports[`<Pagination /> should render correctly with custom range 3`] = `
           }
         }
         scope="pagination"
-        to="blog"
+        to="whatever"
       >
         Last »
       </Link>
@@ -576,7 +886,7 @@ exports[`<Pagination /> should render correctly with custom range 4`] = `
       <Link
         className="page-link"
         scope={null}
-        to="blog"
+        to="whatever"
       >
         « First
       </Link>
@@ -592,9 +902,9 @@ exports[`<Pagination /> should render correctly with custom range 4`] = `
           }
         }
         scope="pagination"
-        to="blog"
+        to="whatever"
       >
-        ⟨ Previous
+        ← Previous
       </Link>
     </li>
     <li
@@ -603,7 +913,7 @@ exports[`<Pagination /> should render correctly with custom range 4`] = `
       <Link
         className="page-link"
         scope={null}
-        to="blog"
+        to="whatever"
       >
         1
       </Link>
@@ -619,7 +929,7 @@ exports[`<Pagination /> should render correctly with custom range 4`] = `
           }
         }
         scope="pagination"
-        to="blog"
+        to="whatever"
       >
         2
       </Link>
@@ -635,7 +945,7 @@ exports[`<Pagination /> should render correctly with custom range 4`] = `
           }
         }
         scope="pagination"
-        to="blog"
+        to="whatever"
       >
         3
       </Link>
@@ -651,7 +961,7 @@ exports[`<Pagination /> should render correctly with custom range 4`] = `
           }
         }
         scope="pagination"
-        to="blog"
+        to="whatever"
       >
         4
       </Link>
@@ -667,7 +977,7 @@ exports[`<Pagination /> should render correctly with custom range 4`] = `
           }
         }
         scope="pagination"
-        to="blog"
+        to="whatever"
       >
         5
       </Link>
@@ -683,7 +993,7 @@ exports[`<Pagination /> should render correctly with custom range 4`] = `
           }
         }
         scope="pagination"
-        to="blog"
+        to="whatever"
       >
         6
       </Link>
@@ -699,7 +1009,7 @@ exports[`<Pagination /> should render correctly with custom range 4`] = `
           }
         }
         scope="pagination"
-        to="blog"
+        to="whatever"
       >
         7
       </Link>
@@ -715,7 +1025,7 @@ exports[`<Pagination /> should render correctly with custom range 4`] = `
           }
         }
         scope="pagination"
-        to="blog"
+        to="whatever"
       >
         8
       </Link>
@@ -731,7 +1041,7 @@ exports[`<Pagination /> should render correctly with custom range 4`] = `
           }
         }
         scope="pagination"
-        to="blog"
+        to="whatever"
       >
         9
       </Link>
@@ -747,9 +1057,9 @@ exports[`<Pagination /> should render correctly with custom range 4`] = `
           }
         }
         scope="pagination"
-        to="blog"
+        to="whatever"
       >
-        Next ⟩
+        Next →
       </Link>
     </li>
     <li
@@ -763,7 +1073,7 @@ exports[`<Pagination /> should render correctly with custom range 4`] = `
           }
         }
         scope="pagination"
-        to="blog"
+        to="whatever"
       >
         Last »
       </Link>
@@ -786,7 +1096,7 @@ exports[`<Pagination /> should render correctly with custom theme 1`] = `
       <Link
         className="page-link-custom"
         scope={null}
-        to="blog"
+        to="whatever"
       >
         « First
       </Link>
@@ -802,9 +1112,9 @@ exports[`<Pagination /> should render correctly with custom theme 1`] = `
           }
         }
         scope="pagination"
-        to="blog"
+        to="whatever"
       >
-        ⟨ Previous
+        ← Previous
       </Link>
     </li>
     <li
@@ -813,7 +1123,7 @@ exports[`<Pagination /> should render correctly with custom theme 1`] = `
       <Link
         className="page-link-custom"
         scope={null}
-        to="blog"
+        to="whatever"
       >
         1
       </Link>
@@ -829,7 +1139,7 @@ exports[`<Pagination /> should render correctly with custom theme 1`] = `
           }
         }
         scope="pagination"
-        to="blog"
+        to="whatever"
       >
         2
       </Link>
@@ -845,7 +1155,7 @@ exports[`<Pagination /> should render correctly with custom theme 1`] = `
           }
         }
         scope="pagination"
-        to="blog"
+        to="whatever"
       >
         3
       </Link>
@@ -861,7 +1171,7 @@ exports[`<Pagination /> should render correctly with custom theme 1`] = `
           }
         }
         scope="pagination"
-        to="blog"
+        to="whatever"
       >
         4
       </Link>
@@ -877,7 +1187,7 @@ exports[`<Pagination /> should render correctly with custom theme 1`] = `
           }
         }
         scope="pagination"
-        to="blog"
+        to="whatever"
       >
         5
       </Link>
@@ -893,7 +1203,7 @@ exports[`<Pagination /> should render correctly with custom theme 1`] = `
           }
         }
         scope="pagination"
-        to="blog"
+        to="whatever"
       >
         6
       </Link>
@@ -909,9 +1219,9 @@ exports[`<Pagination /> should render correctly with custom theme 1`] = `
           }
         }
         scope="pagination"
-        to="blog"
+        to="whatever"
       >
-        Next ⟩
+        Next →
       </Link>
     </li>
     <li
@@ -925,7 +1235,7 @@ exports[`<Pagination /> should render correctly with custom theme 1`] = `
           }
         }
         scope="pagination"
-        to="blog"
+        to="whatever"
       >
         Last »
       </Link>
@@ -948,7 +1258,7 @@ exports[`<Pagination /> should render correctly with defaults 1`] = `
       <Link
         className="page-link"
         scope={null}
-        to="blog"
+        to="whatever"
       >
         « First
       </Link>
@@ -964,9 +1274,9 @@ exports[`<Pagination /> should render correctly with defaults 1`] = `
           }
         }
         scope="pagination"
-        to="blog"
+        to="whatever"
       >
-        ⟨ Previous
+        ← Previous
       </Link>
     </li>
     <li
@@ -975,7 +1285,7 @@ exports[`<Pagination /> should render correctly with defaults 1`] = `
       <Link
         className="page-link"
         scope={null}
-        to="blog"
+        to="whatever"
       >
         1
       </Link>
@@ -991,7 +1301,7 @@ exports[`<Pagination /> should render correctly with defaults 1`] = `
           }
         }
         scope="pagination"
-        to="blog"
+        to="whatever"
       >
         2
       </Link>
@@ -1007,7 +1317,7 @@ exports[`<Pagination /> should render correctly with defaults 1`] = `
           }
         }
         scope="pagination"
-        to="blog"
+        to="whatever"
       >
         3
       </Link>
@@ -1023,7 +1333,7 @@ exports[`<Pagination /> should render correctly with defaults 1`] = `
           }
         }
         scope="pagination"
-        to="blog"
+        to="whatever"
       >
         4
       </Link>
@@ -1039,7 +1349,7 @@ exports[`<Pagination /> should render correctly with defaults 1`] = `
           }
         }
         scope="pagination"
-        to="blog"
+        to="whatever"
       >
         5
       </Link>
@@ -1055,7 +1365,7 @@ exports[`<Pagination /> should render correctly with defaults 1`] = `
           }
         }
         scope="pagination"
-        to="blog"
+        to="whatever"
       >
         6
       </Link>
@@ -1071,9 +1381,9 @@ exports[`<Pagination /> should render correctly with defaults 1`] = `
           }
         }
         scope="pagination"
-        to="blog"
+        to="whatever"
       >
-        Next ⟩
+        Next →
       </Link>
     </li>
     <li
@@ -1087,7 +1397,7 @@ exports[`<Pagination /> should render correctly with defaults 1`] = `
           }
         }
         scope="pagination"
-        to="blog"
+        to="whatever"
       >
         Last »
       </Link>
@@ -1110,7 +1420,7 @@ exports[`<Pagination /> should render correctly with full ui 1`] = `
       <Link
         className="page-link"
         scope={null}
-        to="blog"
+        to="whatever"
       >
         « First
       </Link>
@@ -1126,9 +1436,9 @@ exports[`<Pagination /> should render correctly with full ui 1`] = `
           }
         }
         scope="pagination"
-        to="blog"
+        to="whatever"
       >
-        ⟨ Previous
+        ← Previous
       </Link>
     </li>
     <li
@@ -1137,7 +1447,7 @@ exports[`<Pagination /> should render correctly with full ui 1`] = `
       <Link
         className="page-link"
         scope={null}
-        to="blog"
+        to="whatever"
       >
         1
       </Link>
@@ -1153,7 +1463,7 @@ exports[`<Pagination /> should render correctly with full ui 1`] = `
           }
         }
         scope="pagination"
-        to="blog"
+        to="whatever"
       >
         2
       </Link>
@@ -1169,7 +1479,7 @@ exports[`<Pagination /> should render correctly with full ui 1`] = `
           }
         }
         scope="pagination"
-        to="blog"
+        to="whatever"
       >
         3
       </Link>
@@ -1185,7 +1495,7 @@ exports[`<Pagination /> should render correctly with full ui 1`] = `
           }
         }
         scope="pagination"
-        to="blog"
+        to="whatever"
       >
         4
       </Link>
@@ -1201,7 +1511,7 @@ exports[`<Pagination /> should render correctly with full ui 1`] = `
           }
         }
         scope="pagination"
-        to="blog"
+        to="whatever"
       >
         5
       </Link>
@@ -1217,7 +1527,7 @@ exports[`<Pagination /> should render correctly with full ui 1`] = `
           }
         }
         scope="pagination"
-        to="blog"
+        to="whatever"
       >
         6
       </Link>
@@ -1233,9 +1543,9 @@ exports[`<Pagination /> should render correctly with full ui 1`] = `
           }
         }
         scope="pagination"
-        to="blog"
+        to="whatever"
       >
-        Next ⟩
+        Next →
       </Link>
     </li>
     <li
@@ -1249,7 +1559,7 @@ exports[`<Pagination /> should render correctly with full ui 1`] = `
           }
         }
         scope="pagination"
-        to="blog"
+        to="whatever"
       >
         Last »
       </Link>
@@ -1277,9 +1587,9 @@ exports[`<Pagination /> should render correctly with mini ui 1`] = `
           }
         }
         scope="pagination"
-        to="blog"
+        to="whatever"
       >
-        ⟨ Previous
+        ← Previous
       </Link>
     </li>
     <li
@@ -1293,9 +1603,9 @@ exports[`<Pagination /> should render correctly with mini ui 1`] = `
           }
         }
         scope="pagination"
-        to="blog"
+        to="whatever"
       >
-        Next ⟩
+        Next →
       </Link>
     </li>
   </ul>
@@ -1321,9 +1631,9 @@ exports[`<Pagination /> should render correctly with simple ui 1`] = `
           }
         }
         scope="pagination"
-        to="blog"
+        to="whatever"
       >
-        ⟨ Previous
+        ← Previous
       </Link>
     </li>
     <li
@@ -1332,7 +1642,7 @@ exports[`<Pagination /> should render correctly with simple ui 1`] = `
       <Link
         className="page-link"
         scope={null}
-        to="blog"
+        to="whatever"
       >
         1
       </Link>
@@ -1348,7 +1658,7 @@ exports[`<Pagination /> should render correctly with simple ui 1`] = `
           }
         }
         scope="pagination"
-        to="blog"
+        to="whatever"
       >
         2
       </Link>
@@ -1364,7 +1674,7 @@ exports[`<Pagination /> should render correctly with simple ui 1`] = `
           }
         }
         scope="pagination"
-        to="blog"
+        to="whatever"
       >
         3
       </Link>
@@ -1380,7 +1690,7 @@ exports[`<Pagination /> should render correctly with simple ui 1`] = `
           }
         }
         scope="pagination"
-        to="blog"
+        to="whatever"
       >
         4
       </Link>
@@ -1396,7 +1706,7 @@ exports[`<Pagination /> should render correctly with simple ui 1`] = `
           }
         }
         scope="pagination"
-        to="blog"
+        to="whatever"
       >
         5
       </Link>
@@ -1412,7 +1722,7 @@ exports[`<Pagination /> should render correctly with simple ui 1`] = `
           }
         }
         scope="pagination"
-        to="blog"
+        to="whatever"
       >
         6
       </Link>
@@ -1428,9 +1738,9 @@ exports[`<Pagination /> should render correctly with simple ui 1`] = `
           }
         }
         scope="pagination"
-        to="blog"
+        to="whatever"
       >
-        Next ⟩
+        Next →
       </Link>
     </li>
   </ul>
@@ -1451,7 +1761,7 @@ exports[`<Pagination /> shouldn't render disabled nav items when renderDisabled 
       <Link
         className="page-link"
         scope={null}
-        to="blog"
+        to="whatever"
       >
         1
       </Link>
@@ -1467,7 +1777,7 @@ exports[`<Pagination /> shouldn't render disabled nav items when renderDisabled 
           }
         }
         scope="pagination"
-        to="blog"
+        to="whatever"
       >
         2
       </Link>
@@ -1483,7 +1793,7 @@ exports[`<Pagination /> shouldn't render disabled nav items when renderDisabled 
           }
         }
         scope="pagination"
-        to="blog"
+        to="whatever"
       >
         3
       </Link>
@@ -1499,7 +1809,7 @@ exports[`<Pagination /> shouldn't render disabled nav items when renderDisabled 
           }
         }
         scope="pagination"
-        to="blog"
+        to="whatever"
       >
         4
       </Link>
@@ -1515,7 +1825,7 @@ exports[`<Pagination /> shouldn't render disabled nav items when renderDisabled 
           }
         }
         scope="pagination"
-        to="blog"
+        to="whatever"
       >
         5
       </Link>
@@ -1531,7 +1841,7 @@ exports[`<Pagination /> shouldn't render disabled nav items when renderDisabled 
           }
         }
         scope="pagination"
-        to="blog"
+        to="whatever"
       >
         6
       </Link>
@@ -1547,9 +1857,9 @@ exports[`<Pagination /> shouldn't render disabled nav items when renderDisabled 
           }
         }
         scope="pagination"
-        to="blog"
+        to="whatever"
       >
-        Next ⟩
+        Next →
       </Link>
     </li>
     <li
@@ -1563,7 +1873,7 @@ exports[`<Pagination /> shouldn't render disabled nav items when renderDisabled 
           }
         }
         scope="pagination"
-        to="blog"
+        to="whatever"
       >
         Last »
       </Link>
@@ -1586,7 +1896,7 @@ exports[`<Pagination /> shouldn't render disabled nav items when renderDisabled 
       <Link
         className="page-link"
         scope={null}
-        to="blog"
+        to="whatever"
       >
         « First
       </Link>
@@ -1602,9 +1912,9 @@ exports[`<Pagination /> shouldn't render disabled nav items when renderDisabled 
           }
         }
         scope="pagination"
-        to="blog"
+        to="whatever"
       >
-        ⟨ Previous
+        ← Previous
       </Link>
     </li>
     <li
@@ -1618,7 +1928,7 @@ exports[`<Pagination /> shouldn't render disabled nav items when renderDisabled 
           }
         }
         scope="pagination"
-        to="blog"
+        to="whatever"
       >
         4
       </Link>
@@ -1634,7 +1944,7 @@ exports[`<Pagination /> shouldn't render disabled nav items when renderDisabled 
           }
         }
         scope="pagination"
-        to="blog"
+        to="whatever"
       >
         5
       </Link>
@@ -1650,7 +1960,7 @@ exports[`<Pagination /> shouldn't render disabled nav items when renderDisabled 
           }
         }
         scope="pagination"
-        to="blog"
+        to="whatever"
       >
         6
       </Link>
@@ -1666,7 +1976,7 @@ exports[`<Pagination /> shouldn't render disabled nav items when renderDisabled 
           }
         }
         scope="pagination"
-        to="blog"
+        to="whatever"
       >
         7
       </Link>
@@ -1682,7 +1992,7 @@ exports[`<Pagination /> shouldn't render disabled nav items when renderDisabled 
           }
         }
         scope="pagination"
-        to="blog"
+        to="whatever"
       >
         8
       </Link>
@@ -1698,7 +2008,7 @@ exports[`<Pagination /> shouldn't render disabled nav items when renderDisabled 
           }
         }
         scope="pagination"
-        to="blog"
+        to="whatever"
       >
         9
       </Link>
@@ -1721,7 +2031,7 @@ exports[`<Pagination /> shouldn't render disabled nav items when renderDisabled 
       <Link
         className="page-link"
         scope={null}
-        to="blog"
+        to="whatever"
       >
         1
       </Link>
