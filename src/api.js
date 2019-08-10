@@ -1,4 +1,4 @@
-import compileRoute from './lib/route-compiler'
+import compilePath from './lib/compile-path'
 
 // Gets the route map object
 export function getRouteMap () {
@@ -30,14 +30,14 @@ export function getPathGenerator (routeName, scope) {
   }
 
   if (!scope) {
-    return compileRoute(route.path)
+    return compilePath(route.path)
   }
 
   if (!route.scopes[scope]) {
     throw new TypeError(`Unrecognized scope '${scope}' on route '${routeName}'`)
   }
 
-  return compileRoute(route.scopes[scope])
+  return compilePath(route.scopes[scope])
 }
 
 // Generates a path for a specific route based on the given parameters.

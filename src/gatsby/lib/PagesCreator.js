@@ -1,7 +1,7 @@
 import fs from 'fs'
 import path from 'path'
 import _ from 'lodash'
-import compileRoute from '../../lib/route-compiler'
+import compilePath from '../../lib/compile-path'
 import { getOption } from '../util'
 
 export default class PagesCreator {
@@ -25,7 +25,7 @@ export default class PagesCreator {
       }
       route.path = path.join(getOption('basePath'), route.path)
       route.scopes = {}
-      route.pathGenerator = compileRoute(route.path)
+      route.pathGenerator = compilePath(route.path)
       routeMap[name] = route
     }
 
@@ -83,7 +83,7 @@ export default class PagesCreator {
       page: {
         path: this.page.path
       },
-      pathGenerator: compileRoute(scopedPath)
+      pathGenerator: compilePath(scopedPath)
     }
   }
 
