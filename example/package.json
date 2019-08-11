@@ -1,0 +1,30 @@
+{
+  "name": "gatsby-advanced-pages-example",
+  "private": true,
+  "description": "A bare-bones Gatsby site with Gatsby Advanced Pages plugin installed",
+  "version": "1.0.0",
+  "license": "MIT",
+  "scripts": {
+    "build": "gatsby build",
+    "develop": "gatsby develop",
+    "start": "npm run develop",
+    "serve": "gatsby serve"
+  },
+  "dependencies": {
+    "gatsby": "^2.13.51",
+    "gatsby-plugin-advanced-pages": "^1.1.0",
+    "gatsby-source-filesystem": "^2.1.8",
+    "gatsby-transformer-remark": "^2.6.10",
+    "react": "^16.8.6",
+    "react-dom": "^16.8.6"
+  },
+  "homepage": "https://github.com/mohatt/gatsby-plugin-advanced-pages/tree/master/example#readme",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/mohatt/gatsby-plugin-advanced-pages",
+    "directory": "example"
+  },
+  "bugs": {
+    "url": "https://github.com/mohatt/gatsby-plugin-advanced-pages/issues"
+  }
+}

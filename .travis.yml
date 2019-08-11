@@ -13,11 +13,22 @@ install:
 script:
   - npm run test:coverage
   - codecov
+  - cd example && yarn
+  - npm run build
+  - cd ../
 matrix:
   allow_failures: []
   fast_finish: true
 after_success:
   - npm run release
+deploy:
+  provider: pages
+  skip_cleanup: true
+  github_token: $GH_TOKEN
+  local_dir: example/public
+  keep_history: true
+  on:
+    branch: master
 branches:
   except:
     - /^v\d+\.\d+\.\d+$/

@@ -6,7 +6,7 @@ Gatsby Advanced Pages is a wrapper around Gatsby's [createPage](https://www.gats
 
 - [Prerequisites](#prerequisites)
 - [Installation](#installation)
-- Example project
+- [Demo](#demo)
 - [Usage](#usage)
   - [Creating pages](#creating-pages)
     - [Simple pages](#simple-pages)
@@ -49,6 +49,13 @@ or [yarn](https://yarnpkg.com/)
 ```sh
 $ yarn add gatsby-plugin-advanced-pages
 ```
+
+
+## Demo
+
+See [example](https://github.com/mohatt/gatsby-plugin-advanced-pages/tree/master/example#readme) directory.
+
+[**Live Preview**](http://mohatt.github.io/gatsby-plugin-advanced-pages)
 
 
 ## Usage
