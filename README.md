@@ -2,7 +2,7 @@
 
 Gatsby Advanced Pages is a wrapper around Gatsby's [createPage](https://www.gatsbyjs.org/docs/actions/#createPage) API and [path-to-regexp](https://github.com/pillarjs/path-to-regexp) that allows easy creation of pages with dynamic features like pagination and custom routing.
 
-> **Note:** The following documentation is incomplete and will be updated on a later time.
+> **Note:** The following documentation is still in progress.
 
 - [Prerequisites](#prerequisites)
 - [Installation](#installation)
@@ -10,19 +10,18 @@ Gatsby Advanced Pages is a wrapper around Gatsby's [createPage](https://www.gats
 - [Usage](#usage)
   - [Creating pages](#creating-pages)
     - [Simple pages](#simple-pages)
-    - Page helpers
-    - Custom routing
-    - Adding pagination
-    - Frontmatter metadata
-  - Generating paths
+    - [Page helpers](#page-helpers)
+  - [Generating paths](#generating-paths)
 - API
+  - Compoentns
+    - Link component
+    - Pagination component
   - Functions
     - createAdvancedPage()
     - generatePath()
     - getPathGenerator()
-  - Compoentns
-    - Link component
-    - Pagination component
+    - getRoute()
+    - getRouteMap()
 - [Configuration](#configuration)
   - [Defaults](#defaults)
   - [Markdown Engine](#engine)
@@ -53,9 +52,7 @@ $ yarn add gatsby-plugin-advanced-pages
 
 ## Demo
 
-See [example](https://github.com/mohatt/gatsby-plugin-advanced-pages/tree/master/example#readme) directory.
-
-[**Live Preview**](http://mohatt.github.io/gatsby-plugin-advanced-pages)
+See [example](https://github.com/mohatt/gatsby-plugin-advanced-pages/tree/master/example) directory. [**Live preview**](http://mohatt.github.io/gatsby-plugin-advanced-pages)
 
 
 ## Usage
@@ -121,7 +118,7 @@ export default PageTemplate
 Run `gatsby develop` and open http://localhost/hello to see your new page.
 
 #### Page helpers
-In order to create more advanced pages, you need to define a page helper in your markdown metadata. Page helpers are javascript files that exports a function to be run by the plugin during Gatsby's [createPage](https://www.gatsbyjs.org/docs/actions/#createPage) lifecycle. Here is an example page helper that creates a blog index page with pagination functionality:
+In order to create more advanced pages, you need to define a page helper in your markdown metadata. Page helpers are javascript files that export a function to be run by the plugin during Gatsby's [createPage](https://www.gatsbyjs.org/docs/actions/#createPage) lifecycle. Here is an example page helper that creates a blog index page with pagination functionality:
 
 `content/pages/blog.md`
 ```markdown
@@ -222,7 +219,7 @@ Now assuming you have 12 blog posts, the plugin will create the following pages:
  - blog/page/3
  - blog/page/4
 
-if you want to customize the generated urls, you can include a `route` in your pagination object thats being passed to `createAdvancedPage()`.
+if you want to customize the paginated paths, you can include a `route` in your pagination object thats being passed to `createAdvancedPage()`. See below:
 
 `content/pages/blog.md`
 ```markdown
@@ -257,6 +254,35 @@ Now the plugin will create the following pages:
  - /blog/what/ever/2
  - /blog/what/ever/3
  - /blog/what/ever/4
+
+#### More Examples...
+
+Check out [example](https://github.com/mohatt/gatsby-plugin-advanced-pages/tree/master/example) directory for more examples on how to use the plugin
+
+
+### Generating paths
+You can generate paths for the routes defined in your pages metadata using two methods:
+
+#### Link Component (recommended)
+The Link component is a wrapper around Gatsby's Link component that allows passing route names and params instead of link urls. Below is an example of how to use it:
+
+Assuming you have a route named `blog.post` with a value of `/blog/posts/:post`, you can generate a path for a specific blog post using the following:
+
+```javascript
+import { Link } from 'gatsby-plugin-advanced-pages'
+
+// inside your component JSX
+<Link to="blog.post" params={{ post: "some-post-slug" }} />
+```
+
+#### generatePath() function
+Alternatively, you can use `generatePath()` function to generate paths. see below:
+
+```javascript
+import { generatePath } from 'gatsby-plugin-advanced-pages'
+
+const postUrl = generatePath('blog.post', { post: "some-post-slug" })
+```
 
 
 ## Configuration
