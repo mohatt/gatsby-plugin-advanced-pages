@@ -2,7 +2,7 @@
 
 Gatsby Advanced Pages is a wrapper around Gatsby's [createPage](https://www.gatsbyjs.org/docs/actions/#createPage) API and [path-to-regexp](https://github.com/pillarjs/path-to-regexp) that allows easy creation of pages with dynamic features like pagination and custom routing.
 
-> **Note:** The project is still a work in progress and the following documentation is incomplete.
+> **Note:** The following documentation is incomplete and will be updated on a later time.
 
 - [Prerequisites](#prerequisites)
 - [Installation](#installation)
@@ -102,7 +102,7 @@ import { graphql } from "gatsby"
 const PageTemplate = ({ data }) => (
   <div>
     <h1>{data.page.title}</h1>
-    <div>{data.page.body}</div>
+    <div dangerouslySetInnerHTML={{ __html: data.page.body }} />
   </div>
 )
 
@@ -119,6 +119,144 @@ export default PageTemplate
 ```
 
 Run `gatsby develop` and open http://localhost/hello to see your new page.
+
+#### Page helpers
+In order to create more advanced pages, you need to define a page helper in your markdown metadata. Page helpers are javascript files that exports a function to be run by the plugin during Gatsby's [createPage](https://www.gatsbyjs.org/docs/actions/#createPage) lifecycle. Here is an example page helper that creates a blog index page with pagination functionality:
+
+`content/pages/blog.md`
+```markdown
+---
+title: Blog
+routes:
+  blog: /blog
+template: blog-template
+helper: blog-helper
+---
+Here you can write some content to be displayed on the blog page 
+before listing blog posts, or you can leave it empty
+```
+
+Next, create the page helper file under `gatsby/pages`
+
+`gatsby/pages/blog-helper.js`
+```javascript
+module.exports = async function ({ graphql, page, createAdvancedPage }) {
+  const result = await graphql(`
+    {
+      allMarkdownRemark(filter: { frontmatter: { type: { eq: "post" } } }) {
+        totalCount
+      }
+    }
+  `)
+
+  if (result.errors) {
+    throw result.errors
+  }
+
+  createAdvancedPage({
+    route: 'blog',
+    pagination: {
+      count: result.data.allMarkdownRemark.totalCount,
+      limit: 3,
+    },
+    filter: {
+      frontmatter: {
+        type: { eq: "post" }
+      }
+    }
+  })
+}
+```
+
+Lastly, create a template component under `src/templates` to be used to render the blog page
+
+`src/templates/blog-template.js`
+```javascript
+import React from 'react'
+import { graphql } from 'gatsby'
+import { Pagination } from 'gatsby-plugin-advanced-pages'
+
+const BlogTemplate = ({ data }) => (
+  <div>
+    <h1>{data.page.title}</h1>
+    <div>
+      {data.allMarkdownRemark.edges.map(({ node }) => (
+        <div key={node.frontmatter.slug}>
+          <h2>{node.frontmatter.title}</h2>
+          <p>{node.excerpt}</p>
+        </div> 
+      ))}
+    </div>
+    <Pagination route="blog" pageInfo={data.allMarkdownRemark.pageInfo} ui="simple" />
+  </div>
+)
+
+export const query = graphql`
+  query Blog($id: String!, $limit: Int!, $offset: Int!, $filter: MarkdownRemarkFilterInput!) {
+    page(id: { eq: $id }) {
+      title
+      body
+    }
+    allMarkdownRemark(limit: $limit, skip: $offset, filter: $filter){
+      edges {
+        node {
+          frontmatter {
+            title
+            slug
+          }
+          excerpt(pruneLength: 200)
+        }
+      }
+      pageInfo {
+        ...Pagination
+      }
+    }
+  }
+`
+
+export default BlogTemplate
+```
+Now assuming you have 12 blog posts, the plugin will create the following pages:
+ - /blog
+ - blog/page/2
+ - blog/page/3
+ - blog/page/4
+
+if you want to customize the generated urls, you can include a `route` in your pagination object thats being passed to `createAdvancedPage()`.
+
+`content/pages/blog.md`
+```markdown
+---
+title: Blog
+routes:
+  blog: /blog
+  blog.paginated: /blog/what/ever/:page
+template: blog-template
+helper: blog-helper
+---
+```
+
+`gatsby/pages/blog-helper.js`
+```javascript
+createAdvancedPage({
+  route: 'blog',
+  pagination: {
+    route: 'blog.paginated',
+    count: result.data.allMarkdownRemark.totalCount,
+    limit: 3,
+  },
+  filter: {
+    frontmatter: {
+      type: { eq: "post" }
+    }
+  }
+})
+```
+Now the plugin will create the following pages:
+ - /blog
+ - /blog/what/ever/2
+ - /blog/what/ever/3
+ - /blog/what/ever/4
 
 
 ## Configuration
