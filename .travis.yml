@@ -11,16 +11,14 @@ install:
   - yarn global add codecov
   - yarn
 script:
-  - npm run test:coverage
+  - yarn test:coverage
   - codecov
-  - cd example && yarn
-  - npm run build
-  - cd ../
+  - cd example && yarn && yarn build --prefix-paths && cd ../
 matrix:
   allow_failures: []
   fast_finish: true
 after_success:
-  - npm run release
+  - yarn release
 deploy:
   provider: pages
   skip_cleanup: true

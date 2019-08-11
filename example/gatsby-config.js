@@ -1,4 +1,5 @@
 module.exports = {
+  pathPrefix: `/gatsby-plugin-advanced-pages`,
   plugins: [
     {
       resolve: `gatsby-source-filesystem`,
