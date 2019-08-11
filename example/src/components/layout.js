@@ -12,7 +12,7 @@ export default ({ title, children }) => (
   <div className="container">
     <header className="py-3">
       <nav className="navbar navbar-expand navbar-dark bg-dark rounded">
-        <Link className="navbar-brand" to="home">Gatsby Starter</Link>
+        <Link className="navbar-brand" to="home">Gatsby</Link>
         <ul className="navbar-nav">
           {menu.map(link => (
             <li key={link.title} className="nav-item">
