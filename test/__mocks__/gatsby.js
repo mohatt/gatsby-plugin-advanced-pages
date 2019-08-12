@@ -4,6 +4,7 @@ const React = require('react');
 
 module.exports = {
   withPrefix: jest.fn().mockImplementation(path => path),
+  navigate: jest.fn(),
   Link: jest.fn().mockImplementation(
     ({
       activeClassName,

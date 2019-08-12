@@ -63,4 +63,10 @@ export function generatePath(
   scope?: string,
   ignorePrefix?: boolean
 ): string;
+export function navigate(
+  to: string,
+  params?: RouteParams,
+  scope?: string,
+  options?: {}
+): void;
 export function compilePath(path: string): PathGeneratorFunction;

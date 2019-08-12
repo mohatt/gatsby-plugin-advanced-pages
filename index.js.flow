@@ -68,4 +68,10 @@ declare export function generatePath(
   scope?: string,
   ignorePrefix?: boolean
 ): string;
+declare export function navigate(
+  to: string,
+  params?: RouteParams,
+  scope?: string,
+  options?: {}
+): void;
 declare export function compilePath(path: string): PathGeneratorFunction;

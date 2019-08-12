@@ -1,4 +1,4 @@
-import { withPrefix } from 'gatsby'
+import { navigate as gatsbyNavigate, withPrefix } from 'gatsby'
 import compilePath from './lib/compile-path'
 
 // Gets the route map object
@@ -44,6 +44,11 @@ export function getPathGenerator (route, scope, ignorePrefix) {
 // Generates a path for a specific route based on the given parameters.
 export function generatePath (route, params = {}, scope, ignorePrefix) {
   return getPathGenerator(route, scope, ignorePrefix)(params)
+}
+
+// Extends gatsby's navigate to allow route names
+export function navigate (to, params = {}, scope, options) {
+  return gatsbyNavigate(generatePath(to, params, scope), options)
 }
 
 export { compilePath }
