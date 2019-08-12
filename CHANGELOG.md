@@ -1,3 +1,10 @@
+## [1.1.2](https://github.com/mohatt/gatsby-plugin-advanced-pages/compare/v1.1.1...v1.1.2) (2019-08-12)
+
+
+### Bug Fixes
+
+* **api:** respect Gatsby's pathPrefix when generating paths ([a2e9f43](https://github.com/mohatt/gatsby-plugin-advanced-pages/commit/a2e9f43))
+
 ## [1.1.1](https://github.com/mohatt/gatsby-plugin-advanced-pages/compare/v1.1.0...v1.1.1) (2019-08-10)
 
 
