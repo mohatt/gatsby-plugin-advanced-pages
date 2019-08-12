@@ -7,7 +7,7 @@ const Link = ({ to, params, scope, ...props }) => {
   let href
   if (to !== undefined) {
     try {
-      href = generatePath(to, params, scope)
+      href = generatePath(to, params, scope, true)
     } catch (e) {
       if (process.env.NODE_ENV !== `production`) {
         console.error(

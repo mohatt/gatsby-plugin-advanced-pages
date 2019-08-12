@@ -3,7 +3,7 @@
 const React = require('react');
 
 module.exports = {
-  graphql: jest.fn(),
+  withPrefix: jest.fn().mockImplementation(path => path),
   Link: jest.fn().mockImplementation(
     ({
       activeClassName,
@@ -21,6 +21,7 @@ module.exports = {
       })
     )
   ),
+  graphql: jest.fn(),
   StaticQuery: jest.fn(),
   useStaticQuery: jest.fn()
 };

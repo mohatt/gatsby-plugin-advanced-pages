@@ -51,14 +51,16 @@ export const Pagination: React.ComponentType<PaginationProps>;
 export const Link: React.ComponentType<LinkProps>;
 
 export function getRouteMap(): RouteMap;
-export function getRoute(routeName: string): Route;
+export function getRoute(route: string): Route;
 export function getPathGenerator(
-  routeName: number,
-  scope?: string
+  route: string,
+  scope?: string,
+  ignorePrefix?: boolean
 ): PathGeneratorFunction<RouteParams>;
 export function generatePath(
-  routeName: number,
-  args?: RouteParams,
-  scope?: string
+  route: string,
+  params?: RouteParams,
+  scope?: string,
+  ignorePrefix?: boolean
 ): string;
 export function compilePath(path: string): PathGeneratorFunction;
