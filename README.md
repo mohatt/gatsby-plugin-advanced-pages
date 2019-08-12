@@ -12,6 +12,14 @@ Gatsby Advanced Pages is a wrapper around Gatsby's [createPage](https://www.gats
     - [Simple pages](#simple-pages)
     - [Page helpers](#page-helpers)
   - [Generating paths](#generating-paths)
+- [Configuration](#configuration)
+  - [Defaults](#defaults)
+  - [Markdown Engine](#engine)
+  - [Base Path](#basepath)
+  - [Default Template](#template)
+  - [Directory Locations](#directories)
+  - [Pagination](#pagination)
+  - [GraphQL Types](#graphql-types)
 - API
   - Compoentns
     - Link component
@@ -22,14 +30,6 @@ Gatsby Advanced Pages is a wrapper around Gatsby's [createPage](https://www.gats
     - getPathGenerator()
     - getRoute()
     - getRouteMap()
-- [Configuration](#configuration)
-  - [Defaults](#defaults)
-  - [Markdown Engine](#engine)
-  - [Base Path](#basepath)
-  - [Default Template](#template)
-  - [Directory Locations](#directories)
-  - [Pagination](#pagination)
-  - [GraphQL Types](#graphql-types)
 - [License](#license)
 
 
