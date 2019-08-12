@@ -16,7 +16,7 @@ export default ({ title, children }) => (
         <ul className="navbar-nav">
           {menu.map(link => (
             <li key={link.title} className="nav-item">
-              <Link activeClassName="active" className="nav-link" to={link.route} partiallyActive={true}>
+              <Link activeClassName="active" className="nav-link" to={link.route} partiallyActive={link.route !== 'home'}>
                 {link.title}
               </Link>
             </li>
