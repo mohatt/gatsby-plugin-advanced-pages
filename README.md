@@ -28,6 +28,7 @@ Gatsby Advanced Pages is a wrapper around Gatsby's [createPage](https://www.gats
     - createAdvancedPage()
     - generatePath()
     - getPathGenerator()
+    - navigate()
     - getRoute()
     - getRouteMap()
 - [License](#license)
