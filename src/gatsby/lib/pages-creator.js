@@ -213,9 +213,12 @@ export default class PagesCreator {
   }
 
   writeRouteMap (filename) {
+    const pathPrefix = getOption('basePath')
     const map = _.mapValues(this.routeMap, route => ({
-      path: route.path,
-      scopes: _.mapValues(route.scopes, 'path')
+      path: path.join(pathPrefix, route.path),
+      scopes: _.mapValues(route.scopes, sroute => (
+        path.join(pathPrefix, sroute.path)
+      ))
     }))
     const content = `"use strict";\n\nmodule.exports = ${JSON.stringify(map, null, 2)};`
     try {
