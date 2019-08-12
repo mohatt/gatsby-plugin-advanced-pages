@@ -109,6 +109,10 @@ export default class PagesCreator {
           createAdvancedPage: args => this.createPage(args)
         })
       } catch (e) {
+        if (typeof e[0] !== 'undefined') {
+          e = e[0]
+        }
+
         const error = new Error(
           `Error occured while running page helper function at '${page.helperPath}':` +
           `\n${e.message}`
