@@ -1,3 +1,15 @@
+# [1.2.0](https://github.com/mohatt/gatsby-plugin-advanced-pages/compare/v1.1.2...v1.2.0) (2019-08-12)
+
+
+### Bug Fixes
+
+* **node:** add plugin basePath to generated route map ([8f0cbb9](https://github.com/mohatt/gatsby-plugin-advanced-pages/commit/8f0cbb9))
+
+
+### Features
+
+* **api:** added `navigate()` function that extends gatsby's navigate to allow route names ([757d734](https://github.com/mohatt/gatsby-plugin-advanced-pages/commit/757d734))
+
 ## [1.1.2](https://github.com/mohatt/gatsby-plugin-advanced-pages/compare/v1.1.1...v1.1.2) (2019-08-12)
 
 
