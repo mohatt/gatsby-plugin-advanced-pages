@@ -1,4 +1,5 @@
-# Gatsby Advanced Pages [![][npm-img]][npm-url] [![][travis-img]][travis-url] [![][codecov-img]][codecov-url]
+# Gatsby Advanced Pages
+[![][npm-img]][npm-url] [![][travis-img]][travis-url] [![][codecov-img]][codecov-url]
 
 Gatsby Advanced Pages is a wrapper around Gatsby's [createPage](https://www.gatsbyjs.org/docs/actions/#createPage) API that allows easy creation of pages with dynamic features like pagination and custom routing.
 
@@ -243,7 +244,7 @@ Now the plugin will create the following pages:
  - /blog/what/ever/4
 
 #### Passing data to templates
-You can pass structured data from your page to your template component by setting `data` field in your page markdown. See below
+You can pass structured data from your page to your template component by setting the `data` field in your page markdown. See below
 
 `content/pages/skills.md`
 ```markdown
