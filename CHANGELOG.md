@@ -1,3 +1,10 @@
+## [1.3.2](https://github.com/mohatt/gatsby-plugin-advanced-pages/compare/v1.3.1...v1.3.2) (2019-08-14)
+
+
+### Bug Fixes
+
+* **node:** add `childOf` to type `Route` to support gatsby v3 ([ec1fc4f](https://github.com/mohatt/gatsby-plugin-advanced-pages/commit/ec1fc4f))
+
 ## [1.3.1](https://github.com/mohatt/gatsby-plugin-advanced-pages/compare/v1.3.0...v1.3.1) (2019-08-14)
 
 
