@@ -21,7 +21,7 @@ const BlogTemplate = ({ data, pageContext }) => {
   }
 
   return (
-  	<Layout title={title}>
+    <Layout title={title}>
       <div dangerouslySetInnerHTML={{ __html: page.body }} />
       <div class="row">
         <div className="col-md-9">
@@ -54,7 +54,7 @@ const BlogTemplate = ({ data, pageContext }) => {
         </div> 
       </div>
       <Pagination route={route} params={params} pageInfo={feed.pageInfo} ui="simple" />
-  	</Layout>
+    </Layout>
 )}
 
 export const query = graphql`

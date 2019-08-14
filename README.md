@@ -13,17 +13,10 @@ Gatsby Advanced Pages is a wrapper around Gatsby's [createPage](https://www.gats
     - [Page helpers](#page-helpers)
   - [Generating paths](#generating-paths)
 - [Configuration](#configuration)
-  - [Defaults](#defaults)
-  - [Markdown Engine](#engine)
-  - [Base Path](#basepath)
-  - [Default Template](#template)
-  - [Directory Locations](#directories)
-  - [Pagination](#pagination)
-  - [GraphQL Types](#graphql-types)
-- API
-  - Compoentns
-    - Link component
-    - Pagination component
+- [API](#api)
+  - [Components](#components)
+    - [Link component](#link-component)
+    - [Pagination component](#pagination-component)
   - Functions
     - createAdvancedPage
     - generatePath
@@ -56,7 +49,7 @@ $ yarn add gatsby-plugin-advanced-pages
 
 ## Demo
 
-See [example](https://github.com/mohatt/gatsby-plugin-advanced-pages/tree/master/example) directory. [**Live preview**](http://mohatt.github.io/gatsby-plugin-advanced-pages)
+See [example](https://github.com/mohatt/gatsby-plugin-advanced-pages/tree/master/example) directory. Check out [Live example](http://mohatt.github.io/gatsby-plugin-advanced-pages)
 
 
 ## Usage
@@ -289,6 +282,89 @@ const postUrl = generatePath('blog.post', { post: "some-post-slug" })
 ```
 
 
+## API
+The plugin exposes a set of components and functions that allows building advanced pages with minimal code. 
+
+### Components
+These are the React components exposed by the plugin.
+
+#### Link component
+Wrapper around Gatsby's [Core Link component](https://www.gatsbyjs.org/docs/gatsby-link/) that allows passing route names and params instead of link urls.
+
+##### Props
+| Name | Type | Description |
+| --- | --- | --- |
+| to | `String` | **Required.** The name of the route to link to |
+| params | `Object` | Route paramaters |
+| scope | `String` | Route scope. *Available scopes:* `pagination` |
+| ... | `[...]` | All props supported by [Gatsby Link component](https://www.gatsbyjs.org/docs/gatsby-link/) |
+
+##### Usage
+```javascript
+import { Link } from 'gatsby-plugin-advanced-pages'
+
+// Route: about = /about-me
+// Output: <GatsbyLink to="/about-me" />
+<Link to="about" />
+
+// Route: blog.post = /blog/:post
+// Output: <GatsbyLink to="/blog/some-post-slug" />
+<Link to="blog.post" params={{ post: "some-post-slug" }} />
+
+// Route: blog = /blog
+// Output: <GatsbyLink to="/blog/page/4" />
+<Link to="blog" scope="pagination" params={{ page: 4 }} />
+
+// You can pass any prop supported by GatsbyLink
+// Output: <GatsbyLink to="/about-me" activeClassName="active" partiallyActive={true} />
+<Link to="about" activeClassName="active" partiallyActive={true} />
+```
+
+#### Pagination component
+Renders a pagination UI to paginate a set of results fetched using a GraphQL query
+
+##### Props
+| Name | Type | Description |
+| --- | --- | --- |
+| route | `String` | **Required.** The name of the route to paginate |
+| params | `Object` | Route paramaters |
+| pageInfo | `Object` | **Required.** `pageInfo` object fetched from GraphQL using `Pagination` fragment |
+| range | `Number` | Maximum number of pages displayed (Defaults to 6) |
+| className | `String` | Class name applied to the pagination container |
+| labels | `Object` | Navigation items labels. *Available keys:* `prev`, `next`, `first`, `last` |
+| theme | `Object` | Elements class names (Defaults to [Bootstrap 4 pagination classes](https://getbootstrap.com/docs/4.3/components/pagination/#overview)). *Available keys:* `inner`, `item`, `item.next`, `item.prev`, `item.first`, `item.last`, `link`, `active`, `disabled` |
+| renderDisabled | `bool` | Render disabled navigation items (Defaults to `true`) |
+
+##### Usage
+```javascript
+import { Pagination } from 'gatsby-plugin-advanced-pages'
+
+const BlogTemplate = ({ data }) => {
+  ...
+  <Pagination ui="simple" route="blog" pageInfo={data.allMarkdownRemark.pageInfo} />
+  ...
+}
+
+export const query = graphql`
+  query Blog($limit: Int!, $offset: Int!) {
+    allMarkdownRemark(limit: $limit, skip: $offset){
+      edges {
+        node {
+          ...
+        }
+      }
+      pageInfo {
+        ...Pagination
+      }
+    }
+  }
+`
+
+export default BlogTemplate
+```
+Check out [example](https://github.com/mohatt/gatsby-plugin-advanced-pages/tree/master/example) directory for more examples
+
+
 ## Configuration
 
 ### Defaults
@@ -336,7 +412,7 @@ Specifies which Markdown transformer the plugin should use to transform markdown
 
 Default template to be used for pages with no `template` metadata defined
 
-### Directories
+### Directory locations
 
 File System directories needed for the plugin to work
 
