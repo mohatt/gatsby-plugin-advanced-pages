@@ -1,5 +1,5 @@
 # Gatsby Advanced Pages
-[![][npm-img]][npm-url] [![][travis-img]][travis-url] [![][codecov-img]][codecov-url]
+[![][npm-img]][npm-url] [![][travis-img]][travis-url] [![][codecov-img]][codecov-url] [![][demo-img]][demo-url] [![][license-img]][license-url]
 
 Gatsby Advanced Pages is a wrapper around Gatsby's [createPage](https://www.gatsbyjs.org/docs/actions/#createPage) API that allows easy creation of pages with dynamic features like pagination and custom routing.
 
@@ -560,6 +560,10 @@ Name of the route object type
 [npm-url]: https://www.npmjs.com/package/gatsby-plugin-advanced-pages
 [npm-img]: https://img.shields.io/npm/v/gatsby-plugin-advanced-pages.svg
 [travis-url]: https://travis-ci.org/mohatt/gatsby-plugin-advanced-pages
-[travis-img]: https://travis-ci.org/mohatt/gatsby-plugin-advanced-pages.svg?branch=master
+[travis-img]: https://img.shields.io/travis/mohatt/gatsby-plugin-advanced-pages.svg
 [codecov-url]: https://codecov.io/github/mohatt/gatsby-plugin-advanced-pages
 [codecov-img]: https://img.shields.io/codecov/c/github/mohatt/gatsby-plugin-advanced-pages.svg
+[demo-url]: http://mohatt.github.io/gatsby-plugin-advanced-pages
+[demo-img]: https://img.shields.io/website/http/mohatt.github.io/gatsby-plugin-advanced-pages.svg?label=demo
+[license-url]: https://github.com/mohatt/gatsby-plugin-advanced-pages/blob/master/LICENSE
+[license-img]: https://img.shields.io/github/license/mohatt/gatsby-plugin-advanced-pages.svg
