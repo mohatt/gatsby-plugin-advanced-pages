@@ -1,6 +1,6 @@
 {
   "name": "gatsby-plugin-advanced-pages",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "description": "Gatsby plugin that allows easy creation of pages with dynamic features like pagination and custom routing",
   "main": "index.js",
   "files": [
@@ -54,7 +54,7 @@
     "babel-eslint": "10.0.2",
     "cross-env": "5.2.0",
     "jest": "24.8.0",
-    "metro-memory-fs": "0.55.0",
+    "metro-memory-fs": "0.56.0",
     "react": "16.9.0",
     "react-test-renderer": "16.9.0",
     "rimraf": "2.6.3",

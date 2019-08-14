@@ -1,3 +1,10 @@
+## [1.2.1](https://github.com/mohatt/gatsby-plugin-advanced-pages/compare/v1.2.0...v1.2.1) (2019-08-12)
+
+
+### Bug Fixes
+
+* **node:** catch graphql errors thrown by page helpers ([0a783ff](https://github.com/mohatt/gatsby-plugin-advanced-pages/commit/0a783ff))
+
 # [1.2.0](https://github.com/mohatt/gatsby-plugin-advanced-pages/compare/v1.1.2...v1.2.0) (2019-08-12)
 
 
