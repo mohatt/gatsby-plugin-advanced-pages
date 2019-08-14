@@ -1,3 +1,10 @@
+## [1.3.1](https://github.com/mohatt/gatsby-plugin-advanced-pages/compare/v1.3.0...v1.3.1) (2019-08-14)
+
+
+### Bug Fixes
+
+* **node:** rewrote create-pages tests, added some docs to readme ([50cc29a](https://github.com/mohatt/gatsby-plugin-advanced-pages/commit/50cc29a))
+
 # [1.3.0](https://github.com/mohatt/gatsby-plugin-advanced-pages/compare/v1.2.1...v1.3.0) (2019-08-14)
 
 
