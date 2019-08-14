@@ -61,7 +61,11 @@ export default function ({ actions, schema }) {
         }
       },
       extensions: {
-        infer: false
+        infer: false,
+        childOf: {
+          types: [types.page],
+          many: true
+        }
       },
       interfaces: [`Node`]
     })
