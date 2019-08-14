@@ -22,7 +22,7 @@ Gatsby Advanced Pages is a wrapper around Gatsby's [createPage](https://www.gats
 
 
 ## Prerequisites
-Before getting started, you need to ensure that you have a Markdown transformer plugin installed and configured. Currently, the following plugins are supported:
+Before getting started, make sure you have a Markdown transformer plugin installed and configured. The following plugins are currently supported:
  - [gatsby-plugin-mdx](https://www.gatsbyjs.org/packages/gatsby-plugin-mdx/) — Supports using React components from within Markdown ([Official guide](https://www.gatsbyjs.org/docs/mdx/))
  - [gatsby-transformer-remark](https://www.gatsbyjs.org/packages/gatsby-transformer-remark/)
 
@@ -45,7 +45,6 @@ See [example](https://github.com/mohatt/gatsby-plugin-advanced-pages/tree/master
 ## Usage
 Add the plugin to your `gatsby-config.js` file in order to activate it
 
-`gatsby-config.js`
 ```javascript
 plugins: [
   {
@@ -70,9 +69,8 @@ template: page
 routes:
   hello: /hello
 ---
-## Hello, world!
-This is a demo page for `gatsby-plugin-advanced-pages`.
-Delete me, and get writing!
+### Hello, world!
+This is a demo page for `gatsby-plugin-advanced-pages`
 ```
 
 Create a template component under `src/templates` to be used to render the page 
@@ -221,8 +219,7 @@ helper: blog-helper
 
 `gatsby/pages/blog-helper.js`
 ```javascript
-...
-...
+[...]
 createAdvancedPage({
   route: 'blog',
   pagination: {
