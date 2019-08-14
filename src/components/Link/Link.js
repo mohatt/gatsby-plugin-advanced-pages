@@ -5,7 +5,7 @@ import { generatePath } from '../../api'
 
 const Link = ({ to, params, scope, ...props }) => {
   let href
-  if (to !== undefined) {
+  if (typeof to !== 'undefined') {
     try {
       href = generatePath(to, params, scope, true)
     } catch (e) {

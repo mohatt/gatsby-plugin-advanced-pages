@@ -1,7 +1,7 @@
 import { navigate as gatsbyNavigate, withPrefix } from 'gatsby'
 import { pick, compile } from './lib/route-compiler'
 
-// Gets the route map object
+// Gets an array of all routes
 export function getRoutes () {
   return require('./routes')
 }
@@ -57,10 +57,6 @@ export function getMatchingRoute (path) {
 // Returns a function to be used to generate paths for a specific route
 export function getPathGenerator (route, scope, ignorePrefix) {
   const ro = getRoute(route)
-  if (!ro) {
-    return false
-  }
-
   if (!scope) {
     return compile(ignorePrefix ? ro.path : withPrefix(ro.path))
   }

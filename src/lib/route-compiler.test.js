@@ -27,5 +27,6 @@ describe(`Route Compiler`, () => {
   it(`compiles routes correctly`, () => {
     expect(compile('/blog/:post')({ post: 'hello' })).toBe('/blog/hello')
     expect(compile('/blog/:post/')({ post: 'hello' })).toBe('/blog/hello')
+    expect(() => compile('/blog/:post/')()).toThrow()
   })
 })
