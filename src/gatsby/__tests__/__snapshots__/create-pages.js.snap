@@ -1,16 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`createPages correctly creates pages 1`] = `
+exports[`createPages correctly creates pages on (blog-paginated-auto-route) 1`] = `
 Array [
-  Array [
-    Object {
-      "component": "/virtual/project/src/templates/index.js",
-      "context": Object {
-        "id": "home-id",
-      },
-      "path": "/",
-    },
-  ],
   Array [
     Object {
       "component": "/virtual/project/src/templates/blog.js",
@@ -44,24 +35,126 @@ Array [
       "path": "/blog/page/3",
     },
   ],
+]
+`;
+
+exports[`createPages correctly creates pages on (blog-paginated-auto-route) 2`] = `
+"\\"use strict\\";
+
+module.exports = [
+  {
+    \\"name\\": \\"blog\\",
+    \\"path\\": \\"/blog\\",
+    \\"scopes\\": {
+      \\"pagination\\": \\"/blog/page/:page\\"
+    }
+  }
+];"
+`;
+
+exports[`createPages correctly creates pages on (blog-paginated-manual-route) 1`] = `
+Array [
   Array [
     Object {
-      "component": "/virtual/project/src/templates/blog-post.js",
+      "component": "/virtual/project/src/templates/blog.js",
       "context": Object {
-        "id": "post-id",
-        "post": "hello-world",
+        "id": "blog-id",
+        "limit": 10,
+        "offset": 0,
       },
-      "path": "/blog/hello-world",
+      "path": "/blog",
     },
   ],
   Array [
     Object {
-      "component": "/virtual/project/src/templates/blog-post.js",
+      "component": "/virtual/project/src/templates/blog.js",
       "context": Object {
-        "id": "post-id",
-        "post": "how-to-write-post",
+        "id": "blog-id",
+        "limit": 10,
+        "offset": 10,
       },
-      "path": "/blog/how-to-write-post",
+      "path": "/blog/what/2",
+    },
+  ],
+  Array [
+    Object {
+      "component": "/virtual/project/src/templates/blog.js",
+      "context": Object {
+        "id": "blog-id",
+        "limit": 10,
+        "offset": 20,
+      },
+      "path": "/blog/what/3",
+    },
+  ],
+]
+`;
+
+exports[`createPages correctly creates pages on (blog-paginated-manual-route) 2`] = `
+"\\"use strict\\";
+
+module.exports = [
+  {
+    \\"name\\": \\"blog\\",
+    \\"path\\": \\"/blog\\",
+    \\"scopes\\": {
+      \\"pagination\\": \\"/blog/what/:page\\"
+    }
+  },
+  {
+    \\"name\\": \\"blog.paginated\\",
+    \\"path\\": \\"/blog/what/:page\\",
+    \\"scopes\\": {}
+  }
+];"
+`;
+
+exports[`createPages correctly creates pages on (dynamic-page) 1`] = `
+Array [
+  Array [
+    Object {
+      "component": "/virtual/project/src/templates/page.js",
+      "context": Object {
+        "id": "page-id",
+        "page": "hello",
+      },
+      "path": "/pages/hello",
+    },
+  ],
+  Array [
+    Object {
+      "component": "/virtual/project/src/templates/page.js",
+      "context": Object {
+        "id": "page-id",
+        "page": "world",
+      },
+      "path": "/pages/world",
+    },
+  ],
+]
+`;
+
+exports[`createPages correctly creates pages on (dynamic-page) 2`] = `
+"\\"use strict\\";
+
+module.exports = [
+  {
+    \\"name\\": \\"page\\",
+    \\"path\\": \\"/pages/:page\\",
+    \\"scopes\\": {}
+  }
+];"
+`;
+
+exports[`createPages correctly creates pages on (home-about) 1`] = `
+Array [
+  Array [
+    Object {
+      "component": "/virtual/project/src/templates/index.js",
+      "context": Object {
+        "id": "home-id",
+      },
+      "path": "/",
     },
   ],
   Array [
@@ -85,25 +178,13 @@ Array [
 ]
 `;
 
-exports[`createPages correctly creates pages 2`] = `
+exports[`createPages correctly creates pages on (home-about) 2`] = `
 "\\"use strict\\";
 
 module.exports = [
   {
     \\"name\\": \\"home\\",
     \\"path\\": \\"/\\",
-    \\"scopes\\": {}
-  },
-  {
-    \\"name\\": \\"blog\\",
-    \\"path\\": \\"/blog\\",
-    \\"scopes\\": {
-      \\"pagination\\": \\"/blog/page/:page\\"
-    }
-  },
-  {
-    \\"name\\": \\"post\\",
-    \\"path\\": \\"/blog/:post\\",
     \\"scopes\\": {}
   },
   {
@@ -118,3 +199,9 @@ module.exports = [
   }
 ];"
 `;
+
+exports[`createPages throws error on (duplicated-routes) 1`] = `[Error: 'pages/about2.md' is trying to define a route named 'about' that is already defined in 'pages/about.md']`;
+
+exports[`createPages throws error on (invalid-helper) 1`] = `[Error: Invalid helper 'whatever' defined in page 'pages/about.md':  File does not exist at '/virtual/project/gatsby/pages/whatever.js']`;
+
+exports[`createPages throws error on (invalid-template) 1`] = `[Error: Invalid template 'page' defined in page 'pages/about.md':  File does not exist at '/virtual/project/src/templates/page.js']`;

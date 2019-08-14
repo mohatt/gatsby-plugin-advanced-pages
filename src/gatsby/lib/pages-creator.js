@@ -123,7 +123,7 @@ export default class PagesCreator {
     }
   }
 
-  createPage ({ route, params = {}, filter, pagination }) {
+  createPage ({ route, params = {}, pagination, filter }) {
     const { page } = this
     if (typeof route !== 'string' || !route) {
       throw new TypeError(

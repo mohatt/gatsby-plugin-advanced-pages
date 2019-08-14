@@ -9,6 +9,7 @@ Gatsby Advanced Pages is a wrapper around Gatsby's [createPage](https://www.gats
   - [Creating pages](#creating-pages)
     - [Simple pages](#simple-pages)
     - [Page helpers](#page-helpers)
+    - [Passing data to templates](#passing-data-to-templates)
   - [Generating paths](#generating-paths)
 - [Configuration](#configuration)
 - [API](#api)
@@ -241,6 +242,61 @@ Now the plugin will create the following pages:
  - /blog/what/ever/3
  - /blog/what/ever/4
 
+#### Passing data to templates
+You can pass structured data from your page to your template component by setting `data` field in your page markdown. See below
+
+`content/pages/skills.md`
+```markdown
+---
+title: My skills
+template: skills
+routes:
+  skills: /skills
+data:
+  skills:
+    - skill: HTML
+      level: Excellent
+    - skill: Javascript
+      level: Intermediate
+---
+Some intro text
+```
+
+Then, you can use that data in your template
+
+`src/templates/skills.js`
+```javascript
+import React from "react"
+import { graphql } from "gatsby"
+
+const SkillsTemplate = ({ data: { page } }) => (
+  <div>
+    <h1>{page.title}</h1>
+    <div dangerouslySetInnerHTML={{ __html: page.body }} />
+    <h2>Current Skills</h2>
+    <ul>
+    {page.data.sills.map(({ skill, level }) => {
+      <li key={skill}>
+        <label>{skill}:</label><span>{level}</span>
+      </li>
+    })}
+    </ul>
+  </div>
+)
+
+export const query = graphql`
+  query PageQuery($id: String!) {
+    page(id: { eq: $id }) {
+      title
+      data
+      body
+    }
+  }
+`
+
+export default SkillsTemplate
+```
+
 #### More Examples...
 Check out [example](https://github.com/mohatt/gatsby-plugin-advanced-pages/tree/master/example) directory for more examples on how to use the plugin
 
@@ -357,7 +413,7 @@ Check out [example](https://github.com/mohatt/gatsby-plugin-advanced-pages/tree/
 These are the functions exposed by the plugin.
 
 #### createAdvancedPage
-> `createAdvancedPage({ route: string, params?: object, pagination?: object }): void`
+> `createAdvancedPage({ route: string, params?: object, pagination?: object, filter?: object }): void`
 
 Creates page(s) based on given input paramaters. *Note: This function can only be called within [Page helpers](#page-helpers).*
 
