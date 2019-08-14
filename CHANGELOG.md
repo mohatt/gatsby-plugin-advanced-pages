@@ -1,3 +1,10 @@
+# [1.3.0](https://github.com/mohatt/gatsby-plugin-advanced-pages/compare/v1.2.1...v1.3.0) (2019-08-14)
+
+
+### Features
+
+* **api:** Implemented getActivatedRoute(), isActivatedRoute() and getMatchingRoute() ([3d4b95b](https://github.com/mohatt/gatsby-plugin-advanced-pages/commit/3d4b95b))
+
 ## [1.2.1](https://github.com/mohatt/gatsby-plugin-advanced-pages/compare/v1.2.0...v1.2.1) (2019-08-12)
 
 
