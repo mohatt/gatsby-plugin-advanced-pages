@@ -57,7 +57,7 @@
     "metro-memory-fs": "0.56.0",
     "react": "16.9.0",
     "react-test-renderer": "16.9.0",
-    "rimraf": "2.6.3",
+    "rimraf": "2.7.0",
     "standard": "13.1.0",
     "semantic-release": "15.13.19",
     "@semantic-release/changelog": "3.0.4",
