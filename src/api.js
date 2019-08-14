@@ -23,7 +23,7 @@ export function getRoute (route) {
   return ro
 }
 
-// Gets the current active route based on window location
+// Gets the current active route based on `@reach/router` location history
 export function getActivatedRoute () {
   return getMatchingRoute(
     require('@reach/router').globalHistory.location.pathname
@@ -73,7 +73,7 @@ export function generatePath (route, params = {}, scope, ignorePrefix) {
   return getPathGenerator(route, scope, ignorePrefix)(params)
 }
 
-// Extends gatsby's navigate to allow route names
+// Extends Gatsby's navigate to allow route names
 export function navigate (to, params = {}, scope, options) {
   return gatsbyNavigate(generatePath(to, params, scope), options)
 }

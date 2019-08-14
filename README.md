@@ -1,8 +1,6 @@
 # Gatsby Advanced Pages [![][npm-img]][npm-url] [![][travis-img]][travis-url] [![][codecov-img]][codecov-url]
 
-Gatsby Advanced Pages is a wrapper around Gatsby's [createPage](https://www.gatsbyjs.org/docs/actions/#createPage) API and [path-to-regexp](https://github.com/pillarjs/path-to-regexp) that allows easy creation of pages with dynamic features like pagination and custom routing.
-
-> **Note:** The following documentation is still in progress.
+Gatsby Advanced Pages is a wrapper around Gatsby's [createPage](https://www.gatsbyjs.org/docs/actions/#createPage) API that allows easy creation of pages with dynamic features like pagination and custom routing.
 
 - [Prerequisites](#prerequisites)
 - [Installation](#installation)
@@ -17,16 +15,7 @@ Gatsby Advanced Pages is a wrapper around Gatsby's [createPage](https://www.gats
   - [Components](#components)
     - [Link component](#link-component)
     - [Pagination component](#pagination-component)
-  - Functions
-    - createAdvancedPage
-    - generatePath
-    - getPathGenerator
-    - navigate
-    - getActivatedRoute
-    - isActivatedRoute
-    - getMatchingRoute
-    - getRoutes
-    - getRoute
+  - [Functions](#functions)
 - [License](#license)
 
 
@@ -48,12 +37,10 @@ $ yarn add gatsby-plugin-advanced-pages
 
 
 ## Demo
-
 See [example](https://github.com/mohatt/gatsby-plugin-advanced-pages/tree/master/example) directory. Check out [Live example](http://mohatt.github.io/gatsby-plugin-advanced-pages)
 
 
 ## Usage
-
 Add the plugin to your `gatsby-config.js` file in order to activate it
 
 `gatsby-config.js`
@@ -232,6 +219,8 @@ helper: blog-helper
 
 `gatsby/pages/blog-helper.js`
 ```javascript
+...
+...
 createAdvancedPage({
   route: 'blog',
   pagination: {
@@ -253,7 +242,6 @@ Now the plugin will create the following pages:
  - /blog/what/ever/4
 
 #### More Examples...
-
 Check out [example](https://github.com/mohatt/gatsby-plugin-advanced-pages/tree/master/example) directory for more examples on how to use the plugin
 
 
@@ -261,9 +249,9 @@ Check out [example](https://github.com/mohatt/gatsby-plugin-advanced-pages/tree/
 You can generate paths for the routes defined in your pages metadata using two methods:
 
 #### Link Component (recommended)
-The Link component is a wrapper around Gatsby's Link component that allows passing route names and params instead of link urls. Below is an example of how to use it:
+The Link component is a wrapper around Gatsby's [Link component](https://www.gatsbyjs.org/docs/gatsby-link/) that allows passing route names and params instead of link urls. Below is an example of how to use it:
 
-Assuming you have a route named `blog.post` with a value of `/blog/posts/:post`, you can generate a path for a specific blog post using the following:
+Assuming you have a route named `blog.post` with a value of `/blog/posts/:post`, you can render a link to a specific blog post using the following:
 
 ```javascript
 import { Link } from 'gatsby-plugin-advanced-pages'
@@ -278,18 +266,19 @@ Alternatively, you can use `generatePath()` function to generate paths. see belo
 ```javascript
 import { generatePath } from 'gatsby-plugin-advanced-pages'
 
+// Returns: /blog/posts/some-post-slug
 const postUrl = generatePath('blog.post', { post: "some-post-slug" })
 ```
 
 
 ## API
-The plugin exposes a set of components and functions that allows building advanced pages with minimal code. 
+The plugin exposes a set of components and functions that allow building advanced pages with minimal code. 
 
 ### Components
 These are the React components exposed by the plugin.
 
 #### Link component
-Wrapper around Gatsby's [Core Link component](https://www.gatsbyjs.org/docs/gatsby-link/) that allows passing route names and params instead of link urls.
+Wrapper around Gatsby's [core Link component](https://www.gatsbyjs.org/docs/gatsby-link/) that allows passing route names and params instead of link urls.
 
 ##### Props
 | Name | Type | Description |
@@ -332,7 +321,7 @@ Renders a pagination UI to paginate a set of results fetched using a GraphQL que
 | range | `Number` | Maximum number of pages displayed (Defaults to 6) |
 | className | `String` | Class name applied to the pagination container |
 | labels | `Object` | Navigation items labels. *Available keys:* `prev`, `next`, `first`, `last` |
-| theme | `Object` | Elements class names (Defaults to [Bootstrap 4 pagination classes](https://getbootstrap.com/docs/4.3/components/pagination/#overview)). *Available keys:* `inner`, `item`, `item.next`, `item.prev`, `item.first`, `item.last`, `link`, `active`, `disabled` |
+| theme | `Object` | Elements class names (Defaults to [Bootstrap 4 classes](https://getbootstrap.com/docs/4.3/components/pagination/#overview)). *Available keys:* `inner`, `item`, `item.next`, `item.prev`, `item.first`, `item.last`, `link`, `active`, `disabled` |
 | renderDisabled | `bool` | Render disabled navigation items (Defaults to `true`) |
 
 ##### Usage
@@ -363,6 +352,54 @@ export const query = graphql`
 export default BlogTemplate
 ```
 Check out [example](https://github.com/mohatt/gatsby-plugin-advanced-pages/tree/master/example) directory for more examples
+
+### Functions
+These are the functions exposed by the plugin.
+
+#### createAdvancedPage
+> `createAdvancedPage({ route: string, params?: object, pagination?: object }): void`
+
+Creates page(s) based on given input paramaters. *Note: This function can only be called within [Page helpers](#page-helpers).*
+
+#### generatePath
+> `generatePath(route: string, params?: object, scope?: string, ignorePrefix?: boolean): string`
+
+Generates a path for a specific route based on the given parameters.
+
+#### getPathGenerator
+> `getPathGenerator(route: string, scope?: string, ignorePrefix?: boolean): Function`
+
+Returns a function to be used to generate paths for a specific route.
+
+#### navigate
+> `navigate(to: string, params?: object, scope?: string, options?: object): void`
+
+Extends Gatsby's [navigate](https://www.gatsbyjs.org/docs/gatsby-link/#how-to-use-the-navigate-helper-function) to allow passing route names and params.
+
+#### getActivatedRoute
+> `getActivatedRoute(): ActivatedRoute`
+
+Gets the current active route based on `@reach/router` location history.
+
+#### getMatchingRoute
+> `getMatchingRoute(path: string): ActivatedRoute`
+
+Gets the route that matches a given path. *Note: The provided path should be prefixed with `pathPrefix` if any.*
+
+#### isActivatedRoute
+> `isActivatedRoute(route: string): boolean`
+
+Checks whether a given route is currently active.
+
+#### getRoutes
+> `getRoutes(): Array`
+
+Gets an array of all routes.
+
+#### getRoute
+> `getRoute(route: string): Route`
+
+Gets a specific route.
 
 
 ## Configuration
