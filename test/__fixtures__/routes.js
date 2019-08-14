@@ -1,32 +1,38 @@
-export default {
-  home: {
+export default [
+  {
+    name: 'home',
     path: '/',
     scopes: {}
   },
-  about: {
+  {
+    name: 'about',
     path: '/about',
     scopes: {}
   },
-  blog: {
+  {
+    name: 'blog',
     path: '/blog',
     scopes: {
       pagination: '/blog/page/:page'
     }
   },
-  'blog.author': {
+  {
+    name: 'blog.author',
     path: '/blog/author/:author',
     scopes: {
       pagination: '/blog/author/:author/page/:page'
     }
   },
-  'blog.tag': {
+  {
+    name: 'blog.tag',
     path: '/blog/tag/:tag',
     scopes: {
       pagination: '/blog/tag/:tag/page/:page'
     }
   },
-  'blog.post': {
+  {
+    name: 'blog.post',
     path: '/blog/post/:post',
     scopes: {}
   }
-}
+]

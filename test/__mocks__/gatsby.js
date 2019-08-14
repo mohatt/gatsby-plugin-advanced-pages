@@ -1,9 +1,12 @@
 'use strict';
 
+const path = require('path');
 const React = require('react');
+const withPrefix = pathname => path.join('/site', pathname)
 
 module.exports = {
-  withPrefix: jest.fn().mockImplementation(path => path),
+  graphql: jest.fn(),
+  withPrefix: jest.fn().mockImplementation(withPrefix),
   navigate: jest.fn(),
   Link: jest.fn().mockImplementation(
     ({
@@ -18,11 +21,8 @@ module.exports = {
     }) => (
       React.createElement('a', {
         ...rest,
-        href: to,
+        href: to && withPrefix(to),
       })
     )
-  ),
-  graphql: jest.fn(),
-  StaticQuery: jest.fn(),
-  useStaticQuery: jest.fn()
+  )
 };

@@ -1,7 +1,7 @@
 import fs from 'fs'
 import path from 'path'
 
-export default async function ({ store, getNodesByType }) {
+export default async function ({ store }) {
   const { program } = store.getState()
   // Add pagination fragment to .cache/fragments.
   await fs.copyFile(

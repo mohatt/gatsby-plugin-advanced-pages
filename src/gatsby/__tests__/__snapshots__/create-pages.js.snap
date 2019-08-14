@@ -88,28 +88,33 @@ Array [
 exports[`createPages correctly creates pages 2`] = `
 "\\"use strict\\";
 
-module.exports = {
-  \\"home\\": {
+module.exports = [
+  {
+    \\"name\\": \\"home\\",
     \\"path\\": \\"/\\",
     \\"scopes\\": {}
   },
-  \\"blog\\": {
+  {
+    \\"name\\": \\"blog\\",
     \\"path\\": \\"/blog\\",
     \\"scopes\\": {
       \\"pagination\\": \\"/blog/page/:page\\"
     }
   },
-  \\"post\\": {
+  {
+    \\"name\\": \\"post\\",
     \\"path\\": \\"/blog/:post\\",
     \\"scopes\\": {}
   },
-  \\"about\\": {
+  {
+    \\"name\\": \\"about\\",
     \\"path\\": \\"/about\\",
     \\"scopes\\": {}
   },
-  \\"aboutme\\": {
+  {
+    \\"name\\": \\"aboutme\\",
     \\"path\\": \\"/aboutme\\",
     \\"scopes\\": {}
   }
-};"
+];"
 `;

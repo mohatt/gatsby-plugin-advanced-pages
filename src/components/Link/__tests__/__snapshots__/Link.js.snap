@@ -31,18 +31,18 @@ Array [
 
 exports[`<Link /> should render correctly 1`] = `
 <a
-  href="/"
+  href="/site/"
 />
 `;
 
 exports[`<Link /> should render correctly with route params 1`] = `
 <a
-  href="/blog/post/hello-world"
+  href="/site/blog/post/hello-world"
 />
 `;
 
 exports[`<Link /> should render correctly with route params and scope 1`] = `
 <a
-  href="/blog/tag/news/page/5"
+  href="/site/blog/tag/news/page/5"
 />
 `;

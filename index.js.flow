@@ -2,14 +2,17 @@
 import * as React from "react";
 
 export interface Route {
+  name: string;
   path: string;
   scopes: {
     [index: string]: string;
   };
 }
 
-export interface RouteMap {
-  [index: string]: Route;
+export interface ActivatedRoute {
+  name: string;
+  path: string;
+  scope: string;
 }
 
 export interface RouteParams {
@@ -55,8 +58,11 @@ export type PathGeneratorFunction = (
 declare export var Pagination: React.ComponentType<PaginationProps>;
 declare export var Link: React.ComponentType<LinkProps>;
 
-declare export function getRouteMap(): RouteMap;
+declare export function getRoutes(): [Route];
 declare export function getRoute(route: string): Route;
+declare export function getActivatedRoute(): ActivatedRoute;
+declare export function isActivatedRoute(route: string): boolean;
+declare export function getMatchingRoute(path: string): ActivatedRoute;
 declare export function getPathGenerator(
   route: string,
   scope?: string,
@@ -74,4 +80,3 @@ declare export function navigate(
   scope?: string,
   options?: {}
 ): void;
-declare export function compilePath(path: string): PathGeneratorFunction;

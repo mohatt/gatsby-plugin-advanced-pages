@@ -1,0 +1,45 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`API correctly fetchs routes 1`] = `
+Object {
+  "name": "blog.post",
+  "path": "/blog/post/:post",
+  "scopes": Object {},
+}
+`;
+
+exports[`API correctly generates paths 1`] = `"/site"`;
+
+exports[`API correctly generates paths 2`] = `"/site/blog/post/hello"`;
+
+exports[`API picks the correct matching route 1`] = `
+Object {
+  "name": "blog",
+  "path": "/site/blog/page/:page",
+  "scope": "pagination",
+}
+`;
+
+exports[`API picks the correct matching route 2`] = `
+Object {
+  "name": "home",
+  "path": "/site/",
+  "scope": null,
+}
+`;
+
+exports[`API picks the correct matching route 3`] = `
+Object {
+  "name": "blog.tag",
+  "path": "/site/blog/tag/:tag/page/:page",
+  "scope": "pagination",
+}
+`;
+
+exports[`API picks the correct matching route 4`] = `
+Object {
+  "name": "blog.post",
+  "path": "/site/blog/post/:post",
+  "scope": null,
+}
+`;

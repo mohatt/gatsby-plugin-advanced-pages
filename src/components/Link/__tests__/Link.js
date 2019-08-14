@@ -1,10 +1,10 @@
 import React from 'react'
 import TestRenderer from 'react-test-renderer'
 import Link from '../Link'
-import routeMap from '../../../../test/__fixtures__/route-map'
+import routes from '../../../../test/__fixtures__/routes'
 
 // Create a virtual mock for routes.js
-jest.doMock('../../../routes', () => routeMap, { virtual: true })
+jest.doMock('../../../routes', () => routes, { virtual: true })
 
 describe(`<Link />`, () => {
   const render = (props = {}) => {

@@ -2,14 +2,17 @@ import * as React from 'react';
 import { PathFunction as PathGeneratorFunction } from 'path-to-regexp'
 
 export interface Route {
+  name: string;
   path: string;
   scopes: {
     [index: string]: string;
   }
 }
 
-export interface RouteMap {
-  [index: string]: Route;
+export interface ActivatedRoute {
+  name: string;
+  path: string;
+  scope: string;
 }
 
 export interface RouteParams {
@@ -50,8 +53,11 @@ export interface LinkProps {
 export const Pagination: React.ComponentType<PaginationProps>;
 export const Link: React.ComponentType<LinkProps>;
 
-export function getRouteMap(): RouteMap;
+export function getRoutes(): [Route];
 export function getRoute(route: string): Route;
+export function getActivatedRoute(): ActivatedRoute;
+export function isActivatedRoute(route: string): boolean;
+export function getMatchingRoute(path: string): ActivatedRoute;
 export function getPathGenerator(
   route: string,
   scope?: string,
@@ -69,4 +75,3 @@ export function navigate(
   scope?: string,
   options?: {}
 ): void;
-export function compilePath(path: string): PathGeneratorFunction;

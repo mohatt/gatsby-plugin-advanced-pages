@@ -1,7 +1,7 @@
 import fs from 'fs'
 import path from 'path'
 import _ from 'lodash'
-import compilePath from '../../lib/compile-path'
+import { compile as compileRoute } from '../../lib/route-compiler'
 import { getOption } from '../util'
 
 export default class PagesCreator {
@@ -25,7 +25,7 @@ export default class PagesCreator {
       }
       route.path = path.join(getOption('basePath'), route.path)
       route.scopes = {}
-      route.pathGenerator = compilePath(route.path)
+      route.pathGenerator = compileRoute(route.path)
       routeMap[name] = route
     }
 
@@ -83,7 +83,7 @@ export default class PagesCreator {
       page: {
         path: this.page.path
       },
-      pathGenerator: compilePath(scopedPath)
+      pathGenerator: compileRoute(scopedPath)
     }
   }
 
@@ -216,18 +216,19 @@ export default class PagesCreator {
     this.createPageAction(gatsbyPage)
   }
 
-  writeRouteMap (filename) {
-    const pathPrefix = getOption('basePath')
-    const map = _.mapValues(this.routeMap, route => ({
-      path: path.join(pathPrefix, route.path),
-      scopes: _.mapValues(route.scopes, sroute => (
-        path.join(pathPrefix, sroute.path)
-      ))
-    }))
-    const content = `"use strict";\n\nmodule.exports = ${JSON.stringify(map, null, 2)};`
+  writeRoutesExport (filename) {
+    const routes = _.map(this.routeMap, route => {
+      route = _.pick(route, ['name', 'path', 'scopes'])
+      route.scopes = _.mapValues(route.scopes, 'path')
+      return route
+    })
+
     try {
-      fs.writeFileSync(filename, content)
-      return content
+      fs.writeFileSync(
+        filename,
+        `"use strict";\n\nmodule.exports = ${JSON.stringify(routes, null, 2)};`
+      )
+      return true
     } catch (e) {
       throw new Error(`Error writing route map export file:\n${e.message}`)
     }

@@ -44,6 +44,6 @@ export default async function ({ graphql, actions }) {
   // Create the actual pages
   await pageCreator.createPages({ graphql, createPage })
 
-  // Write the route map export file
-  pageCreator.writeRouteMap(path.resolve(__dirname, '../routes.js'))
+  // Write routes export file
+  pageCreator.writeRoutesExport(path.resolve(__dirname, '../routes.js'))
 }
