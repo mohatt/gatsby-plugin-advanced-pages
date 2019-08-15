@@ -1,3 +1,10 @@
+## [1.3.3](https://github.com/mohatt/gatsby-plugin-advanced-pages/compare/v1.3.2...v1.3.3) (2019-08-15)
+
+
+### Bug Fixes
+
+* **node:** allow passing extra pages context to `createAdvancedPage()` ([ca367d9](https://github.com/mohatt/gatsby-plugin-advanced-pages/commit/ca367d9))
+
 ## [1.3.2](https://github.com/mohatt/gatsby-plugin-advanced-pages/compare/v1.3.1...v1.3.2) (2019-08-14)
 
 
