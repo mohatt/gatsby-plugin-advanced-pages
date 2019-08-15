@@ -1,5 +1,5 @@
 # Gatsby Advanced Pages
-[![][npm-img]][npm-url] [![][travis-img]][travis-url] [![][codecov-img]][codecov-url] [![][demo-img]][demo-url] [![][license-img]][license-url]
+[![][npm-img]][npm-url] [![][travis-img]][travis-url] [![][codecov-img]][codecov-url] [![][demo-img]][demo-url] [![][gatsby-img]][gatsby-url] [![][license-img]][license-url]
 
 Gatsby Advanced Pages is a wrapper around Gatsby's [createPage](https://www.gatsbyjs.org/docs/actions/#createPage) API that allows easy creation of pages with dynamic features like pagination and custom routing.
 
@@ -8,16 +8,14 @@ Gatsby Advanced Pages is a wrapper around Gatsby's [createPage](https://www.gats
 - [Demo](#demo)
 - [Usage](#usage)
   - [Creating pages](#creating-pages)
-    - [Simple pages](#simple-pages)
-    - [Page helpers](#page-helpers)
-    - [Passing data to templates](#passing-data-to-templates)
+  - [Page helpers](#page-helpers)
+  - [Passing data to templates](#passing-data-to-templates)
   - [Generating paths](#generating-paths)
+- [Components](#components)
+  - [Link component](#link-component)
+  - [Pagination component](#pagination-component)
+- [Functions](#functions)
 - [Configuration](#configuration)
-- [API](#api)
-  - [Components](#components)
-    - [Link component](#link-component)
-    - [Pagination component](#pagination-component)
-  - [Functions](#functions)
 - [License](#license)
 
 
@@ -58,7 +56,6 @@ plugins: [
 
 ### Creating pages
 
-#### Simple pages
 In order to create your first page, create a new Markdown file for the new page under `content/pages`
 
 `content/pages/hello.md`
@@ -101,7 +98,7 @@ export default PageTemplate
 
 Run `gatsby develop` and open http://localhost/hello to see your new page.
 
-#### Page helpers
+### Page helpers
 In order to create more advanced pages, you need to define a page helper in your markdown metadata. Page helpers are javascript files that export a function to be run by the plugin during Gatsby's [createPage](https://www.gatsbyjs.org/docs/actions/#createPage) lifecycle. Here is an example page helper that creates a blog index page with pagination functionality:
 
 `content/pages/blog.md`
@@ -139,11 +136,6 @@ module.exports = async function ({ graphql, page, createAdvancedPage }) {
     pagination: {
       count: result.data.allMarkdownRemark.totalCount,
       limit: 3,
-    },
-    filter: {
-      frontmatter: {
-        type: { eq: "post" }
-      }
     }
   })
 }
@@ -173,12 +165,12 @@ const BlogTemplate = ({ data }) => (
 )
 
 export const query = graphql`
-  query Blog($id: String!, $limit: Int!, $offset: Int!, $filter: MarkdownRemarkFilterInput!) {
+  query Blog($id: String!, $limit: Int!, $offset: Int!) {
     page(id: { eq: $id }) {
       title
       body
     }
-    allMarkdownRemark(limit: $limit, skip: $offset, filter: $filter){
+    allMarkdownRemark(limit: $limit, skip: $offset, filter: { frontmatter: { type: { eq: "post" } } }){
       edges {
         node {
           frontmatter {
@@ -226,11 +218,6 @@ createAdvancedPage({
     route: 'blog.paginated',
     count: result.data.allMarkdownRemark.totalCount,
     limit: 3,
-  },
-  filter: {
-    frontmatter: {
-      type: { eq: "post" }
-    }
   }
 })
 ```
@@ -240,7 +227,7 @@ Now the plugin will create the following pages:
  - /blog/what/ever/3
  - /blog/what/ever/4
 
-#### Passing data to templates
+### Passing data to templates
 You can pass structured data from your page to your template component by setting the `data` field in your page markdown. See below
 
 `content/pages/skills.md`
@@ -295,14 +282,14 @@ export const query = graphql`
 export default SkillsTemplate
 ```
 
-#### More Examples...
+#### More examples...
 Check out [example](https://github.com/mohatt/gatsby-plugin-advanced-pages/tree/master/example) directory for more examples on how to use the plugin
 
 
 ### Generating paths
 You can generate paths for the routes defined in your pages metadata using two methods:
 
-#### Link Component (recommended)
+#### Link component (recommended)
 The Link component is a wrapper around Gatsby's [Link component](https://www.gatsbyjs.org/docs/gatsby-link/) that allows passing route names and params instead of link urls. Below is an example of how to use it:
 
 Assuming you have a route named `blog.post` with a value of `/blog/posts/:post`, you can render a link to a specific blog post using the following:
@@ -325,16 +312,13 @@ const postUrl = generatePath('blog.post', { post: "some-post-slug" })
 ```
 
 
-## API
-The plugin exposes a set of components and functions that allow building advanced pages with minimal code. 
+## Components
+The plugin exposes a set of components and functions that allow building advanced pages with minimal code. These are the React components exposed by the plugin.
 
-### Components
-These are the React components exposed by the plugin.
-
-#### Link component
+### Link component
 Wrapper around Gatsby's [core Link component](https://www.gatsbyjs.org/docs/gatsby-link/) that allows passing route names and params instead of link urls.
 
-##### Props
+#### Props
 | Name | Type | Description |
 | --- | --- | --- |
 | to | `String` | **Required.** The name of the route to link to |
@@ -342,7 +326,7 @@ Wrapper around Gatsby's [core Link component](https://www.gatsbyjs.org/docs/gats
 | scope | `String` | Route scope. *Available scopes:* `pagination` |
 | ... | `[...]` | All props supported by [Gatsby Link component](https://www.gatsbyjs.org/docs/gatsby-link/) |
 
-##### Usage
+#### Usage
 ```javascript
 import { Link } from 'gatsby-plugin-advanced-pages'
 
@@ -363,23 +347,23 @@ import { Link } from 'gatsby-plugin-advanced-pages'
 <Link to="about" activeClassName="active" partiallyActive={true} />
 ```
 
-#### Pagination component
+### Pagination component
 Renders a pagination UI to paginate a set of results fetched using a GraphQL query
 
-##### Props
+#### Props
 | Name | Type | Description |
 | --- | --- | --- |
 | route | `String` | **Required.** The name of the route to paginate |
 | params | `Object` | Route paramaters |
 | pageInfo | `Object` | **Required.** `pageInfo` object fetched from GraphQL using `Pagination` fragment |
-| ui | `String` | UI mode (Defaults to `full`) *Available keys:* `mini`, `simple`, `full` |
+| ui | `String` | UI mode (Defaults to `full`). *Available keys:* `mini`, `simple`, `full` |
 | range | `Number` | Maximum number of pages displayed (Defaults to 6) |
 | className | `String` | Class name applied to the pagination container |
 | labels | `Object` | Navigation items labels. *Available keys:* `prev`, `next`, `first`, `last` |
 | theme | `Object` | Elements class names (Defaults to [Bootstrap 4 classes](https://getbootstrap.com/docs/4.3/components/pagination/#overview)). *Available keys:* `inner`, `item`, `item.next`, `item.prev`, `item.first`, `item.last`, `link`, `active`, `disabled` |
 | renderDisabled | `bool` | Render disabled navigation items (Defaults to `true`) |
 
-##### Usage
+#### Usage
 ```javascript
 import { Pagination } from 'gatsby-plugin-advanced-pages'
 
@@ -408,50 +392,50 @@ export default BlogTemplate
 ```
 Check out [example](https://github.com/mohatt/gatsby-plugin-advanced-pages/tree/master/example) directory for more examples
 
-### Functions
+## Functions
 These are the functions exposed by the plugin.
 
-#### createAdvancedPage
+### createAdvancedPage
 > `createAdvancedPage({ route: string, params?: object, pagination?: object, ...context }): void`
 
 Creates page(s) based on given input paramaters. *Note: This function can only be called within [Page helpers](#page-helpers).*
 
-#### generatePath
+### generatePath
 > `generatePath(route: string, params?: object, scope?: string, ignorePrefix?: boolean): string`
 
 Generates a path for a specific route based on the given parameters.
 
-#### getPathGenerator
+### getPathGenerator
 > `getPathGenerator(route: string, scope?: string, ignorePrefix?: boolean): Function`
 
 Returns a function to be used to generate paths for a specific route.
 
-#### navigate
+### navigate
 > `navigate(to: string, params?: object, scope?: string, options?: object): void`
 
 Extends Gatsby's [navigate](https://www.gatsbyjs.org/docs/gatsby-link/#how-to-use-the-navigate-helper-function) to allow passing route names and params.
 
-#### getActivatedRoute
+### getActivatedRoute
 > `getActivatedRoute(): ActivatedRoute`
 
 Gets the current active route based on `@reach/router` location history.
 
-#### getMatchingRoute
+### getMatchingRoute
 > `getMatchingRoute(path: string): ActivatedRoute`
 
 Gets the route that matches a given path. *Note: The provided path should be prefixed with `pathPrefix` if any.*
 
-#### isActivatedRoute
+### isActivatedRoute
 > `isActivatedRoute(route: string): boolean`
 
 Checks whether a given route is currently active.
 
-#### getRoutes
+### getRoutes
 > `getRoutes(): Array`
 
 Gets an array of all routes.
 
-#### getRoute
+### getRoute
 > `getRoute(route: string): Route`
 
 Gets a specific route.
@@ -553,7 +537,7 @@ Name of the route object type
 
 
 ## License
-[MIT](./LICENSE)
+[MIT][license-url]
 
 [npm-url]: https://www.npmjs.com/package/gatsby-plugin-advanced-pages
 [npm-img]: https://img.shields.io/npm/v/gatsby-plugin-advanced-pages.svg
@@ -561,6 +545,8 @@ Name of the route object type
 [travis-img]: https://img.shields.io/travis/mohatt/gatsby-plugin-advanced-pages.svg
 [codecov-url]: https://codecov.io/github/mohatt/gatsby-plugin-advanced-pages
 [codecov-img]: https://img.shields.io/codecov/c/github/mohatt/gatsby-plugin-advanced-pages.svg
+[gatsby-url]: https://www.gatsbyjs.org/packages/gatsby-plugin-advanced-pages
+[gatsby-img]: https://img.shields.io/badge/gatsby-v2.7+-blueviolet.svg
 [demo-url]: http://mohatt.github.io/gatsby-plugin-advanced-pages
 [demo-img]: https://img.shields.io/website/http/mohatt.github.io/gatsby-plugin-advanced-pages.svg?label=demo
 [license-url]: https://github.com/mohatt/gatsby-plugin-advanced-pages/blob/master/LICENSE
