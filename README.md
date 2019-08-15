@@ -372,6 +372,7 @@ Renders a pagination UI to paginate a set of results fetched using a GraphQL que
 | route | `String` | **Required.** The name of the route to paginate |
 | params | `Object` | Route paramaters |
 | pageInfo | `Object` | **Required.** `pageInfo` object fetched from GraphQL using `Pagination` fragment |
+| ui | `String` | UI mode (Defaults to `full`) *Available keys:* `mini`, `simple`, `full` |
 | range | `Number` | Maximum number of pages displayed (Defaults to 6) |
 | className | `String` | Class name applied to the pagination container |
 | labels | `Object` | Navigation items labels. *Available keys:* `prev`, `next`, `first`, `last` |
