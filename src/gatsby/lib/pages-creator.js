@@ -123,7 +123,7 @@ export default class PagesCreator {
     }
   }
 
-  createPage ({ route, params = {}, pagination, filter }) {
+  createPage ({ route, params = {}, pagination, ...context }) {
     const { page } = this
     if (typeof route !== 'string' || !route) {
       throw new TypeError(
@@ -144,12 +144,9 @@ export default class PagesCreator {
       component: page.templatePath,
       context: {
         id: page.id,
-        ...params
+        ...params,
+        ...context
       }
-    }
-
-    if (filter) {
-      gatsbyPage.context.filter = filter
     }
 
     if (pagination) {

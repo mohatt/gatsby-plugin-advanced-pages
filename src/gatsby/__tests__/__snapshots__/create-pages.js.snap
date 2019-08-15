@@ -200,6 +200,51 @@ module.exports = [
 ];"
 `;
 
+exports[`createPages correctly creates pages on (page-context) 1`] = `
+Array [
+  Array [
+    Object {
+      "component": "/virtual/project/src/templates/page.js",
+      "context": Object {
+        "id": "about-id",
+        "name": "adam",
+        "profile": Object {
+          "age": 25,
+          "gender": "male",
+        },
+      },
+      "path": "/about/adam",
+    },
+  ],
+  Array [
+    Object {
+      "component": "/virtual/project/src/templates/page.js",
+      "context": Object {
+        "id": "about-id",
+        "name": "sara",
+        "profile": Object {
+          "age": 28,
+          "gender": "female",
+        },
+      },
+      "path": "/about/sara",
+    },
+  ],
+]
+`;
+
+exports[`createPages correctly creates pages on (page-context) 2`] = `
+"\\"use strict\\";
+
+module.exports = [
+  {
+    \\"name\\": \\"about\\",
+    \\"path\\": \\"/about/:name\\",
+    \\"scopes\\": {}
+  }
+];"
+`;
+
 exports[`createPages throws error on (duplicated-routes) 1`] = `[Error: 'pages/about2.md' is trying to define a route named 'about' that is already defined in 'pages/about.md']`;
 
 exports[`createPages throws error on (invalid-helper) 1`] = `[Error: Invalid helper 'whatever' defined in page 'pages/about.md':  File does not exist at '/virtual/project/gatsby/pages/whatever.js']`;

@@ -195,5 +195,49 @@ export default [
         }
       }
     }
+  },
+  {
+    id: 'page-context',
+    routes: [
+      { name: 'about', path: '/about/:name', page: { path: 'pages/about.md' } },
+    ],
+    pages: [
+      {
+        id: 'about-id',
+        path: 'pages/about.md',
+        template: 'page',
+        helper: 'about',
+        routes: [
+          { name: 'about', path: '/about' }
+        ]
+      }
+    ],
+    files: {
+      templates: [ 'page' ],
+      helpers: {
+        about: function ({ createAdvancedPage }) {
+          createAdvancedPage({
+            route: 'about',
+            params: {
+              name: 'adam'
+            },
+            profile: {
+              gender: 'male',
+              age: 25
+            }
+          })
+          createAdvancedPage({
+            route: 'about',
+            params: {
+              name: 'sara'
+            },
+            profile: {
+              gender: 'female',
+              age: 28
+            }
+          })
+        }
+      }
+    }
   }
 ]

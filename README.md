@@ -411,7 +411,7 @@ Check out [example](https://github.com/mohatt/gatsby-plugin-advanced-pages/tree/
 These are the functions exposed by the plugin.
 
 #### createAdvancedPage
-> `createAdvancedPage({ route: string, params?: object, pagination?: object, filter?: object }): void`
+> `createAdvancedPage({ route: string, params?: object, pagination?: object, ...context }): void`
 
 Creates page(s) based on given input paramaters. *Note: This function can only be called within [Page helpers](#page-helpers).*
 
