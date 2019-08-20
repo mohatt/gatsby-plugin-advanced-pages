@@ -3,6 +3,7 @@
   "version": "1.3.3",
   "description": "Gatsby plugin that allows easy creation of pages with dynamic features like pagination and custom routing",
   "main": "index.js",
+  "types": "index.d.ts",
   "files": [
     "dist",
     "index.js",
