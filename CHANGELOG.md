@@ -1,3 +1,10 @@
+## [1.3.4](https://github.com/mohatt/gatsby-plugin-advanced-pages/compare/v1.3.3...v1.3.4) (2019-08-20)
+
+
+### Bug Fixes
+
+* **package:** include types in package json ([f44b4c7](https://github.com/mohatt/gatsby-plugin-advanced-pages/commit/f44b4c7))
+
 ## [1.3.3](https://github.com/mohatt/gatsby-plugin-advanced-pages/compare/v1.3.2...v1.3.3) (2019-08-15)
 
 
