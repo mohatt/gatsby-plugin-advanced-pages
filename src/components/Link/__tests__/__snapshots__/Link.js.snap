@@ -12,11 +12,7 @@ Array [
 exports[`<Link /> should log console error when called with invalid props 2`] = `
 Array [
   Array [
-    "Warning: Failed prop type: Invalid prop \`to\` of type \`number\` supplied to \`Link\`, expected \`string\`.
-    in Link (at Link.js:11)",
-  ],
-  Array [
-    "Warning: Invalid route props supplied to \`Link\` component: Expected route name to be a non-empty string (got 'number')",
+    "Warning: Invalid route params supplied to \`Link\` component: Error generating a path for route '/blog/post/:post' with params '{}': Expected \\"post\\" to be a string",
   ],
 ]
 `;
@@ -24,7 +20,7 @@ Array [
 exports[`<Link /> should log console error when called with invalid props 3`] = `
 Array [
   Array [
-    "Warning: Invalid route props supplied to \`Link\` component: Unrecognized route name 'invalid-route'",
+    "Warning: Invalid route params supplied to \`Link\` component: Error generating a path for route '/blog/post/:post' with params '{\\"invalid\\":\\"whatever\\"}': Expected \\"post\\" to be a string",
   ],
 ]
 `;
@@ -32,6 +28,18 @@ Array [
 exports[`<Link /> should render correctly 1`] = `
 <a
   href="/site/"
+/>
+`;
+
+exports[`<Link /> should render correctly when called with a non-existent route 1`] = `
+<a
+  href="/site/invalid-route"
+/>
+`;
+
+exports[`<Link /> should render correctly when called with a non-existent route 2`] = `
+<a
+  href="/site/some/path"
 />
 `;
 

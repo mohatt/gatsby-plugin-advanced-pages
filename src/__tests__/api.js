@@ -2,6 +2,7 @@ import { withPrefix } from 'gatsby'
 import routes from '../../test/__fixtures__/routes'
 import {
   getRoutes,
+  routeExists,
   getRoute,
   getActivatedRoute,
   isActivatedRoute,
@@ -23,14 +24,19 @@ jest.doMock('@reach/router', () => ({
 describe(`API`, () => {
   it(`correctly fetchs routes`, () => {
     expect(getRoutes()).toBe(routes)
+    expect(routeExists('blog.post')).toBe(true)
+    expect(routeExists('invalid')).toBe(false)
     expect(getRoute('blog.post')).toMatchSnapshot()
     expect(() => getRoute('invalid')).toThrow()
+    expect(() => getRoute(false)).toThrow()
+    expect(() => getRoute(23)).toThrow()
   })
 
   it(`picks the correct matching route`, () => {
     expect(getActivatedRoute()).toMatchSnapshot()
     expect(isActivatedRoute('home')).toBe(false)
     expect(isActivatedRoute('blog')).toBe(true)
+    expect(() => isActivatedRoute('invalid')).toThrow()
     expect(getMatchingRoute(withPrefix('/'))).toMatchSnapshot()
     expect(getMatchingRoute(withPrefix('/blog/tag/test/page/4'))).toMatchSnapshot()
     expect(getMatchingRoute(withPrefix('/blog/post/hi'))).toMatchSnapshot()
@@ -39,5 +45,6 @@ describe(`API`, () => {
   it(`correctly generates paths`, () => {
     expect(generatePath('home')).toMatchSnapshot()
     expect(generatePath('blog.post', { post: 'hello' })).toMatchSnapshot()
+    expect(() => generatePath('invalid')).toThrow()
   })
 })

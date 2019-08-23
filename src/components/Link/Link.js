@@ -1,24 +1,21 @@
 import React from 'react'
 import { Link as GatsbyLink } from 'gatsby'
 import { string, object } from 'prop-types'
-import { generatePath } from '../../api'
+import { routeExists, generatePath } from '../../api'
 
 const Link = ({ to, params, scope, ...props }) => {
-  let href
-  if (typeof to !== 'undefined') {
+  if (to && routeExists(to)) {
     try {
-      href = generatePath(to, params, scope, true)
+      to = generatePath(to, params, scope, true)
     } catch (e) {
-      if (process.env.NODE_ENV !== `production`) {
-        console.error(
-          'Warning: Invalid route props supplied to `Link` component: ' + e.message
-        )
-      }
+      console.error(
+          'Warning: Invalid route params supplied to `Link` component: ' + e.message
+      )
     }
   }
 
   return (
-    <GatsbyLink to={href} {...props} />
+    <GatsbyLink to={to} {...props} />
   )
 }
 

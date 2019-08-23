@@ -59,6 +59,7 @@ declare export var Pagination: React.ComponentType<PaginationProps>;
 declare export var Link: React.ComponentType<LinkProps>;
 
 declare export function getRoutes(): [Route];
+declare export function routeExists(route: string): boolean;
 declare export function getRoute(route: string): Route;
 declare export function getActivatedRoute(): ActivatedRoute;
 declare export function isActivatedRoute(route: string): boolean;

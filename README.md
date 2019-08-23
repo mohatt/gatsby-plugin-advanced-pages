@@ -290,7 +290,7 @@ Check out [example](https://github.com/mohatt/gatsby-plugin-advanced-pages/tree/
 You can generate paths for the routes defined in your pages metadata using two methods:
 
 #### Link component (recommended)
-The Link component is a wrapper around Gatsby's [Link component](https://www.gatsbyjs.org/docs/gatsby-link/) that allows passing route names and params instead of link urls. Below is an example of how to use it:
+The Link component is a wrapper around Gatsby's [Link component](https://www.gatsbyjs.org/docs/gatsby-link/) that allows passing route names and params in addition to regular paths. Below is an example of how to use it:
 
 Assuming you have a route named `blog.post` with a value of `/blog/posts/:post`, you can render a link to a specific blog post using the following:
 
@@ -316,12 +316,12 @@ const postUrl = generatePath('blog.post', { post: "some-post-slug" })
 The plugin exposes a set of components and functions that allow building advanced pages with minimal code. These are the React components exposed by the plugin.
 
 ### Link component
-Wrapper around Gatsby's [core Link component](https://www.gatsbyjs.org/docs/gatsby-link/) that allows passing route names and params instead of link urls.
+Wrapper around Gatsby's [core Link component](https://www.gatsbyjs.org/docs/gatsby-link/) that allows passing route names and params in addition to regular paths.
 
 #### Props
 | Name | Type | Description |
 | --- | --- | --- |
-| to | `String` | **Required.** The name of the route to link to |
+| to | `String` | **Required.** The name of the route to link to or a regular path |
 | params | `Object` | Route paramaters |
 | scope | `String` | Route scope. *Available scopes:* `pagination` |
 | ... | `[...]` | All props supported by [Gatsby Link component](https://www.gatsbyjs.org/docs/gatsby-link/) |
@@ -345,6 +345,10 @@ import { Link } from 'gatsby-plugin-advanced-pages'
 // You can pass any prop supported by GatsbyLink
 // Output: <GatsbyLink to="/about-me" activeClassName="active" partiallyActive={true} />
 <Link to="about" activeClassName="active" partiallyActive={true} />
+
+// If no valid route is supplied, a regular link will be rendered
+// Output: <GatsbyLink to="/some/path" />
+<Link to="some/path" />
 ```
 
 ### Pagination component
@@ -434,6 +438,11 @@ Checks whether a given route is currently active.
 > `getRoutes(): Array`
 
 Gets an array of all routes.
+
+### routeExists
+> `routeExists(route: string): boolean`
+
+Checks if there is a route defined with the given name.
 
 ### getRoute
 > `getRoute(route: string): Route`

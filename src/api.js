@@ -14,13 +14,17 @@ export function getRoute (route) {
     )
   }
 
-  const routes = getRoutes()
-  const ro = routes.find(r => r.name === route)
+  const ro = getRoutes().find(r => r.name === route)
   if (!ro) {
     throw new TypeError(`Unrecognized route name '${route}'`)
   }
 
   return ro
+}
+
+// Checks if there is a route defined with the given name
+export function routeExists (route) {
+ return getRoutes().find(r => r.name === route) !== undefined
 }
 
 // Gets the current active route based on `@reach/router` location history

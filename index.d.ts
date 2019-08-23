@@ -54,6 +54,7 @@ export const Pagination: React.ComponentType<PaginationProps>;
 export const Link: React.ComponentType<LinkProps>;
 
 export function getRoutes(): [Route];
+export function routeExists(route: string): boolean;
 export function getRoute(route: string): Route;
 export function getActivatedRoute(): ActivatedRoute;
 export function isActivatedRoute(route: string): boolean;

@@ -40,11 +40,21 @@ describe(`<Link />`, () => {
     render()
     expect(spy.mock.calls).toMatchSnapshot()
     spy.mockClear()
-    render({ to: 25 })
+    render({ to: 'blog.post' })
     expect(spy.mock.calls).toMatchSnapshot()
     spy.mockClear()
-    render({ to: 'invalid-route' })
+    render({
+      to: 'blog.post',
+      params: {
+        invalid: 'whatever'
+      }
+    })
     expect(spy.mock.calls).toMatchSnapshot()
     spy.mockRestore()
+  })
+
+  it(`should render correctly when called with a non-existent route`, () => {
+    expect(render({ to: 'invalid-route' })).toMatchSnapshot()
+    expect(render({ to: 'some/path' })).toMatchSnapshot()
   })
 })
