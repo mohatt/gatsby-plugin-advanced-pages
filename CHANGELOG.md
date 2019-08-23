@@ -1,3 +1,10 @@
+## [1.3.5](https://github.com/mohatt/gatsby-plugin-advanced-pages/compare/v1.3.4...v1.3.5) (2019-08-23)
+
+
+### Bug Fixes
+
+* **Link:** modify Link component so that it accepts regular paths in addition to route names ([e21e851](https://github.com/mohatt/gatsby-plugin-advanced-pages/commit/e21e851))
+
 ## [1.3.4](https://github.com/mohatt/gatsby-plugin-advanced-pages/compare/v1.3.3...v1.3.4) (2019-08-20)
 
 
