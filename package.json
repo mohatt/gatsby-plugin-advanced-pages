@@ -45,7 +45,7 @@
     "prop-types": "^15.6.1",
     "classnames": "^2.2.6",
     "lodash": "^4.17.15",
-    "mkdirp": "^0.5.1",
+    "mkdirp": "^1.0.0",
     "path-to-regexp": "^3.0.0"
   },
   "devDependencies": {
