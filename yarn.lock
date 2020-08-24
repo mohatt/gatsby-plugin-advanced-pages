@@ -5177,10 +5177,10 @@ merge2@^1.2.3:
   resolved "https://registry.yarnpkg.com/merge2/-/merge2-1.2.4.tgz#c9269589e6885a60cf80605d9522d4b67ca646e3"
   integrity sha512-FYE8xI+6pjFOhokZu0We3S5NKCirLbCzSh2Usf3qEyr4X8U+0jNg9P8RZ4qz+V2UoECLVwSyzU3LxXBaLGtD3A==
 
-metro-memory-fs@0.56.0:
-  version "0.56.0"
-  resolved "https://registry.yarnpkg.com/metro-memory-fs/-/metro-memory-fs-0.56.0.tgz#f458135744e450ecfe3fa8da2d4c6a8e125fed49"
-  integrity sha512-UGI88cTuEGy7CXmPqGlE2sIcMfzAeBA6nU1RhWgM0A/GiRwwfG2iPFi6/sEGQJXXn5nuHGx0tldJbsTlTZhU4A==
+metro-memory-fs@0.63.0:
+  version "0.63.0"
+  resolved "https://registry.yarnpkg.com/metro-memory-fs/-/metro-memory-fs-0.63.0.tgz#bb304dabe02098eac8f57e7fd388e29e8867ff24"
+  integrity sha512-X1/4aEbN7zylW6YV2Itr5fLQCVbuFXV9Hk4xSFksl3MuuE/scYmAYnB3SkG2UOb6Mynw9fFZWGyN5/l8Lue6Qg==
 
 micromatch@^3.1.10, micromatch@^3.1.4:
   version "3.1.10"
