@@ -9,7 +9,7 @@ const Link = ({ to, params, scope, ...props }) => {
       to = generatePath(to, params, scope, true)
     } catch (e) {
       console.error(
-          'Warning: Invalid route params supplied to `Link` component: ' + e.message
+        'Warning: Invalid route params supplied to `Link` component: ' + e.message
       )
     }
   }

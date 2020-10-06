@@ -19,7 +19,7 @@ export default function ({ actions, schema }) {
           }
         },
         path: {
-          type: `String!`,
+          type: 'String!',
           resolve: (source, args, context, info) => {
             const fileNode = context.nodeModel.findRootNodeAncestor(source)
             return fileNode && fileNode.absolutePath
@@ -43,7 +43,7 @@ export default function ({ actions, schema }) {
       extensions: {
         infer: false
       },
-      interfaces: [`Node`]
+      interfaces: ['Node']
     }),
     schema.buildObjectType({
       name: types.route,
@@ -67,7 +67,7 @@ export default function ({ actions, schema }) {
           many: true
         }
       },
-      interfaces: [`Node`]
+      interfaces: ['Node']
     })
   ])
 }

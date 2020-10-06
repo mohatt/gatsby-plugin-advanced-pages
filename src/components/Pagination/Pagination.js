@@ -65,9 +65,7 @@ export default class Pagination extends React.Component {
     const {
       ui,
       pageInfo: {
-        perPage,
         pageCount,
-        itemCount,
         currentPage,
         hasNextPage,
         hasPreviousPage
@@ -179,25 +177,25 @@ export default class Pagination extends React.Component {
   calcRange () {
     const { range, pageInfo: { currentPage, pageCount } } = this.props
 
-    let fp = Math.max(1, currentPage - Math.floor(range / 2));
-    let lp = Math.min(pageCount, currentPage + Math.floor(range / 2));
+    let fp = Math.max(1, currentPage - Math.floor(range / 2))
+    let lp = Math.min(pageCount, currentPage + Math.floor(range / 2))
 
     if (lp - fp + 1 < range) {
       if (currentPage < pageCount / 2) {
         lp = Math.min(
           pageCount,
           lp + (range - (lp - fp))
-        );
+        )
       } else {
-        fp = Math.max(1, fp - (range - (lp - fp)));
+        fp = Math.max(1, fp - (range - (lp - fp)))
       }
     }
 
     if (lp - fp + 1 > range) {
       if (currentPage > pageCount / 2) {
-        fp = fp + 1;
+        fp = fp + 1
       } else {
-        lp = lp - 1;
+        lp = lp - 1
       }
     }
 

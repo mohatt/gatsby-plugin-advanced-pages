@@ -42,7 +42,7 @@ export function initializeOptions (args) {
   if (!o.engine) {
     throw new TypeError(
       `Invalid engine option provided '${args.pluginOptions.engine}' (available engines` +
-      ` are '${Object.keys(ENGINES).join(`' or '`)}')`
+      ` are '${Object.keys(ENGINES).join('\' or \'')}')`
     )
   }
 
@@ -58,7 +58,7 @@ export function initializeOptions (args) {
   // Ensure we have a valid positive number
   o.pagination.limit = parseInt(o.pagination.limit)
   if (o.pagination.limit <= 0 || isNaN(o.pagination.limit)) {
-    throw new TypeError(`Expected a positive number for 'pagination.limit' option`)
+    throw new TypeError('Expected a positive number for \'pagination.limit\' option')
   }
 
   // Ensure type names are Capitalized

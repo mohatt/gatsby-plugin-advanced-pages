@@ -4,7 +4,7 @@ import { mapValues, merge } from 'lodash'
 import Pagination from '../Pagination'
 import testCases, { defaultTestCase } from '../../../../test/__fixtures__/pagination'
 
-describe(`<Pagination />`, () => {
+describe('<Pagination />', () => {
   const render = (props = {}) => {
     props = merge({}, defaultTestCase, props)
     return ShallowRenderer.createRenderer().render(
@@ -12,42 +12,42 @@ describe(`<Pagination />`, () => {
     )
   }
 
-  it(`should render correctly with defaults`, () => {
+  it('should render correctly with defaults', () => {
     expect(render()).toMatchSnapshot()
   })
 
-  it(`should render correctly with custom theme`, () => {
+  it('should render correctly with custom theme', () => {
     expect(render({
       theme: mapValues(Pagination.defaultProps.theme, v => v + '-custom')
     })).toMatchSnapshot()
   })
 
-  it(`should render correctly with custom labels`, () => {
+  it('should render correctly with custom labels', () => {
     expect(render({
       labels: mapValues(Pagination.defaultProps.labels, v => v + ' custom')
     })).toMatchSnapshot()
   })
 
-  it(`should render correctly with mini ui`, () => {
+  it('should render correctly with mini ui', () => {
     expect(render({ ui: 'mini' })).toMatchSnapshot()
   })
 
-  it(`should render correctly with simple ui`, () => {
+  it('should render correctly with simple ui', () => {
     expect(render({ ui: 'simple' })).toMatchSnapshot()
   })
 
-  it(`should render correctly with full ui`, () => {
+  it('should render correctly with full ui', () => {
     expect(render({ ui: 'full' })).toMatchSnapshot()
   })
 
-  it(`should render correctly with custom range`, () => {
+  it('should render correctly with custom range', () => {
     expect(render({ range: 1 })).toMatchSnapshot()
     expect(render({ range: 3 })).toMatchSnapshot()
     expect(render({ range: 7 })).toMatchSnapshot()
     expect(render({ range: 9 })).toMatchSnapshot()
   })
 
-  it(`shouldn't render disabled nav items when renderDisabled is false`, () => {
+  it('shouldn\'t render disabled nav items when renderDisabled is false', () => {
     expect(render({
       pageInfo: { currentPage: 1, hasPreviousPage: false },
       renderDisabled: false
@@ -69,7 +69,7 @@ describe(`<Pagination />`, () => {
     })).toMatchSnapshot()
   })
 
-  it(`should be able to handle different pageInfos`, () => {
+  it('should be able to handle different pageInfos', () => {
     for (const testCase of testCases) {
       expect(render(testCase)).toMatchSnapshot()
     }

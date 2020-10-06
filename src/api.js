@@ -24,7 +24,7 @@ export function getRoute (route) {
 
 // Checks if there is a route defined with the given name
 export function routeExists (route) {
- return getRoutes().find(r => r.name === route) !== undefined
+  return getRoutes().find(r => r.name === route) !== undefined
 }
 
 // Gets the current active route based on `@reach/router` location history

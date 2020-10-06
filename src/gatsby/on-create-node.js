@@ -38,7 +38,7 @@ export default function ({ node, actions, getNode, createNodeId, createContentDi
     if (!options.template) {
       throw new Error(
         `Missing 'template' metadata at '${fileNode.relativePath}'. No default ` +
-        `template is set in plugin options either.`
+        'template is set in plugin options either.'
       )
     }
     page.template = options.template
@@ -57,7 +57,7 @@ export default function ({ node, actions, getNode, createNodeId, createContentDi
     if (typeof routePath !== 'string' || routePath.charAt(0) !== '/') {
       throw new Error(
         `Value assigned to 'routes[${routeName}]' in ${fileNode.relativePath} ` +
-        `must be a string starting with '/'`
+        'must be a string starting with \'/\''
       )
     }
 

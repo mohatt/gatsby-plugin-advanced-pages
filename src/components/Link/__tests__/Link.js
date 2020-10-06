@@ -6,16 +6,16 @@ import routes from '../../../../test/__fixtures__/routes'
 // Create a virtual mock for routes.js
 jest.doMock('../../../routes', () => routes, { virtual: true })
 
-describe(`<Link />`, () => {
+describe('<Link />', () => {
   const render = (props = {}) => {
     return TestRenderer.create(<Link {...props} />).toJSON()
   }
 
-  it(`should render correctly`, () => {
+  it('should render correctly', () => {
     expect(render({ to: 'home' })).toMatchSnapshot()
   })
 
-  it(`should render correctly with route params`, () => {
+  it('should render correctly with route params', () => {
     expect(render({
       to: 'blog.post',
       params: {
@@ -24,7 +24,7 @@ describe(`<Link />`, () => {
     })).toMatchSnapshot()
   })
 
-  it(`should render correctly with route params and scope`, () => {
+  it('should render correctly with route params and scope', () => {
     expect(render({
       to: 'blog.tag',
       scope: 'pagination',
@@ -35,7 +35,7 @@ describe(`<Link />`, () => {
     })).toMatchSnapshot()
   })
 
-  it(`should log console error when called with invalid props`, () => {
+  it('should log console error when called with invalid props', () => {
     const spy = jest.spyOn(console, 'error').mockImplementation()
     render()
     expect(spy.mock.calls).toMatchSnapshot()
@@ -53,7 +53,7 @@ describe(`<Link />`, () => {
     spy.mockRestore()
   })
 
-  it(`should render correctly when called with a non-existent route`, () => {
+  it('should render correctly when called with a non-existent route', () => {
     expect(render({ to: 'invalid-route' })).toMatchSnapshot()
     expect(render({ to: 'some/path' })).toMatchSnapshot()
   })

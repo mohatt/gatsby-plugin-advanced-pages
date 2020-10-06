@@ -8,7 +8,7 @@ import testCases from '../../../test/__fixtures__/create-pages'
 // Use in-memory file system
 jest.mock('fs')
 
-describe(`createPages`, () => {
+describe('createPages', () => {
   const graphql = jest.fn()
   const createPage = jest.fn()
   const actions = { createPage }
@@ -62,7 +62,7 @@ describe(`createPages`, () => {
         error = e
       }
 
-      if(throws) {
+      if (throws) {
         expect(error).not.toBeNull()
         expect(error).toMatchSnapshot()
         return

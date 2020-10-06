@@ -21,8 +21,8 @@ jest.doMock('@reach/router', () => ({
   }
 }), { virtual: true })
 
-describe(`API`, () => {
-  it(`correctly fetchs routes`, () => {
+describe('API', () => {
+  it('correctly fetchs routes', () => {
     expect(getRoutes()).toBe(routes)
     expect(routeExists('blog.post')).toBe(true)
     expect(routeExists('invalid')).toBe(false)
@@ -32,7 +32,7 @@ describe(`API`, () => {
     expect(() => getRoute(23)).toThrow()
   })
 
-  it(`picks the correct matching route`, () => {
+  it('picks the correct matching route', () => {
     expect(getActivatedRoute()).toMatchSnapshot()
     expect(isActivatedRoute('home')).toBe(false)
     expect(isActivatedRoute('blog')).toBe(true)
@@ -42,7 +42,7 @@ describe(`API`, () => {
     expect(getMatchingRoute(withPrefix('/blog/post/hi'))).toMatchSnapshot()
   })
 
-  it(`correctly generates paths`, () => {
+  it('correctly generates paths', () => {
     expect(generatePath('home')).toMatchSnapshot()
     expect(generatePath('blog.post', { post: 'hello' })).toMatchSnapshot()
     expect(() => generatePath('invalid')).toThrow()

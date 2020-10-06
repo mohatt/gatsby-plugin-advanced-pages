@@ -128,7 +128,7 @@ export default class PagesCreator {
     if (typeof route !== 'string' || !route) {
       throw new TypeError(
         `Route name passed to createAdvancedPage() at '${page.helperPath}'` +
-        ` must be a non-empty string`
+        ' must be a non-empty string'
       )
     }
 
@@ -153,7 +153,7 @@ export default class PagesCreator {
       if (typeof pagination.count === 'undefined') {
         throw new TypeError(
           `Invalid pagination object passed to createAdvancedPage() at '${page.helperPath}': ` +
-          `'count' paramater is missing`
+          '\'count\' paramater is missing'
         )
       }
       pagination.count = parseInt(pagination.count)

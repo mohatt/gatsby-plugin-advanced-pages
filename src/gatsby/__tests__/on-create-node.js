@@ -10,7 +10,7 @@ beforeAll(() => {
   mountOptions()
 })
 
-describe(`onCreateNode`, () => {
+describe('onCreateNode', () => {
   const createNode = jest.fn()
   const createParentChildLink = jest.fn()
   const actions = { createNode, createParentChildLink }
