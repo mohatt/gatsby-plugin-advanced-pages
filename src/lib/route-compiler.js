@@ -1,4 +1,4 @@
-import pathToRegexp from 'path-to-regexp'
+import * as PathToRegexp from 'path-to-regexp'
 
 function normalize (route) {
   // Strip trailing slashes before passing to pathToRegexp
@@ -11,7 +11,7 @@ function normalize (route) {
 
 // Checks if the route matches the given path
 export function test (route, path) {
-  const regexp = pathToRegexp(normalize(route))
+  const regexp = PathToRegexp.pathToRegexp(normalize(route))
   return regexp.test(path)
 }
 
@@ -33,7 +33,7 @@ export function compile (route) {
     return compile.cache[route]
   }
 
-  const generator = pathToRegexp.compile(normalize(route))
+  const generator = PathToRegexp.compile(normalize(route))
   return compile.cache[route] = function (data, options) {
     try {
       return generator(data, options)
