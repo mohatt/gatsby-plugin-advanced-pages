@@ -60,9 +60,9 @@
     "react-test-renderer": "16.9.0",
     "rimraf": "3.0.0",
     "standard": "14.1.0",
-    "semantic-release": "15.13.24",
-    "@semantic-release/changelog": "3.0.4",
-    "@semantic-release/git": "7.0.16"
+    "semantic-release": "15.14.0",
+    "@semantic-release/changelog": "3.0.6",
+    "@semantic-release/git": "7.0.18"
   },
   "peerDependencies": {
     "gatsby": ">=2.7.0",
