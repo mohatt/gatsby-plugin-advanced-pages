@@ -4,7 +4,7 @@ exports[`<Link /> should log console error when called with invalid props 1`] = 
 Array [
   Array [
     "Warning: Failed prop type: The prop \`to\` is marked as required in \`Link\`, but its value is \`undefined\`.
-    in Link (at Link.js:11)",
+    in Link",
   ],
 ]
 `;
