@@ -11,12 +11,12 @@
     "serve": "gatsby serve"
   },
   "dependencies": {
-    "gatsby": "^2.13.51",
-    "gatsby-plugin-advanced-pages": "^1.2.0",
-    "gatsby-source-filesystem": "^2.1.8",
-    "gatsby-transformer-remark": "^2.6.10",
-    "react": "^16.8.6",
-    "react-dom": "^16.8.6"
+    "gatsby": "^2.24.0",
+    "gatsby-plugin-advanced-pages": "^1.4.0",
+    "gatsby-source-filesystem": "^2.3.0",
+    "gatsby-transformer-remark": "^2.8.0",
+    "react": "^16.12.0",
+    "react-dom": "^16.12.0"
   },
   "homepage": "https://github.com/mohatt/gatsby-plugin-advanced-pages/tree/master/example#readme",
   "repository": {
