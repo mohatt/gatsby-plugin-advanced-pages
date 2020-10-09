@@ -1,3 +1,10 @@
+# [1.4.0](https://github.com/mohatt/gatsby-plugin-advanced-pages/compare/v1.3.5...v1.4.0) (2020-10-08)
+
+
+### Features
+
+* **plugin:** bump node min version to 10.13.0 ([470e7ac](https://github.com/mohatt/gatsby-plugin-advanced-pages/commit/470e7ac9bcee1d097a6b8e115b6180fbab5d04a6))
+
 ## [1.3.5](https://github.com/mohatt/gatsby-plugin-advanced-pages/compare/v1.3.4...v1.3.5) (2019-08-23)
 
 
