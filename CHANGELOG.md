@@ -1,3 +1,10 @@
+## [1.4.1](https://github.com/mohatt/gatsby-plugin-advanced-pages/compare/v1.4.0...v1.4.1) (2021-01-11)
+
+
+### Performance Improvements
+
+* **deps:** updated babel and pathToRegexp versions ([318b26e](https://github.com/mohatt/gatsby-plugin-advanced-pages/commit/318b26edc79121a51efd04434766e27a36f7cc0f))
+
 # [1.4.0](https://github.com/mohatt/gatsby-plugin-advanced-pages/compare/v1.3.5...v1.4.0) (2020-10-08)
 
 
