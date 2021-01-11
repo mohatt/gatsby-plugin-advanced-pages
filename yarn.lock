@@ -7964,7 +7964,7 @@ standard-engine@^14.0.1:
     pkg-conf "^3.1.0"
     xdg-basedir "^4.0.0"
 
-standard@>=16.0.0:
+standard@16.0.3:
   version "16.0.3"
   resolved "https://registry.yarnpkg.com/standard/-/standard-16.0.3.tgz#a854c0dd2dea6b9f0b8d20c65260210bd0cee619"
   integrity sha512-70F7NH0hSkNXosXRltjSv6KpTAOkUkSfyu3ynyM5dtRUiLtR+yX9EGZ7RKwuGUqCJiX/cnkceVM6HTZ4JpaqDg==
