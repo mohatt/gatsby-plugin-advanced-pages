@@ -50,7 +50,7 @@ jobs:
           key: ${{ runner.os }}-example-npm-${{ hashFiles('**/example/package.json') }}
           restore-keys: |
             ${{ runner.os }}-example-npm-
-      - run: npm ci
+      - run: npm install
       - run: npm run build --prefix-paths
       - if: github.event_name == 'push'
         uses: actions/upload-artifact@v2
