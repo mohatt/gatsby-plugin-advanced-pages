@@ -1,0 +1,69 @@
+name: CI
+
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+
+jobs:
+  test:
+    runs-on: ubuntu-18.04
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@2
+        with:
+          node-version: 12
+      - uses: actions/cache@v2
+        with:
+          path: ~/.npm
+          key: ${{ runner.os }}-npm-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-npm-
+      - run: npm ci
+      - run: npm run test:coverage
+      - uses: codecov/codecov-action@v1
+      - run: mv "$(npm pack | tail -n 1)" package.tgz
+      - uses: actions/upload-artifact@v2
+        with:
+          name: package-art
+          path: pkg.tgz
+  test_example:
+    needs: test
+    runs-on: ubuntu-18.04
+    defaults:
+      run:
+        working-directory: ./example
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/download-artifact@v2
+        with:
+          name: package-art
+          path: example
+      - run: npm install pkg.tgz --only=development --no-package-lock
+      - uses: actions/cache@v2
+        with:
+          path: ~/.npm
+          key: ${{ runner.os }}-example-npm-${{ hashFiles('**/example/package.json') }}
+          restore-keys: |
+            ${{ runner.os }}-example-npm-
+      - run: npm ci
+      - run: npm run build --prefix-paths
+      - if: github.event_name == 'push'
+        uses: actions/upload-artifact@v2
+        with:
+          name: example-art
+          path: example/public
+  deploy_example:
+    if: github.event_name == 'push'
+    needs: test_example
+    runs-on: ubuntu-18.04
+    steps:
+      - uses: actions/download-artifact@v2
+        with:
+          name: example-art
+      - uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./public
+          force_orphan: true
