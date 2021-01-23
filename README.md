@@ -551,7 +551,7 @@ Name of the route object type
 [npm-url]: https://www.npmjs.com/package/gatsby-plugin-advanced-pages
 [npm-img]: https://img.shields.io/npm/v/gatsby-plugin-advanced-pages.svg
 [ci-url]: https://github.com/mohatt/gatsby-plugin-advanced-pages/actions
-[ci-img]: https://github.com/mohatt/gatsby-plugin-advanced-pages/workflows/ci/badge.svg?branch=master
+[ci-img]: https://img.shields.io/github/workflow/status/mohatt/gatsby-plugin-advanced-pages/CI/master
 [codecov-url]: https://codecov.io/github/mohatt/gatsby-plugin-advanced-pages
 [codecov-img]: https://img.shields.io/codecov/c/github/mohatt/gatsby-plugin-advanced-pages.svg
 [gatsby-url]: https://www.gatsbyjs.org/packages/gatsby-plugin-advanced-pages

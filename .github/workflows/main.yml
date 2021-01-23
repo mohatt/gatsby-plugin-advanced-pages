@@ -23,7 +23,7 @@ jobs:
       - run: npm ci
       - run: npm run test:coverage
       - uses: codecov/codecov-action@v1
-      - run: mv "$(npm pack | tail -n 1)" package.tgz
+      - run: mv "$(npm pack | tail -n 1)" pkg.tgz
       - uses: actions/upload-artifact@v2
         with:
           name: package-art
