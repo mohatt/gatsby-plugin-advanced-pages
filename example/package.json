@@ -15,8 +15,8 @@
     "gatsby-plugin-advanced-pages": "^1.4.0",
     "gatsby-source-filesystem": "^2.9.0",
     "gatsby-transformer-remark": "^2.14.0",
-    "react": "^16.14.0",
-    "react-dom": "^16.14.0"
+    "react": "^17.0.0",
+    "react-dom": "^17.0.0"
   },
   "homepage": "https://github.com/mohatt/gatsby-plugin-advanced-pages/tree/master/example#readme",
   "repository": {
