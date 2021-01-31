@@ -25,11 +25,7 @@ export default function (Joi) {
     }),
     typeNames: Joi.object({
       page: Joi.string()
-        .pattern(/^[A-Z]\w+$/)
-        .description(`Name of the Page object type.`)
-        .messages({
-          'string.pattern.base': '{{#label}} with value "{{#value}}": Object type must be Title-cased'
-        }),
+        .description(`Name of the Page object type.`),
     }),
   })
 }

@@ -17,15 +17,15 @@ export function initializeOptions (args) {
 
   // Merge user-defined options with defaults
   const options = _.merge(args.defaultOptions, args.pluginOptions)
-
   // set the root path of the the project
   options._root = args.store.getState().program.directory
-
   // Ensure basePath is absolute
   options.basePath = path.join('/', options.basePath)
+  // Ensure type names are Title case
+  options.typeNames = _.mapValues(options.typeNames, _.upperFirst)
 
   // Cache the options object now so that subsequent
-  // calls dont throw an error
+  // calls to lookupPath() dont throw an error
   initializeOptions.options = options
 
   // Verify directory locations
@@ -130,7 +130,7 @@ export function lookupPath(location, parent = null){
   }
 
   let search = []
-  if(parent) {
+  if(parent && typeof parent === 'string') {
     const localPath = path.join(parent, location)
     search.push(localPath)
     if(fs.existsSync(localPath)) {
