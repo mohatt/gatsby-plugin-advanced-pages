@@ -1,6 +1,5 @@
 import fs from 'fs'
 import path from 'path'
-import mkdirp from 'mkdirp'
 import _ from 'lodash'
 import debug from 'debug'
 
@@ -17,19 +16,26 @@ export function initializeOptions (args) {
   }
 
   const options = args.pluginOptions
-  const root = args.store.getState().program.directory
+
+  // set the root path of the the project
+  options._root = args.store.getState().program.directory
 
   // Ensure basePath is absolute
   options.basePath = path.join('/', options.basePath)
 
-  // Convert directory paths to absolute ones
+  // Cache the options object now so that subsequent
+  // calls dont throw an error
+  initializeOptions.options = options
+
+  // Verify directory locations
   options.directories = _.mapValues(options.directories, dir => {
-    const dirPath = path.join(root, dir)
-    if (!fs.existsSync(dirPath)) {
-      mkdirp.sync(dirPath)
-    }
-    return dirPath
+    return lookupPath(dir)
   })
+
+  // Verify default template
+  if(options.template) {
+    options.template = lookupPath(options.template, options.directories.templates)
+  }
 
   // Debug final options object
   debug('gatsby-plugin-advanced-pages')('Options', options)
@@ -46,4 +52,41 @@ export function getOptions () {
 // Gets the value of a single option
 export function getOption (optionName) {
   return _.get(getOptions(), optionName)
+}
+
+// Checks if a location exists under parent
+// if not checks if it exists under project root
+// if not check if its an absolute path
+// throws an error if cant find any
+export function lookupPath(location, parent = null){
+  if(!location || typeof location !== 'string') {
+    throw new TypeError(
+      `ensurePath() expected a non-empty string but got ${typeof location}("${location}")`
+    )
+  }
+
+  let search = []
+  if(parent) {
+    const localPath = path.join(parent, location)
+    search.push(localPath)
+    if(fs.existsSync(localPath)) {
+      return localPath
+    }
+  }
+
+  const rootPath = path.join(getOption('_root'), location)
+  search.push(rootPath)
+  if(fs.existsSync(rootPath)) {
+    return rootPath
+  }
+
+  search.push(location)
+  if(fs.existsSync(location)) {
+    return location
+  }
+
+  throw new Error(
+    `A path with value "${location}" could not be found at ` +
+    `any of the following locations:\n - "${search.join(`\n - "`)}"`
+  )
 }
