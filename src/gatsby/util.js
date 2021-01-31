@@ -23,15 +23,14 @@ export function initializeOptions (args) {
   options.basePath = path.join('/', options.basePath)
   // Ensure type names are Title case
   options.typeNames = _.mapValues(options.typeNames, _.upperFirst)
+  // Convert directory paths to absolute ones
+  options.directories = _.mapValues(options.directories, dir => (
+    path.join(options._root, dir)
+  ))
 
   // Cache the options object now so that subsequent
   // calls to lookupPath() dont throw an error
   initializeOptions.options = options
-
-  // Verify directory locations
-  options.directories = _.mapValues(options.directories, dir => {
-    return lookupPath(dir)
-  })
 
   // Verify default template
   if(options.template) {
