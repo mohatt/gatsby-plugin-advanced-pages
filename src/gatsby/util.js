@@ -6,7 +6,7 @@ import debug from 'debug'
 // Initializes options
 // The function only runs when called with args to initialize and cache
 // options object. Subsequent calls without args return the cached value
-export function initializeOptions (args) {
+export function initializeOptions (options) {
   if (arguments.length === 0) {
     if (typeof initializeOptions.options === 'undefined') {
       throw new Error('Cant fetch options because they are not initialized')
@@ -15,31 +15,7 @@ export function initializeOptions (args) {
     return initializeOptions.options
   }
 
-  const options = args.pluginOptions
-
-  // set the root path of the the project
-  options._root = args.store.getState().program.directory
-
-  // Ensure basePath is absolute
-  options.basePath = path.join('/', options.basePath)
-
-  // Cache the options object now so that subsequent
-  // calls dont throw an error
-  initializeOptions.options = options
-
-  // Verify directory locations
-  options.directories = _.mapValues(options.directories, dir => {
-    return lookupPath(dir)
-  })
-
-  // Verify default template
-  if(options.template) {
-    options.template = lookupPath(options.template, options.directories.templates)
-  }
-
-  // Debug final options object
   debug('gatsby-plugin-advanced-pages')('Options', options)
-
   initializeOptions.options = options
   return options
 }
@@ -58,7 +34,7 @@ export function getOption (optionName) {
 // if not checks if it exists under project root
 // if not check if its an absolute path
 // throws an error if cant find any
-export function lookupPath(location, parent = null){
+export function lookupPath(location, parent = false, root = true){
   if(!location || typeof location !== 'string') {
     throw new TypeError(
       `ensurePath() expected a non-empty string but got ${typeof location}("${location}")`
@@ -66,7 +42,7 @@ export function lookupPath(location, parent = null){
   }
 
   let search = []
-  if(parent) {
+  if(parent && typeof parent === 'string') {
     const localPath = path.join(parent, location)
     search.push(localPath)
     if(fs.existsSync(localPath)) {
@@ -74,10 +50,14 @@ export function lookupPath(location, parent = null){
     }
   }
 
-  const rootPath = path.join(getOption('_root'), location)
-  search.push(rootPath)
-  if(fs.existsSync(rootPath)) {
-    return rootPath
+  if(root) {
+    const rootPath = typeof root === 'string'
+      ? path.join(root, location)
+      : path.join(getOption('_root'), location)
+    search.push(rootPath)
+    if(fs.existsSync(rootPath)) {
+      return rootPath
+    }
   }
 
   search.push(location)
