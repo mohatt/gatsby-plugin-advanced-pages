@@ -1,49 +1,48 @@
 import path from "path";
 import fs from "fs";
 import { validateOptionsSchema, Joi } from 'gatsby-plugin-utils'
-import { getOptions } from './util'
+import { getOptions, lookupPath } from './util'
 import { pagesSchema } from './schema'
 
-// Searches for a valid pages config file under {root}, loads it and then validates it
-async function getPagesConfig (root) {
-  let loadedConfigFile;
-
-  const loadPagesConfig = () => {
-    const jsFile = path.join(root, 'pages.config.js')
-    if(fs.existsSync(jsFile)){
-      loadedConfigFile = jsFile
-      return require(jsFile)
-    }
-
-    const jsonFile = path.join(root, 'pages.config.json')
-    if(fs.existsSync(jsonFile)){
-      loadedConfigFile = jsonFile
-      return require(jsonFile)
-    }
-
-    const yamlFile = path.join(root, 'pages.config.yaml')
-    if(fs.existsSync(yamlFile)){
-      loadedConfigFile = yamlFile
-      const yaml = require('js-yaml')
-      return yaml.load(fs.readFileSync(yamlFile, 'utf8'), {
-        filename: yamlFile,
-        schema: yaml.FAILSAFE_SCHEMA
-      });
-    }
-
-    throw new Error(`Unable to find a valid pages config file under '${root}'`)
+// Searches for a pages config file under {root}
+// Loads it, compiles it
+function findPagesConfig (root) {
+  const file = { path: path.join(root, 'pages.config.js') }
+  if(fs.existsSync(file.path)){
+    file.contents = require(file.path)
+    return file
   }
 
-  const content = loadPagesConfig()
+  file.path = path.join(root, 'pages.config.json')
+  if(fs.existsSync(file.path)){
+    file.contents = require(file.path)
+    return file
+  }
+
+  file.path = path.join(root, 'pages.config.yaml')
+  if(fs.existsSync(file.path)){
+    const yaml = require('js-yaml')
+    file.contents =  yaml.load(fs.readFileSync(file.path, 'utf8'), {
+      filename: file.path,
+      schema: yaml.FAILSAFE_SCHEMA
+    });
+    return file
+  }
+
+  throw new Error(`Unable to find a valid pages config file under "${root}"`)
+}
+
+// Validates the contents of a pages config file
+async function validatePagesConfig (file) {
   const schema = pagesSchema(Joi)
   try {
-    return await validateOptionsSchema(schema, content)
+    return await validateOptionsSchema(schema, file.contents)
   } catch (e) {
-    throw new Error(`Unable to validate pages config file '${loadedConfigFile}': ${e.message}`)
+    throw new Error(`Unable to validate pages config file "${file.path}": ${e.message}`)
   }
 }
 
-export default async function ({ store, actions, schema, createNodeId, createContentDigest }) {
+export default async function ({ actions, schema, createNodeId, createContentDigest }) {
   const { createTypes, createNode } = actions
   const options = getOptions()
 
@@ -60,52 +59,26 @@ export default async function ({ store, actions, schema, createNodeId, createCon
     }),
   ])
 
-  const root = store.getState().program.directory
-  const pages = await getPagesConfig(root)
+  const configFile = findPagesConfig(options.directories.pages)
+  const pages = await validatePagesConfig(configFile)
 
   let i = 0
   for (const page of pages) {
     // Set template file path
     page.templateName = page.template
     if(page.template) {
-      const templatePath = path.join(options.directories.templates, page.template)
-      if(fs.existsSync(templatePath)) {
-        page.template = templatePath
-      } else {
-        const templatePathAbs = path.join(root, page.template)
-        if(fs.existsSync(templatePathAbs)) {
-          page.template = templatePathAbs
-        } else {
-          throw new Error(
-            `Page template with value "${page.template}" could not be found ` +
-            `at "${templatePath}" or "${templatePathAbs}".`
-          )
-        }
-      }
+      page.template = lookupPath(page.template, options.directories.templates)
     }
 
     // Set helper file path
     if(page.helper) {
-      const helperPath = path.join(options.directories.helpers, page.helper)
-      if(fs.existsSync(helperPath)) {
-        page.helper = helperPath
-      } else {
-        const helperPathAbs = path.join(root, page.helper)
-        if(fs.existsSync(helperPathAbs)) {
-          page.helper = helperPathAbs
-        } else {
-          throw new Error(
-            `Page helper with value "${page.helper}" could not be found ` +
-            `at "${helperPath}" or "${helperPathAbs}".`
-          )
-        }
-      }
+      page.helper = lookupPath(page.helper, options.directories.helpers)
     }
 
     if (!page.template) {
       if (!options.template) {
         throw new Error(
-          `Missing 'template' metadata for page[${i}]: "${page.title}". No default ` +
+          `Missing "template" metadata for page[${i}]: "${page.title}". No default ` +
           'template is set in plugin options either.'
         )
       }

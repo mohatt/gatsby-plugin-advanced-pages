@@ -7,11 +7,14 @@ export default function (Joi) {
       .default(null)
       .description(`Default template to be used for pages with no "template" metadata defined.`),
     directories: Joi.object({
+      pages: Joi.string()
+        .default('.')
+        .description(`Location to look for the pages config file.`),
       templates: Joi.string()
-        .default('src/templates')
+        .default('./src/templates')
         .description(`Location of template components used to render pages.`),
       helpers: Joi.string()
-        .default('gatsby/pages')
+        .default('./gatsby/pages')
         .description(`Location of page helpers.`),
     }).default(),
     pagination: Joi.object({
@@ -31,7 +34,7 @@ export default function (Joi) {
       page: Joi.string()
         .pattern(/^[A-Z]\w+$/)
         .default('Page')
-        .description(`Name of the page object type.`)
+        .description(`Name of the Page object type.`)
         .messages({
           'string.pattern.base': '{{#label}} with value "{{#value}}": Object type must be Title-cased'
         }),
