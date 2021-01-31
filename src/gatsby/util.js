@@ -15,7 +15,8 @@ export function initializeOptions (args) {
     return initializeOptions.options
   }
 
-  const options = args.pluginOptions
+  // Merge user-defined options with defaults
+  const options = _.merge(args.defaultOptions, args.pluginOptions)
 
   // set the root path of the the project
   options._root = args.store.getState().program.directory
@@ -41,7 +42,6 @@ export function initializeOptions (args) {
   debug('gatsby-plugin-advanced-pages')('Options', options)
 
   initializeOptions.options = options
-  return options
 }
 
 // Gets the initialized options object

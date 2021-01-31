@@ -1,4 +1,4 @@
-import { initializeOptions } from './util'
+import { initializeOptions} from './util'
 import { optionsSchema } from './schema'
 
 // Validates user-defined options against schema
@@ -7,8 +7,31 @@ export function pluginOptionsSchema ({ Joi }) {
   return optionsSchema(Joi)
 }
 
-export function onPreBootstrap ({ store }, pluginOptions) {
+// Initializes plugin options
+export function onPreBootstrap ({ store, reporter }, pluginOptions) {
+  // Default values for options
+  const defaultOptions = {
+    basePath: '/',
+    template: null,
+    directories: {
+      pages: '.',
+      templates: './src/templates',
+      helpers: './gatsby/pages'
+    },
+    pagination: {
+      limit: 10,
+      suffix: '/page/:page'
+    },
+    typeNames: {
+      page: 'Page',
+    },
+  }
+
   // Initializes and validates options
   // Only runs once at bootstrap
-  initializeOptions({ store, pluginOptions })
+  initializeOptions({
+    store,
+    defaultOptions,
+    pluginOptions
+  })
 }
