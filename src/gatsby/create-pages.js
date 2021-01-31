@@ -5,28 +5,20 @@ import { getOption } from './util'
 export default async function ({ graphql, actions }) {
   const { createPage } = actions
 
-  const types = getOption('typeNames')
+  const pageType = getOption('typeNames.page')
   const result = await graphql(`
     {
-      all${types.page} {
+      all${pageType} {
         nodes {
           id
           routes {
             name
             path
           }
-          path
+          title
+          templateName
           template
           helper
-        }
-      }
-      all${types.route} {
-        nodes {
-          name
-          path
-          page {
-            path
-          }
         }
       }
     }
@@ -36,10 +28,9 @@ export default async function ({ graphql, actions }) {
     throw result.errors
   }
 
-  const pageCreator = new PagesCreator({
-    routes: result.data[`all${types.route}`].nodes,
-    pages: result.data[`all${types.page}`].nodes
-  })
+  const pageCreator = new PagesCreator(
+    result.data[`all${pageType}`].nodes
+  )
 
   // Create the actual pages
   await pageCreator.createPages({ graphql, createPage })
