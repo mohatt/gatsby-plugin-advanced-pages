@@ -1,7 +1,7 @@
 import fs from 'fs'
 import path from 'path'
 import mkdirp from 'mkdirp'
-import { onPreBootstrap } from '../src/gatsby'
+import { onPreInit, onPreBootstrap } from '../src/gatsby'
 
 /**
  * Make sure to mock the fs module in your test
@@ -11,12 +11,22 @@ import { onPreBootstrap } from '../src/gatsby'
 // Virtual Project Root
 export const programRoot = '/virtual/project'
 
-// Changes plugin options by invoking the preBootstrap hook
+// Changes plugin options by invoking the onPreInit and onPreBootstrap hooks
 // Tests that run after calling this function will receive
 // the mounted options
 // Mae sure to wrap this in a try..catch block when you pass
 // custom options
 export function mountOptions(options = {}) {
+  onPreInit({
+    reporter: {
+      warn: jest.fn().mockImplementation(msg => {
+        throw new Error(msg)
+      }),
+      panic: jest.fn().mockImplementation(({ error }) => {
+        throw error
+      })
+    }
+  })
   onPreBootstrap({
     store: {
       getState: () => ({
