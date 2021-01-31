@@ -1,4 +1,4 @@
-export { onPreBootstrap, pluginOptionsSchema } from './bootstrap'
+export { onPreInit, onPreBootstrap, pluginOptionsSchema } from './bootstrap'
 export { default as sourceNodes } from './source-nodes'
 export { default as createPages } from './create-pages'
 export { default as onPreExtractQueries } from './install-fragments'

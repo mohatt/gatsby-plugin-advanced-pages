@@ -1,10 +1,15 @@
-import { initializeOptions} from './util'
+import { initializeOptions, initializeReporter } from './util'
 import { optionsSchema } from './schema'
 
 // Validates user-defined options against schema
 // runs before onPreBootstrap
 export function pluginOptionsSchema ({ Joi }) {
   return optionsSchema(Joi)
+}
+
+// Initializes plugin reporter
+export function onPreInit ({ reporter }) {
+  initializeReporter(reporter)
 }
 
 // Initializes plugin options

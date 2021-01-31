@@ -9,7 +9,7 @@ import debug from 'debug'
 export function initializeOptions (args) {
   if (arguments.length === 0) {
     if (typeof initializeOptions.options === 'undefined') {
-      throw new Error('Cant fetch options because they are not initialized')
+      return reportError('Cant fetch options because they are not initialized')
     }
 
     return initializeOptions.options
@@ -44,6 +44,63 @@ export function initializeOptions (args) {
   initializeOptions.options = options
 }
 
+// Initializes reporter
+// The function only runs when called with args to initialize and cache
+// reporter object. Subsequent calls without args return the cached value
+export function initializeReporter (reporter) {
+  if (arguments.length === 0) {
+    if (typeof initializeReporter.reporter === 'undefined') {
+      throw new Error('Cant fetch reporter because it is not initialized')
+    }
+
+    return initializeReporter.reporter
+  }
+
+  const errorMap = {
+    [10000]: {
+      text: context => context.message,
+      level: `ERROR`,
+      type: `PLUGIN`,
+    },
+  }
+
+  if (reporter.setErrorMap) {
+    reporter.setErrorMap(errorMap)
+  }
+
+  initializeReporter.reporter = reporter
+}
+
+// Gets the initialized eporter object
+export function getReporter () {
+  return initializeReporter()
+}
+
+// Gets the initialized eporter object
+export function reportError (message, e = null) {
+  const reporter = getReporter()
+  const prefix = `"gatsby-plugin-advanced-pages" threw an error while running`
+
+  if(!e) {
+    reporter.panic({
+      id: `10000`,
+      context: {
+        message: prefix
+      },
+      error: new Error(message)
+    })
+    return
+  }
+
+  reporter.panic({
+    id: `10000`,
+    context: {
+      message: `${prefix}:\n ${message}`
+    },
+    error: e
+  })
+}
+
 // Gets the initialized options object
 export function getOptions () {
   return initializeOptions()
@@ -60,7 +117,7 @@ export function getOption (optionName) {
 // throws an error if cant find any
 export function lookupPath(location, parent = null){
   if(!location || typeof location !== 'string') {
-    throw new TypeError(
+    return reportError(
       `ensurePath() expected a non-empty string but got ${typeof location}("${location}")`
     )
   }
@@ -85,7 +142,7 @@ export function lookupPath(location, parent = null){
     return location
   }
 
-  throw new Error(
+  reportError(
     `A path with value "${location}" could not be found at ` +
     `any of the following locations:\n - "${search.join(`\n - "`)}"`
   )
