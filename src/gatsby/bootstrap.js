@@ -10,5 +10,5 @@ export function pluginOptionsSchema ({ Joi }) {
 export function onPreBootstrap ({ store }, pluginOptions) {
   // Initializes and validates options
   // Only runs once at bootstrap
-  initializeOptions(pluginOptions)
+  initializeOptions({ store, pluginOptions })
 }
