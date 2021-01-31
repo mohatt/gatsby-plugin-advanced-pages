@@ -76,7 +76,7 @@ export function getReporter () {
   return initializeReporter()
 }
 
-// Gets the initialized eporter object
+// Prints an error message and terminates the build
 export function reportError (message, e = null) {
   const reporter = getReporter()
   const prefix = `"gatsby-plugin-advanced-pages" threw an error while running`
@@ -99,6 +99,13 @@ export function reportError (message, e = null) {
     },
     error: e
   })
+}
+
+// Prints a warning message
+export function reportWarning (message) {
+  const reporter = getReporter()
+  const prefix = `"gatsby-plugin-advanced-pages" might not be working properly`
+  reporter.warn(`${prefix}:\n ${message}`)
 }
 
 // Gets the initialized options object

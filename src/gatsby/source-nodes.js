@@ -1,7 +1,7 @@
 import path from "path";
 import fs from "fs";
 import { validateOptionsSchema, Joi } from 'gatsby-plugin-utils'
-import { getOptions, lookupPath } from './util'
+import { getOptions, lookupPath, reportError, reportWarning } from './util'
 import { pagesSchema } from './schema'
 
 // Searches for a pages config file under {root}
@@ -29,7 +29,7 @@ function findPagesConfig (root) {
     return file
   }
 
-  throw new Error(`Unable to find a valid pages config file under "${root}"`)
+  return false
 }
 
 // Validates the contents of a pages config file
@@ -38,7 +38,7 @@ async function validatePagesConfig (file) {
   try {
     return await validateOptionsSchema(schema, file.contents)
   } catch (e) {
-    throw new Error(`Unable to validate pages config file "${file.path}": ${e.message}`)
+    reportError(`Unable to validate pages config file "${file.path}":\n ${e.message}`)
   }
 }
 
@@ -60,8 +60,12 @@ export default async function ({ actions, schema, createNodeId, createContentDig
   ])
 
   const configFile = findPagesConfig(options.directories.pages)
-  const pages = await validatePagesConfig(configFile)
+  if(!configFile) {
+    reportWarning(`Unable to find a valid pages config file under "${options.directories.pages}"`)
+    return
+  }
 
+  const pages = await validatePagesConfig(configFile)
   let i = 0
   for (const page of pages) {
     // Set template file path
@@ -77,7 +81,7 @@ export default async function ({ actions, schema, createNodeId, createContentDig
 
     if (!page.template) {
       if (!options.template) {
-        throw new Error(
+        return reportError(
           `Missing "template" metadata for page[${i}]: "${page.title}". No default ` +
           'template is set in plugin options either.'
         )
