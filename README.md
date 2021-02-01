@@ -15,8 +15,8 @@ Gatsby Advanced Pages is a wrapper around Gatsby's [createPage](https://www.gats
   - [Pagination component](#pagination-component)
 - [Functions](#functions)
 - [Configuration](#configuration)
-	- [Pages Config File](#pages-config-file)
-	- [Plugin Options](#plugin-options)
+  - [Pages config file](#pages-config-file)
+  - [Plugin options](#plugin-options)
 - [License](#license)
 
 
@@ -439,7 +439,7 @@ Gets a specific route.
 
 ## Configuration
 
-### Pages Config File
+### Pages config file
 The pages configuration file defines your site’s pages and routes. This file should be in the root of your Gatsby site and could be defined in one of 3 formats:
 
 #### YAML
@@ -483,7 +483,7 @@ module.exports = [
 ```
 
 
-### Plugin Options
+### Plugin options
 
 #### Defaults
 Here is a full list of options with their default values that you can use to configure the plugin behaviour.
