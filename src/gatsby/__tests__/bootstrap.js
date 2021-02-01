@@ -1,5 +1,5 @@
 import { getOptions } from '../util'
-import { mountOptions, mountFile } from '../../../test/helpers'
+import { mountOptions } from '../../../test/helpers'
 
 // Use in-memory file system
 jest.mock('fs')
@@ -11,20 +11,15 @@ describe('onPreBootstrap', () => {
   })
 
   it('correctly initializes custom options', () => {
-    mountFile('./custom/templates/default.js')
     expect(() => mountOptions({
-      basePath: '/blog',
-      template: 'default.js',
-      directories: {
-        templates: './custom/templates'
-      }
+      basePath: '/blog'
     })).not.toThrow()
     expect(getOptions()).toMatchSnapshot()
   })
 
   it('rejects invalid options and throws errors', () => {
     expect(() => mountOptions({
-      template: 'whatever'
-    })).toThrowErrorMatchingSnapshot('Invalid Template')
+      engine: 'whatever'
+    })).toThrowErrorMatchingSnapshot('Invalid Engine')
   })
 })

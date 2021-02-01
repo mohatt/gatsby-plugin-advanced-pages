@@ -2,7 +2,7 @@
   "name": "gatsby-advanced-pages-example",
   "private": true,
   "description": "A bare-bones Gatsby site with Gatsby Advanced Pages plugin installed",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "license": "MIT",
   "scripts": {
     "build": "gatsby build",
@@ -12,7 +12,7 @@
   },
   "dependencies": {
     "gatsby": "^2.25.0",
-    "gatsby-plugin-advanced-pages": "^2.0.0",
+    "gatsby-plugin-advanced-pages": "^1.4.0",
     "gatsby-source-filesystem": "^2.9.0",
     "gatsby-transformer-remark": "^2.14.0",
     "react": "^16.14.0",

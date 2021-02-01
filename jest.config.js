@@ -5,7 +5,7 @@ module.exports = {
   	'<rootDir>/test/',
   	'<rootDir>/src/'
   ],
-  collectCoverageFrom: [
-    'src/**/*.js'
+  "collectCoverageFrom" : [
+    "src/**/*.js"
   ]
-}
+};

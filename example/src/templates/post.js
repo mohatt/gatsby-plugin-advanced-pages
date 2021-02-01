@@ -22,6 +22,7 @@ export const query = graphql`
   query Post($id: String!, $post: String!) {
     page(id: { eq: $id }) {
       title
+      body
     }
     post: markdownRemark(frontmatter: {slug: {eq: $post}}){
       html

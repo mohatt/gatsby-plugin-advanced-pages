@@ -1,40 +1,45 @@
 import path from 'path'
 import PagesCreator from './lib/pages-creator'
-import { getOption, reportError } from './util'
+import { getOption } from './util'
 
-export default async function ({ graphql, actions, getNodesByType }) {
+export default async function ({ graphql, actions }) {
   const { createPage } = actions
 
-  const pageType = getOption('typeNames.page')
-  if (getNodesByType(pageType).length === 0) {
-    return
-  }
-
+  const types = getOption('typeNames')
   const result = await graphql(`
     {
-      all${pageType} {
+      all${types.page} {
         nodes {
           id
           routes {
             name
             path
           }
-          title
-          templateName
+          path
           template
           helper
+        }
+      }
+      all${types.route} {
+        nodes {
+          name
+          path
+          page {
+            path
+          }
         }
       }
     }
   `)
 
   if (result.errors) {
-    return reportError('Failed running "create-pages" GraphQL Query', result.errors.shift())
+    throw result.errors
   }
 
-  const pageCreator = new PagesCreator(
-    result.data[`all${pageType}`].nodes
-  )
+  const pageCreator = new PagesCreator({
+    routes: result.data[`all${types.route}`].nodes,
+    pages: result.data[`all${types.page}`].nodes
+  })
 
   // Create the actual pages
   await pageCreator.createPages({ graphql, createPage })

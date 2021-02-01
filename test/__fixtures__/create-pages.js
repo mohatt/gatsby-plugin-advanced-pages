@@ -1,11 +1,16 @@
-const helper = '/path/to/helper.js'
 export default [
   {
     id: 'home-about',
+    routes: [
+      { name: 'home', path: '/', page: { path: 'pages/home.md' } },
+      { name: 'about', path: '/about', page: { path: 'pages/about.md' } },
+      { name: 'aboutme', path: '/aboutme', page: { path: 'pages/about.md' } }
+    ],
     pages: [
       {
         id: 'home-id',
-        template: '/path/to/index.js',
+        path: 'pages/home.md',
+        template: 'index',
         helper: null,
         routes: [
           { name: 'home', path: '/' }
@@ -13,22 +18,31 @@ export default [
       },
       {
         id: 'about-id',
-        template: '/path/to/page.js',
+        path: 'pages/about.md',
+        template: 'page',
         helper: null,
         routes: [
           { name: 'about', path: '/about' },
-          { name: 'aboutme', path: '/aboutme' }
+          { name: 'aboutme', path: '/aboutme' },
         ]
-      }
-    ]
+      },
+    ],
+    files: {
+      templates: [ 'index', 'page' ]
+    }
   },
   {
     id: 'duplicated-routes',
     throws: true,
+    routes: [
+      { name: 'about', path: '/about', page: { path: 'pages/about.md' } },
+      { name: 'about', path: '/aboutdup', page: { path: 'pages/about2.md' } }
+    ],
     pages: [
       {
         id: 'about-id',
-        template: '/path/to/page.js',
+        path: 'pages/about.md',
+        template: 'page',
         helper: null,
         routes: [
           { name: 'about', path: '/about' }
@@ -36,10 +50,32 @@ export default [
       },
       {
         id: 'about2-id',
-        template: '/path/to/page.js',
+        path: 'pages/about2.md',
+        template: 'page',
         helper: null,
         routes: [
-          { name: 'about', path: '/aboutdup' }
+          { name: 'about', path: '/aboutdup' },
+        ]
+      },
+    ],
+    files: {
+      templates: [ 'page' ]
+    }
+  },
+  {
+    id: 'invalid-template',
+    throws: true,
+    routes: [
+      { name: 'about', path: '/about', page: { path: 'pages/about.md' } },
+    ],
+    pages: [
+      {
+        id: 'about-id',
+        path: 'pages/about.md',
+        template: 'page',
+        helper: null,
+        routes: [
+          { name: 'about', path: '/about' }
         ]
       }
     ]
@@ -47,290 +83,161 @@ export default [
   {
     id: 'invalid-helper',
     throws: true,
+    routes: [
+      { name: 'about', path: '/about', page: { path: 'pages/about.md' } },
+    ],
     pages: [
       {
         id: 'about-id',
-        helper: '/path/to/whatever.js',
-        routes: [
-          { name: 'about', path: '/about' }
-        ]
-      }
-    ]
-  },
-  {
-    id: 'bad-helper-js-error',
-    throws: true,
-    pages: [
-      {
-        id: 'about-id',
-        helper: helper,
+        path: 'pages/about.md',
+        template: 'page',
+        helper: 'whatever',
         routes: [
           { name: 'about', path: '/about' }
         ]
       }
     ],
-    helper: function ({ createAdvancedPage }) {
-      throw new Error('some error')
-    }
-  },
-  {
-    id: 'bad-helper-empty-call',
-    throws: true,
-    pages: [
-      {
-        id: 'about-id',
-        helper: helper,
-        routes: [
-          { name: 'about', path: '/about' }
-        ]
-      }
-    ],
-    helper: function ({ createAdvancedPage }) {
-      createAdvancedPage()
-    }
-  },
-  {
-    id: 'bad-helper-undefined-route',
-    throws: true,
-    pages: [
-      {
-        id: 'about-id',
-        helper: helper,
-        routes: [
-          { name: 'about', path: '/about' }
-        ]
-      }
-    ],
-    helper: function ({ createAdvancedPage }) {
-      createAdvancedPage({
-        route: 'blog'
-      })
-    }
-  },
-  {
-    id: 'bad-helper-invalid-route-params',
-    throws: true,
-    pages: [
-      {
-        id: 'about-id',
-        helper: helper,
-        routes: [
-          { name: 'about', path: '/about/:name' }
-        ]
-      }
-    ],
-    helper: function ({ createAdvancedPage }) {
-      createAdvancedPage({
-        route: 'about'
-      })
-    }
-  },
-  {
-    id: 'bad-helper-empty-pagination',
-    throws: true,
-    pages: [
-      {
-        id: 'about-id',
-        helper: helper,
-        routes: [
-          { name: 'about', path: '/about' }
-        ]
-      }
-    ],
-    helper: function ({ createAdvancedPage }) {
-      createAdvancedPage({
-        route: 'about',
-        pagination: {}
-      })
-    }
-  },
-  {
-    id: 'bad-helper-invalid-pagination-count',
-    throws: true,
-    pages: [
-      {
-        id: 'about-id',
-        helper: helper,
-        routes: [
-          { name: 'about', path: '/about' }
-        ]
-      }
-    ],
-    helper: function ({ createAdvancedPage }) {
-      createAdvancedPage({
-        route: 'about',
-        pagination: {
-          count: -15
-        }
-      })
-    }
-  },
-  {
-    id: 'bad-helper-invalid-pagination-limit',
-    throws: true,
-    pages: [
-      {
-        id: 'about-id',
-        helper: helper,
-        routes: [
-          { name: 'about', path: '/about' }
-        ]
-      }
-    ],
-    helper: function ({ createAdvancedPage }) {
-      createAdvancedPage({
-        route: 'about',
-        pagination: {
-          count: 10,
-          limit: -10
-        }
-      })
-    }
-  },
-  {
-    id: 'bad-helper-invalid-pagination-route',
-    throws: true,
-    pages: [
-      {
-        id: 'about-id',
-        helper: helper,
-        routes: [
-          { name: 'about', path: '/about' }
-        ]
-      }
-    ],
-    helper: function ({ createAdvancedPage }) {
-      createAdvancedPage({
-        route: 'about',
-        pagination: {
-          count: 10,
-          route: 'foo'
-        }
-      })
+    files: {
+      templates: [ 'page' ]
     }
   },
   {
     id: 'blog-paginated-auto-route',
+    routes: [
+      { name: 'blog', path: '/blog', page: { path: 'pages/blog.md' } }
+    ],
     pages: [
       {
         id: 'blog-id',
-        template: '/path/to/blog.js',
-        helper: helper,
+        path: 'pages/blog.md',
+        template: 'blog',
+        helper: 'blog',
         routes: [
           { name: 'blog', path: '/blog' }
         ]
       }
     ],
-    helper: function ({ createAdvancedPage }) {
-      createAdvancedPage({
-        route: 'blog',
-        pagination: {
-          count: 25
+    files: {
+      templates: [ 'blog' ],
+      helpers: {
+        blog: function ({ createAdvancedPage }) {
+          createAdvancedPage({
+            route: 'blog',
+            pagination: {
+              count: 25
+            }
+          })
         }
-      })
+      }
     }
   },
   {
     id: 'blog-paginated-manual-route',
+    routes: [
+      { name: 'blog', path: '/blog', page: { path: 'pages/blog.md' } },
+      { name: 'blog.paginated', path: '/blog/what/:page', page: { path: 'pages/blog.md' } }
+    ],
     pages: [
       {
         id: 'blog-id',
-        template: '/path/to/blog.js',
-        helper: helper,
+        path: 'pages/blog.md',
+        template: 'blog',
+        helper: 'blog',
         routes: [
           { name: 'blog', path: '/blog' },
-          { name: 'blog.paginated', path: '/blog/what/:page' }
+          { name: 'blog.paginated', path: '/blog/what/:page' },
         ]
       }
     ],
-    helper: function ({ createAdvancedPage }) {
-      createAdvancedPage({
-        route: 'blog',
-        pagination: {
-          route: 'blog.paginated',
-          count: 25
+    files: {
+      templates: [ 'blog' ],
+      helpers: {
+        blog: function ({ createAdvancedPage }) {
+          createAdvancedPage({
+            route: 'blog',
+            pagination: {
+              route: 'blog.paginated',
+              count: 25
+            }
+          })
         }
-      })
-    }
-  },
-  {
-    id: 'blog-paginated-custom-limit',
-    pages: [
-      {
-        id: 'blog-id',
-        template: '/path/to/blog.js',
-        helper: helper,
-        routes: [
-          { name: 'blog', path: '/blog' }
-        ]
       }
-    ],
-    helper: function ({ createAdvancedPage }) {
-      createAdvancedPage({
-        route: 'blog',
-        pagination: {
-          count: 25,
-          limit: 8
-        }
-      })
     }
   },
   {
     id: 'dynamic-page',
+    routes: [
+      { name: 'page', path: '/pages/:page', page: { path: 'pages/page.md' } }
+    ],
     pages: [
       {
         id: 'page-id',
-        template: '/path/to/page.js',
-        helper: helper,
+        path: 'pages/page.md',
+        template: 'page',
+        helper: 'page',
         routes: [
-          { name: 'page', path: '/pages/:page' }
+          { name: 'page', path: '/pages/:page' },
         ]
       }
     ],
-    helper: function ({ createAdvancedPage }) {
-      for (const slug of ['hello', 'world']) {
-        createAdvancedPage({
-          route: 'page',
-          params: {
-            page: slug
+    files: {
+      templates: [ 'page' ],
+      helpers: {
+        page: function ({ createAdvancedPage }) {
+          for (const slug of ['hello', 'world']) {
+            createAdvancedPage({
+              route: 'page',
+              params: {
+                page: slug
+              }
+            })
           }
-        })
+        }
       }
     }
   },
   {
     id: 'page-context',
+    routes: [
+      { name: 'about', path: '/about/:name', page: { path: 'pages/about.md' } },
+    ],
     pages: [
       {
         id: 'about-id',
-        template: '/path/to/page.js',
-        helper: helper,
+        path: 'pages/about.md',
+        template: 'page',
+        helper: 'about',
         routes: [
-          { name: 'about', path: '/about/:name' }
+          { name: 'about', path: '/about' }
         ]
       }
     ],
-    helper: function ({ createAdvancedPage }) {
-      createAdvancedPage({
-        route: 'about',
-        params: {
-          name: 'adam'
-        },
-        profile: {
-          gender: 'male',
-          age: 25
+    files: {
+      templates: [ 'page' ],
+      helpers: {
+        about: function ({ createAdvancedPage }) {
+          createAdvancedPage({
+            route: 'about',
+            params: {
+              name: 'adam'
+            },
+            profile: {
+              gender: 'male',
+              age: 25
+            }
+          })
+          createAdvancedPage({
+            route: 'about',
+            params: {
+              name: 'sara'
+            },
+            profile: {
+              gender: 'female',
+              age: 28
+            }
+          })
         }
-      })
-      createAdvancedPage({
-        route: 'about',
-        params: {
-          name: 'sara'
-        },
-        profile: {
-          gender: 'female',
-          age: 28
-        }
-      })
+      }
     }
   }
 ]

@@ -79,11 +79,11 @@ async function createPostPages ({ graphql, page, createAdvancedPage }) {
 }
 
 module.exports = async args => {
-  switch (args.page.templateName) {
-    case 'blog.js':
+  switch (args.page.template) {
+    case 'blog':
       await createFeedPages(args)
       break;
-    case 'post.js':
+    case 'post':
       await createPostPages(args)
       break;
   }

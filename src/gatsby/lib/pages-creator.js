@@ -2,36 +2,64 @@ import fs from 'fs'
 import path from 'path'
 import _ from 'lodash'
 import { compile as compileRoute } from '../../lib/route-compiler'
-import { getOption, reportError } from '../util'
+import { getOption } from '../util'
 
 export default class PagesCreator {
-  constructor (pages) {
-    this.routeMap = {}
-    this.pages = pages.map(page => {
-      this.createRoutes(page.routes)
-      // Prevent page helpers from mutating page object
-      return Object.freeze(page)
-    })
+  constructor ({ routes, pages }) {
+    this.routeMap = this.buildRouteMap(routes)
+    this.pages = pages.map(this.preparePage)
   }
 
-  // Processes route objects and adds them to the route map
   // Adds basePath prefix to all route paths
   // Detects any duplicates
-  createRoutes (routes) {
+  buildRouteMap (routes) {
+    const routeMap = {}
     for (const route of routes) {
       const { name } = route
-      const exists = this.routeMap[name]
+      const exists = routeMap[name]
       if (exists) {
-        return reportError(
-          `Unable to create a route with name "${name}". ` +
-          'Another route with the same name already exists'
+        throw new Error(
+          `'${route.page.path}' is trying to define a route named '${name}'` +
+          ` that is already defined in '${exists.page.path}'`
         )
       }
       route.path = path.join(getOption('basePath'), route.path)
       route.scopes = {}
       route.pathGenerator = compileRoute(route.path)
-      this.routeMap[name] = route
+      routeMap[name] = route
     }
+
+    return routeMap
+  }
+
+  preparePage (page) {
+    // Set file paths
+    page.templatePath = path.join(
+      getOption('directories.templates'),
+      `${page.template}.js`
+    )
+    page.helperPath = page.helper && path.join(
+      getOption('directories.helpers'),
+      `${page.helper}.js`
+    )
+
+    // Validate file paths
+    if (!fs.existsSync(page.templatePath)) {
+      throw new Error(
+        `Invalid template '${page.template}' defined in page '${page.path}':` +
+        `  File does not exist at '${page.templatePath}'`
+      )
+    }
+
+    if (page.helperPath && !fs.existsSync(page.helperPath)) {
+      throw new Error(
+        `Invalid helper '${page.helper}' defined in page '${page.path}':` +
+        `  File does not exist at '${page.helperPath}'`
+      )
+    }
+
+    // Prevent page helpers from mutating page object
+    return Object.freeze(page)
   }
 
   // Auto generates a new route based scope and parent route
@@ -44,11 +72,17 @@ export default class PagesCreator {
           getOption('pagination.suffix')
         )
         break
+      default:
+        throw new TypeError(
+          `Unrecognized route scope '${scope}' passed to generateRoute()`
+        )
     }
-
     return {
       name: parent + '.' + scope,
       path: scopedPath,
+      page: {
+        path: this.page.path
+      },
       pathGenerator: compileRoute(scopedPath)
     }
   }
@@ -64,7 +98,7 @@ export default class PagesCreator {
       }
       // Run the page helper
       try {
-        let helperFunction = require(page.helper)
+        let helperFunction = require(page.helperPath)
         if (typeof helperFunction.default === 'function') {
           helperFunction = helperFunction.default
         }
@@ -75,33 +109,39 @@ export default class PagesCreator {
           createAdvancedPage: args => this.createPage(args)
         })
       } catch (e) {
-        return reportError(
-          `Error occured while running page helper function at "${page.helper}"`,
-          (typeof e[0] !== 'undefined') ? e[0] : e
+        if (typeof e[0] !== 'undefined') {
+          e = e[0]
+        }
+
+        const error = new Error(
+          `Error occured while running page helper function at '${page.helperPath}':` +
+          `\n${e.message}`
         )
+        error.stack = e.stack
+        throw error
       }
     }
   }
 
-  createPage ({ route, params = {}, pagination, ...context } = {}) {
+  createPage ({ route, params = {}, pagination, ...context }) {
     const { page } = this
     if (typeof route !== 'string' || !route) {
-      return reportError(
-        `Route name passed to createAdvancedPage() at "${page.helper}"` +
+      throw new TypeError(
+        `Route name passed to createAdvancedPage() at '${page.helperPath}'` +
         ' must be a non-empty string'
       )
     }
 
     const routeNode = this.routeMap[route]
     if (!routeNode) {
-      return reportError(
-        `Unrecognized route "${route}" passed to createAdvancedPage() at "${page.helper}"`
+      throw new TypeError(
+        `Unrecognized route '${route}' passed to createAdvancedPage() at '${page.helperPath}'`
       )
     }
 
     const gatsbyPage = {
       path: routeNode.pathGenerator(params),
-      component: page.template,
+      component: page.templatePath,
       context: {
         id: page.id,
         ...params,
@@ -111,26 +151,26 @@ export default class PagesCreator {
 
     if (pagination) {
       if (typeof pagination.count === 'undefined') {
-        return reportError(
-          `Invalid pagination object passed to createAdvancedPage() at "${page.helper}": ` +
-          '"count" paramater is missing'
+        throw new TypeError(
+          `Invalid pagination object passed to createAdvancedPage() at '${page.helperPath}': ` +
+          '\'count\' paramater is missing'
         )
       }
       pagination.count = parseInt(pagination.count)
-      if (!Number.isInteger(pagination.count) || pagination.count < 0) {
-        return reportError(
-          `Invalid pagination object passed to createAdvancedPage() at "${page.helper}": ` +
-          `"count" paramater must be a valid non-negative number (got "${pagination.count}")`
+      if (!Number.isInteger(pagination.count)) {
+        throw new TypeError(
+          `Invalid pagination object passed to createAdvancedPage() at '${page.helperPath}': ` +
+          `'count' paramater must be a valid number (got '${pagination.count}')`
         )
       }
 
       pagination.limit = typeof pagination.limit !== 'undefined' && parseInt(pagination.limit)
       if (pagination.limit === false) {
         pagination.limit = getOption('pagination.limit')
-      } else if (!Number.isInteger(pagination.limit) || pagination.limit <= 0) {
-        return reportError(
-          `Invalid pagination object passed to createAdvancedPage() at "${page.helper}": ` +
-          `"limit" paramater must be a valid positive number (got "${pagination.limit}")`
+      } else if (pagination.limit <= 0 || !Number.isInteger(pagination.limit)) {
+        throw new TypeError(
+          `Invalid pagination object passed to createAdvancedPage() at '${page.helperPath}': ` +
+          `'limit' paramater must be a valid number (got '${pagination.limit}')`
         )
       }
 
@@ -140,9 +180,9 @@ export default class PagesCreator {
           routeNode.scopes.pagination = this.generateRoute(route, 'pagination')
         } else {
           if (!this.routeMap[pagination.route]) {
-            return reportError(
-              `Invalid pagination object passed to createAdvancedPage() at "${page.helper}": ` +
-              `Unrecognized route "${pagination.route}"`
+            throw new TypeError(
+              `Invalid pagination object passed to createAdvancedPage() at '${page.helperPath}': ` +
+              `Unrecognized route '${pagination.route}'`
             )
           }
           routeNode.scopes.pagination = this.routeMap[pagination.route]
@@ -187,7 +227,7 @@ export default class PagesCreator {
       )
       return true
     } catch (e) {
-      reportError('Error writing route map export file', e)
+      throw new Error(`Error writing route map export file:\n${e.message}`)
     }
   }
 }

@@ -1,7 +1,7 @@
-'use strict'
+'use strict';
 
-const path = require('path')
-const React = require('react')
+const path = require('path');
+const React = require('react');
 const withPrefix = pathname => path.join('/site', pathname)
 
 module.exports = {
@@ -21,8 +21,8 @@ module.exports = {
     }) => (
       React.createElement('a', {
         ...rest,
-        href: to && withPrefix(to)
+        href: to && withPrefix(to),
       })
     )
   )
-}
+};
