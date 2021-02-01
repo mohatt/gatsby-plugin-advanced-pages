@@ -558,7 +558,7 @@ Name of the page object type
 [codecov-url]: https://codecov.io/github/mohatt/gatsby-plugin-advanced-pages
 [codecov-img]: https://img.shields.io/codecov/c/github/mohatt/gatsby-plugin-advanced-pages.svg
 [gatsby-url]: https://www.gatsbyjs.org/packages/gatsby-plugin-advanced-pages
-[gatsby-img]: https://img.shields.io/badge/gatsby-v2.20+-blueviolet.svg
+[gatsby-img]: https://img.shields.io/badge/gatsby-v2.25+-blueviolet.svg
 [demo-url]: http://mohatt.github.io/gatsby-plugin-advanced-pages
 [demo-img]: https://img.shields.io/website/http/mohatt.github.io/gatsby-plugin-advanced-pages.svg?label=demo
 [license-url]: https://github.com/mohatt/gatsby-plugin-advanced-pages/blob/master/LICENSE
