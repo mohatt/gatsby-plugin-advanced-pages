@@ -3,7 +3,6 @@
 
 Gatsby Advanced Pages is a wrapper around Gatsby's [createPage](https://www.gatsbyjs.org/docs/actions/#createPage) API that allows easy creation of pages with dynamic features like pagination and custom routing.
 
-- [Prerequisites](#prerequisites)
 - [Installation](#installation)
 - [Demo](#demo)
 - [Usage](#usage)
@@ -16,13 +15,9 @@ Gatsby Advanced Pages is a wrapper around Gatsby's [createPage](https://www.gats
   - [Pagination component](#pagination-component)
 - [Functions](#functions)
 - [Configuration](#configuration)
+	- [Pages Config File](#pages-config-file)
+	- [Plugin Options](#plugin-options)
 - [License](#license)
-
-
-## Prerequisites
-Before getting started, make sure you have a Markdown transformer plugin installed and configured. The following plugins are currently supported:
- - [gatsby-plugin-mdx](https://www.gatsbyjs.org/packages/gatsby-plugin-mdx/) — Supports using React components from within Markdown ([Official guide](https://www.gatsbyjs.org/docs/mdx/))
- - [gatsby-transformer-remark](https://www.gatsbyjs.org/packages/gatsby-transformer-remark/)
 
 
 ## Installation
@@ -56,23 +51,21 @@ plugins: [
 
 ### Creating pages
 
-In order to create your first page, create a new Markdown file for the new page under `content/pages`
+In order to create your first page, create a new `pages.config.yaml` file under your project’s directory
 
-`content/pages/hello.md`
-```markdown
----
-title: Hello, Wordld
-template: page
-routes:
-  hello: /hello
----
-### Hello, world!
-This is a demo page for `gatsby-plugin-advanced-pages`
+`pages.config.yaml`
+
+```yaml
+- title: Hello, World
+  template: hello.js
+  routes:
+    hello: /hello
 ```
 
 Create a template component under `src/templates` to be used to render the page 
 
-`src/templates/page.js`
+`src/templates/hello.js`
+
 ```javascript
 import React from "react"
 import { graphql } from "gatsby"
@@ -80,7 +73,7 @@ import { graphql } from "gatsby"
 const PageTemplate = ({ data }) => (
   <div>
     <h1>{data.page.title}</h1>
-    <div dangerouslySetInnerHTML={{ __html: data.page.body }} />
+    <div>This is a demo page for `gatsby-plugin-advanced-pages`</div>
   </div>
 )
 
@@ -88,7 +81,6 @@ export const query = graphql`
   query PageQuery($id: String!) {
     page(id: { eq: $id }) {
       title
-      body
     }
   }
 `
@@ -99,24 +91,24 @@ export default PageTemplate
 Run `gatsby develop` and open http://localhost/hello to see your new page.
 
 ### Page helpers
-In order to create more advanced pages, you need to define a page helper in your markdown metadata. Page helpers are javascript files that export a function to be run by the plugin during Gatsby's [createPage](https://www.gatsbyjs.org/docs/actions/#createPage) lifecycle. Here is an example page helper that creates a blog index page with pagination functionality:
+In order to create more advanced pages, you need to define a page helper in your markdown metadata. Page helpers are JavaScript files that export a function to be run by the plugin during Gatsby's [createPage](https://www.gatsbyjs.org/docs/actions/#createPage) lifecycle. Here is an example page helper that creates a blog index page with pagination functionality:
 
-`content/pages/blog.md`
-```markdown
----
-title: Blog
-routes:
-  blog: /blog
-template: blog-template
-helper: blog-helper
----
-Here you can write some content to be displayed on the blog page 
-before listing blog posts, or you can leave it empty
+*Note: You will need [gatsby-transformer-remark](https://www.gatsbyjs.org/packages/gatsby-transformer-remark/)  plugin installed for this example to work*
+
+`pages.config.yaml`
+
+```yaml
+- title: Blog
+  routes:
+    blog: /blog
+  template: blog-template.js
+  helper: blog-helper.js
 ```
 
 Next, create the page helper file under `gatsby/pages`
 
 `gatsby/pages/blog-helper.js`
+
 ```javascript
 module.exports = async function ({ graphql, page, createAdvancedPage }) {
   const result = await graphql(`
@@ -144,6 +136,7 @@ module.exports = async function ({ graphql, page, createAdvancedPage }) {
 Lastly, create a template component under `src/templates` to be used to render the blog page
 
 `src/templates/blog-template.js`
+
 ```javascript
 import React from 'react'
 import { graphql } from 'gatsby'
@@ -168,7 +161,6 @@ export const query = graphql`
   query Blog($id: String!, $limit: Int!, $offset: Int!) {
     page(id: { eq: $id }) {
       title
-      body
     }
     allMarkdownRemark(limit: $limit, skip: $offset, filter: { frontmatter: { type: { eq: "post" } } }){
       edges {
@@ -189,7 +181,7 @@ export const query = graphql`
 
 export default BlogTemplate
 ```
-Now assuming you have 12 blog posts, the plugin will create the following pages:
+Now assuming you have 12 blog posts (stored as Markdown files), the plugin will create the following pages:
  - /blog
  - blog/page/2
  - blog/page/3
@@ -197,19 +189,19 @@ Now assuming you have 12 blog posts, the plugin will create the following pages:
 
 if you want to customize the paginated paths, you can include a `route` in your pagination object thats being passed to `createAdvancedPage()`. See below:
 
-`content/pages/blog.md`
-```markdown
----
-title: Blog
-routes:
-  blog: /blog
-  blog.paginated: /blog/what/ever/:page
-template: blog-template
-helper: blog-helper
----
+`pages.config.yaml`
+
+```yaml
+- title: Blog
+  routes:
+    blog: /blog
+    blog.paginated: /blog/what/ever/:page
+  template: blog-template.js
+  helper: blog-helper.js
 ```
 
 `gatsby/pages/blog-helper.js`
+
 ```javascript
 [...]
 createAdvancedPage({
@@ -228,23 +220,21 @@ Now the plugin will create the following pages:
  - /blog/what/ever/4
 
 ### Passing data to templates
-You can pass structured data from your page to your template component by setting the `data` field in your page markdown. See below
+You can pass structured data from your `pages.config.yaml` to your template component by setting the `data` field. See below
 
 `content/pages/skills.md`
-```markdown
----
-title: My skills
-template: skills
-routes:
-  skills: /skills
-data:
-  skills:
-    - skill: HTML
-      level: Excellent
-    - skill: Javascript
-      level: Intermediate
----
-Some intro text
+
+```yaml
+- title: My skills
+  template: skills.js
+  routes:
+    skills: /skills
+  data:
+    skills:
+      - skill: HTML
+        level: Excellent
+      - skill: Javascript
+        level: Intermediate
 ```
 
 Then, you can use that data in your template
@@ -257,8 +247,6 @@ import { graphql } from "gatsby"
 const SkillsTemplate = ({ data: { page } }) => (
   <div>
     <h1>{page.title}</h1>
-    <div dangerouslySetInnerHTML={{ __html: page.body }} />
-    <h2>Current Skills</h2>
     <ul>
     {page.data.sills.map(({ skill, level }) => {
       <li key={skill}>
@@ -274,7 +262,6 @@ export const query = graphql`
     page(id: { eq: $id }) {
       title
       data
-      body
     }
   }
 `
@@ -287,7 +274,7 @@ Check out [example](https://github.com/mohatt/gatsby-plugin-advanced-pages/tree/
 
 
 ### Generating paths
-You can generate paths for the routes defined in your pages metadata using two methods:
+You can generate paths for the routes defined in your `pages.config.yaml` using two methods:
 
 #### Link component (recommended)
 The Link component is a wrapper around Gatsby's [Link component](https://www.gatsbyjs.org/docs/gatsby-link/) that allows passing route names and params in addition to regular paths. Below is an example of how to use it:
@@ -452,7 +439,53 @@ Gets a specific route.
 
 ## Configuration
 
-### Defaults
+### Pages Config File
+The pages configuration file defines your site’s pages and routes. This file should be in the root of your Gatsby site and could be defined in one of 3 formats:
+
+#### YAML
+`pages.config.yaml`
+
+```yaml
+- title: Hello, World
+  template: hello.js
+  routes:
+    hello: /hello
+```
+
+#### JSON
+`pages.config.json`
+
+```json
+[
+  {
+    "title": "Hello, World",
+    "template": "hello.js",
+    "routes": {
+      "hello": "/hello"
+    }
+  }
+]
+```
+
+#### JavaScript
+`pages.config.js`
+
+```js
+module.exports = [
+  {
+    title: "Hello, World",
+    template: "hello.js",
+    routes: {
+      hello: "/hello"
+    }
+  }
+]
+```
+
+
+### Plugin Options
+
+#### Defaults
 Here is a full list of options with their default values that you can use to configure the plugin behaviour.
 
 ```javascript
@@ -462,10 +495,8 @@ plugins: [
     resolve: `gatsby-plugin-advanced-pages`,
     options: {
       basePath: '/',
-      engine: 'remark',
       template: null,
       directories: {
-        pages: 'content/pages',
         templates: 'src/templates',
         helpers: 'gatsby/pages',
       },
@@ -474,51 +505,32 @@ plugins: [
         suffix: '/page/:page'
       },
       typeNames: {
-        page: 'Page',
-        route: 'Route'
+        page: 'Page'
       }
     }
   }
 ]
 ```
 
-### basePath
+#### basePath
 > Type: `String` Default: `/`
 
 Root url for all pages created through the plugin
 
-### engine
-> Type: `String` Options: `mdx` | `remark` Default: `remark`
-
-Specifies which Markdown transformer the plugin should use to transform markdown nodes into pages.
-
-### template
+#### template
 > Type: `String` Default: `null`
 
-Default template to be used for pages with no `template` metadata defined
-
-### Directory locations
-
-File System directories needed for the plugin to work
-
-#### directories.pages
-> Type: `String` Default: `content/pages`
-
-Location of Markdown files that should be transformed into pages, any files outside this directory will be ignored
+Default template to be used for pages with no `template` metadata defined. It could be a file name located under [`{directories.templates}`](#configuration) or a path relative to the project's directory.
 
 #### directories.templates
 > Type: `String` Default: `src/templates`
 
-Location of template components used to render pages
+Location of template components used to render pages. The path could either be relative to your project's directory or an absolute path
 
 #### directories.helpers
 > Type: `String` Default: `gatsby/pages`
 
-Location of page helpers
-
-### Pagination
-
-Options for pagination functionality 
+Location of page helpers. The path could either be relative to your project's directory or an absolute path
 
 #### pagination.limit
 > Type: `Number` Default: `10`
@@ -530,19 +542,10 @@ Default page size to be used when no `limit` parameter is passed to `createAdvan
 
 Suffix to be added to the original route to generate a paginated route. This is only used when no paginated route is passed to `createAdvancedPage()`
 
-### GraphQL Types
-
-Type names for the GraphQL Schema
-
 #### typeNames.page
 > Type: `String` Default: `Page`
 
 Name of the page object type
-
-#### typeNames.route
-> Type: `String` Default: `Route`
-
-Name of the route object type
 
 
 ## License
