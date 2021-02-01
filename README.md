@@ -51,7 +51,7 @@ plugins: [
 
 ### Creating pages
 
-In order to create your first page, create a new `pages.config.yaml` file under your project’s directory
+In order to create your first page, create a new `pages.config.yaml` file under your project’s root directory
 
 `pages.config.yaml`
 
@@ -520,17 +520,17 @@ Root url for all pages created through the plugin
 #### template
 > Type: `String` Default: `null`
 
-Default template to be used for pages with no `template` metadata defined. It could be a file name located under [`{directories.templates}`](#directoriestemplates) or a path relative to your project's directory.
+Default template to be used for pages with no `template` metadata defined. It could be a file name located under `{directories.templates}` or a path relative to your project's root directory.
 
 #### directories.templates
 > Type: `String` Default: `src/templates`
 
-Location of template components used to render pages. The path could either be relative to your project's directory or an absolute path
+Location of template components used to render pages. The path could either be relative to your project's root directory or an absolute path
 
 #### directories.helpers
 > Type: `String` Default: `gatsby/pages`
 
-Location of page helpers. The path could either be relative to your project's directory or an absolute path
+Location of page helpers. The path could either be relative to your project's root directory or an absolute path
 
 #### pagination.limit
 > Type: `Number` Default: `10`
