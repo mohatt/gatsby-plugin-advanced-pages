@@ -6,7 +6,6 @@ Object {
   "basePath": "/blog",
   "directories": Object {
     "helpers": "/virtual/project/gatsby/pages",
-    "pages": "/virtual/project",
     "templates": "/virtual/project/custom/templates",
   },
   "pagination": Object {
@@ -26,7 +25,6 @@ Object {
   "basePath": "/",
   "directories": Object {
     "helpers": "/virtual/project/gatsby/pages",
-    "pages": "/virtual/project",
     "templates": "/virtual/project/src/templates",
   },
   "pagination": Object {

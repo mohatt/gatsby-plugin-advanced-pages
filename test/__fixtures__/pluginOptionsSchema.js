@@ -37,7 +37,6 @@ export default [
       basePath: 'foobar',
       template: 'foobar',
       directories: {
-        pages: 'foobar',
         templates: 'foobar',
         helpers: 'foobar'
       },

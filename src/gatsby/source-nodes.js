@@ -59,9 +59,9 @@ export default async function ({ actions, schema, createNodeId, createContentDig
     })
   ])
 
-  const configFile = findPagesConfig(options.directories.pages)
+  const configFile = findPagesConfig(options._root)
   if (!configFile) {
-    reportWarning(`Unable to find a valid pages config file under "${options.directories.pages}"`)
+    reportWarning(`Unable to find a valid pages config file under "${options._root}"`)
     return
   }
 

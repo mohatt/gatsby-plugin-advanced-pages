@@ -19,7 +19,6 @@ export function onPreBootstrap ({ store, reporter }, pluginOptions) {
     basePath: '/',
     template: null,
     directories: {
-      pages: '.',
       templates: './src/templates',
       helpers: './gatsby/pages'
     },

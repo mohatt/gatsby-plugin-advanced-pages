@@ -5,8 +5,6 @@ export default function (Joi) {
     template: Joi.string()
       .description('Default template to be used for pages with no "template" metadata defined.'),
     directories: Joi.object({
-      pages: Joi.string()
-        .description('Location to look for the pages config file.'),
       templates: Joi.string()
         .description('Location of template components used to render pages.'),
       helpers: Joi.string()
