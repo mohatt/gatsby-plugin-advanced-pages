@@ -33,7 +33,7 @@ export function initializeOptions (args) {
   initializeOptions.options = options
 
   // Verify default template
-  if(options.template) {
+  if (options.template) {
     options.template = lookupPath(options.template, options.directories.templates)
   }
 
@@ -56,11 +56,11 @@ export function initializeReporter (reporter) {
   }
 
   const errorMap = {
-    [10000]: {
+    10000: {
       text: context => context.message,
-      level: `ERROR`,
-      type: `PLUGIN`,
-    },
+      level: 'ERROR',
+      type: 'PLUGIN'
+    }
   }
 
   if (reporter.setErrorMap) {
@@ -78,11 +78,11 @@ export function getReporter () {
 // Prints an error message and terminates the build
 export function reportError (message, e = null) {
   const reporter = getReporter()
-  const prefix = `"gatsby-plugin-advanced-pages" threw an error while running`
+  const prefix = '"gatsby-plugin-advanced-pages" threw an error while running'
 
-  if(!e) {
+  if (!e) {
     reporter.panic({
-      id: `10000`,
+      id: '10000',
       context: {
         message: prefix
       },
@@ -92,7 +92,7 @@ export function reportError (message, e = null) {
   }
 
   reporter.panic({
-    id: `10000`,
+    id: '10000',
     context: {
       message: `${prefix}:\n ${message}`
     },
@@ -103,7 +103,7 @@ export function reportError (message, e = null) {
 // Prints a warning message
 export function reportWarning (message) {
   const reporter = getReporter()
-  const prefix = `"gatsby-plugin-advanced-pages" might not be working properly`
+  const prefix = '"gatsby-plugin-advanced-pages" might not be working properly'
   reporter.warn(`${prefix}:\n ${message}`)
 }
 
@@ -121,37 +121,37 @@ export function getOption (optionName) {
 // if not checks if it exists under project root
 // if not check if its an absolute path
 // throws an error if cant find any
-export function lookupPath(location, parent = null){
-  if(!location || typeof location !== 'string') {
+export function lookupPath (location, parent = null) {
+  if (!location || typeof location !== 'string') {
     return reportError(
       `ensurePath() expected a non-empty string but got ${typeof location}("${location}")`
     )
   }
 
-  let search = []
-  if(parent && typeof parent === 'string') {
+  const search = []
+  if (parent && typeof parent === 'string') {
     const localPath = path.join(parent, location)
     search.push(localPath)
-    if(fs.existsSync(localPath)) {
+    if (fs.existsSync(localPath)) {
       return localPath
     }
   }
 
   const rootPath = path.join(getOption('_root'), location)
   search.push(rootPath)
-  if(fs.existsSync(rootPath)) {
+  if (fs.existsSync(rootPath)) {
     return rootPath
   }
 
-  if(path.isAbsolute(location)) {
+  if (path.isAbsolute(location)) {
     search.push(location)
-    if(fs.existsSync(location)) {
+    if (fs.existsSync(location)) {
       return location
     }
   }
 
   reportError(
     `A path with value "${location}" could not be found at ` +
-    `any of the following locations:\n - "${search.join(`\n - "`)}"`
+    `any of the following locations:\n - "${search.join('\n - "')}"`
   )
 }

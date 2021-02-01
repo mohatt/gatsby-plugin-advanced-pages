@@ -14,7 +14,7 @@ export default function (Joi) {
         ),
       data: Joi.object({})
         .default({})
-        .unknown(true),
+        .unknown(true)
     })
   ).label('root').default([])
 }

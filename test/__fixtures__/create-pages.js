@@ -17,10 +17,10 @@ export default [
         helper: null,
         routes: [
           { name: 'about', path: '/about' },
-          { name: 'aboutme', path: '/aboutme' },
+          { name: 'aboutme', path: '/aboutme' }
         ]
-      },
-    ],
+      }
+    ]
   },
   {
     id: 'duplicated-routes',
@@ -39,10 +39,10 @@ export default [
         template: '/path/to/page.js',
         helper: null,
         routes: [
-          { name: 'about', path: '/aboutdup' },
+          { name: 'about', path: '/aboutdup' }
         ]
-      },
-    ],
+      }
+    ]
   },
   {
     id: 'invalid-helper',
@@ -55,7 +55,7 @@ export default [
           { name: 'about', path: '/about' }
         ]
       }
-    ],
+    ]
   },
   {
     id: 'bad-helper-js-error',
@@ -103,7 +103,7 @@ export default [
     ],
     helper: function ({ createAdvancedPage }) {
       createAdvancedPage({
-        route: 'blog',
+        route: 'blog'
       })
     }
   },
@@ -121,7 +121,7 @@ export default [
     ],
     helper: function ({ createAdvancedPage }) {
       createAdvancedPage({
-        route: 'about',
+        route: 'about'
       })
     }
   },
@@ -239,7 +239,7 @@ export default [
         helper: helper,
         routes: [
           { name: 'blog', path: '/blog' },
-          { name: 'blog.paginated', path: '/blog/what/:page' },
+          { name: 'blog.paginated', path: '/blog/what/:page' }
         ]
       }
     ],
@@ -283,7 +283,7 @@ export default [
         template: '/path/to/page.js',
         helper: helper,
         routes: [
-          { name: 'page', path: '/pages/:page' },
+          { name: 'page', path: '/pages/:page' }
         ]
       }
     ],

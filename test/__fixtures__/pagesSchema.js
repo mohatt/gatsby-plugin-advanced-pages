@@ -1,88 +1,88 @@
 export default [
   {
-    title: "should invalidate empty fields",
+    title: 'should invalidate empty fields',
     pages: [
       {
-        title: "",
-        template: "",
-        helper: "",
+        title: '',
+        template: '',
+        helper: '',
         routes: {},
-        data: {},
-      },
-    ],
+        data: {}
+      }
+    ]
   },
   {
-    title: "should invalidate required fields with missing values",
+    title: 'should invalidate required fields with missing values',
     pages: [
       {
-        template: "foo",
+        template: 'foo'
       }
-    ],
+    ]
   },
   {
-    title: "should invalidate fields with incorrect data types",
+    title: 'should invalidate fields with incorrect data types',
     pages: [
       {
         title: 15,
         template: {},
         helper: false,
         routes: [],
-        data: "foo",
-      },
-    ],
+        data: 'foo'
+      }
+    ]
   },
   {
-    title: "should invalidate unknown fields ",
+    title: 'should invalidate unknown fields ',
     pages: [
       {
-        title: "foo",
+        title: 'foo',
         routes: {
-          foo: "/bar",
+          foo: '/bar'
         },
         foo: true,
         data: {
-          valid: "foo",
-        },
-      },
-    ],
+          valid: 'foo'
+        }
+      }
+    ]
   },
   {
-    title: "should invalidate routes with invalid values",
+    title: 'should invalidate routes with invalid values',
     pages: [
       {
-        title: "foo",
+        title: 'foo',
         routes: {
-          foo: "foo/bar",
-        },
+          foo: 'foo/bar'
+        }
       },
       {
-        title: "bar",
+        title: 'bar',
         routes: {
-          bar: "",
-        },
+          bar: ''
+        }
       },
       {
-        title: "third",
+        title: 'third',
         routes: {
-          third: 15,
-        },
-      },
-    ],
+          third: 15
+        }
+      }
+    ]
   },
   {
-    title: "should validate correct fields",
+    title: 'should validate correct fields',
     pages: [
       {
-        title: "foo",
-        template: "foo",
-        helper: "foo",
+        title: 'foo',
+        template: 'foo',
+        helper: 'foo',
         routes: {
-          foo: "/bar"
+          foo: '/bar'
         },
         data: {
-          foo: "bar"
-        },
-      },
-    ],
-  },
+          foo: 'bar'
+        }
+      }
+    ]
+  }
 ]

@@ -16,7 +16,7 @@ export default [
           }
         ]
       }
-    ],
+    ]
   },
   {
     title: 'correctly creates page nodes from pages.config.json',
@@ -35,7 +35,7 @@ export default [
           }
         ]
       }
-    ],
+    ]
   },
   {
     title: 'correctly creates page nodes from pages.config.yaml',
@@ -51,7 +51,7 @@ export default [
     foo: /foo
 `
       }
-    ],
+    ]
   },
   {
     title: 'correctly creates multiple page nodes with various configurations',
@@ -87,12 +87,12 @@ export default [
     sit: /sit/amet
 `
       }
-    ],
+    ]
   },
   {
     title: 'throws and error for non existing pages config file',
     throws: true,
-    files: [],
+    files: []
   },
   {
     title: 'throws and error for invalid pages config file',
@@ -106,7 +106,7 @@ export default [
     foo: foo/bar
 `
       }
-    ],
+    ]
   },
   {
     title: 'throws and error for pages with invalid template',
@@ -121,7 +121,7 @@ export default [
     foo: /foo
 `
       }
-    ],
+    ]
   },
   {
     title: 'throws and error when pages don not have a valid template',
@@ -135,6 +135,6 @@ export default [
     foo: /foo
 `
       }
-    ],
-  },
+    ]
+  }
 ]

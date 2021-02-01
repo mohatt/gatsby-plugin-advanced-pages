@@ -1,53 +1,53 @@
 export default [
   {
-    title: "should invalidate empty options",
+    title: 'should invalidate empty options',
     options: {
-      basePath: "",
+      basePath: '',
       pagination: {
         limit: 0,
-        suffix: "",
-      },
-    },
+        suffix: ''
+      }
+    }
   },
   {
-    title: "should invalidate options with incorrect data types",
+    title: 'should invalidate options with incorrect data types',
     options: {
       basePath: 15,
       template: [],
-      directories: "",
+      directories: '',
       pagination: {
-        limit: "",
-        suffix: null,
+        limit: '',
+        suffix: null
       },
-      typeNames: false,
-    },
+      typeNames: false
+    }
   },
   {
-    title: "should invalidate options with incorrect values",
+    title: 'should invalidate options with incorrect values',
     options: {
       pagination: {
         limit: -15,
-        suffix: "/some/path",
-      },
-    },
+        suffix: '/some/path'
+      }
+    }
   },
   {
-    title: "should validate correct options",
+    title: 'should validate correct options',
     options: {
-      basePath: "foobar",
-      template: "foobar",
+      basePath: 'foobar',
+      template: 'foobar',
       directories: {
-        pages: "foobar",
-        templates: "foobar",
-        helpers: "foobar",
+        pages: 'foobar',
+        templates: 'foobar',
+        helpers: 'foobar'
       },
       pagination: {
         limit: 5,
-        suffix: "/foobar/:page",
+        suffix: '/foobar/:page'
       },
       typeNames: {
-        page: "foobar",
-      },
-    },
-  },
+        page: 'foobar'
+      }
+    }
+  }
 ]

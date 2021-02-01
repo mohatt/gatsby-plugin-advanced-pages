@@ -26,8 +26,8 @@ describe('sourceNodes', () => {
       files.map(file => typeof file === 'string'
         ? mountFile(file)
         : Array.isArray(file.data)
-            ? mountFile(file.path) || mountModule(file.path, file.data)
-            : mountFile(file.path, file.data)
+          ? mountFile(file.path) || mountModule(file.path, file.data)
+          : mountFile(file.path, file.data)
       )
 
       let error = null

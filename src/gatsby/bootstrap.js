@@ -28,8 +28,8 @@ export function onPreBootstrap ({ store, reporter }, pluginOptions) {
       suffix: '/page/:page'
     },
     typeNames: {
-      page: 'Page',
-    },
+      page: 'Page'
+    }
   }
 
   // Initializes and validates options

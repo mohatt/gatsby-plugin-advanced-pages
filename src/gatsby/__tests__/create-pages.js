@@ -29,7 +29,7 @@ describe('createPages', () => {
       : `correctly creates pages on (${id})`
 
     test(title, async () => {
-      if(helper) {
+      if (helper) {
         mountFile(helperFile)
         mountModule(helperFile, helper)
       }
@@ -40,7 +40,7 @@ describe('createPages', () => {
 
       graphql.mockReturnValue({
         data: {
-          allPage: { nodes: pages },
+          allPage: { nodes: pages }
         }
       })
 

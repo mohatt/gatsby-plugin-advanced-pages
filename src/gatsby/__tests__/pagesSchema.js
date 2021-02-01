@@ -1,4 +1,4 @@
-import { testPluginOptionsSchema } from "gatsby-plugin-utils"
+import { testPluginOptionsSchema } from 'gatsby-plugin-utils'
 import { pagesSchema } from '../schema'
 import testCases from '../../../test/__fixtures__/pagesSchema'
 

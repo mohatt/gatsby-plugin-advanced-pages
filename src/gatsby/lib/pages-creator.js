@@ -24,7 +24,7 @@ export default class PagesCreator {
       if (exists) {
         return reportError(
           `Unable to create a route with name "${name}". ` +
-          `Another route with the same name already exists`
+          'Another route with the same name already exists'
         )
       }
       route.path = path.join(getOption('basePath'), route.path)
@@ -187,7 +187,7 @@ export default class PagesCreator {
       )
       return true
     } catch (e) {
-      reportError(`Error writing route map export file`, e)
+      reportError('Error writing route map export file', e)
     }
   }
 }

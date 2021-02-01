@@ -6,7 +6,7 @@ export default async function ({ graphql, actions, getNodesByType }) {
   const { createPage } = actions
 
   const pageType = getOption('typeNames.page')
-  if(getNodesByType(pageType).length === 0) {
+  if (getNodesByType(pageType).length === 0) {
     return
   }
 
