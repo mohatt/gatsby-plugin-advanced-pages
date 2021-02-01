@@ -1,12 +1,3 @@
-# [1.5.0](https://github.com/mohatt/gatsby-plugin-advanced-pages/compare/v1.4.1...v1.5.0) (2021-02-01)
-
-
-### Features
-
-* **plugin:** Added lookupPath() for validating paths within plugin ([de49bab](https://github.com/mohatt/gatsby-plugin-advanced-pages/commit/de49bab545e68e81e745c197b659fda95c234f2c))
-* **plugin:** Added options.directories.pages from customizing the path to look for the pages config file ([120df4c](https://github.com/mohatt/gatsby-plugin-advanced-pages/commit/120df4c0435a4ddfc49165ed2e3fe2cf5bc5bc47))
-* **plugin:** Removed Markdown/Mdx transformer dependency, the plugin can now function without them. ([1964adb](https://github.com/mohatt/gatsby-plugin-advanced-pages/commit/1964adbcc4591eca55c53f8dc1c6934833eaa39f))
-
 ## [1.4.1](https://github.com/mohatt/gatsby-plugin-advanced-pages/compare/v1.4.0...v1.4.1) (2021-01-11)
 
 
