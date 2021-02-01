@@ -1,3 +1,22 @@
+# [2.0.0](https://github.com/mohatt/gatsby-plugin-advanced-pages/compare/v1.4.1...v1.5.0) (2021-02-01)
+
+
+### BREAKING CHANGES
+
+* The new version introduces a new better api for defining pages and routes, the old api is no longer supported.
+* The schema for the types defined by the plugin has been changed, old GraphQL queries will not work.
+* The Route GraphQL type has been removed.
+
+### Features
+
+* **plugin:** Removed Markdown/Mdx transformer dependency, the plugin can now function without them. ([1964adb](https://github.com/mohatt/gatsby-plugin-advanced-pages/commit/1964adbcc4591eca55c53f8dc1c6934833eaa39f))
+* **plugin:** Implemented "pluginOptionsSchema" node api for validating plugin options and pages config. ([1964adb](https://github.com/mohatt/gatsby-plugin-advanced-pages/commit/1964adbcc4591eca55c53f8dc1c6934833eaa39f#diff-6cabc69a3475b0063d7a0820d49494a8685ce8bb0915f4e84fc91d5fa65e08b6))
+* **plugin:** Added lookupPath() for validating paths within plugin ([de49bab](https://github.com/mohatt/gatsby-plugin-advanced-pages/commit/de49bab545e68e81e745c197b659fda95c234f2c))
+
+### Performance Improvements
+
+* **plugin:** added error reporter ([318b26e](https://github.com/mohatt/gatsby-plugin-advanced-pages/commit/434c4c81c9d15682fb52ec83ebaabdf8d5e2aadc))
+
 ## [1.4.1](https://github.com/mohatt/gatsby-plugin-advanced-pages/compare/v1.4.0...v1.4.1) (2021-01-11)
 
 
