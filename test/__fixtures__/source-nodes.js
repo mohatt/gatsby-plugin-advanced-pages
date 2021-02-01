@@ -1,6 +1,6 @@
 export default [
   {
-    title: 'correctly creates Page nodes from a pages.config.js',
+    title: 'correctly creates page nodes from pages.config.js',
     throws: false,
     files: [
       './src/templates/test.js',
@@ -19,7 +19,7 @@ export default [
     ],
   },
   {
-    title: 'correctly creates Page nodes from a pages.config.json',
+    title: 'correctly creates page nodes from pages.config.json',
     throws: false,
     files: [
       './src/templates/test.js',
@@ -38,7 +38,7 @@ export default [
     ],
   },
   {
-    title: 'correctly creates Page nodes from a pages.config.yaml',
+    title: 'correctly creates page nodes from pages.config.yaml',
     throws: false,
     files: [
       './src/templates/test.js',
@@ -54,7 +54,7 @@ export default [
     ],
   },
   {
-    title: 'correctly creates multiple Page nodes with various configurations',
+    title: 'correctly creates multiple page nodes with various configurations',
     throws: false,
     files: [
       './src/templates/default.js',
@@ -109,7 +109,7 @@ export default [
     ],
   },
   {
-    title: 'throws and error when pages don not have a valid template',
+    title: 'throws and error for pages with invalid template',
     throws: true,
     files: [
       {
@@ -124,7 +124,7 @@ export default [
     ],
   },
   {
-    title: 'throws and error when pages don not have a template',
+    title: 'throws and error when pages don not have a valid template',
     throws: true,
     files: [
       {
