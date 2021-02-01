@@ -1,4 +1,4 @@
-# [2.0.0](https://github.com/mohatt/gatsby-plugin-advanced-pages/compare/v1.4.1...v1.5.0) (2021-02-01)
+# [2.0.0](https://github.com/mohatt/gatsby-plugin-advanced-pages/compare/v1.4.1...v2.0.0) (2021-02-01)
 
 
 ### BREAKING CHANGES
