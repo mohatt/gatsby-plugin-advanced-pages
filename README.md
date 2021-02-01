@@ -520,7 +520,7 @@ Root url for all pages created through the plugin
 #### template
 > Type: `String` Default: `null`
 
-Default template to be used for pages with no `template` metadata defined. It could be a file name located under [`{directories.templates}`](#configuration) or a path relative to the project's directory.
+Default template to be used for pages with no `template` metadata defined. It could be a file name located under [`{directories.templates}`](#directoriestemplates) or a path relative to your project's directory.
 
 #### directories.templates
 > Type: `String` Default: `src/templates`
