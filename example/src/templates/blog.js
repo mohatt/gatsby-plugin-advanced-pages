@@ -22,7 +22,9 @@ const BlogTemplate = ({ data, pageContext }) => {
 
   return (
     <Layout title={title}>
-      <div dangerouslySetInnerHTML={{ __html: page.body }} />
+      <div>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ducimus, vero, obcaecati, aut, error quam sapiente nemo saepe.</p>
+      </div>
       <div class="row">
         <div className="col-md-9">
         {feed.edges.map(({ node }) => (
@@ -61,7 +63,6 @@ export const query = graphql`
   query Blog($id: String!, $limit: Int!, $offset: Int!, $filter: MarkdownRemarkFilterInput!) {
     page(id: { eq: $id }) {
       title
-      body
     }
     feed: allMarkdownRemark(limit: $limit, skip: $offset, filter: $filter){
       edges {

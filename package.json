@@ -42,11 +42,13 @@
   "bugs": "https://github.com/mohatt/gatsby-plugin-advanced-pages/issues",
   "dependencies": {
     "@babel/runtime": "^7.12.5",
+    "gatsby-plugin-utils": "^0.8.0",
     "prop-types": "^15.7.2",
     "classnames": "^2.2.6",
     "lodash": "^4.17.20",
-    "mkdirp": "^1.0.0",
-    "path-to-regexp": "^6.2.0"
+    "mkdirp": "^1.0.4",
+    "path-to-regexp": "^6.2.0",
+    "js-yaml": "^4.0.0"
   },
   "devDependencies": {
     "@babel/cli": "7.12.10",
@@ -65,7 +67,7 @@
     "standard": "16.0.3"
   },
   "peerDependencies": {
-    "gatsby": ">=2.20.0",
+    "gatsby": ">=2.25.0",
     "react": ">=16.4.2"
   },
   "engines": {

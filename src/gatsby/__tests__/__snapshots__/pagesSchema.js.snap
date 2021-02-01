@@ -1,0 +1,55 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`pluginOptionsSchema should invalidate empty fields 1`] = `false`;
+
+exports[`pluginOptionsSchema should invalidate empty fields 2`] = `
+Array [
+  "\\"[0].title\\" is not allowed to be empty",
+  "\\"[0].template\\" is not allowed to be empty",
+  "\\"[0].helper\\" is not allowed to be empty",
+  "\\"[0].routes\\" must have at least 1 key",
+]
+`;
+
+exports[`pluginOptionsSchema should invalidate fields with incorrect data types 1`] = `false`;
+
+exports[`pluginOptionsSchema should invalidate fields with incorrect data types 2`] = `
+Array [
+  "\\"[0].title\\" must be a string",
+  "\\"[0].template\\" must be a string",
+  "\\"[0].helper\\" must be a string",
+  "\\"[0].routes\\" must be of type object",
+  "\\"[0].data\\" must be of type object",
+]
+`;
+
+exports[`pluginOptionsSchema should invalidate required fields with missing values 1`] = `false`;
+
+exports[`pluginOptionsSchema should invalidate required fields with missing values 2`] = `
+Array [
+  "\\"[0].title\\" is required",
+  "\\"[0].routes\\" is required",
+]
+`;
+
+exports[`pluginOptionsSchema should invalidate routes with invalid values 1`] = `false`;
+
+exports[`pluginOptionsSchema should invalidate routes with invalid values 2`] = `
+Array [
+  "\\"[0].routes.foo\\": Route path must be a string starting with '/'",
+  "\\"[1].routes.bar\\" is not allowed to be empty",
+  "\\"[2].routes.third\\" must be a string",
+]
+`;
+
+exports[`pluginOptionsSchema should invalidate unknown fields  1`] = `false`;
+
+exports[`pluginOptionsSchema should invalidate unknown fields  2`] = `
+Array [
+  "\\"[0].foo\\" is not allowed",
+]
+`;
+
+exports[`pluginOptionsSchema should validate correct fields 1`] = `true`;
+
+exports[`pluginOptionsSchema should validate correct fields 2`] = `Array []`;

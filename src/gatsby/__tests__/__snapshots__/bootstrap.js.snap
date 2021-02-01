@@ -2,41 +2,32 @@
 
 exports[`onPreBootstrap correctly initializes custom options 1`] = `
 Object {
+  "_root": "/virtual/project",
   "basePath": "/blog",
   "directories": Object {
     "helpers": "/virtual/project/gatsby/pages",
-    "pages": "/virtual/project/content/pages",
-    "templates": "/virtual/project/src/templates",
-  },
-  "engine": Object {
-    "bodyFieldName": "html",
-    "title": "remark",
-    "typeName": "MarkdownRemark",
+    "pages": "/virtual/project",
+    "templates": "/virtual/project/custom/templates",
   },
   "pagination": Object {
     "limit": 10,
     "suffix": "/page/:page",
   },
-  "template": null,
+  "template": "/virtual/project/custom/templates/default.js",
   "typeNames": Object {
     "page": "Page",
-    "route": "Route",
   },
 }
 `;
 
 exports[`onPreBootstrap correctly initializes default options 1`] = `
 Object {
+  "_root": "/virtual/project",
   "basePath": "/",
   "directories": Object {
     "helpers": "/virtual/project/gatsby/pages",
-    "pages": "/virtual/project/content/pages",
+    "pages": "/virtual/project",
     "templates": "/virtual/project/src/templates",
-  },
-  "engine": Object {
-    "bodyFieldName": "html",
-    "title": "remark",
-    "typeName": "MarkdownRemark",
   },
   "pagination": Object {
     "limit": 10,
@@ -45,9 +36,12 @@ Object {
   "template": null,
   "typeNames": Object {
     "page": "Page",
-    "route": "Route",
   },
 }
 `;
 
-exports[`onPreBootstrap rejects invalid options and throws errors: Invalid Engine 1`] = `"Invalid engine option provided 'whatever' (available engines are 'mdx' or 'remark')"`;
+exports[`onPreBootstrap rejects invalid options and throws errors: Invalid Template 1`] = `
+"A path with value \\"whatever\\" could not be found at any of the following locations:
+ - \\"/virtual/project/src/templates/whatever
+ - \\"/virtual/project/whatever\\""
+`;
