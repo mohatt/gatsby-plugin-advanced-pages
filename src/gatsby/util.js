@@ -143,9 +143,11 @@ export function lookupPath(location, parent = null){
     return rootPath
   }
 
-  search.push(location)
-  if(fs.existsSync(location)) {
-    return location
+  if(path.isAbsolute(location)) {
+    search.push(location)
+    if(fs.existsSync(location)) {
+      return location
+    }
   }
 
   reportError(

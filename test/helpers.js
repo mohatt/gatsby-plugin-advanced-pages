@@ -42,7 +42,7 @@ export function mountDir(name) {
   return !fs.existsSync(dirPath) ? mkdirp.sync(dirPath) : null
 }
 
-export function mountFile(name, content = '') {
+export function mountFile(name, content = '//noop') {
   mountDir(path.dirname(name))
   return fs.writeFileSync(path.resolve(programRoot, name), content.toString())
 }

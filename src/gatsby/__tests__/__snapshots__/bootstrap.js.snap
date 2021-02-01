@@ -43,6 +43,5 @@ Object {
 exports[`onPreBootstrap rejects invalid options and throws errors: Invalid Template 1`] = `
 "A path with value \\"whatever\\" could not be found at any of the following locations:
  - \\"/virtual/project/src/templates/whatever
- - \\"/virtual/project/whatever
- - \\"whatever\\""
+ - \\"/virtual/project/whatever\\""
 `;

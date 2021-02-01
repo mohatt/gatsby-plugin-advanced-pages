@@ -1,0 +1,188 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`sourceNodes correctly creates Page nodes from a pages.config.js 1`] = `
+Array [
+  Array [
+    Object {
+      "children": Array [],
+      "data": Object {},
+      "id": "ID-0 - FOO",
+      "internal": Object {
+        "contentDigest": "{\\"id\\":\\"ID-0 - FOO\\",\\"title\\":\\"foo\\",\\"template\\":\\"/virtual/project/src/templates/test.js\\",\\"routes\\":[{\\"name\\":\\"foo\\",\\"path\\":\\"/foo\\"}],\\"data\\":{},\\"templateName\\":\\"./src/templates/test.js\\",\\"parent\\":null,\\"children\\":[],\\"internal\\":{\\"type\\":\\"Page\\",\\"description\\":\\"Advanced Page: foo\\"}}",
+        "description": "Advanced Page: foo",
+        "type": "Page",
+      },
+      "parent": null,
+      "routes": Array [
+        Object {
+          "name": "foo",
+          "path": "/foo",
+        },
+      ],
+      "template": "/virtual/project/src/templates/test.js",
+      "templateName": "./src/templates/test.js",
+      "title": "foo",
+    },
+  ],
+]
+`;
+
+exports[`sourceNodes correctly creates Page nodes from a pages.config.json 1`] = `
+Array [
+  Array [
+    Object {
+      "children": Array [],
+      "data": Object {},
+      "id": "ID-0 - FOO",
+      "internal": Object {
+        "contentDigest": "{\\"id\\":\\"ID-0 - FOO\\",\\"title\\":\\"foo\\",\\"template\\":\\"/virtual/project/src/templates/test.js\\",\\"routes\\":[{\\"name\\":\\"foo\\",\\"path\\":\\"/foo\\"}],\\"data\\":{},\\"templateName\\":\\"./src/templates/test.js\\",\\"parent\\":null,\\"children\\":[],\\"internal\\":{\\"type\\":\\"Page\\",\\"description\\":\\"Advanced Page: foo\\"}}",
+        "description": "Advanced Page: foo",
+        "type": "Page",
+      },
+      "parent": null,
+      "routes": Array [
+        Object {
+          "name": "foo",
+          "path": "/foo",
+        },
+      ],
+      "template": "/virtual/project/src/templates/test.js",
+      "templateName": "./src/templates/test.js",
+      "title": "foo",
+    },
+  ],
+]
+`;
+
+exports[`sourceNodes correctly creates Page nodes from a pages.config.yaml 1`] = `
+Array [
+  Array [
+    Object {
+      "children": Array [],
+      "data": Object {},
+      "id": "ID-0 - FOO",
+      "internal": Object {
+        "contentDigest": "{\\"id\\":\\"ID-0 - FOO\\",\\"title\\":\\"foo\\",\\"template\\":\\"/virtual/project/src/templates/test.js\\",\\"routes\\":[{\\"name\\":\\"foo\\",\\"path\\":\\"/foo\\"}],\\"data\\":{},\\"templateName\\":\\"./src/templates/test.js\\",\\"parent\\":null,\\"children\\":[],\\"internal\\":{\\"type\\":\\"Page\\",\\"description\\":\\"Advanced Page: foo\\"}}",
+        "description": "Advanced Page: foo",
+        "type": "Page",
+      },
+      "parent": null,
+      "routes": Array [
+        Object {
+          "name": "foo",
+          "path": "/foo",
+        },
+      ],
+      "template": "/virtual/project/src/templates/test.js",
+      "templateName": "./src/templates/test.js",
+      "title": "foo",
+    },
+  ],
+]
+`;
+
+exports[`sourceNodes correctly creates multiple Page nodes with various configurations 1`] = `
+Array [
+  Array [
+    Object {
+      "children": Array [],
+      "data": Object {},
+      "helper": "/virtual/project/gatsby/pages/helper.js",
+      "id": "ID-0 - FOO",
+      "internal": Object {
+        "contentDigest": "{\\"id\\":\\"ID-0 - FOO\\",\\"title\\":\\"foo\\",\\"template\\":\\"/virtual/project/src/templates/default.js\\",\\"helper\\":\\"/virtual/project/gatsby/pages/helper.js\\",\\"routes\\":[{\\"name\\":\\"foo\\",\\"path\\":\\"/foo\\"},{\\"name\\":\\"foo.bar\\",\\"path\\":\\"/foo/bar\\"}],\\"data\\":{},\\"templateName\\":\\"default.js\\",\\"parent\\":null,\\"children\\":[],\\"internal\\":{\\"type\\":\\"Page\\",\\"description\\":\\"Advanced Page: foo\\"}}",
+        "description": "Advanced Page: foo",
+        "type": "Page",
+      },
+      "parent": null,
+      "routes": Array [
+        Object {
+          "name": "foo",
+          "path": "/foo",
+        },
+        Object {
+          "name": "foo.bar",
+          "path": "/foo/bar",
+        },
+      ],
+      "template": "/virtual/project/src/templates/default.js",
+      "templateName": "default.js",
+      "title": "foo",
+    },
+  ],
+  Array [
+    Object {
+      "children": Array [],
+      "data": Object {},
+      "id": "ID-1 - LOREM",
+      "internal": Object {
+        "contentDigest": "{\\"id\\":\\"ID-1 - LOREM\\",\\"title\\":\\"lorem\\",\\"template\\":\\"/virtual/project/src/templates/test.js\\",\\"routes\\":[{\\"name\\":\\"lorem\\",\\"path\\":\\"/lorem\\"}],\\"data\\":{},\\"templateName\\":\\"test.js\\",\\"parent\\":null,\\"children\\":[],\\"internal\\":{\\"type\\":\\"Page\\",\\"description\\":\\"Advanced Page: lorem\\"}}",
+        "description": "Advanced Page: lorem",
+        "type": "Page",
+      },
+      "parent": null,
+      "routes": Array [
+        Object {
+          "name": "lorem",
+          "path": "/lorem",
+        },
+      ],
+      "template": "/virtual/project/src/templates/test.js",
+      "templateName": "test.js",
+      "title": "lorem",
+    },
+  ],
+  Array [
+    Object {
+      "children": Array [],
+      "data": Object {
+        "name": "john",
+        "title": "don",
+      },
+      "helper": "/virtual/project/gatsby/custom/helper.js",
+      "id": "ID-2 - IPSUM",
+      "internal": Object {
+        "contentDigest": "{\\"id\\":\\"ID-2 - IPSUM\\",\\"title\\":\\"ipsum\\",\\"template\\":\\"/virtual/project/src/custom/template.js\\",\\"helper\\":\\"/virtual/project/gatsby/custom/helper.js\\",\\"data\\":{\\"name\\":\\"john\\",\\"title\\":\\"don\\"},\\"routes\\":[{\\"name\\":\\"ipsum\\",\\"path\\":\\"/ipsum\\"},{\\"name\\":\\"dolor\\",\\"path\\":\\"/dolor\\"},{\\"name\\":\\"sit\\",\\"path\\":\\"/sit/amet\\"}],\\"templateName\\":\\"./src/custom/template.js\\",\\"parent\\":null,\\"children\\":[],\\"internal\\":{\\"type\\":\\"Page\\",\\"description\\":\\"Advanced Page: ipsum\\"}}",
+        "description": "Advanced Page: ipsum",
+        "type": "Page",
+      },
+      "parent": null,
+      "routes": Array [
+        Object {
+          "name": "ipsum",
+          "path": "/ipsum",
+        },
+        Object {
+          "name": "dolor",
+          "path": "/dolor",
+        },
+        Object {
+          "name": "sit",
+          "path": "/sit/amet",
+        },
+      ],
+      "template": "/virtual/project/src/custom/template.js",
+      "templateName": "./src/custom/template.js",
+      "title": "ipsum",
+    },
+  ],
+]
+`;
+
+exports[`sourceNodes throws and error for invalid pages config file 1`] = `
+[Error: Unable to validate pages config file "/virtual/project/pages.config.yaml":
+ "[0].routes.foo": Route path must be a string starting with '/']
+`;
+
+exports[`sourceNodes throws and error for non existing pages config file 1`] = `
+[Error: "gatsby-plugin-advanced-pages" might not be working properly:
+ Unable to find a valid pages config file under "/virtual/project"]
+`;
+
+exports[`sourceNodes throws and error when pages don not have a template 1`] = `[Error: Missing "template" metadata for page[0]: "foo". No default template is set in plugin options either.]`;
+
+exports[`sourceNodes throws and error when pages don not have a valid template 1`] = `
+[Error: A path with value "./no/template.js" could not be found at any of the following locations:
+ - "/virtual/project/src/templates/no/template.js
+ - "/virtual/project/no/template.js"]
+`;
