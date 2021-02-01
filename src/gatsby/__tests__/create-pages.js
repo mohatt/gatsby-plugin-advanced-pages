@@ -1,7 +1,6 @@
 import fs from 'fs'
 import path from 'path'
 import { createPages } from '../'
-import { getOption } from '../util'
 import { mountOptions, mountFile, mountDir, mountModule } from '../../../test/helpers'
 import testCases from '../../../test/__fixtures__/create-pages'
 
@@ -12,36 +11,27 @@ describe('createPages', () => {
   const graphql = jest.fn()
   const createPage = jest.fn()
   const actions = { createPage }
+  const getNodesByType = jest.fn().mockImplementation(() => 10)
+  const helperFile = '/path/to/helper.js'
 
   beforeEach(() => {
     graphql.mockReset()
     createPage.mockReset()
     fs.reset()
     jest.resetModules()
-    // re-mount options
     mountOptions()
   })
 
-  for (const { id, throws, routes, pages, files = {} } of testCases) {
+  for (const { id, throws, pages, helper } of testCases) {
     // Set test title
     const title = throws
       ? `throws error on (${id})`
       : `correctly creates pages on (${id})`
 
     test(title, async () => {
-      const { templates, helpers } = getOption('directories')
-      // Create virtual templates
-      if (files.templates) {
-        files.templates.map(name => mountFile(path.join(templates, `${name}.js`), '//noop'))
-      }
-
-      // Create virtual helpers
-      if (files.helpers) {
-        for (const name in files.helpers) {
-          const file = path.join(helpers, `${name}.js`)
-          mountFile(file, '//noop')
-          mountModule(file, files.helpers[name])
-        }
+      if(helper) {
+        mountFile(helperFile)
+        mountModule(helperFile, helper)
       }
 
       // Create a virtual directory for the 'src' folder
@@ -51,13 +41,16 @@ describe('createPages', () => {
       graphql.mockReturnValue({
         data: {
           allPage: { nodes: pages },
-          allRoute: { nodes: routes }
         }
       })
 
       let error = null
       try {
-        await createPages({ graphql, actions })
+        await createPages({
+          graphql,
+          actions,
+          getNodesByType
+        })
       } catch (e) {
         error = e
       }

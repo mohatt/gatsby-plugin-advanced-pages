@@ -44,11 +44,8 @@ export default class PagesCreator {
           getOption('pagination.suffix')
         )
         break
-      default:
-        return reportError(
-          `Unrecognized route scope "${scope}" passed to generateRoute()`
-        )
     }
+
     return {
       name: parent + '.' + scope,
       path: scopedPath,
@@ -86,7 +83,7 @@ export default class PagesCreator {
     }
   }
 
-  createPage ({ route, params = {}, pagination, ...context }) {
+  createPage ({ route, params = {}, pagination, ...context } = {}) {
     const { page } = this
     if (typeof route !== 'string' || !route) {
       return reportError(
@@ -120,20 +117,20 @@ export default class PagesCreator {
         )
       }
       pagination.count = parseInt(pagination.count)
-      if (!Number.isInteger(pagination.count)) {
+      if (!Number.isInteger(pagination.count) || pagination.count < 0) {
         return reportError(
           `Invalid pagination object passed to createAdvancedPage() at "${page.helper}": ` +
-          `'count' paramater must be a valid number (got "${pagination.count}")`
+          `"count" paramater must be a valid non-negative number (got "${pagination.count}")`
         )
       }
 
       pagination.limit = typeof pagination.limit !== 'undefined' && parseInt(pagination.limit)
       if (pagination.limit === false) {
         pagination.limit = getOption('pagination.limit')
-      } else if (pagination.limit <= 0 || !Number.isInteger(pagination.limit)) {
+      } else if (!Number.isInteger(pagination.limit) || pagination.limit <= 0) {
         return reportError(
           `Invalid pagination object passed to createAdvancedPage() at "${page.helper}": ` +
-          `"limit" paramater must be a valid number (got "${pagination.limit}")`
+          `"limit" paramater must be a valid positive number (got "${pagination.limit}")`
         )
       }
 

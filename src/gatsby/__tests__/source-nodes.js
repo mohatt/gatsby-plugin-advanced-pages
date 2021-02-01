@@ -1,6 +1,6 @@
 import fs from 'fs'
 import { sourceNodes } from '../'
-import {mountFile, mountModule, mountOptions} from '../../../test/helpers'
+import { mountFile, mountModule, mountOptions } from '../../../test/helpers'
 import testCases from '../../../test/__fixtures__/source-nodes'
 
 // Use in-memory file system
@@ -22,7 +22,7 @@ describe('sourceNodes', () => {
   })
 
   for (const { title, files, throws } of testCases) {
-    it(title, async () => {
+    test(title, async () => {
       files.map(file => typeof file === 'string'
         ? mountFile(file)
         : Array.isArray(file.data)
