@@ -1,3 +1,9 @@
+# Example site
+/example/node_modules
+/example/public
+/example/.cache
+/example-local
+
 # Logs
 logs
 *.log

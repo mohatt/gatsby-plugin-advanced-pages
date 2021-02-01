@@ -4,7 +4,7 @@ exports[`createPages correctly creates pages on (blog-paginated-auto-route) 1`] 
 Array [
   Array [
     Object {
-      "component": "/virtual/project/src/templates/blog.js",
+      "component": "/path/to/blog.js",
       "context": Object {
         "id": "blog-id",
         "limit": 10,
@@ -15,7 +15,7 @@ Array [
   ],
   Array [
     Object {
-      "component": "/virtual/project/src/templates/blog.js",
+      "component": "/path/to/blog.js",
       "context": Object {
         "id": "blog-id",
         "limit": 10,
@@ -26,7 +26,7 @@ Array [
   ],
   Array [
     Object {
-      "component": "/virtual/project/src/templates/blog.js",
+      "component": "/path/to/blog.js",
       "context": Object {
         "id": "blog-id",
         "limit": 10,
@@ -52,11 +52,74 @@ module.exports = [
 ];"
 `;
 
+exports[`createPages correctly creates pages on (blog-paginated-custom-limit) 1`] = `
+Array [
+  Array [
+    Object {
+      "component": "/path/to/blog.js",
+      "context": Object {
+        "id": "blog-id",
+        "limit": 8,
+        "offset": 0,
+      },
+      "path": "/blog",
+    },
+  ],
+  Array [
+    Object {
+      "component": "/path/to/blog.js",
+      "context": Object {
+        "id": "blog-id",
+        "limit": 8,
+        "offset": 8,
+      },
+      "path": "/blog/page/2",
+    },
+  ],
+  Array [
+    Object {
+      "component": "/path/to/blog.js",
+      "context": Object {
+        "id": "blog-id",
+        "limit": 8,
+        "offset": 16,
+      },
+      "path": "/blog/page/3",
+    },
+  ],
+  Array [
+    Object {
+      "component": "/path/to/blog.js",
+      "context": Object {
+        "id": "blog-id",
+        "limit": 8,
+        "offset": 24,
+      },
+      "path": "/blog/page/4",
+    },
+  ],
+]
+`;
+
+exports[`createPages correctly creates pages on (blog-paginated-custom-limit) 2`] = `
+"\\"use strict\\";
+
+module.exports = [
+  {
+    \\"name\\": \\"blog\\",
+    \\"path\\": \\"/blog\\",
+    \\"scopes\\": {
+      \\"pagination\\": \\"/blog/page/:page\\"
+    }
+  }
+];"
+`;
+
 exports[`createPages correctly creates pages on (blog-paginated-manual-route) 1`] = `
 Array [
   Array [
     Object {
-      "component": "/virtual/project/src/templates/blog.js",
+      "component": "/path/to/blog.js",
       "context": Object {
         "id": "blog-id",
         "limit": 10,
@@ -67,7 +130,7 @@ Array [
   ],
   Array [
     Object {
-      "component": "/virtual/project/src/templates/blog.js",
+      "component": "/path/to/blog.js",
       "context": Object {
         "id": "blog-id",
         "limit": 10,
@@ -78,7 +141,7 @@ Array [
   ],
   Array [
     Object {
-      "component": "/virtual/project/src/templates/blog.js",
+      "component": "/path/to/blog.js",
       "context": Object {
         "id": "blog-id",
         "limit": 10,
@@ -113,7 +176,7 @@ exports[`createPages correctly creates pages on (dynamic-page) 1`] = `
 Array [
   Array [
     Object {
-      "component": "/virtual/project/src/templates/page.js",
+      "component": "/path/to/page.js",
       "context": Object {
         "id": "page-id",
         "page": "hello",
@@ -123,7 +186,7 @@ Array [
   ],
   Array [
     Object {
-      "component": "/virtual/project/src/templates/page.js",
+      "component": "/path/to/page.js",
       "context": Object {
         "id": "page-id",
         "page": "world",
@@ -150,7 +213,7 @@ exports[`createPages correctly creates pages on (home-about) 1`] = `
 Array [
   Array [
     Object {
-      "component": "/virtual/project/src/templates/index.js",
+      "component": "/path/to/index.js",
       "context": Object {
         "id": "home-id",
       },
@@ -159,7 +222,7 @@ Array [
   ],
   Array [
     Object {
-      "component": "/virtual/project/src/templates/page.js",
+      "component": "/path/to/page.js",
       "context": Object {
         "id": "about-id",
       },
@@ -168,7 +231,7 @@ Array [
   ],
   Array [
     Object {
-      "component": "/virtual/project/src/templates/page.js",
+      "component": "/path/to/page.js",
       "context": Object {
         "id": "about-id",
       },
@@ -204,7 +267,7 @@ exports[`createPages correctly creates pages on (page-context) 1`] = `
 Array [
   Array [
     Object {
-      "component": "/virtual/project/src/templates/page.js",
+      "component": "/path/to/page.js",
       "context": Object {
         "id": "about-id",
         "name": "adam",
@@ -218,7 +281,7 @@ Array [
   ],
   Array [
     Object {
-      "component": "/virtual/project/src/templates/page.js",
+      "component": "/path/to/page.js",
       "context": Object {
         "id": "about-id",
         "name": "sara",
@@ -245,8 +308,22 @@ module.exports = [
 ];"
 `;
 
-exports[`createPages throws error on (duplicated-routes) 1`] = `[Error: 'pages/about2.md' is trying to define a route named 'about' that is already defined in 'pages/about.md']`;
+exports[`createPages throws error on (bad-helper-empty-call) 1`] = `[Error: Route name passed to createAdvancedPage() at "/path/to/helper.js" must be a non-empty string]`;
 
-exports[`createPages throws error on (invalid-helper) 1`] = `[Error: Invalid helper 'whatever' defined in page 'pages/about.md':  File does not exist at '/virtual/project/gatsby/pages/whatever.js']`;
+exports[`createPages throws error on (bad-helper-empty-pagination) 1`] = `[Error: Invalid pagination object passed to createAdvancedPage() at "/path/to/helper.js": "count" paramater is missing]`;
 
-exports[`createPages throws error on (invalid-template) 1`] = `[Error: Invalid template 'page' defined in page 'pages/about.md':  File does not exist at '/virtual/project/src/templates/page.js']`;
+exports[`createPages throws error on (bad-helper-invalid-pagination-count) 1`] = `[Error: Invalid pagination object passed to createAdvancedPage() at "/path/to/helper.js": "count" paramater must be a valid non-negative number (got "-15")]`;
+
+exports[`createPages throws error on (bad-helper-invalid-pagination-limit) 1`] = `[Error: Invalid pagination object passed to createAdvancedPage() at "/path/to/helper.js": "limit" paramater must be a valid positive number (got "-10")]`;
+
+exports[`createPages throws error on (bad-helper-invalid-pagination-route) 1`] = `[Error: Invalid pagination object passed to createAdvancedPage() at "/path/to/helper.js": Unrecognized route "foo"]`;
+
+exports[`createPages throws error on (bad-helper-invalid-route-params) 1`] = `[TypeError: Error generating a path for route '/about/:name' with params '{}': Expected "name" to be a string]`;
+
+exports[`createPages throws error on (bad-helper-js-error) 1`] = `[Error: some error]`;
+
+exports[`createPages throws error on (bad-helper-undefined-route) 1`] = `[Error: Unrecognized route "blog" passed to createAdvancedPage() at "/path/to/helper.js"]`;
+
+exports[`createPages throws error on (duplicated-routes) 1`] = `[Error: Unable to create a route with name "about". Another route with the same name already exists]`;
+
+exports[`createPages throws error on (invalid-helper) 1`] = `[Error: Cannot find module '/path/to/whatever.js' from 'src/gatsby/lib/pages-creator.js']`;

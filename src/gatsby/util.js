@@ -1,22 +1,7 @@
 import fs from 'fs'
 import path from 'path'
-import mkdirp from 'mkdirp'
 import _ from 'lodash'
 import debug from 'debug'
-
-// Available transformer engines
-const ENGINES = {
-  mdx: {
-    name: 'mdx',
-    typeName: 'Mdx',
-    bodyFieldName: 'body'
-  },
-  remark: {
-    title: 'remark',
-    typeName: 'MarkdownRemark',
-    bodyFieldName: 'html'
-  }
-}
 
 // Initializes options
 // The function only runs when called with args to initialize and cache
@@ -24,50 +9,102 @@ const ENGINES = {
 export function initializeOptions (args) {
   if (arguments.length === 0) {
     if (typeof initializeOptions.options === 'undefined') {
-      throw new Error('Cant fetch options because they are not initialized')
+      return reportError('Cant fetch options because they are not initialized')
     }
 
     return initializeOptions.options
   }
 
-  const { program } = args.store.getState()
-  const o = _.merge(args.defaultOptions, args.pluginOptions)
-
+  // Merge user-defined options with defaults
+  const options = _.merge(args.defaultOptions, args.pluginOptions)
+  // set the root path of the the project
+  options._root = args.store.getState().program.directory
   // Ensure basePath is absolute
-  o.basePath = path.join('/', o.basePath)
-
-  // Ensure we have a valid engine
-  // Replace the engine name with the engine object from ENGINES map
-  o.engine = ENGINES[_.toLower(o.engine)]
-  if (!o.engine) {
-    throw new TypeError(
-      `Invalid engine option provided '${args.pluginOptions.engine}' (available engines` +
-      ` are '${Object.keys(ENGINES).join('\' or \'')}')`
-    )
-  }
-
+  options.basePath = path.join('/', options.basePath)
+  // Ensure type names are Title case
+  options.typeNames = _.mapValues(options.typeNames, _.upperFirst)
   // Convert directory paths to absolute ones
-  o.directories = _.mapValues(o.directories, dir => {
-    const dirPath = path.join(program.directory, dir)
-    if (!fs.existsSync(dirPath)) {
-      mkdirp.sync(dirPath)
-    }
-    return dirPath
-  })
+  options.directories = _.mapValues(options.directories, dir => (
+    path.join(options._root, dir)
+  ))
 
-  // Ensure we have a valid positive number
-  o.pagination.limit = parseInt(o.pagination.limit)
-  if (o.pagination.limit <= 0 || isNaN(o.pagination.limit)) {
-    throw new TypeError('Expected a positive number for \'pagination.limit\' option')
+  // Cache the options object now so that subsequent
+  // calls to lookupPath() dont throw an error
+  initializeOptions.options = options
+
+  // Verify default template
+  if (options.template) {
+    options.template = lookupPath(options.template, options.directories.templates)
   }
-
-  // Ensure type names are Capitalized
-  o.typeNames = _.mapValues(o.typeNames, _.upperFirst)
 
   // Debug final options object
-  debug('gatsby-plugin-advanced-pages')('Options', o)
+  debug('gatsby-plugin-advanced-pages')('Options', options)
 
-  return initializeOptions.options = o
+  initializeOptions.options = options
+}
+
+// Initializes reporter
+// The function only runs when called with args to initialize and cache
+// reporter object. Subsequent calls without args return the cached value
+export function initializeReporter (reporter) {
+  if (arguments.length === 0) {
+    if (typeof initializeReporter.reporter === 'undefined') {
+      throw new Error('Cant fetch reporter because it is not initialized')
+    }
+
+    return initializeReporter.reporter
+  }
+
+  const errorMap = {
+    10000: {
+      text: context => context.message,
+      level: 'ERROR',
+      type: 'PLUGIN'
+    }
+  }
+
+  if (reporter.setErrorMap) {
+    reporter.setErrorMap(errorMap)
+  }
+
+  initializeReporter.reporter = reporter
+}
+
+// Gets the initialized eporter object
+export function getReporter () {
+  return initializeReporter()
+}
+
+// Prints an error message and terminates the build
+export function reportError (message, e = null) {
+  const reporter = getReporter()
+  const prefix = '"gatsby-plugin-advanced-pages" threw an error while running'
+
+  if (!e) {
+    reporter.panic({
+      id: '10000',
+      context: {
+        message: prefix
+      },
+      error: new Error(message)
+    })
+    return
+  }
+
+  reporter.panic({
+    id: '10000',
+    context: {
+      message: `${prefix}:\n ${message}`
+    },
+    error: e
+  })
+}
+
+// Prints a warning message
+export function reportWarning (message) {
+  const reporter = getReporter()
+  const prefix = '"gatsby-plugin-advanced-pages" might not be working properly'
+  reporter.warn(`${prefix}:\n ${message}`)
 }
 
 // Gets the initialized options object
@@ -80,8 +117,41 @@ export function getOption (optionName) {
   return _.get(getOptions(), optionName)
 }
 
-// Checks if a path is a child of another one
-export function isPathChildof (child, parent) {
-  const relative = path.relative(parent, child)
-  return relative && !relative.startsWith('..') && !path.isAbsolute(relative)
+// Checks if a location exists under parent
+// if not checks if it exists under project root
+// if not check if its an absolute path
+// throws an error if cant find any
+export function lookupPath (location, parent = null) {
+  if (!location || typeof location !== 'string') {
+    return reportError(
+      `ensurePath() expected a non-empty string but got ${typeof location}("${location}")`
+    )
+  }
+
+  const search = []
+  if (parent && typeof parent === 'string') {
+    const localPath = path.join(parent, location)
+    search.push(localPath)
+    if (fs.existsSync(localPath)) {
+      return localPath
+    }
+  }
+
+  const rootPath = path.join(getOption('_root'), location)
+  search.push(rootPath)
+  if (fs.existsSync(rootPath)) {
+    return rootPath
+  }
+
+  if (path.isAbsolute(location)) {
+    search.push(location)
+    if (fs.existsSync(location)) {
+      return location
+    }
+  }
+
+  reportError(
+    `A path with value "${location}" could not be found at ` +
+    `any of the following locations:\n - "${search.join('\n - "')}"`
+  )
 }
