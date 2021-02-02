@@ -1,9 +1,9 @@
 import * as PathToRegexp from 'path-to-regexp'
 
+// Normalizes a route path before passing it to pathToRegexp
 function normalize (route) {
-  // Strip trailing slashes before passing to pathToRegexp
-  // This allows the resulting regexp to match paths with or
-  // without trailing slashes
+  // Strip trailing slashes to allow the resulting regexp
+  // to match paths with or without trailing slashes
   // This will also ensure that all paths generated
   // through the plugin are trailing-slash free
   return route.replace(/^(.+?)\/*?$/, '$1')
@@ -25,22 +25,24 @@ export function pick (routes, path) {
 // Uses Memoization to improve performance
 // Returns a function to be used to generate paths for specific route
 export function compile (route) {
-  if (!compile.cache) {
-    compile.cache = {}
-  }
-
+  compile.cache = compile.cache || {}
   if (compile.cache[route]) {
     return compile.cache[route]
   }
 
-  const generator = PathToRegexp.compile(normalize(route))
-  return compile.cache[route] = function (data, options) {
+  const generator = PathToRegexp.compile(normalize(route), {
+    // Make sure we encode path segments consistently
+    encode: encodeURIComponent
+  })
+
+  // eslint-disable-next-line no-return-assign
+  return compile.cache[route] = function (data) {
     try {
-      return generator(data, options)
+      return generator(data)
     } catch (e) {
       throw new TypeError(
-        `Error generating a path for route '${route}' with` +
-        ` params '${JSON.stringify(data)}': ${e.message}`
+        `Error generating a path for route "${route}" with ` +
+        `params "${JSON.stringify(data)}": ${e.message}`
       )
     }
   }
