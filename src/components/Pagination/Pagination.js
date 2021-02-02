@@ -130,7 +130,7 @@ export default class Pagination extends React.Component {
         <ul className={theme.inner}>
           {pages.map((page) => {
             if (page.disabled && !this.props.renderDisabled) {
-              return
+              return null
             }
 
             const classes = [theme.item]
@@ -159,13 +159,9 @@ export default class Pagination extends React.Component {
 
             return (
               <li key={page.key} className={classNames(classes)}>
-                <Link
-                  to={this.props.route}
-                  params={params}
-                  scope={scope}
-                  className={theme.link}
-                  children={page.label}
-                />
+                <Link to={this.props.route} params={params} scope={scope} className={theme.link}>
+                  {page.label}
+                </Link>
               </li>
             )
           })}

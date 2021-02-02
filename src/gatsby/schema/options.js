@@ -15,7 +15,7 @@ export default function (Joi) {
         .positive()
         .description('Default page size to be used when no "limit" parameter is passed to "createAdvancedPage()".'),
       suffix: Joi.string()
-        .pattern(/\/\:page(\/|$)/)
+        .pattern(/\/:page(\/|$)/)
         .description('Suffix to be added to the original route to generate a paginated route. This is only used when no paginated route is passed to "createAdvancedPage()".')
         .messages({
           'string.pattern.base': '{{#label}} with value "{{#value}}": Route suffix must contain the \':page\' paramater (e.g \'/pages/:page\')'
