@@ -1,3 +1,10 @@
+## [2.0.1](https://github.com/mohatt/gatsby-plugin-advanced-pages/compare/v2.0.0...v2.0.1) (2021-02-02)
+
+
+### Bug Fixes
+
+* **plugin:** changed route compiler function to make sure we encode path segments consistently ([09a32f9](https://github.com/mohatt/gatsby-plugin-advanced-pages/commit/09a32f99728904e50c19ab62dd042d7c39436ea5))
+
 # [2.0.0](https://github.com/mohatt/gatsby-plugin-advanced-pages/compare/v1.4.1...v2.0.0) (2021-02-01)
 
 
