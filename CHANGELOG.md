@@ -1,3 +1,10 @@
+## [2.0.2](https://github.com/mohatt/gatsby-plugin-advanced-pages/compare/v2.0.1...v2.0.2) (2021-02-02)
+
+
+### Bug Fixes
+
+* **plugin:** ignore encoding path segments when creating pages (gatsby already does it) ([2f8ed3b](https://github.com/mohatt/gatsby-plugin-advanced-pages/commit/2f8ed3b16f7ad874998e595d8e9f8a2512dd2d34))
+
 ## [2.0.1](https://github.com/mohatt/gatsby-plugin-advanced-pages/compare/v2.0.0...v2.0.1) (2021-02-02)
 
 
