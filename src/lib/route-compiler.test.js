@@ -27,7 +27,8 @@ describe('Route Compiler', () => {
   it('compiles routes correctly', () => {
     expect(compile('/blog/:post')({ post: 'hello' })).toBe('/blog/hello')
     expect(compile('/blog/:post/')({ post: 'hello' })).toBe('/blog/hello')
-    expect(compile('/blog/:post')({ post: 'hello world' })).toBe('/blog/hello%20world')
+    expect(compile('/encode/:post', true)({ post: 'hello world' })).toBe('/encode/hello%20world')
+    expect(compile('/no-encode/:post', false)({ post: 'hello world' })).toBe('/no-encode/hello world')
     expect(() => compile('/blog/:post')()).toThrow()
   })
 })
