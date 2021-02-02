@@ -318,7 +318,7 @@ exports[`createPages throws error on (bad-helper-invalid-pagination-limit) 1`] =
 
 exports[`createPages throws error on (bad-helper-invalid-pagination-route) 1`] = `[Error: Invalid pagination object passed to createAdvancedPage() at "/path/to/helper.js": Unrecognized route "foo"]`;
 
-exports[`createPages throws error on (bad-helper-invalid-route-params) 1`] = `[TypeError: Error generating a path for route '/about/:name' with params '{}': Expected "name" to be a string]`;
+exports[`createPages throws error on (bad-helper-invalid-route-params) 1`] = `[TypeError: Error generating a path for route "/about/:name" with params "{}": Expected "name" to be a string]`;
 
 exports[`createPages throws error on (bad-helper-js-error) 1`] = `[Error: some error]`;
 
