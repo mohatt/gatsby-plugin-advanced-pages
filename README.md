@@ -91,7 +91,7 @@ export default PageTemplate
 Run `gatsby develop` and open http://localhost/hello to see your new page.
 
 ### Page helpers
-In order to create more advanced pages, you need to define a page helper in your markdown metadata. Page helpers are JavaScript files that export a function to be run by the plugin during Gatsby's [createPage](https://www.gatsbyjs.org/docs/actions/#createPage) lifecycle. Here is an example page helper that creates a blog index page with pagination functionality:
+In order to create more advanced pages, you need to define a page helper. Page helpers are JavaScript files that export a function to be run by the plugin during Gatsby's [createPage](https://www.gatsbyjs.org/docs/actions/#createPage) lifecycle. Here is an example page helper that creates a blog index page with pagination functionality:
 
 *Note: You will need [gatsby-transformer-remark](https://www.gatsbyjs.org/packages/gatsby-transformer-remark/)  plugin installed for this example to work*
 
