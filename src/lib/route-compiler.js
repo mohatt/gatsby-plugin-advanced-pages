@@ -24,16 +24,17 @@ export function pick (routes, path) {
 // Wraps pathToRegexp to handle errors thrown
 // Uses Memoization to improve performance
 // Returns a function to be used to generate paths for specific route
-export function compile (route) {
+export function compile (route, encodeURI = true) {
   compile.cache = compile.cache || {}
   if (compile.cache[route]) {
     return compile.cache[route]
   }
 
-  const generator = PathToRegexp.compile(normalize(route), {
-    // Make sure we encode path segments consistently
-    encode: encodeURIComponent
-  })
+  const options = {}
+  if (encodeURI) {
+    options.encode = encodeURIComponent
+  }
+  const generator = PathToRegexp.compile(normalize(route), options)
 
   // eslint-disable-next-line no-return-assign
   return compile.cache[route] = function (data) {

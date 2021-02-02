@@ -29,7 +29,7 @@ export default class PagesCreator {
       }
       route.path = path.join(getOption('basePath'), route.path)
       route.scopes = {}
-      route.pathGenerator = compileRoute(route.path)
+      route.pathGenerator = compileRoute(route.path, false)
       this.routeMap[name] = route
     }
   }
