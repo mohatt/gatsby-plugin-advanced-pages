@@ -30,7 +30,6 @@ jobs:
           name: package-art
           path: pkg.tgz
   test_example:
-    if: "!contains(github.event.head_commit.message, 'skip ci')"
     needs: test
     runs-on: ubuntu-18.04
     defaults:
@@ -60,7 +59,7 @@ jobs:
           name: example-art
           path: example/public
   deploy_example:
-    if: github.event_name == 'push' && !contains(github.event.head_commit.message, 'skip ci')
+    if: github.event_name == 'push'
     needs: test_example
     runs-on: ubuntu-18.04
     steps:
