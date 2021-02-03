@@ -47,18 +47,15 @@ jobs:
         with:
           name: package-art
           path: example
+      - run: npm install pkg.tgz --only=development --no-package-lock
       - uses: actions/cache@v2
         with:
-          path: ~/.pnpm-store
+          path: ~/.npm
           key: ${{ runner.os }}-build-example-${{ hashFiles('**/example/package.json') }}
           restore-keys: |
-            ${{ runner.os }}-build-example-
-      - run: |
-          npm -g install pnpm@5.16
-          pnpm set verify-store-integrity false
-      - run: pnpm add ./pkg.tgz
-      - run: pnpm install
-      - run: pnpm run build -- --prefix-paths
+            ${{ runner.os }}-build-example-npm-
+      - run: npm install
+      - run: npm run build --prefix-paths
       - if: github.event_name == 'push'
         uses: actions/upload-artifact@v2
         with:
