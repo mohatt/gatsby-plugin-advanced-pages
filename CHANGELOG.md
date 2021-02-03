@@ -1,3 +1,10 @@
+# [2.1.0](https://github.com/mohatt/gatsby-plugin-advanced-pages/compare/v2.0.2...v2.1.0) (2021-02-03)
+
+
+### Features
+
+* **plugin:** added support for inline pages configuration ([78a6b78](https://github.com/mohatt/gatsby-plugin-advanced-pages/commit/78a6b78b809ac52bc3c1b1afe5e6b1f473050f39))
+
 ## [2.0.2](https://github.com/mohatt/gatsby-plugin-advanced-pages/compare/v2.0.1...v2.0.2) (2021-02-02)
 
 
