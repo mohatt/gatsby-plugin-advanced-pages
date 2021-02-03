@@ -44,7 +44,6 @@
   "dependencies": {
     "@babel/runtime": "^7.12.5",
     "classnames": "^2.2.6",
-    "gatsby-plugin-utils": "^0.8.0",
     "js-yaml": "^4.0.0",
     "lodash": "^4.17.20",
     "mkdirp": "^1.0.4",
@@ -57,8 +56,9 @@
     "@babel/eslint-parser": "7.12.13",
     "@semantic-release/changelog": "5.0.1",
     "@semantic-release/git": "9.0.0",
-    "babel-preset-gatsby-package": "0.11.0",
+    "babel-preset-gatsby-package": "0.12.0",
     "cross-env": "7.0.3",
+    "gatsby-plugin-utils": "0.8.0",
     "jest": "26.6.3",
     "metro-memory-fs": "0.65.0",
     "react": "16.14.0",
