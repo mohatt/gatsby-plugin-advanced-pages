@@ -56,7 +56,7 @@ jobs:
       - run: |
           npm -g install pnpm@5.16
           pnpm set verify-store-integrity false
-      - run: pnpm add pkg.tgz
+      - run: pnpm add ./pkg.tgz
       - run: pnpm install
       - run: pnpm run build --prefix-paths
       - if: github.event_name == 'push'
