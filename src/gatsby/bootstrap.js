@@ -17,6 +17,7 @@ export function onPreBootstrap ({ store, reporter }, pluginOptions) {
   // Default values for options
   const defaultOptions = {
     basePath: '/',
+    pages: [],
     template: null,
     directories: {
       templates: './src/templates',

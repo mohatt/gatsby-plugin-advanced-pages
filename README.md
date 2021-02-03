@@ -15,7 +15,7 @@ Gatsby Advanced Pages is a wrapper around Gatsby's [createPage](https://www.gats
   - [Pagination component](#pagination-component)
 - [Functions](#functions)
 - [Configuration](#configuration)
-  - [Pages config file](#pages-config-file)
+  - [Pages](#pages)
   - [Plugin options](#plugin-options)
 - [License](#license)
 
@@ -439,10 +439,36 @@ Gets a specific route.
 
 ## Configuration
 
-### Pages config file
-The pages configuration file defines your site’s pages and routes. This file should be in the root of your Gatsby site and could be defined in one of 3 formats:
+### Pages
+Pages configuration defines your site’s pages and routes. It should be defined in one of two ways:
 
-#### YAML
+#### Inline definition
+You can define it alongside other plugin options in your `gatsby.config.js` file like this:
+
+```javascript
+plugins: [
+  {
+    resolve: `gatsby-plugin-advanced-pages`,
+    options: {
+      // plugin options goes here
+      pages: [
+        {
+          title: "Hello, World",
+          template: "hello.js",
+          routes: {
+            hello: "/hello"
+          }
+        }
+      ]
+    }
+  }
+]
+```
+
+#### Separate config file
+This file should be in the root of your Gatsby site and should be in one of these formats:
+
+##### YAML
 `pages.config.yaml`
 
 ```yaml
@@ -452,7 +478,7 @@ The pages configuration file defines your site’s pages and routes. This file s
     hello: /hello
 ```
 
-#### JSON
+##### JSON
 `pages.config.json`
 
 ```json
@@ -467,7 +493,7 @@ The pages configuration file defines your site’s pages and routes. This file s
 ]
 ```
 
-#### JavaScript
+##### JavaScript
 `pages.config.js`
 
 ```js
@@ -495,6 +521,7 @@ plugins: [
     resolve: `gatsby-plugin-advanced-pages`,
     options: {
       basePath: '/',
+      pages: [],
       template: null,
       directories: {
         templates: 'src/templates',
@@ -513,9 +540,14 @@ plugins: [
 ```
 
 #### basePath
-> Type: `String` Default: `/`
+> Type: `String` Default: `"/"`
 
 Root url for all pages created through the plugin
+
+#### pages
+> Type: `Array` Default: `[]`
+
+Inline pages configuration to use instead of a separate pages.config.js file
 
 #### template
 > Type: `String` Default: `null`
@@ -523,12 +555,12 @@ Root url for all pages created through the plugin
 Default template to be used for pages with no `template` metadata defined. It could be a file name located under `{directories.templates}` or a path relative to your project's root directory.
 
 #### directories.templates
-> Type: `String` Default: `src/templates`
+> Type: `String` Default: `"src/templates"`
 
 Location of template components used to render pages. The path could either be relative to your project's root directory or an absolute path
 
 #### directories.helpers
-> Type: `String` Default: `gatsby/pages`
+> Type: `String` Default: `"gatsby/pages"`
 
 Location of page helpers. The path could either be relative to your project's root directory or an absolute path
 
@@ -538,12 +570,12 @@ Location of page helpers. The path could either be relative to your project's ro
 Default page size to be used when no `limit` parameter is passed to `createAdvancedPage()`
 
 #### pagination.suffix
-> Type: `String` Default: `/page/:page`
+> Type: `String` Default: `"/page/:page"`
 
 Suffix to be added to the original route to generate a paginated route. This is only used when no paginated route is passed to `createAdvancedPage()`
 
 #### typeNames.page
-> Type: `String` Default: `Page`
+> Type: `String` Default: `"Page"`
 
 Name of the page object type
 

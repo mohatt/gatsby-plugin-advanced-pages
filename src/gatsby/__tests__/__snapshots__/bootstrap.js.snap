@@ -8,6 +8,7 @@ Object {
     "helpers": "/virtual/project/gatsby/pages",
     "templates": "/virtual/project/custom/templates",
   },
+  "pages": Array [],
   "pagination": Object {
     "limit": 10,
     "suffix": "/page/:page",
@@ -27,6 +28,7 @@ Object {
     "helpers": "/virtual/project/gatsby/pages",
     "templates": "/virtual/project/src/templates",
   },
+  "pages": Array [],
   "pagination": Object {
     "limit": 10,
     "suffix": "/page/:page",

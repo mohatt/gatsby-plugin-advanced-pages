@@ -1,7 +1,11 @@
+import pagesSchema from './pages'
+
 export default function (Joi) {
   return Joi.object({
     basePath: Joi.string()
       .description('Root url for all pages created through the plugin.'),
+    pages: pagesSchema(Joi)
+      .description('Inline pages configuration to use instead of pages.config.js.'),
     template: Joi.string()
       .description('Default template to be used for pages with no "template" metadata defined.'),
     directories: Joi.object({

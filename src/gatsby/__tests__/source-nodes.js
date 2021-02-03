@@ -18,11 +18,13 @@ describe('sourceNodes', () => {
     createNode.mockReset()
     jest.resetModules()
     fs.reset()
+    // Reset options before each test
     mountOptions()
   })
 
-  for (const { title, files, throws } of testCases) {
+  for (const { title, files, throws, options } of testCases) {
     test(title, async () => {
+      options && mountOptions(options)
       files.map(file => typeof file === 'string'
         ? mountFile(file)
         : Array.isArray(file.data)

@@ -1,5 +1,21 @@
 export default [
   {
+    title: 'correctly creates page nodes from inline pages config',
+    throws: false,
+    files: ['./src/templates/test.js'],
+    options: {
+      pages: [
+        {
+          title: 'foo',
+          template: './src/templates/test.js',
+          routes: {
+            foo: '/foo'
+          }
+        }
+      ]
+    }
+  },
+  {
     title: 'correctly creates page nodes from pages.config.js',
     throws: false,
     files: [
@@ -52,6 +68,36 @@ export default [
 `
       }
     ]
+  },
+  {
+    title: 'correctly ignores pages config file in favor of inline pages config',
+    throws: false,
+    files: [
+      './src/templates/test.js',
+      {
+        path: './pages.config.js',
+        data: [
+          {
+            title: 'foo',
+            template: './src/templates/test.js',
+            routes: {
+              foo: '/foo'
+            }
+          }
+        ]
+      }
+    ],
+    options: {
+      pages: [
+        {
+          title: 'foo-inline',
+          template: './src/templates/test.js',
+          routes: {
+            foo: '/foo-inline'
+          }
+        }
+      ]
+    }
   },
   {
     title: 'correctly creates multiple page nodes with various configurations',

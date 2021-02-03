@@ -88,6 +88,32 @@ Array [
 ]
 `;
 
+exports[`sourceNodes correctly creates page nodes from inline pages config 1`] = `
+Array [
+  Array [
+    Object {
+      "children": Array [],
+      "id": "ID-0 - FOO",
+      "internal": Object {
+        "contentDigest": "{\\"id\\":\\"ID-0 - FOO\\",\\"title\\":\\"foo\\",\\"template\\":\\"/virtual/project/src/templates/test.js\\",\\"routes\\":[{\\"name\\":\\"foo\\",\\"path\\":\\"/foo\\"}],\\"templateName\\":\\"./src/templates/test.js\\",\\"parent\\":null,\\"children\\":[],\\"internal\\":{\\"type\\":\\"Page\\",\\"description\\":\\"Advanced Page: foo\\"}}",
+        "description": "Advanced Page: foo",
+        "type": "Page",
+      },
+      "parent": null,
+      "routes": Array [
+        Object {
+          "name": "foo",
+          "path": "/foo",
+        },
+      ],
+      "template": "/virtual/project/src/templates/test.js",
+      "templateName": "./src/templates/test.js",
+      "title": "foo",
+    },
+  ],
+]
+`;
+
 exports[`sourceNodes correctly creates page nodes from pages.config.js 1`] = `
 Array [
   Array [
@@ -164,6 +190,32 @@ Array [
       "template": "/virtual/project/src/templates/test.js",
       "templateName": "./src/templates/test.js",
       "title": "foo",
+    },
+  ],
+]
+`;
+
+exports[`sourceNodes correctly ignores pages config file in favor of inline pages config 1`] = `
+Array [
+  Array [
+    Object {
+      "children": Array [],
+      "id": "ID-0 - FOO-INLINE",
+      "internal": Object {
+        "contentDigest": "{\\"id\\":\\"ID-0 - FOO-INLINE\\",\\"title\\":\\"foo-inline\\",\\"template\\":\\"/virtual/project/src/templates/test.js\\",\\"routes\\":[{\\"name\\":\\"foo\\",\\"path\\":\\"/foo-inline\\"}],\\"templateName\\":\\"./src/templates/test.js\\",\\"parent\\":null,\\"children\\":[],\\"internal\\":{\\"type\\":\\"Page\\",\\"description\\":\\"Advanced Page: foo-inline\\"}}",
+        "description": "Advanced Page: foo-inline",
+        "type": "Page",
+      },
+      "parent": null,
+      "routes": Array [
+        Object {
+          "name": "foo",
+          "path": "/foo-inline",
+        },
+      ],
+      "template": "/virtual/project/src/templates/test.js",
+      "templateName": "./src/templates/test.js",
+      "title": "foo-inline",
     },
   ],
 ]

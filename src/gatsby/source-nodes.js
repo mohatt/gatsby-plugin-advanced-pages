@@ -59,13 +59,20 @@ export default async function ({ actions, schema, createNodeId, createContentDig
     })
   ])
 
-  const configFile = findPagesConfig(options._root)
-  if (!configFile) {
-    reportWarning(`Unable to find a valid pages config file under "${options._root}"`)
-    return
+  let pages = options.pages
+  if (pages.length === 0) {
+    const configFile = findPagesConfig(options._root)
+    if (!configFile) {
+      reportWarning(
+        '- No pages config is defined in plugin options.\n ' +
+        `- Unable to find a valid pages config file (eg. "pages.config.js") under "${options._root}"`
+      )
+      return
+    }
+
+    pages = await validatePagesConfig(configFile)
   }
 
-  const pages = await validatePagesConfig(configFile)
   let i = 0
   for (const page of pages) {
     // Set template file path
