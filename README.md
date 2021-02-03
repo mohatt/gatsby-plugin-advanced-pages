@@ -512,7 +512,7 @@ module.exports = [
 ### Plugin options
 
 #### Defaults
-Here is a full list of options with their default values that you can use to configure the plugin behaviour.
+Here is the full list of options with their default values.
 
 ```javascript
 // gatsby-config.js
