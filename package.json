@@ -71,11 +71,6 @@
     "gatsby": ">=2.25.0",
     "react": ">=16.4.2"
   },
-  "peerDependenciesMeta": {
-    "gatsby": {
-      "optional": true
-    }
-  },
   "engines": {
     "node": ">=10.13.0"
   },

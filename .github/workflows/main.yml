@@ -9,7 +9,7 @@ on:
 jobs:
   test:
     if: "!contains(github.event.head_commit.message, '[skip ci]')"
-    runs-on: ubuntu-18.04
+    runs-on: ubuntu-20.04
     steps:
       - uses: actions/checkout@v2
       - uses: actions/setup-node@v2
@@ -17,21 +17,24 @@ jobs:
           node-version: 12
       - uses: actions/cache@v2
         with:
-          path: ~/.npm
-          key: ${{ runner.os }}-npm-${{ hashFiles('**/package-lock.json') }}
+          path: ~/.pnpm-store
+          key: ${{ runner.os }}-build-${{ hashFiles('**/pnpm-lock.yaml') }}
           restore-keys: |
-            ${{ runner.os }}-npm-
-      - run: npm ci
-      - run: npm run test:coverage
+            ${{ runner.os }}-build-
+      - run: |
+          npm -g install pnpm@5.16
+          pnpm set verify-store-integrity false
+      - run: pnpm install
+      - run: pnpm run test:coverage
       - uses: codecov/codecov-action@v1
-      - run: mv "$(npm pack | tail -n 1)" pkg.tgz
+      - run: mv "$(pnpm pack | tail -n 1)" pkg.tgz
       - uses: actions/upload-artifact@v2
         with:
           name: package-art
           path: pkg.tgz
   test_example:
     needs: test
-    runs-on: ubuntu-18.04
+    runs-on: ubuntu-20.04
     defaults:
       run:
         working-directory: example
@@ -48,9 +51,9 @@ jobs:
       - uses: actions/cache@v2
         with:
           path: ~/.npm
-          key: ${{ runner.os }}-example-npm-${{ hashFiles('**/example/package.json') }}
+          key: ${{ runner.os }}-build-example-${{ hashFiles('**/example/package.json') }}
           restore-keys: |
-            ${{ runner.os }}-example-npm-
+            ${{ runner.os }}-build-example-npm-
       - run: npm install
       - run: npm run build --prefix-paths
       - if: github.event_name == 'push'
@@ -61,7 +64,7 @@ jobs:
   deploy_example:
     if: github.event_name == 'push'
     needs: test_example
-    runs-on: ubuntu-18.04
+    runs-on: ubuntu-20.04
     steps:
       - uses: actions/download-artifact@v2
         with:
