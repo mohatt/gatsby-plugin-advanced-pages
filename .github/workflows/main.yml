@@ -58,7 +58,7 @@ jobs:
           pnpm set verify-store-integrity false
       - run: pnpm add ./pkg.tgz
       - run: pnpm install
-      - run: pnpm run build --prefix-paths
+      - run: pnpm run build -- --prefix-paths
       - if: github.event_name == 'push'
         uses: actions/upload-artifact@v2
         with:
