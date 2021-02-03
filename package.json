@@ -96,5 +96,10 @@
       "@semantic-release/npm",
       "@semantic-release/git"
     ]
+  },
+  "renovate": {
+    "extends": [
+      "config:js-lib"
+    ]
   }
 }
