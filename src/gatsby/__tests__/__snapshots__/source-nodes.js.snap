@@ -228,7 +228,8 @@ exports[`sourceNodes throws and error for invalid pages config file 1`] = `
 
 exports[`sourceNodes throws and error for non existing pages config file 1`] = `
 [Error: "gatsby-plugin-advanced-pages" might not be working properly:
- Unable to find a valid pages config file under "/virtual/project"]
+ - No pages config is defined in plugin options.
+ - Unable to find a valid pages config file (eg. "pages.config.js") under "/virtual/project"]
 `;
 
 exports[`sourceNodes throws and error for pages with invalid template 1`] = `
