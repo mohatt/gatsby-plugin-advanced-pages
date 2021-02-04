@@ -2,7 +2,7 @@ import React from 'react'
 import ShallowRenderer from 'react-test-renderer/shallow'
 import { mapValues, merge } from 'lodash'
 import Pagination from '../Pagination'
-import testCases, { defaultTestCase } from '../../../../test/__fixtures__/pagination'
+import testCases, { defaultTestCase } from './__fixtures__/pagination'
 
 describe('<Pagination />', () => {
   const render = (props = {}) => {

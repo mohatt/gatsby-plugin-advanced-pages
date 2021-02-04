@@ -74,6 +74,18 @@
   "engines": {
     "node": ">=10.13.0"
   },
+  "jest": {
+    "roots": [
+      "<rootDir>/test/",
+      "<rootDir>/src/"
+    ],
+    "testPathIgnorePatterns": [
+      "/__tests__/__fixtures__/.*$"
+    ],
+    "collectCoverageFrom": [
+      "src/**/*.js"
+    ]
+  },
   "standard": {
     "parser": "@babel/eslint-parser",
     "env": [
