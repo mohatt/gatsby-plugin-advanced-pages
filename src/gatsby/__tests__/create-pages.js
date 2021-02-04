@@ -10,6 +10,7 @@ jest.mock('fs')
 describe('createPages', () => {
   const graphql = jest.fn()
   const createPage = jest.fn()
+  const cache = { directory: '/path/to/.cache' }
   const actions = { createPage }
   const getNodesByType = jest.fn().mockImplementation(() => 10)
   const helperFile = '/path/to/helper.js'
@@ -34,9 +35,9 @@ describe('createPages', () => {
         mountModule(helperFile, helper)
       }
 
-      // Create a virtual directory for the 'src' folder
-      // so that routes.js file can be written virtually
-      mountDir(path.resolve(__dirname, '../../'))
+      // Create a virtual directory for cache.directory
+      // so that routes.json file can be written virtually
+      mountDir(cache.directory)
 
       graphql.mockReturnValue({
         data: {
@@ -49,6 +50,7 @@ describe('createPages', () => {
         await createPages({
           graphql,
           actions,
+          cache,
           getNodesByType
         })
       } catch (e) {
@@ -64,7 +66,7 @@ describe('createPages', () => {
       expect(error).toBeNull()
       expect(createPage.mock.calls).toMatchSnapshot()
       expect(
-        fs.readFileSync(path.resolve(__dirname, '../../routes.js'), 'utf8')
+        fs.readFileSync(path.join(cache.directory, 'routes.json'), 'utf8')
       ).toMatchSnapshot()
     })
   }

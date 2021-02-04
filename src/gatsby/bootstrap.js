@@ -40,3 +40,15 @@ export function onPreBootstrap ({ store, reporter }, pluginOptions) {
     pluginOptions
   })
 }
+
+// Creatas a webpack alias for the plugin cache directory
+// Usually located at <root>/.cache/caches/<plugin>
+export function onCreateWebpackConfig ({ actions, cache }) {
+  actions.setWebpackConfig({
+    resolve: {
+      alias: {
+        'gatsby-plugin-advanced-pages-cache': cache.directory
+      }
+    }
+  })
+}

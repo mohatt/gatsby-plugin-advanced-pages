@@ -1,4 +1,3 @@
-import fs from 'fs'
 import path from 'path'
 import _ from 'lodash'
 import { compile as compileRoute } from '../../lib/route-compiler'
@@ -173,21 +172,12 @@ export default class PagesCreator {
     this.createPageAction(gatsbyPage)
   }
 
-  writeRoutesExport (filename) {
-    const routes = _.map(this.routeMap, route => {
+  // Creates a serializable form of the route map
+  getRoutesExport () {
+    return _.map(this.routeMap, route => {
       route = _.pick(route, ['name', 'path', 'scopes'])
       route.scopes = _.mapValues(route.scopes, 'path')
       return route
     })
-
-    try {
-      fs.writeFileSync(
-        filename,
-        `"use strict";\n\nmodule.exports = ${JSON.stringify(routes, null, 2)};`
-      )
-      return true
-    } catch (e) {
-      reportError('Error writing route map export file', e)
-    }
   }
 }

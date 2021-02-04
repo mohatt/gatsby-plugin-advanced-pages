@@ -10,8 +10,11 @@ import {
   generatePath
 } from '../api'
 
-// Create a virtual mock for routes.js
-jest.doMock('../routes', () => routes, { virtual: true })
+// Create a virtual mock for routes.json
+jest.doMock(
+  'gatsby-plugin-advanced-pages-cache/routes.json',
+  () => routes, { virtual: true }
+)
 
 jest.doMock('@reach/router', () => ({
   globalHistory: {

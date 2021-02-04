@@ -3,7 +3,7 @@ import { pick, compile } from './lib/route-compiler'
 
 // Gets an array of all routes
 export function getRoutes () {
-  return require('./routes')
+  return require('gatsby-plugin-advanced-pages-cache/routes.json')
 }
 
 // Gets a specific route
