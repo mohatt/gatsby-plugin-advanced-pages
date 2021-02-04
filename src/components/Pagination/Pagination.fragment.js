@@ -1,6 +1,6 @@
-import { graphql } from "gatsby"
+import { graphql } from 'gatsby'
 
-export const pagination = graphql`
+export const Pagination = graphql`
   fragment Pagination on PageInfo {
     perPage
     pageCount
