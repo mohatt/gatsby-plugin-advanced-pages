@@ -1,7 +1,7 @@
 import fs from 'fs'
 import { sourceNodes } from '../'
-import { mountFile, mountModule, mountOptions } from '../../../test/helpers'
-import testCases from '../../../test/__fixtures__/source-nodes'
+import { mountFile, mountModule, mountOptions } from '../../../test/node-utils'
+import testCases from './__fixtures__/source-nodes'
 
 // Use in-memory file system
 jest.mock('fs')

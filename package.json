@@ -14,9 +14,9 @@
   "scripts": {
     "prepare": "cross-env NODE_ENV=production npm run build",
     "prebuild": "rimraf 'dist/*'",
-    "build": "babel src --out-dir dist --copy-files --ignore '**/__tests__,**/*.test.js'",
+    "build": "babel src --out-dir dist --copy-files --ignore '**/__tests__,**/*.test.js,**/*.fragment.js'",
     "postbuild": "rimraf 'dist/**/__tests__' 'dist/**/*.test.js'",
-    "watch": "babel -w src --out-dir dist --copy-files --ignore '**/__tests__,**/*.test.js'",
+    "watch": "babel -w src --out-dir dist --copy-files --ignore '**/__tests__,**/*.test.js,**/*.fragment.js'",
     "test": "jest --runInBand",
     "test:coverage": "jest --runInBand --coverage",
     "test:watch": "jest --watch --runInBand",
@@ -73,6 +73,18 @@
   },
   "engines": {
     "node": ">=10.13.0"
+  },
+  "jest": {
+    "roots": [
+      "<rootDir>/test/",
+      "<rootDir>/src/"
+    ],
+    "testPathIgnorePatterns": [
+      "/__tests__/__fixtures__/.*$"
+    ],
+    "collectCoverageFrom": [
+      "src/**/*.js"
+    ]
   },
   "standard": {
     "parser": "@babel/eslint-parser",

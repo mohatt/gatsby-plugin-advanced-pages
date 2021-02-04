@@ -1,8 +1,9 @@
+import fs from 'fs'
 import path from 'path'
 import PagesCreator from './lib/pages-creator'
 import { getOption, reportError } from './util'
 
-export default async function ({ graphql, actions, getNodesByType }) {
+export default async function ({ graphql, actions, getNodesByType, cache }) {
   const { createPage } = actions
 
   const pageType = getOption('typeNames.page')
@@ -32,13 +33,16 @@ export default async function ({ graphql, actions, getNodesByType }) {
     return reportError('Failed running "create-pages" GraphQL Query', result.errors.shift())
   }
 
-  const pageCreator = new PagesCreator(
-    result.data[`all${pageType}`].nodes
-  )
-
   // Create the actual pages
+  const pageCreator = new PagesCreator(result.data[`all${pageType}`].nodes)
   await pageCreator.createPages({ graphql, createPage })
 
   // Write routes export file
-  pageCreator.writeRoutesExport(path.resolve(__dirname, '../routes.js'))
+  const routesFile = path.join(cache.directory, 'routes.json')
+  try {
+    fs.writeFileSync(routesFile, JSON.stringify(pageCreator.getRoutesExport()))
+    return true
+  } catch (e) {
+    reportError('Error writing route map export file', e)
+  }
 }

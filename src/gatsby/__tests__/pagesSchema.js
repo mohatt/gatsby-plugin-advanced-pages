@@ -1,6 +1,6 @@
 import { testPluginOptionsSchema } from 'gatsby-plugin-utils'
 import { pagesSchema } from '../schema'
-import testCases from '../../../test/__fixtures__/pagesSchema'
+import testCases from './__fixtures__/pagesSchema'
 
 describe('pluginOptionsSchema', () => {
   for (const { title, pages } of testCases) {

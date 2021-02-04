@@ -69,9 +69,7 @@ export default [
         ]
       }
     ],
-    helper: function ({ createAdvancedPage }) {
-      throw new Error('some error')
-    }
+    helper: () => { throw new Error('some error') }
   },
   {
     id: 'bad-helper-empty-call',
@@ -85,9 +83,7 @@ export default [
         ]
       }
     ],
-    helper: function ({ createAdvancedPage }) {
-      createAdvancedPage()
-    }
+    helper: ({ createAdvancedPage }) => createAdvancedPage()
   },
   {
     id: 'bad-helper-undefined-route',
@@ -101,11 +97,7 @@ export default [
         ]
       }
     ],
-    helper: function ({ createAdvancedPage }) {
-      createAdvancedPage({
-        route: 'blog'
-      })
-    }
+    helper: ({ createAdvancedPage }) => createAdvancedPage({ route: 'blog' })
   },
   {
     id: 'bad-helper-invalid-route-params',
@@ -119,11 +111,7 @@ export default [
         ]
       }
     ],
-    helper: function ({ createAdvancedPage }) {
-      createAdvancedPage({
-        route: 'about'
-      })
-    }
+    helper: ({ createAdvancedPage }) => createAdvancedPage({ route: 'about' })
   },
   {
     id: 'bad-helper-empty-pagination',
@@ -137,7 +125,7 @@ export default [
         ]
       }
     ],
-    helper: function ({ createAdvancedPage }) {
+    helper: ({ createAdvancedPage }) => {
       createAdvancedPage({
         route: 'about',
         pagination: {}
@@ -156,7 +144,7 @@ export default [
         ]
       }
     ],
-    helper: function ({ createAdvancedPage }) {
+    helper: ({ createAdvancedPage }) => {
       createAdvancedPage({
         route: 'about',
         pagination: {
@@ -177,7 +165,7 @@ export default [
         ]
       }
     ],
-    helper: function ({ createAdvancedPage }) {
+    helper: ({ createAdvancedPage }) => {
       createAdvancedPage({
         route: 'about',
         pagination: {
@@ -199,7 +187,7 @@ export default [
         ]
       }
     ],
-    helper: function ({ createAdvancedPage }) {
+    helper: ({ createAdvancedPage }) => {
       createAdvancedPage({
         route: 'about',
         pagination: {
@@ -221,7 +209,7 @@ export default [
         ]
       }
     ],
-    helper: function ({ createAdvancedPage }) {
+    helper: ({ createAdvancedPage }) => {
       createAdvancedPage({
         route: 'blog',
         pagination: {
@@ -243,7 +231,7 @@ export default [
         ]
       }
     ],
-    helper: function ({ createAdvancedPage }) {
+    helper: ({ createAdvancedPage }) => {
       createAdvancedPage({
         route: 'blog',
         pagination: {
@@ -265,7 +253,7 @@ export default [
         ]
       }
     ],
-    helper: function ({ createAdvancedPage }) {
+    helper: ({ createAdvancedPage }) => {
       createAdvancedPage({
         route: 'blog',
         pagination: {
@@ -287,7 +275,7 @@ export default [
         ]
       }
     ],
-    helper: function ({ createAdvancedPage }) {
+    helper: ({ createAdvancedPage }) => {
       for (const slug of ['hello', 'world']) {
         createAdvancedPage({
           route: 'page',
@@ -310,7 +298,7 @@ export default [
         ]
       }
     ],
-    helper: function ({ createAdvancedPage }) {
+    helper: ({ createAdvancedPage }) => {
       createAdvancedPage({
         route: 'about',
         params: {
