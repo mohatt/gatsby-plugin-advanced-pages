@@ -1,3 +1,11 @@
+## [2.1.1](https://github.com/mohatt/gatsby-plugin-advanced-pages/compare/v2.1.0...v2.1.1) (2021-02-04)
+
+
+### Performance Improvements
+
+* **plugin:** fragments no longer need to be copied over to the .cache directory because gatsby looks through node_modules ([fd8cbf8](https://github.com/mohatt/gatsby-plugin-advanced-pages/commit/fd8cbf8314879025a376b66d4fb444e864ba1923))
+* **plugin:** use gatsby's ".cache" to write routes.json instead of writing it to the module directory inside node_modules ([fd81233](https://github.com/mohatt/gatsby-plugin-advanced-pages/commit/fd8123342f5c4876202473e031d2e7192c3448a8))
+
 # [2.1.0](https://github.com/mohatt/gatsby-plugin-advanced-pages/compare/v2.0.2...v2.1.0) (2021-02-03)
 
 
