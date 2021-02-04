@@ -1,5 +1,5 @@
-'use strict'
-
-module.exports = new (require('metro-memory-fs'))({
+import MemoryFS from 'metro-memory-fs'
+// Make sure we export this as a cjs module
+module.exports = new MemoryFS({
   cwd: () => '/virtual/project'
 })

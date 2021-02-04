@@ -1,6 +1,6 @@
 import fs from 'fs'
 import { sourceNodes } from '../'
-import { mountFile, mountModule, mountOptions } from '../../../test/helpers'
+import { mountFile, mountModule, mountOptions } from '../../../test/node-utils'
 import testCases from './__fixtures__/source-nodes'
 
 // Use in-memory file system

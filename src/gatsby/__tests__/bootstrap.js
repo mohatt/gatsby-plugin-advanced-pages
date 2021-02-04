@@ -1,5 +1,5 @@
 import { getOptions } from '../util'
-import { mountOptions, mountFile } from '../../../test/helpers'
+import { mountOptions, mountFile } from '../../../test/node-utils'
 
 // Use in-memory file system
 jest.mock('fs')

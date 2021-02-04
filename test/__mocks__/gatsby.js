@@ -1,9 +1,7 @@
-'use strict'
-
-const path = require('path')
-const React = require('react')
+import path from 'path'
+import React from 'react'
 const withPrefix = pathname => path.join('/site', pathname)
-
+// Make sure we export this as a cjs module
 module.exports = {
   graphql: jest.fn(),
   withPrefix: jest.fn().mockImplementation(withPrefix),
