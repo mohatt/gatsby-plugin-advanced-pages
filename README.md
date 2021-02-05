@@ -56,10 +56,10 @@ In order to create your first page, create a new `pages.config.yaml` file under 
 `pages.config.yaml`
 
 ```yaml
-- title: Hello, World
+- title: Greeting
   template: hello.js
   routes:
-    hello: /hello
+    hello: /hello/:name
 ```
 
 Create a template component under `src/templates` to be used to render the page 
@@ -70,10 +70,10 @@ Create a template component under `src/templates` to be used to render the page
 import React from "react"
 import { graphql } from "gatsby"
 
-const PageTemplate = ({ data }) => (
+const PageTemplate = ({ data, pageContext }) => (
   <div>
     <h1>{data.page.title}</h1>
-    <div>This is a demo page for `gatsby-plugin-advanced-pages`</div>
+    <div>Hello, {pageContext.name}</div>
   </div>
 )
 
