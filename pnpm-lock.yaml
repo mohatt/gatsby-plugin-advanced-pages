@@ -16,7 +16,7 @@ devDependencies:
   cross-env: 7.0.3
   gatsby-plugin-utils: 0.9.0
   jest: 26.6.3
-  metro-memory-fs: 0.65.0
+  metro-memory-fs: 0.65.1
   react: 16.14.0
   react-test-renderer: 16.14.0_react@16.14.0
   rimraf: 3.0.2
@@ -5140,10 +5140,10 @@ packages:
       node: '>= 8'
     resolution:
       integrity: sha512-8q7VEgMJW4J8tcfVPy8g09NcQwZdbwFEqhe/WZkoIzjn/3TGDwtOCYtXGxA3O8tPzpczCCDgv+P2P5y00ZJOOg==
-  /metro-memory-fs/0.65.0:
+  /metro-memory-fs/0.65.1:
     dev: true
     resolution:
-      integrity: sha512-oDveN7l945ZqmSVyrjFd1aKlKnFrk5QMWFcpNL0TGLqecQ9XQUktYzoYiV45MqZi+29CxrcI5Vv1aF+hcT1F9A==
+      integrity: sha512-ukH6W0dbjqx3uIZQylwz50VXiadYT1UA4kTq7gkRrMJYj/fLfmoma1KkyXzshXp6SRu3BsSzM1ddUa+ELAY62Q==
   /micromatch/3.1.10:
     dependencies:
       arr-diff: 4.0.0
@@ -7607,7 +7607,7 @@ specifiers:
   jest: 26.6.3
   js-yaml: ^4.0.0
   lodash: ^4.17.20
-  metro-memory-fs: 0.65.0
+  metro-memory-fs: 0.65.1
   mkdirp: ^1.0.4
   path-to-regexp: ^6.2.0
   prop-types: ^15.7.2
