@@ -22,7 +22,7 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-build-
       - run: |
-          npm -g install pnpm@5.16
+          npm -g install pnpm@5.17
           pnpm set verify-store-integrity false
       - run: pnpm install
       - run: pnpm run test:coverage
