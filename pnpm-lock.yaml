@@ -1,7 +1,7 @@
 dependencies:
   '@babel/runtime': 7.12.13
   classnames: 2.2.6
-  debug: 3.2.7
+  debug: 4.3.1
   js-yaml: 4.0.0
   lodash: 4.17.20
   path-to-regexp: 6.2.0
@@ -2817,16 +2817,9 @@ packages:
     dev: true
     resolution:
       integrity: sha512-bC7ElrdJaJnPbAP+1EotYvqZsb3ecl5wi6Bfi6BJTUcNowp6cvspg0jXznRTKDjm/E7AdgFBVeAPVMNcKGsHMA==
-  /debug/3.2.7:
-    dependencies:
-      ms: 2.1.2
-    dev: false
-    resolution:
-      integrity: sha512-CFjzYYAi4ThfiQvizrFQevTTXHtnCqWfe7x1AhgEscTz6ZbLbfoLRLPugTQyBth6f8ZERVUSyWHFD/7Wu4t1XQ==
   /debug/4.3.1:
     dependencies:
       ms: 2.1.2
-    dev: true
     engines:
       node: '>=6.0'
     peerDependencies:
@@ -7795,7 +7788,7 @@ specifiers:
   babel-preset-gatsby-package: 0.12.0
   classnames: ^2.2.6
   cross-env: 7.0.3
-  debug: ^3.2.6
+  debug: ^4.0.0
   gatsby-plugin-utils: 0.9.0
   jest: 26.6.3
   js-yaml: ^4.0.0
