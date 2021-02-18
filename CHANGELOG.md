@@ -1,3 +1,15 @@
+## [2.1.2](https://github.com/mohatt/gatsby-plugin-advanced-pages/compare/v2.1.1...v2.1.2) (2021-02-18)
+
+
+### Bug Fixes
+
+* **plugin:** use `useLocation` hook to allow route matching during SSR ([2eebfc5](https://github.com/mohatt/gatsby-plugin-advanced-pages/commit/2eebfc58489746c9ed9cadea75e4f44c4f01860d))
+
+
+### Reverts
+
+* "docs(readme): changed usage example [skip-ci]" ([891f1ef](https://github.com/mohatt/gatsby-plugin-advanced-pages/commit/891f1ef50ece80b7be366219bbc18a3025a7afa8))
+
 ## [2.1.1](https://github.com/mohatt/gatsby-plugin-advanced-pages/compare/v2.1.0...v2.1.1) (2021-02-04)
 
 
