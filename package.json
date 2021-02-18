@@ -69,7 +69,7 @@
   },
   "peerDependencies": {
     "gatsby": ">=2.25.0",
-    "react": ">=16.4.2"
+    "react": ">=16.8.6"
   },
   "engines": {
     "node": ">=10.13.0"
