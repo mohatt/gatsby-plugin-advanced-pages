@@ -17,11 +17,9 @@ jest.doMock(
 )
 
 jest.doMock('@reach/router', () => ({
-  globalHistory: {
-    location: {
-      pathname: withPrefix('/blog/page/5')
-    }
-  }
+  useLocation: () => ({
+    pathname: withPrefix('/blog/page/5')
+  })
 }), { virtual: true })
 
 describe('API', () => {
