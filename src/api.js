@@ -30,7 +30,7 @@ export function routeExists (route) {
 // Gets the current active route based on `@reach/router` location history
 export function getActivatedRoute () {
   return getMatchingRoute(
-    require('@reach/router').globalHistory.location.pathname
+    require('@reach/router').useLocation().pathname
   )
 }
 

@@ -76,7 +76,9 @@ export default class PagesCreator {
       } catch (e) {
         return reportError(
           `Error occured while running page helper function at "${page.helper}"`,
-          (typeof e[0] !== 'undefined') ? e[0] : e
+          // e[0] to catch thrown graphql errors
+          // e.g throw result.errors
+          (e[0] !== undefined) ? e[0] : e
         )
       }
     }
