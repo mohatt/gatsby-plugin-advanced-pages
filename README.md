@@ -23,7 +23,7 @@ Gatsby Advanced Pages is a wrapper around Gatsby's [createPage](https://www.gats
 ## Installation
 Install with [npm](https://www.npmjs.com/)
 ```sh
-$ npm install --save gatsby-plugin-advanced-pages
+$ npm install gatsby-plugin-advanced-pages
 ```
 or [yarn](https://yarnpkg.com/)
 ```sh
