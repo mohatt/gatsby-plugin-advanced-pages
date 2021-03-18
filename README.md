@@ -584,14 +584,14 @@ Name of the page object type
 [MIT][license-url]
 
 [npm-url]: https://www.npmjs.com/package/gatsby-plugin-advanced-pages
-[npm-img]: https://img.shields.io/npm/v/gatsby-plugin-advanced-pages.svg
-[ci-url]: https://github.com/mohatt/gatsby-plugin-advanced-pages/actions
-[ci-img]: https://img.shields.io/github/workflow/status/mohatt/gatsby-plugin-advanced-pages/CI/master
+[npm-img]: https://img.shields.io/npm/v/gatsby-plugin-advanced-pages.svg?logo=npm
+[ci-url]: https://github.com/mohatt/gatsby-plugin-advanced-pages/actions/workflows/main.yml
+[ci-img]: https://img.shields.io/github/workflow/status/mohatt/gatsby-plugin-advanced-pages/CI/master?logo=github
 [codecov-url]: https://codecov.io/github/mohatt/gatsby-plugin-advanced-pages
-[codecov-img]: https://img.shields.io/codecov/c/github/mohatt/gatsby-plugin-advanced-pages.svg
+[codecov-img]: https://img.shields.io/codecov/c/github/mohatt/gatsby-plugin-advanced-pages.svg?logo=codecov&logoColor=white
 [gatsby-url]: https://www.gatsbyjs.org/packages/gatsby-plugin-advanced-pages
-[gatsby-img]: https://img.shields.io/badge/gatsby-v2.25+-blueviolet.svg
+[gatsby-img]: https://img.shields.io/badge/gatsby->=2.25.0-blueviolet.svg?logo=gatsby
 [demo-url]: http://mohatt.github.io/gatsby-plugin-advanced-pages
-[demo-img]: https://img.shields.io/website/http/mohatt.github.io/gatsby-plugin-advanced-pages.svg?label=demo
+[demo-img]: https://img.shields.io/website/http/mohatt.github.io/gatsby-plugin-advanced-pages.svg?label=demo&logo=statuspal
 [license-url]: https://github.com/mohatt/gatsby-plugin-advanced-pages/blob/master/LICENSE
-[license-img]: https://img.shields.io/github/license/mohatt/gatsby-plugin-advanced-pages.svg
+[license-img]: https://img.shields.io/github/license/mohatt/gatsby-plugin-advanced-pages.svg?logo=open%20source%20initiative&logoColor=white
