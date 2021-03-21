@@ -1,7 +1,7 @@
 import React from 'react'
 import { Link as GatsbyLink } from 'gatsby'
 import { string, object } from 'prop-types'
-import { routeExists, generatePath } from '../api'
+import { routeExists, generatePath } from '../index'
 
 const Link = ({ to, params, scope, ...props }) => {
   if (to && routeExists(to)) {

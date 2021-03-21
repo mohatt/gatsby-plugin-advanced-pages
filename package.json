@@ -2,9 +2,9 @@
   "name": "gatsby-plugin-advanced-pages",
   "version": "2.1.2",
   "description": "Gatsby plugin that allows easy creation of pages with dynamic features like pagination and custom routing",
-  "main": "cjs/api.js",
-  "module": "es/api.js",
-  "types": "types/api.d.ts",
+  "main": "cjs/index.js",
+  "module": "es/index.js",
+  "types": "types/index.d.ts",
   "sideEffects": false,
   "files": [
     "cjs/",

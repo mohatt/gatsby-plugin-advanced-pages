@@ -9,7 +9,7 @@ import {
   isActivatedRoute,
   getMatchingRoute,
   generatePath
-} from '../api'
+} from '../index'
 
 // Create a virtual mock for routes.json
 jest.mock(
