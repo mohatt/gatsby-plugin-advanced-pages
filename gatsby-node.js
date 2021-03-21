@@ -1,3 +1,3 @@
 "use strict";
 
-module.exports = require('./dist/gatsby/index');
+module.exports = require('./cjs/gatsby');

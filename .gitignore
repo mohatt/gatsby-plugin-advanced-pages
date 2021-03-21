@@ -18,7 +18,8 @@ yarn-error.log*
 .npmrc
 
 # Build artifacts
-dist
+cjs
+es
 
 # Output of 'npm pack'
 *.tgz

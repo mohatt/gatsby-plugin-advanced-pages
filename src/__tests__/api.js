@@ -1,5 +1,6 @@
 import { withPrefix } from 'gatsby'
-import routes from './__fixtures__/routes'
+import mockRoutes from './__fixtures__/routes'
+import router from '@reach/router'
 import {
   getRoutes,
   routeExists,
@@ -11,20 +12,19 @@ import {
 } from '../api'
 
 // Create a virtual mock for routes.json
-jest.doMock(
+jest.mock(
   'gatsby-plugin-advanced-pages-cache/routes.json',
-  () => routes, { virtual: true }
+  () => mockRoutes,
+  { virtual: true }
 )
 
-jest.doMock('@reach/router', () => ({
-  useLocation: () => ({
-    pathname: withPrefix('/blog/page/5')
-  })
-}), { virtual: true })
+router.useLocation = jest.fn().mockReturnValue({
+  pathname: withPrefix('/blog/page/5')
+})
 
 describe('API', () => {
   it('correctly fetchs routes', () => {
-    expect(getRoutes()).toBe(routes)
+    expect(getRoutes()).toBe(mockRoutes)
     expect(routeExists('blog.post')).toBe(true)
     expect(routeExists('invalid')).toBe(false)
     expect(getRoute('blog.post')).toMatchSnapshot()

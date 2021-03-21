@@ -4,6 +4,12 @@ import { mapValues, merge } from 'lodash'
 import Pagination from '../Pagination'
 import testCases, { defaultTestCase } from './__fixtures__/pagination'
 
+jest.mock(
+  'gatsby-plugin-advanced-pages-cache/routes.json',
+  () => [],
+  { virtual: true }
+)
+
 describe('<Pagination />', () => {
   const render = (props = {}) => {
     props = merge({}, defaultTestCase, props)

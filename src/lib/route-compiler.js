@@ -1,4 +1,4 @@
-import * as PathToRegexp from 'path-to-regexp'
+import { pathToRegexp, compile as pathToRegexpCompile } from 'path-to-regexp'
 
 // Normalizes a route path before passing it to pathToRegexp
 function normalize (route) {
@@ -11,7 +11,7 @@ function normalize (route) {
 
 // Checks if the route matches the given path
 export function test (route, path) {
-  const regexp = PathToRegexp.pathToRegexp(normalize(route))
+  const regexp = pathToRegexp(normalize(route))
   return regexp.test(path)
 }
 
@@ -34,7 +34,7 @@ export function compile (route, encodeURI = true) {
   if (encodeURI) {
     options.encode = encodeURIComponent
   }
-  const generator = PathToRegexp.compile(normalize(route), options)
+  const generator = pathToRegexpCompile(normalize(route), options)
 
   // eslint-disable-next-line no-return-assign
   return compile.cache[route] = function (data) {

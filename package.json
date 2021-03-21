@@ -2,27 +2,28 @@
   "name": "gatsby-plugin-advanced-pages",
   "version": "2.1.2",
   "description": "Gatsby plugin that allows easy creation of pages with dynamic features like pagination and custom routing",
-  "main": "index.js",
-  "types": "index.d.ts",
+  "main": "cjs/api.js",
+  "module": "es/api.js",
+  "types": "types/api.d.ts",
+  "sideEffects": false,
   "files": [
-    "dist",
-    "index.js",
-    "index.js.flow",
-    "index.d.ts",
+    "cjs/",
+    "es/",
+    "types/",
     "gatsby-node.js"
   ],
   "scripts": {
-    "prepare": "cross-env NODE_ENV=production npm run build",
-    "prebuild": "rimraf 'dist/*'",
-    "build": "babel src --out-dir dist --copy-files --ignore '**/__tests__,**/*.test.js,**/*.fragment.js'",
-    "postbuild": "rimraf 'dist/**/__tests__' 'dist/**/*.test.js'",
-    "watch": "babel -w src --out-dir dist --copy-files --ignore '**/__tests__,**/*.test.js,**/*.fragment.js'",
+    "prepare": "cross-env NODE_ENV=production pnpm run build",
+    "prebuild": "rimraf cjs es",
+    "build": "pnpm run build:cjs && pnpm run build:es",
+    "build:cjs": "babel src --out-dir cjs --ignore '**/__tests__,**/*.test.js,**/*.fragment.js'",
+    "build:es" : "cp -r src es && rimraf 'es/**/+(__tests__|*.test.js)' 'es/gatsby' 'es/.babelrc'",
+    "watch": "babel -w src --out-dir cjs --ignore '**/__tests__,**/*.test.js,**/*.fragment.js'",
     "test": "jest --runInBand",
     "test:coverage": "jest --runInBand --coverage",
     "test:watch": "jest --watch --runInBand",
-    "release": "semantic-release",
+    "release": "semantic-release --no-ci",
     "release:inspect": "semantic-release --dry-run",
-    "release:manual": "semantic-release --no-ci",
     "lint": "standard src",
     "lint:fix": "standard src --fix"
   },
@@ -69,7 +70,7 @@
     "standard": "16.0.3"
   },
   "peerDependencies": {
-    "gatsby": ">=2.25.0",
+    "gatsby": ">=2.25.4",
     "react": ">=16.8.6"
   },
   "engines": {

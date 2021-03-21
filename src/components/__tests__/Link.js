@@ -1,12 +1,13 @@
 import React from 'react'
 import TestRenderer from 'react-test-renderer'
+import mockRoutes from '../../__tests__/__fixtures__/routes'
 import Link from '../Link'
-import routes from '../../../__tests__/__fixtures__/routes'
 
 // Create a virtual mock for routes.json
-jest.doMock(
+jest.mock(
   'gatsby-plugin-advanced-pages-cache/routes.json',
-  () => routes, { virtual: true }
+  () => mockRoutes,
+  { virtual: true }
 )
 
 describe('<Link />', () => {

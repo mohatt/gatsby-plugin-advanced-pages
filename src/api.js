@@ -1,9 +1,11 @@
 import { navigate as gatsbyNavigate, withPrefix } from 'gatsby'
 import { pick, compile } from './lib/route-compiler'
+import { useLocation } from '@reach/router'
+import routes from 'gatsby-plugin-advanced-pages-cache/routes.json'
 
 // Gets an array of all routes
 export function getRoutes () {
-  return require('gatsby-plugin-advanced-pages-cache/routes.json')
+  return routes
 }
 
 // Gets a specific route
@@ -29,9 +31,7 @@ export function routeExists (route) {
 
 // Gets the current active route based on `@reach/router` location history
 export function getActivatedRoute () {
-  return getMatchingRoute(
-    require('@reach/router').useLocation().pathname
-  )
+  return getMatchingRoute(useLocation().pathname)
 }
 
 // Checks whether a given route is currently active
@@ -82,4 +82,5 @@ export function navigate (to, params = {}, scope, options) {
   return gatsbyNavigate(generatePath(to, params, scope), options)
 }
 
-export { Pagination, Link } from './components'
+export { default as Link } from './components/Link'
+export { default as Pagination } from './components/Pagination'
