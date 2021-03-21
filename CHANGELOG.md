@@ -1,3 +1,15 @@
+# [2.2.0](https://github.com/mohatt/gatsby-plugin-advanced-pages/compare/v2.1.2...v2.2.0) (2021-03-21)
+
+
+### Features
+
+* **plugin:** add es2015 module exports ([640de93](https://github.com/mohatt/gatsby-plugin-advanced-pages/commit/640de935065f1b9173785b735c779ed7cc115de9))
+
+
+### Performance Improvements
+
+* **plugin:** rename main entry file to index.js ([546514d](https://github.com/mohatt/gatsby-plugin-advanced-pages/commit/546514da7e8b93d796642ec965c51ca03cff5f47))
+
 ## [2.1.2](https://github.com/mohatt/gatsby-plugin-advanced-pages/compare/v2.1.1...v2.1.2) (2021-02-18)
 
 

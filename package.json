@@ -1,6 +1,6 @@
 {
   "name": "gatsby-plugin-advanced-pages",
-  "version": "2.1.2",
+  "version": "2.2.0",
   "description": "Gatsby plugin that allows easy creation of pages with dynamic features like pagination and custom routing",
   "main": "cjs/index.js",
   "module": "es/index.js",
@@ -17,7 +17,7 @@
     "prebuild": "rimraf cjs es",
     "build": "pnpm run build:cjs && pnpm run build:es",
     "build:cjs": "babel src --out-dir cjs --ignore '**/__tests__,**/*.test.js,**/*.fragment.js'",
-    "build:es" : "cp -r src es && rimraf 'es/**/+(__tests__|*.test.js)' 'es/gatsby' 'es/.babelrc'",
+    "build:es": "cp -r src es && rimraf 'es/**/+(__tests__|*.test.js)' 'es/gatsby' 'es/.babelrc'",
     "watch": "babel -w src --out-dir cjs --ignore '**/__tests__,**/*.test.js,**/*.fragment.js'",
     "test": "jest",
     "test:coverage": "jest --coverage",
