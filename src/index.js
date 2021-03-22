@@ -4,8 +4,31 @@ import { useLocation } from '@reach/router'
 import routes from 'gatsby-plugin-advanced-pages-cache/routes.json'
 
 // Gets an array of all routes
-export function getRoutes () {
-  return routes
+export function getRoutes (parent) {
+  if (!getRoutes.tree) {
+    const tree = []
+    for (const { name, path, scopes } of routes) {
+      tree.push({
+        name,
+        path,
+        realpath: withPrefix(path),
+        parent: null
+      })
+      for (const scope in scopes) {
+        tree.push({
+          name: `${name}.${scope}`,
+          path: scopes[scope],
+          realpath: withPrefix(scopes[scope]),
+          parent: { name, scope }
+        })
+      }
+    }
+    getRoutes.tree = tree
+  }
+
+  return parent
+    ? getRoutes.tree.filter(r => r.parent && r.parent.name === parent)
+    : getRoutes.tree
 }
 
 // Gets a specific route
@@ -38,38 +61,29 @@ export function getActivatedRoute () {
 export function isActivatedRoute (route) {
   const ro = getRoute(route)
   const activeRo = getActivatedRoute()
-  return activeRo ? ro.name === activeRo.name : false
+  return activeRo
+    ? Boolean(ro.name === activeRo.name || (activeRo.parent && activeRo.parent.name === ro.name))
+    : false
 }
 
 // Gets the route that matches a specific path
 export function getMatchingRoute (path) {
-  if (!getMatchingRoute.routes) {
-    const prefixedRoutes = []
-    for (const { name, path, scopes } of getRoutes()) {
-      prefixedRoutes.push({ name, scope: null, path: withPrefix(path) })
-      for (const scope in scopes) {
-        prefixedRoutes.push({ name, scope, path: withPrefix(scopes[scope]) })
-      }
-    }
-
-    getMatchingRoute.routes = prefixedRoutes
-  }
-
-  return pick(getMatchingRoute.routes, path)
+  return pick(getRoutes(), path)
 }
 
 // Returns a function to be used to generate paths for a specific route
 export function getPathGenerator (route, scope, ignorePrefix) {
   const ro = getRoute(route)
   if (!scope) {
-    return compile(ignorePrefix ? ro.path : withPrefix(ro.path))
+    return compile(ignorePrefix ? ro.path : ro.realpath)
   }
 
-  if (!ro.scopes[scope]) {
+  const childRo = getRoutes(route).find(r => r.parent.scope === scope)
+  if (!childRo) {
     throw new TypeError(`Unrecognized scope '${scope}' on route '${route}'`)
   }
 
-  return compile(ignorePrefix ? ro.scopes[scope] : withPrefix(ro.scopes[scope]))
+  return compile(ignorePrefix ? childRo.path : childRo.realpath)
 }
 
 // Generates a path for a specific route based on the given parameters.

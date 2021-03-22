@@ -24,7 +24,7 @@ router.useLocation = jest.fn().mockReturnValue({
 
 describe('API', () => {
   it('correctly fetchs routes', () => {
-    expect(getRoutes()).toBe(mockRoutes)
+    expect(getRoutes()).toMatchSnapshot()
     expect(routeExists('blog.post')).toBe(true)
     expect(routeExists('invalid')).toBe(false)
     expect(getRoute('blog.post')).toMatchSnapshot()

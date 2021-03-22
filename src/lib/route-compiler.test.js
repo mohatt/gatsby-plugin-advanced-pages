@@ -5,15 +5,15 @@ describe('Route Compiler', () => {
     const routes = [
       {
         name: 'home',
-        path: '/'
+        realpath: '/'
       },
       {
         name: 'blog',
-        path: '/blog/'
+        realpath: '/blog/'
       },
       {
         name: 'post',
-        path: '/blog/:post'
+        realpath: '/blog/:post'
       }
     ]
 

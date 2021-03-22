@@ -1,10 +1,79 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`API correctly fetchs routes 1`] = `
+Array [
+  Object {
+    "name": "home",
+    "parent": null,
+    "path": "/",
+    "realpath": "/site/",
+  },
+  Object {
+    "name": "about",
+    "parent": null,
+    "path": "/about",
+    "realpath": "/site/about",
+  },
+  Object {
+    "name": "blog",
+    "parent": null,
+    "path": "/blog",
+    "realpath": "/site/blog",
+  },
+  Object {
+    "name": "blog.pagination",
+    "parent": Object {
+      "name": "blog",
+      "scope": "pagination",
+    },
+    "path": "/blog/page/:page",
+    "realpath": "/site/blog/page/:page",
+  },
+  Object {
+    "name": "blog.author",
+    "parent": null,
+    "path": "/blog/author/:author",
+    "realpath": "/site/blog/author/:author",
+  },
+  Object {
+    "name": "blog.author.pagination",
+    "parent": Object {
+      "name": "blog.author",
+      "scope": "pagination",
+    },
+    "path": "/blog/author/:author/page/:page",
+    "realpath": "/site/blog/author/:author/page/:page",
+  },
+  Object {
+    "name": "blog.tag",
+    "parent": null,
+    "path": "/blog/tag/:tag",
+    "realpath": "/site/blog/tag/:tag",
+  },
+  Object {
+    "name": "blog.tag.pagination",
+    "parent": Object {
+      "name": "blog.tag",
+      "scope": "pagination",
+    },
+    "path": "/blog/tag/:tag/page/:page",
+    "realpath": "/site/blog/tag/:tag/page/:page",
+  },
+  Object {
+    "name": "blog.post",
+    "parent": null,
+    "path": "/blog/post/:post",
+    "realpath": "/site/blog/post/:post",
+  },
+]
+`;
+
+exports[`API correctly fetchs routes 2`] = `
 Object {
   "name": "blog.post",
+  "parent": null,
   "path": "/blog/post/:post",
-  "scopes": Object {},
+  "realpath": "/site/blog/post/:post",
 }
 `;
 
@@ -14,32 +83,42 @@ exports[`API correctly generates paths 2`] = `"/site/blog/post/hello"`;
 
 exports[`API picks the correct matching route 1`] = `
 Object {
-  "name": "blog",
-  "path": "/site/blog/page/:page",
-  "scope": "pagination",
+  "name": "blog.pagination",
+  "parent": Object {
+    "name": "blog",
+    "scope": "pagination",
+  },
+  "path": "/blog/page/:page",
+  "realpath": "/site/blog/page/:page",
 }
 `;
 
 exports[`API picks the correct matching route 2`] = `
 Object {
   "name": "home",
-  "path": "/site/",
-  "scope": null,
+  "parent": null,
+  "path": "/",
+  "realpath": "/site/",
 }
 `;
 
 exports[`API picks the correct matching route 3`] = `
 Object {
-  "name": "blog.tag",
-  "path": "/site/blog/tag/:tag/page/:page",
-  "scope": "pagination",
+  "name": "blog.tag.pagination",
+  "parent": Object {
+    "name": "blog.tag",
+    "scope": "pagination",
+  },
+  "path": "/blog/tag/:tag/page/:page",
+  "realpath": "/site/blog/tag/:tag/page/:page",
 }
 `;
 
 exports[`API picks the correct matching route 4`] = `
 Object {
   "name": "blog.post",
-  "path": "/site/blog/post/:post",
-  "scope": null,
+  "parent": null,
+  "path": "/blog/post/:post",
+  "realpath": "/site/blog/post/:post",
 }
 `;

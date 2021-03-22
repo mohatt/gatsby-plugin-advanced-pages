@@ -18,7 +18,7 @@ export function test (route, path) {
 // Picks the first route that matches the given path
 export function pick (routes, path) {
   const [pathname] = path.split('?')
-  return routes.find(obj => test(obj.path, pathname)) || null
+  return routes.find(obj => test(obj.realpath, pathname)) || null
 }
 
 // Wraps pathToRegexp to handle errors thrown
