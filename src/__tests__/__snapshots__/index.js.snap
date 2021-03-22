@@ -69,6 +69,20 @@ Array [
 `;
 
 exports[`API correctly fetchs routes 2`] = `
+Array [
+  Object {
+    "name": "blog.pagination",
+    "parent": Object {
+      "name": "blog",
+      "scope": "pagination",
+    },
+    "path": "/blog/page/:page",
+    "realpath": "/site/blog/page/:page",
+  },
+]
+`;
+
+exports[`API correctly fetchs routes 3`] = `
 Object {
   "name": "blog.post",
   "parent": null,
@@ -104,6 +118,15 @@ Object {
 
 exports[`API picks the correct matching route 3`] = `
 Object {
+  "name": "home",
+  "parent": null,
+  "path": "/",
+  "realpath": "/site/",
+}
+`;
+
+exports[`API picks the correct matching route 4`] = `
+Object {
   "name": "blog.tag.pagination",
   "parent": Object {
     "name": "blog.tag",
@@ -114,7 +137,7 @@ Object {
 }
 `;
 
-exports[`API picks the correct matching route 4`] = `
+exports[`API picks the correct matching route 5`] = `
 Object {
   "name": "blog.post",
   "parent": null,

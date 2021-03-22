@@ -25,6 +25,7 @@ router.useLocation = jest.fn().mockReturnValue({
 describe('API', () => {
   it('correctly fetchs routes', () => {
     expect(getRoutes()).toMatchSnapshot()
+    expect(getRoutes('blog')).toMatchSnapshot()
     expect(routeExists('blog.post')).toBe(true)
     expect(routeExists('invalid')).toBe(false)
     expect(getRoute('blog.post')).toMatchSnapshot()
@@ -38,9 +39,10 @@ describe('API', () => {
     expect(isActivatedRoute('home')).toBe(false)
     expect(isActivatedRoute('blog')).toBe(true)
     expect(() => isActivatedRoute('invalid')).toThrow()
-    expect(getMatchingRoute(withPrefix('/'))).toMatchSnapshot()
-    expect(getMatchingRoute(withPrefix('/blog/tag/test/page/4'))).toMatchSnapshot()
-    expect(getMatchingRoute(withPrefix('/blog/post/hi'))).toMatchSnapshot()
+    expect(getMatchingRoute('/')).toMatchSnapshot()
+    expect(getMatchingRoute(withPrefix('/'), true)).toMatchSnapshot()
+    expect(getMatchingRoute('/blog/tag/test/page/4')).toMatchSnapshot()
+    expect(getMatchingRoute('/blog/post/hi')).toMatchSnapshot()
   })
 
   it('correctly generates paths', () => {

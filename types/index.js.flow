@@ -4,15 +4,11 @@ import * as React from "react";
 export interface Route {
   name: string;
   path: string;
-  scopes: {
-    [index: string]: string;
+  realpath: string;
+  parent: {
+    name: string;
+    scope: string;
   };
-}
-
-export interface ActivatedRoute {
-  name: string;
-  path: string;
-  scope: string;
 }
 
 export interface RouteParams {
@@ -58,26 +54,12 @@ export type PathGeneratorFunction = (
 declare export var Pagination: React.ComponentType<PaginationProps>;
 declare export var Link: React.ComponentType<LinkProps>;
 
-declare export function getRoutes(): [Route];
+declare export function getRoutes(parent: string): [Route];
 declare export function routeExists(route: string): boolean;
 declare export function getRoute(route: string): Route;
-declare export function getActivatedRoute(): ActivatedRoute;
+declare export function getActivatedRoute(): Route;
 declare export function isActivatedRoute(route: string): boolean;
-declare export function getMatchingRoute(path: string): ActivatedRoute;
-declare export function getPathGenerator(
-  route: string,
-  scope?: string,
-  ignorePrefix?: boolean
-): PathGeneratorFunction;
-declare export function generatePath(
-  route: string,
-  params?: RouteParams,
-  scope?: string,
-  ignorePrefix?: boolean
-): string;
-declare export function navigate(
-  to: string,
-  params?: RouteParams,
-  scope?: string,
-  options?: {}
-): void;
+declare export function getMatchingRoute(path: string, ignorePrefix?: boolean): Route;
+declare export function getPathGenerator(route: string, scope?: string, ignorePrefix?: boolean): PathGeneratorFunction;
+declare export function generatePath(route: string, params?: RouteParams, scope?: string, ignorePrefix?: boolean): string;
+declare export function navigate(to: string, params?: RouteParams, scope?: string, options?: {}): void;
