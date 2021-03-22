@@ -78,6 +78,7 @@ export function isActivatedRoute (route) {
 
 /**
  * Gets the route that matches a specific path
+ * use `ignorePrefix` if the path provided already contains `pathPrefix`
  */
 export function getMatchingRoute (path, ignorePrefix) {
   return pick(getRoutes(), ignorePrefix ? path : withPrefix(path))
@@ -85,6 +86,7 @@ export function getMatchingRoute (path, ignorePrefix) {
 
 /**
  * Returns a function to be used to generate paths for a specific route
+ * use `ignorePrefix` to ignore adding `pathPrefix` to generated paths
  */
 export function getPathGenerator (route, scope, ignorePrefix) {
   const ro = getRoute(route)

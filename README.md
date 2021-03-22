@@ -407,14 +407,14 @@ Returns a function to be used to generate paths for a specific route.
 Extends Gatsby's [navigate](https://www.gatsbyjs.org/docs/gatsby-link/#how-to-use-the-navigate-helper-function) to allow passing route names and params.
 
 ### getActivatedRoute
-> `getActivatedRoute(): ActivatedRoute`
+> `getActivatedRoute(): Route`
 
 Gets the current active route based on `@reach/router` location history.
 
 ### getMatchingRoute
-> `getMatchingRoute(path: string): ActivatedRoute`
+> `getMatchingRoute(path: string, ignorePrefix?: boolean): Route`
 
-Gets the route that matches a given path. *Note: The provided path should be prefixed with `pathPrefix` if any.*
+Gets the route that matches a given path.
 
 ### isActivatedRoute
 > `isActivatedRoute(route: string): boolean`
@@ -422,19 +422,19 @@ Gets the route that matches a given path. *Note: The provided path should be pre
 Checks whether a given route is currently active.
 
 ### getRoutes
-> `getRoutes(): Array`
+> `getRoutes(parent?: string): Route[]`
 
-Gets an array of all routes.
-
-### routeExists
-> `routeExists(route: string): boolean`
-
-Checks if there is a route defined with the given name.
+Gets an array of all routes or routes nested under a given parent route.
 
 ### getRoute
 > `getRoute(route: string): Route`
 
-Gets a specific route.
+Gets the Route object of a given route name.
+
+### routeExists
+> `routeExists(route: string): boolean`
+
+Checks if a route is defined with the given name.
 
 
 ## Configuration

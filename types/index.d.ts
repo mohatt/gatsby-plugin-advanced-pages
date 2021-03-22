@@ -1,13 +1,15 @@
 import React from 'react'
 import { PathFunction as PathGeneratorFunction } from 'path-to-regexp'
 
+export type RouteScope = 'pagination'
+
 export interface Route {
   name: string
   path: string
   realpath: string
   parent: {
     name: string
-    scope: string
+    scope: RouteScope
   } | null
 }
 
@@ -55,6 +57,6 @@ export function getRoute(route: string): Route
 export function getActivatedRoute(): Route
 export function isActivatedRoute(route: string): boolean
 export function getMatchingRoute(path: string, ignorePrefix?: boolean): Route
-export function getPathGenerator(route: string, scope?: string, ignorePrefix?: boolean): PathGeneratorFunction<RouteParams>
-export function generatePath(route: string, params?: RouteParams, scope?: string, ignorePrefix?: boolean): string
-export function navigate(to: string, params?: RouteParams, scope?: string, options?: {}): void
+export function getPathGenerator(route: string, scope?: RouteScope, ignorePrefix?: boolean): PathGeneratorFunction<RouteParams>
+export function generatePath(route: string, params?: RouteParams, scope?: RouteScope, ignorePrefix?: boolean): string
+export function navigate(to: string, params?: RouteParams, scope?: RouteScope, options?: {}): void
