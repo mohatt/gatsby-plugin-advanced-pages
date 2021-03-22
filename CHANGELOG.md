@@ -1,3 +1,11 @@
+## [2.2.1](https://github.com/mohatt/gatsby-plugin-advanced-pages/compare/v2.2.0...v2.2.1) (2021-03-22)
+
+
+### Performance Improvements
+
+* **plugin:** improve route matching mechanism ([7df3960](https://github.com/mohatt/gatsby-plugin-advanced-pages/commit/7df3960bdaddddd2e96dd0d53c6571b20c9fbbe4))
+* **plugin:** improve type declarations ([9f68375](https://github.com/mohatt/gatsby-plugin-advanced-pages/commit/9f683758e9f599f2944579ac856b7ef4a951c3d8))
+
 # [2.2.0](https://github.com/mohatt/gatsby-plugin-advanced-pages/compare/v2.1.2...v2.2.0) (2021-03-21)
 
 
