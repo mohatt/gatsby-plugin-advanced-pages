@@ -13,6 +13,7 @@ Gatsby Advanced Pages is a wrapper around Gatsby's [createPage](https://www.gats
 - [Components](#components)
   - [Link component](#link-component)
   - [Pagination component](#pagination-component)
+- [Hooks](#hooks)
 - [Functions](#functions)
 - [Configuration](#configuration)
   - [Pages](#pages)
@@ -187,7 +188,7 @@ Now assuming you have 12 blog posts (stored as Markdown files), the plugin will 
  - blog/page/3
  - blog/page/4
 
-if you want to customize the paginated paths, you can include a `route` in your pagination object thats being passed to `createAdvancedPage()`. See below:
+if you want to customize the paginated paths, you can include a `route` in your pagination object that's being passed to `createAdvancedPage()`. See below:
 
 `pages.config.yaml`
 
@@ -309,7 +310,7 @@ Wrapper around Gatsby's [core Link component](https://www.gatsbyjs.org/docs/gats
 | Name | Type | Description |
 | --- | --- | --- |
 | to | `String` | **Required.** The name of the route to link to or a regular path |
-| params | `Object` | Route paramaters |
+| params | `Object` | Route parameters |
 | scope | `String` | Route scope. *Available scopes:* `pagination` |
 | ... | `[...]` | All props supported by [Gatsby Link component](https://www.gatsbyjs.org/docs/gatsby-link/) |
 
@@ -345,7 +346,7 @@ Renders a pagination UI to paginate a set of results fetched using a GraphQL que
 | Name | Type | Description |
 | --- | --- | --- |
 | route | `String` | **Required.** The name of the route to paginate |
-| params | `Object` | Route paramaters |
+| params | `Object` | Route parameters |
 | pageInfo | `Object` | **Required.** `pageInfo` object fetched from GraphQL using `Pagination` fragment |
 | ui | `String` | UI mode (Defaults to `full`). *Available keys:* `mini`, `simple`, `full` |
 | range | `Number` | Maximum number of pages displayed (Defaults to 6) |
@@ -383,13 +384,26 @@ export default BlogTemplate
 ```
 Check out [example](https://github.com/mohatt/gatsby-plugin-advanced-pages/tree/master/example) directory for more examples
 
+## Hooks
+The plugin exposes two hooks for getting and checking for the currently activated route.
+
+### useRoute
+> `useRoute(): Route`
+
+Gets the current active route based on `@reach/router` location history.
+
+### useIsRoute
+> `useIsRoute(route: string): boolean`
+
+Checks whether a given route is currently active.
+
 ## Functions
 These are the functions exposed by the plugin.
 
 ### createAdvancedPage
 > `createAdvancedPage({ route: string, params?: object, pagination?: object, ...context }): void`
 
-Creates page(s) based on given input paramaters. *Note: This function can only be called within [Page helpers](#page-helpers).*
+Creates page(s) based on given input parameters. *Note: This function can only be called within [Page helpers](#page-helpers).*
 
 ### generatePath
 > `generatePath(route: string, params?: object, scope?: string, ignorePrefix?: boolean): string`
@@ -406,20 +420,10 @@ Returns a function to be used to generate paths for a specific route.
 
 Extends Gatsby's [navigate](https://www.gatsbyjs.org/docs/gatsby-link/#how-to-use-the-navigate-helper-function) to allow passing route names and params.
 
-### getActivatedRoute
-> `getActivatedRoute(): Route`
-
-Gets the current active route based on `@reach/router` location history.
-
 ### getMatchingRoute
 > `getMatchingRoute(path: string, ignorePrefix?: boolean): Route`
 
 Gets the route that matches a given path.
-
-### isActivatedRoute
-> `isActivatedRoute(route: string): boolean`
-
-Checks whether a given route is currently active.
 
 ### getRoutes
 > `getRoutes(parent?: string): Route[]`
@@ -590,7 +594,7 @@ Name of the page object type
 [codecov-url]: https://codecov.io/github/mohatt/gatsby-plugin-advanced-pages
 [codecov-img]: https://img.shields.io/codecov/c/github/mohatt/gatsby-plugin-advanced-pages.svg?logo=codecov&logoColor=white
 [gatsby-url]: https://www.gatsbyjs.org/packages/gatsby-plugin-advanced-pages
-[gatsby-img]: https://img.shields.io/badge/gatsby->=2.25-blueviolet.svg?logo=gatsby
+[gatsby-img]: https://img.shields.io/badge/gatsby->=3.0-blueviolet.svg?logo=gatsby
 [demo-url]: http://mohatt.github.io/gatsby-plugin-advanced-pages
 [demo-img]: https://img.shields.io/website/http/mohatt.github.io/gatsby-plugin-advanced-pages.svg?label=demo&logo=statuspal
 [license-url]: https://github.com/mohatt/gatsby-plugin-advanced-pages/blob/master/LICENSE

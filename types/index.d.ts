@@ -51,11 +51,12 @@ export interface LinkProps {
 export const Pagination: React.ComponentType<PaginationProps>
 export const Link: React.ComponentType<LinkProps>
 
+export function useRoute(): Route
+export function useIsRoute(route: string): boolean
+
 export function getRoutes(parent?: string): [Route]
 export function routeExists(route: string): boolean
 export function getRoute(route: string): Route
-export function getActivatedRoute(): Route
-export function isActivatedRoute(route: string): boolean
 export function getMatchingRoute(path: string, ignorePrefix?: boolean): Route
 export function getPathGenerator(route: string, scope?: RouteScope, ignorePrefix?: boolean): PathGeneratorFunction<RouteParams>
 export function generatePath(route: string, params?: RouteParams, scope?: RouteScope, ignorePrefix?: boolean): string

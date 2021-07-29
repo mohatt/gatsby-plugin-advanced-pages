@@ -59,24 +59,6 @@ export function routeExists (route) {
 }
 
 /**
- * Gets the current active route based on `@reach/router` location history
- */
-export function getActivatedRoute () {
-  return getMatchingRoute(useLocation().pathname, true)
-}
-
-/**
- * Checks whether a given route is currently active
- */
-export function isActivatedRoute (route) {
-  const ro = getRoute(route)
-  const activeRo = getActivatedRoute()
-  return activeRo
-    ? Boolean(ro.name === activeRo.name || (activeRo.parent && activeRo.parent.name === ro.name))
-    : false
-}
-
-/**
  * Gets the route that matches a specific path
  * use `ignorePrefix` if the path provided already contains `pathPrefix`
  */
@@ -114,6 +96,25 @@ export function generatePath (route, params = {}, scope, ignorePrefix) {
  */
 export function navigate (to, params = {}, scope, options) {
   return gatsbyNavigate(generatePath(to, params, scope), options)
+}
+
+/**
+ * Gets the current active route based on `@reach/router` location history
+ */
+export function useRoute () {
+  const { pathname } = useLocation()
+  return getMatchingRoute(pathname, true)
+}
+
+/**
+ * Checks whether a given route is currently active
+ */
+export function useIsRoute (route) {
+  const current = useRoute()
+  const ro = getRoute(route)
+  return current
+    ? Boolean(ro.name === current.name || (current.parent && current.parent.name === ro.name))
+    : false
 }
 
 export { default as Link } from './components/Link'

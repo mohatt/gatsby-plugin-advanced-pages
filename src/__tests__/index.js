@@ -5,8 +5,8 @@ import {
   getRoutes,
   routeExists,
   getRoute,
-  getActivatedRoute,
-  isActivatedRoute,
+  useRoute,
+  useIsRoute,
   getMatchingRoute,
   generatePath
 } from '../index'
@@ -35,10 +35,10 @@ describe('API', () => {
   })
 
   it('picks the correct matching route', () => {
-    expect(getActivatedRoute()).toMatchSnapshot()
-    expect(isActivatedRoute('home')).toBe(false)
-    expect(isActivatedRoute('blog')).toBe(true)
-    expect(() => isActivatedRoute('invalid')).toThrow()
+    expect(useRoute()).toMatchSnapshot()
+    expect(useIsRoute('home')).toBe(false)
+    expect(useIsRoute('blog')).toBe(true)
+    expect(() => useIsRoute('invalid')).toThrow()
     expect(getMatchingRoute('/')).toMatchSnapshot()
     expect(getMatchingRoute(withPrefix('/'), true)).toMatchSnapshot()
     expect(getMatchingRoute('/blog/tag/test/page/4')).toMatchSnapshot()

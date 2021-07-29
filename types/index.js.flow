@@ -56,11 +56,12 @@ export type PathGeneratorFunction = (
 declare export var Pagination: React.ComponentType<PaginationProps>
 declare export var Link: React.ComponentType<LinkProps>
 
+declare export function useRoute(): Route
+declare export function useIsRoute(route: string): boolean
+
 declare export function getRoutes(parent: string): [Route]
 declare export function routeExists(route: string): boolean
 declare export function getRoute(route: string): Route
-declare export function getActivatedRoute(): Route
-declare export function isActivatedRoute(route: string): boolean
 declare export function getMatchingRoute(path: string, ignorePrefix?: boolean): Route
 declare export function getPathGenerator(route: string, scope?: RouteScope, ignorePrefix?: boolean): PathGeneratorFunction
 declare export function generatePath(route: string, params?: RouteParams, scope?: RouteScope, ignorePrefix?: boolean): string
