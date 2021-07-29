@@ -1,6 +1,6 @@
 import React from 'react'
 import { shape, number, string, object, bool, element, oneOf, oneOfType } from 'prop-types'
-import classNames from 'classnames'
+import clsx from 'clsx'
 import Link from './Link'
 
 export default class Pagination extends React.Component {
@@ -146,7 +146,7 @@ export default class Pagination extends React.Component {
 
             if (page.disabled) {
               return (
-                <li key={page.key} className={classNames(classes)}>
+                <li key={page.key} className={clsx(classes)}>
                   <a className={theme.link}>{page.label}</a>
                 </li>
               )
@@ -158,7 +158,7 @@ export default class Pagination extends React.Component {
               : [{ ...this.props.params, page: page.number }, 'pagination']
 
             return (
-              <li key={page.key} className={classNames(classes)}>
+              <li key={page.key} className={clsx(classes)}>
                 <Link to={this.props.route} params={params} scope={scope} className={theme.link}>
                   {page.label}
                 </Link>

@@ -8,7 +8,7 @@ specifiers:
   '@semantic-release/changelog': 5.0.1
   '@semantic-release/git': 9.0.0
   babel-preset-gatsby-package: 1.10.0
-  classnames: ^2.2.6
+  clsx: ^1.1.1
   cross-env: 7.0.3
   debug: ^3.2.6
   gatsby-plugin-utils: 1.10.0
@@ -27,7 +27,7 @@ specifiers:
 
 dependencies:
   '@babel/runtime': 7.12.13
-  classnames: 2.2.6
+  clsx: 1.1.1
   debug: 3.2.7
   js-yaml: 4.0.0
   lodash: 4.17.20
@@ -2589,10 +2589,6 @@ packages:
     dev: true
     optional: true
 
-  /classnames/2.2.6:
-    resolution: {integrity: sha512-JR/iSQOSt+LQIWwrwEzJ9uk0xfN3mTVYMwt1Ir5mUcSN6pU+V4zQFFaJsclJbPuAUQH+yfWef6tm7l1quW3C8Q==}
-    dev: false
-
   /clean-stack/2.2.0:
     resolution: {integrity: sha512-4diC9HaTE+KRAMWhDhrGOECgWZxoevMc5TlkObMqNSsVU62PYzXZ/SMTjzyGAFF1YusgxGcSWTEXBhp0CPwQ1A==}
     engines: {node: '>=6'}
@@ -2613,6 +2609,11 @@ packages:
       strip-ansi: 6.0.0
       wrap-ansi: 7.0.0
     dev: true
+
+  /clsx/1.1.1:
+    resolution: {integrity: sha512-6/bPho624p3S2pMyvP5kKBPXnI3ufHLObBFCfgx+LkeR5lg2XYy2hqZqUf45ypD8COn2bhgGJSUE+l5dhNBieA==}
+    engines: {node: '>=6'}
+    dev: false
 
   /co/4.6.0:
     resolution: {integrity: sha1-bqa989hTrlTMuOR7+gvz+QMfsYQ=}
