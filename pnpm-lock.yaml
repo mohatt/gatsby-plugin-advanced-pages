@@ -19,7 +19,7 @@ specifiers:
   mkdirp: 1.0.4
   path-to-regexp: ^6.2.0
   prop-types: ^15.7.2
-  react: 16.14.0
+  react: 17.0.2
   react-test-renderer: 17.0.2
   rimraf: 3.0.2
   semantic-release: 17.4.4
@@ -46,8 +46,8 @@ devDependencies:
   jest: 27.0.6
   metro-memory-fs: 0.66.2
   mkdirp: 1.0.4
-  react: 16.14.0
-  react-test-renderer: 17.0.2_react@16.14.0
+  react: 17.0.2
+  react-test-renderer: 17.0.2_react@17.0.2
   rimraf: 3.0.2
   semantic-release: 17.4.4
   standard: 16.0.3
@@ -5936,35 +5936,34 @@ packages:
     resolution: {integrity: sha512-w2GsyukL62IJnlaff/nRegPQR94C/XXamvMWmSHRJ4y7Ts/4ocGRmTHvOs8PSE6pB3dWOrD/nueuU5sduBsQ4w==}
     dev: true
 
-  /react-shallow-renderer/16.14.1_react@16.14.0:
+  /react-shallow-renderer/16.14.1_react@17.0.2:
     resolution: {integrity: sha512-rkIMcQi01/+kxiTE9D3fdS959U1g7gs+/rborw++42m1O9FAQiNI/UNRZExVUoAOprn4umcXf+pFRou8i4zuBg==}
     peerDependencies:
       react: ^16.0.0 || ^17.0.0
     dependencies:
       object-assign: 4.1.1
-      react: 16.14.0
+      react: 17.0.2
       react-is: 17.0.2
     dev: true
 
-  /react-test-renderer/17.0.2_react@16.14.0:
+  /react-test-renderer/17.0.2_react@17.0.2:
     resolution: {integrity: sha512-yaQ9cB89c17PUb0x6UfWRs7kQCorVdHlutU1boVPEsB8IDZH6n9tHxMacc3y0JoXOJUsZb/t/Mb8FUWMKaM7iQ==}
     peerDependencies:
       react: 17.0.2
     dependencies:
       object-assign: 4.1.1
-      react: 16.14.0
+      react: 17.0.2
       react-is: 17.0.2
-      react-shallow-renderer: 16.14.1_react@16.14.0
+      react-shallow-renderer: 16.14.1_react@17.0.2
       scheduler: 0.20.2
     dev: true
 
-  /react/16.14.0:
-    resolution: {integrity: sha512-0X2CImDkJGApiAlcf0ODKIneSwBPhqJawOa5wCtKbu7ZECrmS26NvtSILynQ66cgkT/RJ4LidJOc3bUESwmU8g==}
+  /react/17.0.2:
+    resolution: {integrity: sha512-gnhPt75i/dq/z3/6q/0asP78D0u592D5L1pd7M8P+dck6Fu/jJeL6iVVK23fptSUZj8Vjf++7wXA8UNclGQcbA==}
     engines: {node: '>=0.10.0'}
     dependencies:
       loose-envify: 1.4.0
       object-assign: 4.1.1
-      prop-types: 15.7.2
     dev: true
 
   /read-pkg-up/2.0.0:

@@ -1,30 +1,5 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<Link /> should log console error when called with invalid props 1`] = `
-Array [
-  Array [
-    "Warning: Failed prop type: The prop \`to\` is marked as required in \`Link\`, but its value is \`undefined\`.
-    in Link",
-  ],
-]
-`;
-
-exports[`<Link /> should log console error when called with invalid props 2`] = `
-Array [
-  Array [
-    "gatsby-plugin-advanced-pages: Unable to generate path for route \\"blog.post\\": Error generating a path for route \\"/blog/post/:post\\" with params \\"{}\\": Expected \\"post\\" to be a string",
-  ],
-]
-`;
-
-exports[`<Link /> should log console error when called with invalid props 3`] = `
-Array [
-  Array [
-    "gatsby-plugin-advanced-pages: Unable to generate path for route \\"blog.post\\": Error generating a path for route \\"/blog/post/:post\\" with params \\"{\\"invalid\\":\\"whatever\\"}\\": Expected \\"post\\" to be a string",
-  ],
-]
-`;
-
 exports[`<Link /> should render correctly 1`] = `
 <a
   href="/site/"

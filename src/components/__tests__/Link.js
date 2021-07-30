@@ -40,21 +40,21 @@ describe('<Link />', () => {
   })
 
   it('should log console error when called with invalid props', () => {
-    const spy = jest.spyOn(console, 'error').mockImplementation()
+    const error = jest.spyOn(console, 'error').mockImplementation()
     render()
-    expect(spy.mock.calls).toMatchSnapshot()
-    spy.mockClear()
+    expect(error).toHaveBeenCalledTimes(1)
+    error.mockClear()
     render({ to: 'blog.post' })
-    expect(spy.mock.calls).toMatchSnapshot()
-    spy.mockClear()
+    expect(error).toHaveBeenCalledTimes(1)
+    error.mockClear()
     render({
       to: 'blog.post',
       params: {
         invalid: 'whatever'
       }
     })
-    expect(spy.mock.calls).toMatchSnapshot()
-    spy.mockRestore()
+    expect(error).toHaveBeenCalledTimes(1)
+    error.mockRestore()
   })
 
   it('should render correctly when called with a non-existent route', () => {
