@@ -6,7 +6,7 @@ const AboutTemplate = ({ data: { page } }) => (
   <Layout title={page.title}>
     <div className="row">
       <div className="col-md-3">
-      <img className="card-img" src="http://placehold.it/100x200" alt="" />
+      <img className="card-img" src="//via.placeholder.com/100x200" alt="" />
       </div>
       <div className="col-md-9">
         <div>

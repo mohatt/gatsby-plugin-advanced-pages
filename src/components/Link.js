@@ -8,9 +8,10 @@ const Link = ({ to, params, scope, ...props }) => {
     try {
       to = generatePath(to, params, scope, true)
     } catch (e) {
-      console.error(
-        'Warning: Invalid route params supplied to `Link` component: ' + e.message
-      )
+      if (process.env.NODE_ENV !== 'production') {
+        console.error(`gatsby-plugin-advanced-pages: Unable to generate path for route "${to}": ${e.message}`)
+      }
+      to = '/404.html'
     }
   }
 
