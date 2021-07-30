@@ -14,8 +14,7 @@
   ],
   "scripts": {
     "prepare": "cross-env NODE_ENV=production pnpm run build",
-    "prebuild": "rimraf cjs es",
-    "build": "pnpm run build:cjs && pnpm run build:es",
+    "build": "rimraf cjs es && pnpm run build:cjs && pnpm run build:es",
     "build:cjs": "babel src --out-dir cjs --ignore '**/__tests__,**/*.test.js,**/*.fragment.js'",
     "build:es": "cp -r src es && rimraf 'es/**/+(__tests__|*.test.js)' 'es/gatsby' 'es/.babelrc'",
     "watch": "babel -w src --out-dir cjs --ignore '**/__tests__,**/*.test.js,**/*.fragment.js'",
