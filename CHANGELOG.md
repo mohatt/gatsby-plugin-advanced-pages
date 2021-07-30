@@ -1,3 +1,10 @@
+## [3.0.1](https://github.com/mohatt/gatsby-plugin-advanced-pages/compare/v3.0.0...v3.0.1) (2021-07-30)
+
+
+### Bug Fixes
+
+* **plugin:** fix build script ([d6a81c4](https://github.com/mohatt/gatsby-plugin-advanced-pages/commit/d6a81c419aacd1e7f3c44f76fa752cd3fb25f5d8))
+
 # [3.0.0](https://github.com/mohatt/gatsby-plugin-advanced-pages/compare/v2.2.1...v3.0.0) (2021-07-30)
 
 
