@@ -1,3 +1,32 @@
+# [3.0.0](https://github.com/mohatt/gatsby-plugin-advanced-pages/compare/v2.2.1...v3.0.0) (2021-07-30)
+
+
+### Bug Fixes
+
+* **plugin:** fix license ([49da5bb](https://github.com/mohatt/gatsby-plugin-advanced-pages/commit/49da5bbfc9cc8374d436641bbef442ab372cce62))
+
+
+### chore
+
+* **deps:** update deps ([cde2a69](https://github.com/mohatt/gatsby-plugin-advanced-pages/commit/cde2a697cec4a7b453ac6076593b94100a5ff209))
+
+
+### Features
+
+* **plugin:** convert `getActivatedRoute` and `isActivatedRoute` to React hooks ([027824a](https://github.com/mohatt/gatsby-plugin-advanced-pages/commit/027824a1cebac0fcf2258bd303b9cb93d2d22b38))
+
+
+### Performance Improvements
+
+* **plugin:** improve error message in `Link` component ([0ebdfa5](https://github.com/mohatt/gatsby-plugin-advanced-pages/commit/0ebdfa537b120d4a864bfab2f29e5737dca76e25))
+* **plugin:** use `clsx` package instead of `classnames` ([a8e2ae6](https://github.com/mohatt/gatsby-plugin-advanced-pages/commit/a8e2ae6e57ff77c87fa96ab527b4414a6116f0f9))
+
+
+### BREAKING CHANGES
+
+* **plugin:** `getActivatedRoute` and `isActivatedRoute` are now React hooks `useRoute` and `useIsRoute`.
+* **deps:** The plugin now requires at least Gatsby v3.0.4
+
 ## [2.2.1](https://github.com/mohatt/gatsby-plugin-advanced-pages/compare/v2.2.0...v2.2.1) (2021-03-22)
 
 
