@@ -43,7 +43,7 @@ jobs:
       - uses: actions/setup-node@v2
         with:
           node-version: 12
-      - uses: actions/download-artifact@v2
+      - uses: actions/download-artifact@v3
         with:
           name: package-art
           path: example
@@ -66,7 +66,7 @@ jobs:
     needs: test_example
     runs-on: ubuntu-20.04
     steps:
-      - uses: actions/download-artifact@v2
+      - uses: actions/download-artifact@v3
         with:
           name: example-art
           path: public
