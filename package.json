@@ -60,7 +60,7 @@
     "gatsby-plugin-utils": "1.10.0",
     "jest": "27.0.6",
     "mkdirp": "1.0.4",
-    "metro-memory-fs": "0.66.2",
+    "metro-memory-fs": "0.81.0",
     "react": "17.0.2",
     "react-test-renderer": "17.0.2",
     "rimraf": "3.0.2",
