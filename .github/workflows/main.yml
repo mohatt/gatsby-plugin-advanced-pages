@@ -15,7 +15,7 @@ jobs:
       - uses: actions/setup-node@v2
         with:
           node-version: 12
-      - uses: actions/cache@v2
+      - uses: actions/cache@v4
         with:
           path: ~/.pnpm-store
           key: ${{ runner.os }}-build-${{ hashFiles('**/pnpm-lock.yaml') }}
@@ -48,7 +48,7 @@ jobs:
           name: package-art
           path: example
       - run: npm install pkg.tgz --only=development --no-package-lock
-      - uses: actions/cache@v2
+      - uses: actions/cache@v4
         with:
           path: ~/.npm
           key: ${{ runner.os }}-build-example-${{ hashFiles('**/example/package.json') }}
