@@ -34,30 +34,18 @@ function findPagesConfig (root) {
 
 // Validates the contents of a pages config file
 async function validatePagesConfig (file) {
-  const schema = pagesSchema(Joi)
+  const schema = Joi.object({ pages: pagesSchema(Joi) })
   try {
-    return await validateOptionsSchema(schema, file.contents)
+    const { value } = await validateOptionsSchema(schema, { pages: file.contents })
+    return value.pages
   } catch (e) {
     reportError(`Unable to validate pages config file "${file.path}":\n ${e.message}`)
   }
 }
 
-export default async function ({ actions, schema, createNodeId, createContentDigest }) {
-  const { createTypes, createNode } = actions
+export default async function ({ actions, createNodeId, createContentDigest }) {
+  const { createNode } = actions
   const options = getOptions()
-
-  createTypes([
-    schema.buildObjectType({
-      name: options.typeNames.page,
-      fields: {
-        templateName: 'String',
-        template: 'String',
-        helper: 'String',
-        data: 'JSON'
-      },
-      interfaces: ['Node']
-    })
-  ])
 
   let pages = options.pages
   if (pages.length === 0) {

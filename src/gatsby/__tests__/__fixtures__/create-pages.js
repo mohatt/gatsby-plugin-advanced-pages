@@ -63,7 +63,7 @@ export default [
     pages: [
       {
         id: 'about-id',
-        helper: helper,
+        helper,
         routes: [
           { name: 'about', path: '/about' }
         ]
@@ -77,7 +77,7 @@ export default [
     pages: [
       {
         id: 'about-id',
-        helper: helper,
+        helper,
         routes: [
           { name: 'about', path: '/about' }
         ]
@@ -91,7 +91,7 @@ export default [
     pages: [
       {
         id: 'about-id',
-        helper: helper,
+        helper,
         routes: [
           { name: 'about', path: '/about' }
         ]
@@ -105,7 +105,7 @@ export default [
     pages: [
       {
         id: 'about-id',
-        helper: helper,
+        helper,
         routes: [
           { name: 'about', path: '/about/:name' }
         ]
@@ -119,7 +119,7 @@ export default [
     pages: [
       {
         id: 'about-id',
-        helper: helper,
+        helper,
         routes: [
           { name: 'about', path: '/about' }
         ]
@@ -138,7 +138,7 @@ export default [
     pages: [
       {
         id: 'about-id',
-        helper: helper,
+        helper,
         routes: [
           { name: 'about', path: '/about' }
         ]
@@ -159,7 +159,7 @@ export default [
     pages: [
       {
         id: 'about-id',
-        helper: helper,
+        helper,
         routes: [
           { name: 'about', path: '/about' }
         ]
@@ -181,7 +181,7 @@ export default [
     pages: [
       {
         id: 'about-id',
-        helper: helper,
+        helper,
         routes: [
           { name: 'about', path: '/about' }
         ]
@@ -203,7 +203,7 @@ export default [
       {
         id: 'blog-id',
         template: '/path/to/blog.js',
-        helper: helper,
+        helper,
         routes: [
           { name: 'blog', path: '/blog' }
         ]
@@ -224,7 +224,7 @@ export default [
       {
         id: 'blog-id',
         template: '/path/to/blog.js',
-        helper: helper,
+        helper,
         routes: [
           { name: 'blog', path: '/blog' },
           { name: 'blog.paginated', path: '/blog/what/:page' }
@@ -247,7 +247,7 @@ export default [
       {
         id: 'blog-id',
         template: '/path/to/blog.js',
-        helper: helper,
+        helper,
         routes: [
           { name: 'blog', path: '/blog' }
         ]
@@ -269,7 +269,7 @@ export default [
       {
         id: 'page-id',
         template: '/path/to/page.js',
-        helper: helper,
+        helper,
         routes: [
           { name: 'page', path: '/pages/:page' }
         ]
@@ -292,7 +292,7 @@ export default [
       {
         id: 'about-id',
         template: '/path/to/page.js',
-        helper: helper,
+        helper,
         routes: [
           { name: 'about', path: '/about/:name' }
         ]

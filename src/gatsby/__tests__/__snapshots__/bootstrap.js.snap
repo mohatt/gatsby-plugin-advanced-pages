@@ -1,47 +1,47 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`onPreBootstrap correctly initializes custom options 1`] = `
-Object {
+exports[`onPluginInit correctly initializes custom options 1`] = `
+{
   "_root": "/virtual/project",
   "basePath": "/blog",
-  "directories": Object {
+  "directories": {
     "helpers": "/virtual/project/gatsby/pages",
     "templates": "/virtual/project/custom/templates",
   },
-  "pages": Array [],
-  "pagination": Object {
+  "pages": [],
+  "pagination": {
     "limit": 10,
     "suffix": "/page/:page",
   },
   "template": "/virtual/project/custom/templates/default.js",
-  "typeNames": Object {
+  "typeNames": {
     "page": "Page",
   },
 }
 `;
 
-exports[`onPreBootstrap correctly initializes default options 1`] = `
-Object {
+exports[`onPluginInit correctly initializes default options 1`] = `
+{
   "_root": "/virtual/project",
   "basePath": "/",
-  "directories": Object {
+  "directories": {
     "helpers": "/virtual/project/gatsby/pages",
     "templates": "/virtual/project/src/templates",
   },
-  "pages": Array [],
-  "pagination": Object {
+  "pages": [],
+  "pagination": {
     "limit": 10,
     "suffix": "/page/:page",
   },
   "template": null,
-  "typeNames": Object {
+  "typeNames": {
     "page": "Page",
   },
 }
 `;
 
-exports[`onPreBootstrap rejects invalid options and throws errors: Invalid Template 1`] = `
-"A path with value \\"whatever\\" could not be found at any of the following locations:
- - \\"/virtual/project/src/templates/whatever
- - \\"/virtual/project/whatever\\""
+exports[`onPluginInit rejects invalid options and throws errors: Invalid Template 1`] = `
+"A path with value "whatever" could not be found at any of the following locations:
+ - "/virtual/project/src/templates/whatever
+ - "/virtual/project/whatever""
 `;

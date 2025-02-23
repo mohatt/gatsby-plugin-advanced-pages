@@ -1,6 +1,6 @@
 import { navigate as gatsbyNavigate, withPrefix } from 'gatsby'
 import { pick, compile } from './lib/route-compiler'
-import { useLocation } from '@reach/router'
+import { useLocation } from '@gatsbyjs/reach-router'
 import routes from 'gatsby-plugin-advanced-pages-cache/routes.json'
 
 /**

@@ -4,7 +4,7 @@ import { mountOptions, mountFile } from '../../../test/node-utils'
 // Use in-memory file system
 jest.mock('fs')
 
-describe('onPreBootstrap', () => {
+describe('onPluginInit', () => {
   it('correctly initializes default options', () => {
     expect(() => mountOptions()).not.toThrow()
     expect(getOptions()).toMatchSnapshot()
