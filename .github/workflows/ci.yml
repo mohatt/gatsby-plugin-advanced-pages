@@ -10,6 +10,7 @@ jobs:
   test:
     if: "!contains(github.event.head_commit.message, '[skip ci]')"
     runs-on: ubuntu-latest
+    name: Plugin Tests
     steps:
       - uses: actions/checkout@v4
       - uses: pnpm/action-setup@v4
@@ -20,7 +21,7 @@ jobs:
           node-version: 18
           cache: 'pnpm'
       - run: pnpm install
-      - run: pnpm run test:coverage
+      - run: pnpm test:coverage
       - uses: codecov/codecov-action@v5
       - run: mv "$(pnpm pack | tail -n 1)" pkg.tgz
       - uses: actions/upload-artifact@v4
@@ -30,6 +31,7 @@ jobs:
   test_example:
     needs: test
     runs-on: ubuntu-latest
+    name: Example App Tests
     defaults:
       run:
         working-directory: example
@@ -60,6 +62,7 @@ jobs:
     if: github.event_name == 'push'
     needs: test_example
     runs-on: ubuntu-latest
+    name: Deploy Example App
     steps:
       - uses: actions/download-artifact@v4
         with:

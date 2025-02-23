@@ -68,7 +68,7 @@ Create a template component under `src/templates` to be used to render the page
 `src/templates/hello.js`
 
 ```javascript
-import React from "react"
+import * as React from "react"
 import { graphql } from "gatsby"
 
 const PageTemplate = ({ data }) => (
@@ -139,7 +139,7 @@ Lastly, create a template component under `src/templates` to be used to render t
 `src/templates/blog-template.js`
 
 ```javascript
-import React from 'react'
+import * as React from 'react'
 import { graphql } from 'gatsby'
 import { Pagination } from 'gatsby-plugin-advanced-pages'
 
@@ -242,7 +242,7 @@ Then, you can use that data in your template
 
 `src/templates/skills.js`
 ```javascript
-import React from "react"
+import * as React from "react"
 import { graphql } from "gatsby"
 
 const SkillsTemplate = ({ data: { page } }) => (
@@ -589,12 +589,12 @@ Name of the page object type
 
 [npm-url]: https://www.npmjs.com/package/gatsby-plugin-advanced-pages
 [npm-img]: https://img.shields.io/npm/v/gatsby-plugin-advanced-pages.svg?logo=npm
-[ci-url]: https://github.com/mohatt/gatsby-plugin-advanced-pages/actions/workflows/main.yml
-[ci-img]: https://img.shields.io/github/workflow/status/mohatt/gatsby-plugin-advanced-pages/CI/master?logo=github
+[ci-url]: https://github.com/mohatt/gatsby-plugin-advanced-pages/actions/workflows/ci.yml
+[ci-img]: https://img.shields.io/github/actions/workflow/status/mohatt/gatsby-plugin-advanced-pages/ci.yml?branch=master&logo=github
 [codecov-url]: https://codecov.io/github/mohatt/gatsby-plugin-advanced-pages
 [codecov-img]: https://img.shields.io/codecov/c/github/mohatt/gatsby-plugin-advanced-pages.svg?logo=codecov&logoColor=white
 [gatsby-url]: https://www.gatsbyjs.org/packages/gatsby-plugin-advanced-pages
-[gatsby-img]: https://img.shields.io/badge/gatsby->=3.0-blueviolet.svg?logo=gatsby
+[gatsby-img]: https://img.shields.io/badge/gatsby->=4.0-blueviolet.svg?logo=gatsby
 [demo-url]: http://mohatt.github.io/gatsby-plugin-advanced-pages
 [demo-img]: https://img.shields.io/website/http/mohatt.github.io/gatsby-plugin-advanced-pages.svg?label=demo&logo=statuspal
 [license-url]: https://github.com/mohatt/gatsby-plugin-advanced-pages/blob/master/LICENSE
