@@ -80,7 +80,7 @@ export const query = graphql`
       }
     }
     tags: allMarkdownRemark {
-      group(field: frontmatter___tags) {
+      group(field: {frontmatter: {tags: SELECT}}) {
         fieldValue
         totalCount
       }
