@@ -1,7 +1,7 @@
 {
   "name": "gatsby-plugin-advanced-pages",
   "version": "4.0.0",
-  "description": "Gatsby plugin that allows easy creation of pages with dynamic features like pagination and custom routing",
+  "description": "A Gatsby plugin that makes it easy to create pages with dynamic features like pagination and custom routing",
   "main": "cjs/index.js",
   "module": "es/index.js",
   "types": "types/index.d.ts",
