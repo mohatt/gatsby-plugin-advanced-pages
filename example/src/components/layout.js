@@ -8,7 +8,7 @@ const menu = [
   { title: 'About', route: 'about' },
 ]
 
-export default ({ title, children }) => (
+const Layout = ({ title, children }) => (
   <div className="container">
     <header className="py-3">
       <nav className="navbar navbar-expand navbar-dark bg-dark rounded">
@@ -41,3 +41,5 @@ export default ({ title, children }) => (
     </footer>
   </div>
 )
+
+export default Layout
