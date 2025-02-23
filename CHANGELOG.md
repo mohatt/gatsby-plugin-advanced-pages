@@ -1,3 +1,15 @@
+# [4.0.0](https://github.com/mohatt/gatsby-plugin-advanced-pages/compare/v3.0.1...v4.0.0) (2025-02-23)
+
+
+### Features
+
+* **plugin:** add support for gatsby v4 and v5 ([716f43a](https://github.com/mohatt/gatsby-plugin-advanced-pages/commit/716f43a3a1c90f7b9f2a442b8a0e95edebb298c4))
+
+
+### BREAKING CHANGES
+
+* **plugin:** Gatsby v3 is no longer supported
+
 ## [3.0.1](https://github.com/mohatt/gatsby-plugin-advanced-pages/compare/v3.0.0...v3.0.1) (2021-07-30)
 
 
