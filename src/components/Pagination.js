@@ -36,7 +36,7 @@ export default class Pagination extends React.Component {
       disabled: string
     }),
     renderDisabled: bool
-  };
+  }
 
   static defaultProps = {
     ui: 'full',

@@ -1,65 +1,65 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`API correctly fetchs routes 1`] = `
-Array [
-  Object {
+[
+  {
     "name": "home",
     "parent": null,
     "path": "/",
     "realpath": "/site/",
   },
-  Object {
+  {
     "name": "about",
     "parent": null,
     "path": "/about",
     "realpath": "/site/about",
   },
-  Object {
+  {
     "name": "blog",
     "parent": null,
     "path": "/blog",
     "realpath": "/site/blog",
   },
-  Object {
+  {
     "name": "blog.pagination",
-    "parent": Object {
+    "parent": {
       "name": "blog",
       "scope": "pagination",
     },
     "path": "/blog/page/:page",
     "realpath": "/site/blog/page/:page",
   },
-  Object {
+  {
     "name": "blog.author",
     "parent": null,
     "path": "/blog/author/:author",
     "realpath": "/site/blog/author/:author",
   },
-  Object {
+  {
     "name": "blog.author.pagination",
-    "parent": Object {
+    "parent": {
       "name": "blog.author",
       "scope": "pagination",
     },
     "path": "/blog/author/:author/page/:page",
     "realpath": "/site/blog/author/:author/page/:page",
   },
-  Object {
+  {
     "name": "blog.tag",
     "parent": null,
     "path": "/blog/tag/:tag",
     "realpath": "/site/blog/tag/:tag",
   },
-  Object {
+  {
     "name": "blog.tag.pagination",
-    "parent": Object {
+    "parent": {
       "name": "blog.tag",
       "scope": "pagination",
     },
     "path": "/blog/tag/:tag/page/:page",
     "realpath": "/site/blog/tag/:tag/page/:page",
   },
-  Object {
+  {
     "name": "blog.post",
     "parent": null,
     "path": "/blog/post/:post",
@@ -69,10 +69,10 @@ Array [
 `;
 
 exports[`API correctly fetchs routes 2`] = `
-Array [
-  Object {
+[
+  {
     "name": "blog.pagination",
-    "parent": Object {
+    "parent": {
       "name": "blog",
       "scope": "pagination",
     },
@@ -83,7 +83,7 @@ Array [
 `;
 
 exports[`API correctly fetchs routes 3`] = `
-Object {
+{
   "name": "blog.post",
   "parent": null,
   "path": "/blog/post/:post",
@@ -96,9 +96,9 @@ exports[`API correctly generates paths 1`] = `"/site"`;
 exports[`API correctly generates paths 2`] = `"/site/blog/post/hello"`;
 
 exports[`API picks the correct matching route 1`] = `
-Object {
+{
   "name": "blog.pagination",
-  "parent": Object {
+  "parent": {
     "name": "blog",
     "scope": "pagination",
   },
@@ -108,7 +108,7 @@ Object {
 `;
 
 exports[`API picks the correct matching route 2`] = `
-Object {
+{
   "name": "home",
   "parent": null,
   "path": "/",
@@ -117,7 +117,7 @@ Object {
 `;
 
 exports[`API picks the correct matching route 3`] = `
-Object {
+{
   "name": "home",
   "parent": null,
   "path": "/",
@@ -126,9 +126,9 @@ Object {
 `;
 
 exports[`API picks the correct matching route 4`] = `
-Object {
+{
   "name": "blog.tag.pagination",
-  "parent": Object {
+  "parent": {
     "name": "blog.tag",
     "scope": "pagination",
   },
@@ -138,7 +138,7 @@ Object {
 `;
 
 exports[`API picks the correct matching route 5`] = `
-Object {
+{
   "name": "blog.post",
   "parent": null,
   "path": "/blog/post/:post",

@@ -1,0 +1,8 @@
+# Auto detect text files and perform LF EOL normalization
+# @see https://git-scm.com/docs/gitattributes#_text
+* text=auto
+
+# Exclude package lock files from git diffs (allows for cleaner diffs)
+# @see https://git-scm.com/docs/gitattributes#_diff
+# @see https://git-scm.com/docs/gitattributes#_merge
+pnpm-lock.yaml -diff -merge

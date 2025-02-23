@@ -14,9 +14,6 @@ yarn-error.log*
 # Dependencies
 /node_modules
 
-# Per project npm config settings
-.npmrc
-
 # Build artifacts
 cjs
 es

@@ -1,6 +1,5 @@
 import { withPrefix } from 'gatsby'
 import mockRoutes from './__fixtures__/routes'
-import router from '@reach/router'
 import {
   getRoutes,
   routeExists,
@@ -17,10 +16,6 @@ jest.mock(
   () => mockRoutes,
   { virtual: true }
 )
-
-router.useLocation = jest.fn().mockReturnValue({
-  pathname: withPrefix('/blog/page/5')
-})
 
 describe('API', () => {
   it('correctly fetchs routes', () => {

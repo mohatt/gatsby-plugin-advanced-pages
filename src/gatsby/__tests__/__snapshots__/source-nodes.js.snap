@@ -1,25 +1,25 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`sourceNodes correctly creates multiple page nodes with various configurations 1`] = `
-Array [
-  Array [
-    Object {
-      "children": Array [],
-      "data": Object {},
+[
+  [
+    {
+      "children": [],
+      "data": {},
       "helper": "/virtual/project/gatsby/pages/helper.js",
       "id": "ID-0 - FOO",
-      "internal": Object {
-        "contentDigest": "{\\"id\\":\\"ID-0 - FOO\\",\\"title\\":\\"foo\\",\\"template\\":\\"/virtual/project/src/templates/default.js\\",\\"helper\\":\\"/virtual/project/gatsby/pages/helper.js\\",\\"routes\\":[{\\"name\\":\\"foo\\",\\"path\\":\\"/foo\\"},{\\"name\\":\\"foo.bar\\",\\"path\\":\\"/foo/bar\\"}],\\"data\\":{},\\"templateName\\":\\"default.js\\",\\"parent\\":null,\\"children\\":[],\\"internal\\":{\\"type\\":\\"Page\\",\\"description\\":\\"Advanced Page: foo\\"}}",
+      "internal": {
+        "contentDigest": "{"id":"ID-0 - FOO","title":"foo","template":"/virtual/project/src/templates/default.js","helper":"/virtual/project/gatsby/pages/helper.js","routes":[{"name":"foo","path":"/foo"},{"name":"foo.bar","path":"/foo/bar"}],"data":{},"templateName":"default.js","parent":null,"children":[],"internal":{"type":"Page","description":"Advanced Page: foo"}}",
         "description": "Advanced Page: foo",
         "type": "Page",
       },
       "parent": null,
-      "routes": Array [
-        Object {
+      "routes": [
+        {
           "name": "foo",
           "path": "/foo",
         },
-        Object {
+        {
           "name": "foo.bar",
           "path": "/foo/bar",
         },
@@ -29,19 +29,19 @@ Array [
       "title": "foo",
     },
   ],
-  Array [
-    Object {
-      "children": Array [],
-      "data": Object {},
+  [
+    {
+      "children": [],
+      "data": {},
       "id": "ID-1 - LOREM",
-      "internal": Object {
-        "contentDigest": "{\\"id\\":\\"ID-1 - LOREM\\",\\"title\\":\\"lorem\\",\\"template\\":\\"/virtual/project/src/templates/test.js\\",\\"routes\\":[{\\"name\\":\\"lorem\\",\\"path\\":\\"/lorem\\"}],\\"data\\":{},\\"templateName\\":\\"test.js\\",\\"parent\\":null,\\"children\\":[],\\"internal\\":{\\"type\\":\\"Page\\",\\"description\\":\\"Advanced Page: lorem\\"}}",
+      "internal": {
+        "contentDigest": "{"id":"ID-1 - LOREM","title":"lorem","template":"/virtual/project/src/templates/test.js","routes":[{"name":"lorem","path":"/lorem"}],"data":{},"templateName":"test.js","parent":null,"children":[],"internal":{"type":"Page","description":"Advanced Page: lorem"}}",
         "description": "Advanced Page: lorem",
         "type": "Page",
       },
       "parent": null,
-      "routes": Array [
-        Object {
+      "routes": [
+        {
           "name": "lorem",
           "path": "/lorem",
         },
@@ -51,31 +51,31 @@ Array [
       "title": "lorem",
     },
   ],
-  Array [
-    Object {
-      "children": Array [],
-      "data": Object {
+  [
+    {
+      "children": [],
+      "data": {
         "name": "john",
         "title": "don",
       },
       "helper": "/virtual/project/gatsby/custom/helper.js",
       "id": "ID-2 - IPSUM",
-      "internal": Object {
-        "contentDigest": "{\\"id\\":\\"ID-2 - IPSUM\\",\\"title\\":\\"ipsum\\",\\"template\\":\\"/virtual/project/src/custom/template.js\\",\\"helper\\":\\"/virtual/project/gatsby/custom/helper.js\\",\\"data\\":{\\"name\\":\\"john\\",\\"title\\":\\"don\\"},\\"routes\\":[{\\"name\\":\\"ipsum\\",\\"path\\":\\"/ipsum\\"},{\\"name\\":\\"dolor\\",\\"path\\":\\"/dolor\\"},{\\"name\\":\\"sit\\",\\"path\\":\\"/sit/amet\\"}],\\"templateName\\":\\"./src/custom/template.js\\",\\"parent\\":null,\\"children\\":[],\\"internal\\":{\\"type\\":\\"Page\\",\\"description\\":\\"Advanced Page: ipsum\\"}}",
+      "internal": {
+        "contentDigest": "{"id":"ID-2 - IPSUM","title":"ipsum","template":"/virtual/project/src/custom/template.js","helper":"/virtual/project/gatsby/custom/helper.js","data":{"name":"john","title":"don"},"routes":[{"name":"ipsum","path":"/ipsum"},{"name":"dolor","path":"/dolor"},{"name":"sit","path":"/sit/amet"}],"templateName":"./src/custom/template.js","parent":null,"children":[],"internal":{"type":"Page","description":"Advanced Page: ipsum"}}",
         "description": "Advanced Page: ipsum",
         "type": "Page",
       },
       "parent": null,
-      "routes": Array [
-        Object {
+      "routes": [
+        {
           "name": "ipsum",
           "path": "/ipsum",
         },
-        Object {
+        {
           "name": "dolor",
           "path": "/dolor",
         },
-        Object {
+        {
           "name": "sit",
           "path": "/sit/amet",
         },
@@ -89,19 +89,19 @@ Array [
 `;
 
 exports[`sourceNodes correctly creates page nodes from inline pages config 1`] = `
-Array [
-  Array [
-    Object {
-      "children": Array [],
+[
+  [
+    {
+      "children": [],
       "id": "ID-0 - FOO",
-      "internal": Object {
-        "contentDigest": "{\\"id\\":\\"ID-0 - FOO\\",\\"title\\":\\"foo\\",\\"template\\":\\"/virtual/project/src/templates/test.js\\",\\"routes\\":[{\\"name\\":\\"foo\\",\\"path\\":\\"/foo\\"}],\\"templateName\\":\\"./src/templates/test.js\\",\\"parent\\":null,\\"children\\":[],\\"internal\\":{\\"type\\":\\"Page\\",\\"description\\":\\"Advanced Page: foo\\"}}",
+      "internal": {
+        "contentDigest": "{"id":"ID-0 - FOO","title":"foo","template":"/virtual/project/src/templates/test.js","routes":[{"name":"foo","path":"/foo"}],"templateName":"./src/templates/test.js","parent":null,"children":[],"internal":{"type":"Page","description":"Advanced Page: foo"}}",
         "description": "Advanced Page: foo",
         "type": "Page",
       },
       "parent": null,
-      "routes": Array [
-        Object {
+      "routes": [
+        {
           "name": "foo",
           "path": "/foo",
         },
@@ -115,20 +115,20 @@ Array [
 `;
 
 exports[`sourceNodes correctly creates page nodes from pages.config.js 1`] = `
-Array [
-  Array [
-    Object {
-      "children": Array [],
-      "data": Object {},
+[
+  [
+    {
+      "children": [],
+      "data": {},
       "id": "ID-0 - FOO",
-      "internal": Object {
-        "contentDigest": "{\\"id\\":\\"ID-0 - FOO\\",\\"title\\":\\"foo\\",\\"template\\":\\"/virtual/project/src/templates/test.js\\",\\"routes\\":[{\\"name\\":\\"foo\\",\\"path\\":\\"/foo\\"}],\\"data\\":{},\\"templateName\\":\\"./src/templates/test.js\\",\\"parent\\":null,\\"children\\":[],\\"internal\\":{\\"type\\":\\"Page\\",\\"description\\":\\"Advanced Page: foo\\"}}",
+      "internal": {
+        "contentDigest": "{"id":"ID-0 - FOO","title":"foo","template":"/virtual/project/src/templates/test.js","routes":[{"name":"foo","path":"/foo"}],"data":{},"templateName":"./src/templates/test.js","parent":null,"children":[],"internal":{"type":"Page","description":"Advanced Page: foo"}}",
         "description": "Advanced Page: foo",
         "type": "Page",
       },
       "parent": null,
-      "routes": Array [
-        Object {
+      "routes": [
+        {
           "name": "foo",
           "path": "/foo",
         },
@@ -142,20 +142,20 @@ Array [
 `;
 
 exports[`sourceNodes correctly creates page nodes from pages.config.json 1`] = `
-Array [
-  Array [
-    Object {
-      "children": Array [],
-      "data": Object {},
+[
+  [
+    {
+      "children": [],
+      "data": {},
       "id": "ID-0 - FOO",
-      "internal": Object {
-        "contentDigest": "{\\"id\\":\\"ID-0 - FOO\\",\\"title\\":\\"foo\\",\\"template\\":\\"/virtual/project/src/templates/test.js\\",\\"routes\\":[{\\"name\\":\\"foo\\",\\"path\\":\\"/foo\\"}],\\"data\\":{},\\"templateName\\":\\"./src/templates/test.js\\",\\"parent\\":null,\\"children\\":[],\\"internal\\":{\\"type\\":\\"Page\\",\\"description\\":\\"Advanced Page: foo\\"}}",
+      "internal": {
+        "contentDigest": "{"id":"ID-0 - FOO","title":"foo","template":"/virtual/project/src/templates/test.js","routes":[{"name":"foo","path":"/foo"}],"data":{},"templateName":"./src/templates/test.js","parent":null,"children":[],"internal":{"type":"Page","description":"Advanced Page: foo"}}",
         "description": "Advanced Page: foo",
         "type": "Page",
       },
       "parent": null,
-      "routes": Array [
-        Object {
+      "routes": [
+        {
           "name": "foo",
           "path": "/foo",
         },
@@ -169,20 +169,20 @@ Array [
 `;
 
 exports[`sourceNodes correctly creates page nodes from pages.config.yaml 1`] = `
-Array [
-  Array [
-    Object {
-      "children": Array [],
-      "data": Object {},
+[
+  [
+    {
+      "children": [],
+      "data": {},
       "id": "ID-0 - FOO",
-      "internal": Object {
-        "contentDigest": "{\\"id\\":\\"ID-0 - FOO\\",\\"title\\":\\"foo\\",\\"template\\":\\"/virtual/project/src/templates/test.js\\",\\"routes\\":[{\\"name\\":\\"foo\\",\\"path\\":\\"/foo\\"}],\\"data\\":{},\\"templateName\\":\\"./src/templates/test.js\\",\\"parent\\":null,\\"children\\":[],\\"internal\\":{\\"type\\":\\"Page\\",\\"description\\":\\"Advanced Page: foo\\"}}",
+      "internal": {
+        "contentDigest": "{"id":"ID-0 - FOO","title":"foo","template":"/virtual/project/src/templates/test.js","routes":[{"name":"foo","path":"/foo"}],"data":{},"templateName":"./src/templates/test.js","parent":null,"children":[],"internal":{"type":"Page","description":"Advanced Page: foo"}}",
         "description": "Advanced Page: foo",
         "type": "Page",
       },
       "parent": null,
-      "routes": Array [
-        Object {
+      "routes": [
+        {
           "name": "foo",
           "path": "/foo",
         },
@@ -196,19 +196,19 @@ Array [
 `;
 
 exports[`sourceNodes correctly ignores pages config file in favor of inline pages config 1`] = `
-Array [
-  Array [
-    Object {
-      "children": Array [],
+[
+  [
+    {
+      "children": [],
       "id": "ID-0 - FOO-INLINE",
-      "internal": Object {
-        "contentDigest": "{\\"id\\":\\"ID-0 - FOO-INLINE\\",\\"title\\":\\"foo-inline\\",\\"template\\":\\"/virtual/project/src/templates/test.js\\",\\"routes\\":[{\\"name\\":\\"foo\\",\\"path\\":\\"/foo-inline\\"}],\\"templateName\\":\\"./src/templates/test.js\\",\\"parent\\":null,\\"children\\":[],\\"internal\\":{\\"type\\":\\"Page\\",\\"description\\":\\"Advanced Page: foo-inline\\"}}",
+      "internal": {
+        "contentDigest": "{"id":"ID-0 - FOO-INLINE","title":"foo-inline","template":"/virtual/project/src/templates/test.js","routes":[{"name":"foo","path":"/foo-inline"}],"templateName":"./src/templates/test.js","parent":null,"children":[],"internal":{"type":"Page","description":"Advanced Page: foo-inline"}}",
         "description": "Advanced Page: foo-inline",
         "type": "Page",
       },
       "parent": null,
-      "routes": Array [
-        Object {
+      "routes": [
+        {
           "name": "foo",
           "path": "/foo-inline",
         },
@@ -223,7 +223,7 @@ Array [
 
 exports[`sourceNodes throws and error for invalid pages config file 1`] = `
 [Error: Unable to validate pages config file "/virtual/project/pages.config.yaml":
- "[0].routes.foo": Route path must be a string starting with '/']
+ "pages[0].routes.foo": Route path must be a string starting with '/']
 `;
 
 exports[`sourceNodes throws and error for non existing pages config file 1`] = `

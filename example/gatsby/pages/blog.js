@@ -3,7 +3,7 @@ async function createFeedPages ({ graphql, page, createAdvancedPage }) {
     {
       allMarkdownRemark(filter: {fileAbsolutePath: {regex: "/(blog)/.*\.md$/"}}) {
         totalCount
-        group(field: frontmatter___tags) {
+        group(field: {frontmatter: {tags: SELECT}}) {
           fieldValue
           totalCount
         }

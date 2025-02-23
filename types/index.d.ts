@@ -1,4 +1,4 @@
-import React from 'react'
+import * as React from 'react'
 import { PathFunction as PathGeneratorFunction } from 'path-to-regexp'
 
 export type RouteScope = 'pagination'
