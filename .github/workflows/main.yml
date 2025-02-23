@@ -38,7 +38,12 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: 18
-          cache: 'npm'
+      - uses: actions/cache@v4
+        with:
+          path: ~/.npm
+          key: ${{ runner.os }}-build-example-${{ hashFiles('**/example/package.json') }}
+          restore-keys: |
+            ${{ runner.os }}-build-example-npm-
       - uses: actions/download-artifact@v4
         with:
           name: package-art
