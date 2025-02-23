@@ -18,8 +18,8 @@ importers:
         specifier: ^4.4.0
         version: 4.4.0
       js-yaml:
-        specifier: ^3.14.1
-        version: 3.14.1
+        specifier: ^4.0.0
+        version: 4.1.0
       lodash:
         specifier: ^4.17.21
         version: 4.17.21
