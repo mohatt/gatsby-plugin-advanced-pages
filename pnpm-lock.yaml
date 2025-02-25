@@ -70,8 +70,8 @@ importers:
         specifier: 29.7.0
         version: 29.7.0(@types/node@18.19.76)(babel-plugin-macros@3.1.0)
       metro-memory-fs:
-        specifier: 0.81.1
-        version: 0.81.1
+        specifier: 0.81.2
+        version: 0.81.2
       mkdirp:
         specifier: 3.0.1
         version: 3.0.1
@@ -4810,8 +4810,8 @@ packages:
     resolution: {integrity: sha512-iclAHeNqNm68zFtnZ0e+1L2yUIdvzNoauKU4WBA3VvH/vPFieF7qfRlwUZU+DA9P9bPXIS90ulxoUoCH23sV2w==}
     engines: {node: '>= 0.6'}
 
-  metro-memory-fs@0.81.1:
-    resolution: {integrity: sha512-fBGfD8eiEm4GHGtlI8Xxq+663cm1flyfpJpBlwbMoEkvcnrYWSgsiUXMRCuWlTPxzNqa4a9eQvG8c+oDz/CXcg==}
+  metro-memory-fs@0.81.2:
+    resolution: {integrity: sha512-x4GM7LmNn2HPfaBkOnc878/AI7AllA47xNgsggtCpc1iHgYfHKyY3ifHwWdNU7rh4KL0pO9uo6hBkNB4lHY6iA==}
     engines: {node: '>=18.18'}
 
   micromatch@4.0.8:
@@ -13363,7 +13363,7 @@ snapshots:
 
   methods@1.1.2: {}
 
-  metro-memory-fs@0.81.1:
+  metro-memory-fs@0.81.2:
     dependencies:
       flow-enums-runtime: 0.0.6
 
