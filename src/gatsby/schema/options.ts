@@ -1,10 +1,11 @@
-import pagesSchema from './pages'
+import type { PluginOptionsSchemaJoi } from 'gatsby-plugin-utils'
+import getPagesSchema from './pages'
 
-export default function (Joi) {
+const getOptionsSchema = (Joi: PluginOptionsSchemaJoi) => {
   return Joi.object({
     basePath: Joi.string()
       .description('Root url for all pages created through the plugin.'),
-    pages: pagesSchema(Joi)
+    pages: getPagesSchema(Joi)
       .description('Inline pages configuration to use instead of pages.config.js.'),
     template: Joi.string()
       .description('Default template to be used for pages with no "template" metadata defined.'),
@@ -31,3 +32,5 @@ export default function (Joi) {
     })
   })
 }
+
+export default getOptionsSchema

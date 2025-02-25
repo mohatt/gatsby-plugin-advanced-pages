@@ -1,1 +1,1 @@
-module.exports = require('./cjs/gatsby');
+module.exports = require('./cjs/gatsby')

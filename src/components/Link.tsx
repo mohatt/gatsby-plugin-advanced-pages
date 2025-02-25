@@ -1,9 +1,16 @@
-import React from 'react'
-import { Link as GatsbyLink } from 'gatsby'
+import React, { ReactNode } from 'react'
+import { Link as GatsbyLink, GatsbyLinkProps } from 'gatsby'
 import { string, object } from 'prop-types'
 import { routeExists, generatePath } from '../index'
+import type { RouteScope } from '../gatsby/types'
 
-const Link = ({ to, params, scope, ...props }) => {
+export interface LinkProps<TState> extends GatsbyLinkProps<TState> {
+  to: string
+  params?: Record<string, any>
+  scope?: RouteScope
+}
+
+const Link = <TState,>({ to, params, scope, ...props }: LinkProps<TState>): ReactNode => {
   if (to && routeExists(to)) {
     try {
       to = generatePath(to, params, scope, true)
@@ -16,7 +23,7 @@ const Link = ({ to, params, scope, ...props }) => {
   }
 
   return (
-    <GatsbyLink to={to} {...props} />
+    <GatsbyLink to={to} {...props as any} />
   )
 }
 

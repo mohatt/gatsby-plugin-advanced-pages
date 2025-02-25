@@ -1,4 +1,6 @@
-export default function (Joi) {
+import type { PluginOptionsSchemaJoi } from 'gatsby-plugin-utils'
+
+const getPagesSchema = (Joi: PluginOptionsSchemaJoi) => {
   return Joi.array().items(
     Joi.object({
       title: Joi.string().required(),
@@ -18,3 +20,5 @@ export default function (Joi) {
     })
   ).label('root').default([])
 }
+
+export default getPagesSchema

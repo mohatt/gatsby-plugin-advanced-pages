@@ -38,7 +38,7 @@ exports[`createPages correctly creates pages on (blog-paginated-auto-route) 1`] 
 ]
 `;
 
-exports[`createPages correctly creates pages on (blog-paginated-auto-route) 2`] = `"[{\"name\":\"blog\",\"path\":\"/blog\",\"scopes\":{\"pagination\":\"/blog/page/:page\"}}]"`;
+exports[`createPages correctly creates pages on (blog-paginated-auto-route) 2`] = `"[{"name":"blog","path":"/blog","scopes":{"pagination":"/blog/page/:page"}}]"`;
 
 exports[`createPages correctly creates pages on (blog-paginated-custom-limit) 1`] = `
 [
@@ -89,7 +89,7 @@ exports[`createPages correctly creates pages on (blog-paginated-custom-limit) 1`
 ]
 `;
 
-exports[`createPages correctly creates pages on (blog-paginated-custom-limit) 2`] = `"[{\"name\":\"blog\",\"path\":\"/blog\",\"scopes\":{\"pagination\":\"/blog/page/:page\"}}]"`;
+exports[`createPages correctly creates pages on (blog-paginated-custom-limit) 2`] = `"[{"name":"blog","path":"/blog","scopes":{"pagination":"/blog/page/:page"}}]"`;
 
 exports[`createPages correctly creates pages on (blog-paginated-manual-route) 1`] = `
 [
@@ -129,7 +129,7 @@ exports[`createPages correctly creates pages on (blog-paginated-manual-route) 1`
 ]
 `;
 
-exports[`createPages correctly creates pages on (blog-paginated-manual-route) 2`] = `"[{\"name\":\"blog\",\"path\":\"/blog\",\"scopes\":{\"pagination\":\"/blog/what/:page\"}},{\"name\":\"blog.paginated\",\"path\":\"/blog/what/:page\",\"scopes\":{}}]"`;
+exports[`createPages correctly creates pages on (blog-paginated-manual-route) 2`] = `"[{"name":"blog","path":"/blog","scopes":{"pagination":"/blog/what/:page"}},{"name":"blog.paginated","path":"/blog/what/:page","scopes":{}}]"`;
 
 exports[`createPages correctly creates pages on (dynamic-page) 1`] = `
 [
@@ -156,7 +156,7 @@ exports[`createPages correctly creates pages on (dynamic-page) 1`] = `
 ]
 `;
 
-exports[`createPages correctly creates pages on (dynamic-page) 2`] = `"[{\"name\":\"page\",\"path\":\"/pages/:page\",\"scopes\":{}}]"`;
+exports[`createPages correctly creates pages on (dynamic-page) 2`] = `"[{"name":"page","path":"/pages/:page","scopes":{}}]"`;
 
 exports[`createPages correctly creates pages on (home-about) 1`] = `
 [
@@ -190,7 +190,7 @@ exports[`createPages correctly creates pages on (home-about) 1`] = `
 ]
 `;
 
-exports[`createPages correctly creates pages on (home-about) 2`] = `"[{\"name\":\"home\",\"path\":\"/\",\"scopes\":{}},{\"name\":\"about\",\"path\":\"/about\",\"scopes\":{}},{\"name\":\"aboutme\",\"path\":\"/aboutme\",\"scopes\":{}}]"`;
+exports[`createPages correctly creates pages on (home-about) 2`] = `"[{"name":"home","path":"/","scopes":{}},{"name":"about","path":"/about","scopes":{}},{"name":"aboutme","path":"/aboutme","scopes":{}}]"`;
 
 exports[`createPages correctly creates pages on (page-context) 1`] = `
 [
@@ -225,7 +225,7 @@ exports[`createPages correctly creates pages on (page-context) 1`] = `
 ]
 `;
 
-exports[`createPages correctly creates pages on (page-context) 2`] = `"[{\"name\":\"about\",\"path\":\"/about/:name\",\"scopes\":{}}]"`;
+exports[`createPages correctly creates pages on (page-context) 2`] = `"[{"name":"about","path":"/about/:name","scopes":{}}]"`;
 
 exports[`createPages throws error on (bad-helper-empty-call) 1`] = `[Error: Route name passed to createAdvancedPage() at "/path/to/helper.js" must be a non-empty string]`;
 
@@ -245,4 +245,4 @@ exports[`createPages throws error on (bad-helper-undefined-route) 1`] = `[Error:
 
 exports[`createPages throws error on (duplicated-routes) 1`] = `[Error: Unable to create a route with name "about". Another route with the same name already exists]`;
 
-exports[`createPages throws error on (invalid-helper) 1`] = `[Error: Cannot find module '/path/to/whatever.js' from 'src/gatsby/lib/pages-creator.js']`;
+exports[`createPages throws error on (invalid-helper) 1`] = `[Error: Cannot find module '/path/to/whatever.js' from 'src/gatsby/lib/pages-creator.ts']`;

@@ -1,7 +1,13 @@
-import { pathToRegexp, compile as pathToRegexpCompile } from 'path-to-regexp'
+import { pathToRegexp, compile as pathToRegexpCompile, PathFunction } from 'path-to-regexp'
+
+export interface RouteParams {
+  [index: string]: string | number
+}
+
+export type PathGenerator<T extends RouteParams = RouteParams> = PathFunction<T>
 
 // Normalizes a route path before passing it to pathToRegexp
-function normalize (route) {
+const normalize = (route: string) => {
   // Strip trailing slashes to allow the resulting regexp
   // to match paths with or without trailing slashes
   // This will also ensure that all paths generated
@@ -10,34 +16,31 @@ function normalize (route) {
 }
 
 // Checks if the route matches the given path
-export function test (route, path) {
+export const test = (route: string, path: string) => {
   const regexp = pathToRegexp(normalize(route))
   return regexp.test(path)
 }
 
 // Picks the first route that matches the given path
-export function pick (routes, path) {
+export const pick = <T extends { realpath: string }>(routes: readonly T[], path: string) => {
   const [pathname] = path.split('?')
   return routes.find(obj => test(obj.realpath, pathname)) || null
 }
 
+const compileCache: Record<string, PathGenerator> = {}
+
 // Wraps pathToRegexp to handle errors thrown
 // Uses Memoization to improve performance
 // Returns a function to be used to generate paths for specific route
-export function compile (route, encodeURI = true) {
-  compile.cache = compile.cache || {}
-  if (compile.cache[route]) {
-    return compile.cache[route]
+export const compile = (route: string, encodeURI = true) => {
+  const cached = compileCache[route]
+  if (cached) {
+    return cached
   }
 
-  const options = {}
-  if (encodeURI) {
-    options.encode = encodeURIComponent
-  }
-  const generator = pathToRegexpCompile(normalize(route), options)
-
+  const generator = pathToRegexpCompile(normalize(route), encodeURI ? { encode: encodeURIComponent } : {})
   // eslint-disable-next-line no-return-assign
-  return compile.cache[route] = function (data) {
+  return compileCache[route] = (data) => {
     try {
       return generator(data)
     } catch (e) {
