@@ -1,7 +1,7 @@
 import React, { ReactNode } from 'react'
 import { Link as GatsbyLink, GatsbyLinkProps } from 'gatsby'
 import { string, object } from 'prop-types'
-import { routeExists, generatePath } from '../index'
+import { routeExists, generatePath } from '../api'
 import type { RouteScope } from '../gatsby/types'
 
 export interface LinkProps<TState> extends GatsbyLinkProps<TState> {
@@ -10,8 +10,8 @@ export interface LinkProps<TState> extends GatsbyLinkProps<TState> {
   scope?: RouteScope
 }
 
-const Link = <TState,>({ to, params, scope, ...props }: LinkProps<TState>): ReactNode => {
-  if (to && routeExists(to)) {
+export const Link = <TState,>({ to, params, scope, ...props }: LinkProps<TState>): ReactNode => {
+  if (to != null && routeExists(to)) {
     try {
       to = generatePath(to, params, scope, true)
     } catch (e) {

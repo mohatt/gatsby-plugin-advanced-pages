@@ -1,4 +1,4 @@
-import { onCreateWebpackConfig } from '../'
+import { onCreateWebpackConfig } from '../plugin'
 
 describe('onCreateWebpackConfig', () => {
   it('should set the correct webpack alias', () => {

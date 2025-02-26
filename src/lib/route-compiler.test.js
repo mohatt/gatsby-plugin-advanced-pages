@@ -1,6 +1,6 @@
-import { compile, pick } from './route-compiler'
+import { RouteCompiler } from './route-compiler'
 
-describe('Route Compiler', () => {
+describe('RouteCompiler', () => {
   it('picks the correct route', () => {
     const routes = [
       {
@@ -17,18 +17,18 @@ describe('Route Compiler', () => {
       }
     ]
 
-    expect(pick(routes, '/')).toHaveProperty('name', 'home')
-    expect(pick(routes, '/blog')).toHaveProperty('name', 'blog')
-    expect(pick(routes, '/blog/hello')).toHaveProperty('name', 'post')
-    expect(pick(routes, '/blog/hello?var=test')).toHaveProperty('name', 'post')
-    expect(pick(routes, '/blog/hello/')).toHaveProperty('name', 'post')
+    expect(RouteCompiler.pick(routes, '/')).toHaveProperty('name', 'home')
+    expect(RouteCompiler.pick(routes, '/blog')).toHaveProperty('name', 'blog')
+    expect(RouteCompiler.pick(routes, '/blog/hello')).toHaveProperty('name', 'post')
+    expect(RouteCompiler.pick(routes, '/blog/hello?var=test')).toHaveProperty('name', 'post')
+    expect(RouteCompiler.pick(routes, '/blog/hello/')).toHaveProperty('name', 'post')
   })
 
   it('compiles routes correctly', () => {
-    expect(compile('/blog/:post')({ post: 'hello' })).toBe('/blog/hello')
-    expect(compile('/blog/:post/')({ post: 'hello' })).toBe('/blog/hello')
-    expect(compile('/encode/:post', true)({ post: 'hello world' })).toBe('/encode/hello%20world')
-    expect(compile('/no-encode/:post', false)({ post: 'hello world' })).toBe('/no-encode/hello world')
-    expect(() => compile('/blog/:post')()).toThrow()
+    expect(RouteCompiler.compile('/blog/:post')({ post: 'hello' })).toBe('/blog/hello')
+    expect(RouteCompiler.compile('/blog/:post/')({ post: 'hello' })).toBe('/blog/hello')
+    expect(RouteCompiler.compile('/encode/:post', true)({ post: 'hello world' })).toBe('/encode/hello%20world')
+    expect(RouteCompiler.compile('/no-encode/:post', false)({ post: 'hello world' })).toBe('/no-encode/hello world')
+    expect(() => RouteCompiler.compile('/blog/:post')()).toThrow()
   })
 })

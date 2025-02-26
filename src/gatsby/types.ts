@@ -1,4 +1,7 @@
-export interface PageDefinition {
+import { RouteParams } from '../lib/route-compiler'
+import type { CreatePagesArgs } from 'gatsby'
+
+export interface PageOptions {
   title: string;
   template?: string;
   helper?: string;
@@ -6,19 +9,9 @@ export interface PageDefinition {
   routes: Record<string, string>;
 }
 
-export interface PageNode {
-  id: string;
-  title: string;
-  template?: string;
-  templateName?: string;
-  helper?: string;
-  data?: Record<string, any>;
-  routes: Array<{ name: string, path: string }>;
-}
-
 export interface PluginOptions {
   basePath: string;
-  pages: PageDefinition[];
+  pages: PageOptions[];
   template?: string;
   directories: {
     templates: string;
@@ -30,7 +23,23 @@ export interface PluginOptions {
   };
   typeNames: {
     page: string;
+    pageRoute: string;
   };
+}
+
+export interface PageRouteNode {
+  name: string;
+  path: string;
+}
+
+export interface PageNode {
+  id: string;
+  title: string;
+  template?: string;
+  templateName?: string;
+  helper?: string;
+  data?: Record<string, any>;
+  routes: PageRouteNode[];
 }
 
 export type RouteScope = 'pagination'
@@ -42,3 +51,21 @@ export interface SerializedRoute {
     [key in RouteScope]?: string
   }
 }
+
+export interface CreateAdvancedPageProps {
+  route: string
+  params?: RouteParams
+  pagination?: {
+    count: number
+    limit?: number
+    route?: string
+  }
+}
+
+export interface PageHelperProps {
+  graphql: CreatePagesArgs['graphql']
+  page: PageNode
+  createAdvancedPage: (props: CreateAdvancedPageProps) => void
+}
+
+export type PageHelperFunction = (props: PageHelperProps) => void | Promise<void>

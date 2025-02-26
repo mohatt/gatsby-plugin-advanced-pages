@@ -1,4 +1,4 @@
-import { getOptions } from '../util'
+import { options } from '../util'
 import { mountOptions, mountFile } from '../../../test/node-utils'
 
 // Use in-memory file system
@@ -7,7 +7,7 @@ jest.mock('fs')
 describe('onPluginInit', () => {
   it('correctly initializes default options', () => {
     expect(() => mountOptions()).not.toThrow()
-    expect(getOptions()).toMatchSnapshot()
+    expect(options.get()).toMatchSnapshot()
   })
 
   it('correctly initializes custom options', () => {
@@ -19,7 +19,7 @@ describe('onPluginInit', () => {
         templates: './custom/templates'
       }
     })).not.toThrow()
-    expect(getOptions()).toMatchSnapshot()
+    expect(options.get()).toMatchSnapshot()
   })
 
   it('rejects invalid options and throws errors', () => {

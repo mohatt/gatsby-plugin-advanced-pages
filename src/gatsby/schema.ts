@@ -1,7 +1,37 @@
 import type { PluginOptionsSchemaJoi } from 'gatsby-plugin-utils'
-import getPagesSchema from './pages'
 
-const getOptionsSchema = (Joi: PluginOptionsSchemaJoi) => {
+/**
+ * Defines the schema for page definitions.
+ *
+ * @internal
+ */
+export const getPagesSchema = (Joi: PluginOptionsSchemaJoi) => {
+  return Joi.array().items(
+    Joi.object({
+      title: Joi.string().required(),
+      template: Joi.string(),
+      helper: Joi.string(),
+      routes: Joi.object({})
+        .required()
+        .min(1)
+        .unknown(true)
+        .pattern(Joi.any(), Joi.string()
+          .pattern(/^\//)
+          .message('{{#label}}: Route path must be a string starting with \'/\'')
+        ),
+      data: Joi.object({})
+        .default({})
+        .unknown(true)
+    })
+  ).label('root').default([])
+}
+
+/**
+ * Defines the schema for plugin options.
+ *
+ * @internal
+ */
+export const getOptionsSchema = (Joi: PluginOptionsSchemaJoi) => {
   return Joi.object({
     basePath: Joi.string()
       .description('Root url for all pages created through the plugin.'),
@@ -28,9 +58,9 @@ const getOptionsSchema = (Joi: PluginOptionsSchemaJoi) => {
     }),
     typeNames: Joi.object({
       page: Joi.string()
-        .description('Name of the Page object type.')
+        .description('Name of the Page object type.'),
+      pageRoute: Joi.string()
+        .description('Name of the Page Route object type.')
     })
   })
 }
-
-export default getOptionsSchema

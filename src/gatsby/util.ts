@@ -5,148 +5,212 @@ import debug from 'debug'
 import type { NodePluginArgs, Reporter } from 'gatsby'
 import type { PluginOptions } from './types'
 
+/**
+ * Represents the resolved internal options for the plugin.
+ * It includes additional properties required for internal processing.
+ *
+ * @internal
+ */
 export interface ResolvedPluginOptions extends PluginOptions {
+  /**
+   * Absolute path to the root of the Gatsby project.
+   * Used to resolve relative paths for templates, directories, etc.
+   */
   _root: string;
 }
 
 /**
- * Represents the internal state of the plugin.
+ * Provides functionality to initialize, merge, and retrieve plugin options.
+ *
+ * @internal
  */
-const internalState: {
-  options?: ResolvedPluginOptions
-  reporter?: Reporter
-} = {}
+export const options = (() => {
+  let ref: ResolvedPluginOptions | undefined
 
-// Initializes options
-// The function only runs when called with args to initialize and cache
-// options object. Subsequent calls without args return the cached value
-export const initializeOptions = (args?: Pick<NodePluginArgs, 'store'> & { pluginOptions: Partial<PluginOptions>, defaultOptions: PluginOptions }): ResolvedPluginOptions => {
-  if (args === undefined) {
-    if (!('options' in internalState)) {
-      reportError('Cant fetch options because they are not initialized')
-      return null
-    }
-
-    return internalState.options
-  }
-
-  // Merge user-defined options with defaults
-  const options: ResolvedPluginOptions = _.merge(
-    // set the root path of the project
-    { _root: args.store.getState().program.directory },
-    args.defaultOptions,
-    args.pluginOptions,
-  )
-  // Ensure basePath is absolute
-  options.basePath = path.join('/', options.basePath)
-  // Ensure type names are Title case
-  options.typeNames = _.mapValues(options.typeNames, _.upperFirst)
-  // Convert directory paths to absolute ones
-  options.directories = _.mapValues(options.directories, dir => (
-    path.join(options._root, dir)
-  ))
-
-  // Cache the options object now so that subsequent
-  // calls to lookupPath() dont throw an error
-  internalState.options = options
-
-  // Verify default template
-  if (options.template) {
-    options.template = lookupPath(options.template, options.directories.templates)
-  }
-
-  // Debug final options object
-  debug('gatsby-plugin-advanced-pages')('Options', options)
-
-  internalState.options = options
-
-  return options
-}
-
-// Initializes reporter
-// The function only runs when called with args to initialize and cache
-// reporter object. Subsequent calls without args return the cached value
-export const initializeReporter = (reporter?: Reporter) => {
-  if (reporter === undefined) {
-    if (!('reporter' in internalState)) {
-      throw new Error('Cant fetch reporter because it is not initialized')
-    }
-
-    return internalState.reporter
-  }
-
-  if (reporter.setErrorMap) {
-    reporter.setErrorMap({
-      10000: {
-        text: context => context.message,
-        level: 'ERROR',
-        type: 'PLUGIN'
-      }
+  /**
+   * Initializes and merges plugin options with defaults.
+   */
+  const initialize = (args: { store: NodePluginArgs['store'], pluginOptions: Partial<PluginOptions>, defaultOptions: PluginOptions }): ResolvedPluginOptions => {
+    // Merge user-defined options with defaults
+    const opts: ResolvedPluginOptions = _.merge(
+      // set the root path of the project
+      { _root: args.store.getState().program.directory },
+      args.defaultOptions,
+      args.pluginOptions,
+    )
+    // Normalize options
+    Object.assign(opts, {
+      // Ensure basePath is absolute
+      basePath: path.join('/', opts.basePath),
+      // Ensure type names are Title case
+      typeNames: _.mapValues(opts.typeNames, _.upperFirst),
+      // Convert directory paths to absolute ones
+      directories: _.mapValues(opts.directories, dir => path.join(opts._root, dir)),
     })
+
+    // Cache the options object now so that subsequent
+    // calls to ensurePath() don't throw an error
+    ref = opts
+
+    // Verify default template exists
+    if (opts.template) {
+      opts.template = ensurePath(opts.template, opts.directories.templates)
+    }
+
+    // Debug final options object
+    debug('gatsby-plugin-advanced-pages')('Options', opts)
+
+    ref = opts
+
+    return opts
   }
 
-  internalState.reporter = reporter
-  return reporter
-}
+  /**
+   * Retrieves a specific option value or the entire options object.
+   *
+   * - If called without arguments, returns the entire options object.
+   * - If called with a key, retrieves the corresponding value.
+   * - Throws an error if options are not initialized.
+   *
+   * @param optionName (Optional) The key of the option to retrieve.
+   *
+   * @returns The requested option value or the entire options object.
+   *
+   * @throws - Terminates execution if options are not initialized.
+   */
+  const get: {
+    (): ResolvedPluginOptions
+    <T extends keyof ResolvedPluginOptions>(optionName: T): ResolvedPluginOptions[T]
+  } = (...args: [] | [string]) => {
+    if (ref === undefined) {
+      // throw new Error('Plugin options are not initialized.')
+      return reporter.error('Cant fetch options because they are not initialized')
+    }
 
-// Gets the initialized reporter object
-export const getReporter = () => {
-  return initializeReporter()
-}
+    if (!args.length) {
+      return ref
+    }
 
-// Prints an error message and terminates the build
-export const reportError = (message: string, error?: Error): never => {
-  const reporter = getReporter()
-  const prefix = '"gatsby-plugin-advanced-pages" threw an error while running'
+    return _.get(ref, ...args)
+  }
 
-  if (!error) {
-    return reporter.panic({
+  return { initialize, get }
+})()
+
+
+/**
+ * Manages Gatsby's reporter instance, providing functionalities for structured error logging,
+ * warnings, and instance management.
+ *
+ * @internal
+ */
+export const reporter = (() => {
+  let ref: Reporter | undefined
+
+  // Initializes reporter
+  /**
+   * Initializes and caches the Gatsby reporter instance.
+   *
+   * If `setErrorMap` is available, it registers custom error messages
+   * for better debugging in Gatsby's CLI.
+   */
+  const initialize = (instance: Reporter): Reporter => {
+    if (instance.setErrorMap) {
+      instance.setErrorMap({
+        10000: {
+          text: context => context.message,
+          level: 'ERROR',
+          type: 'PLUGIN'
+        }
+      })
+    }
+
+    ref = instance
+    return instance
+  }
+
+  /**
+   * Retrieves the cached reporter instance.
+
+   * @throws Error if the reporter is accessed before being initialized.
+   */
+  const get = () => {
+    if (ref === undefined) {
+      throw new Error('Cant fetch reporter instance because it is not initialized')
+    }
+
+    return ref
+  }
+
+  /**
+   * Logs an error and terminates the build process.
+   *
+   * - Uses Gatsby's `panic()` method to log structured errors.
+   * - If an `Error` object is provided, includes it in the error report.
+   * - Otherwise, creates a new error instance from the given message.
+   *
+   * @param message The error message to display.
+   *
+   * @param error (Optional) The original error instance.
+   *
+   * @throws - This function never returns; it always terminates execution.
+   */
+  const error = (message: string, error?: Error): never => {
+    const instance = get()
+    const prefix = '"gatsby-plugin-advanced-pages" threw an error while running'
+
+    if (!error) {
+      return instance.panic({
+        id: '10000',
+        context: {
+          message: prefix
+        },
+        error: new Error(message)
+      })
+    }
+
+    return instance.panic({
       id: '10000',
       context: {
-        message: prefix
+        message: `${prefix}:\n ${message}`
       },
-      error: new Error(message)
+      error
     })
   }
 
-  return reporter.panic({
-    id: '10000',
-    context: {
-      message: `${prefix}:\n ${message}`
-    },
-    error
-  })
-}
-
-// Prints a warning message
-export const reportWarning = (message: string) => {
-  const reporter = getReporter()
-  const prefix = '"gatsby-plugin-advanced-pages" might not be working properly'
-  reporter.warn(`${prefix}:\n ${message}`)
-}
-
-// Gets the initialized options object
-export const getOptions = () => {
-  return initializeOptions()
-}
-
-// Gets the value of a single option
-export const getOption = <T extends keyof ResolvedPluginOptions>(optionName: T): ResolvedPluginOptions[T] => {
-  return _.get(getOptions(), optionName)
-}
-
-// Checks if a location exists under parent
-// if not checks if it exists under project root
-// if not check if its an absolute path
-// throws an error if cant find any
-export const lookupPath = (location: string, parent?: string) => {
-  if (!location || typeof location !== 'string') {
-    reportError(
-      `ensurePath() expected a non-empty string but got ${typeof location}("${location}")`
-    )
-    return null
+  /**
+   * Logs a warning message in the Gatsby CLI.
+   *
+   * @param message The warning message to display.
+   */
+  const warning = (message: string) => {
+    const instance = get()
+    const prefix = '"gatsby-plugin-advanced-pages" might not be working properly'
+    instance.warn(`${prefix}:\n ${message}`)
   }
 
+  return { initialize, get, error, warning }
+})()
+
+/**
+ * Resolves a file path based on different search locations:
+ *
+ * The function checks in the following order:
+ * 1. If `location` exists under the given `parent` directory, return it.
+ * 2. If not found, checks under the Gatsby project root (`_root`).
+ * 3. If still not found and `location` is absolute, it verifies the path exists.
+ * 4. If none of the above match, logs an error and terminates execution.
+ *
+ * @param location The relative or absolute file path to resolve.
+ * @param parent (Optional) A parent directory to check first.
+ *
+ * @returns The absolute path if found; otherwise, throws an error.
+ *
+ * @throws - Terminates execution if the path is not found.
+ *
+ * @internal
+ */
+export const ensurePath = (location: string, parent?: string) => {
   const search = []
   if (parent && typeof parent === 'string') {
     const localPath = path.join(parent, location)
@@ -156,7 +220,7 @@ export const lookupPath = (location: string, parent?: string) => {
     }
   }
 
-  const rootPath = path.join(getOption('_root'), location)
+  const rootPath = path.join(options.get('_root'), location)
   search.push(rootPath)
   if (fs.existsSync(rootPath)) {
     return rootPath
@@ -169,9 +233,8 @@ export const lookupPath = (location: string, parent?: string) => {
     }
   }
 
-  reportError(
+  return reporter.error(
     `A path with value "${location}" could not be found at ` +
     `any of the following locations:\n - "${search.join('\n - "')}"`
   )
-  return null
 }

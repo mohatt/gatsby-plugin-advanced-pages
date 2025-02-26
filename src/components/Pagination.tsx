@@ -1,8 +1,8 @@
 import React, { Component, ReactNode } from 'react'
 import { shape, number, string, object, bool, element, oneOf, oneOfType } from 'prop-types'
 import { clsx, ClassArray } from 'clsx'
+import { Link } from './Link'
 import type { RouteParams } from '../lib/route-compiler'
-import Link from './Link'
 
 export interface PaginationInfo {
   itemCount: number
@@ -29,18 +29,18 @@ export interface PaginationProps {
   theme?: {
     inner?: string
     item?: string
-    'item.next'?: string,
-    'item.prev'?: string,
-    'item.first'?: string,
-    'item.last'?: string,
-    link?: string,
-    active?: string,
+    'item.next'?: string
+    'item.prev'?: string
+    'item.first'?: string
+    'item.last'?: string
+    link?: string
+    active?: string
     disabled?: string
   }
   pageInfo: PaginationInfo
 }
 
-export default class Pagination extends Component<PaginationProps> {
+export class Pagination extends Component<PaginationProps> {
   static propTypes = {
     route: string.isRequired,
     params: object,
@@ -253,3 +253,5 @@ export default class Pagination extends Component<PaginationProps> {
     return [fp, lp]
   }
 }
+
+export default Pagination

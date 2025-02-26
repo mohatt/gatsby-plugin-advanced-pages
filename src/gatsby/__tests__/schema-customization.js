@@ -1,4 +1,4 @@
-import { createSchemaCustomization } from '../'
+import { createSchemaCustomization } from '../plugin'
 import { mountOptions } from '../../../test/node-utils'
 
 describe('createSchemaCustomization', () => {

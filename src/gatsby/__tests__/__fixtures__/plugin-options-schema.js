@@ -45,7 +45,8 @@ export default [
         suffix: '/foobar/:page'
       },
       typeNames: {
-        page: 'foobar'
+        page: 'Foo',
+        pageRoute: 'FooRoute',
       }
     }
   }

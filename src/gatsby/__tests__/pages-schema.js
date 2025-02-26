@@ -1,12 +1,12 @@
 import { testPluginOptionsSchema } from 'gatsby-plugin-utils'
-import { pagesSchema } from '../schema'
-import testCases from './__fixtures__/pagesSchema'
+import { getPagesSchema } from '../schema'
+import testCases from './__fixtures__/pages-schema'
 
 describe('pagesSchema', () => {
   for (const { title, pages } of testCases) {
     it(title, async () => {
       const { isValid, errors } = await testPluginOptionsSchema(
-        ({ Joi }) => Joi.object({ pages: pagesSchema(Joi) }), { pages }
+        ({ Joi }) => Joi.object({ pages: getPagesSchema(Joi) }), { pages }
       )
 
       expect(isValid).toMatchSnapshot()

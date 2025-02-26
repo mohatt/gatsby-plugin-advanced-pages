@@ -1,6 +1,6 @@
 import { testPluginOptionsSchema } from 'gatsby-plugin-utils'
-import { pluginOptionsSchema } from '../'
-import testCases from './__fixtures__/pluginOptionsSchema'
+import { pluginOptionsSchema } from '../plugin'
+import testCases from './__fixtures__/plugin-options-schema'
 
 describe('pluginOptionsSchema', () => {
   for (const { title, options } of testCases) {

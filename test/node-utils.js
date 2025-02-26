@@ -1,7 +1,7 @@
 import fs from 'fs'
 import path from 'path'
 import { mkdirp } from 'mkdirp'
-import { onPluginInit } from '../src/gatsby'
+import { onPluginInit } from '../src/gatsby/plugin'
 
 /**
  * Make sure to mock the fs module in your test
@@ -9,7 +9,7 @@ import { onPluginInit } from '../src/gatsby'
  */
 
 // Virtual Project Root
-export const programRoot = '/virtual/project'
+const programRoot = '/virtual/project'
 
 // Changes plugin options by invoking the onPluginInit hook
 // Tests that run after calling this function will receive

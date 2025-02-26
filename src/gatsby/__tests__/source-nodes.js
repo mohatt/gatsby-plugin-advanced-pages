@@ -1,5 +1,5 @@
 import fs from 'fs'
-import { sourceNodes } from '../'
+import { sourceNodes } from '../plugin'
 import { mountFile, mountModule, mountOptions } from '../../../test/node-utils'
 import testCases from './__fixtures__/source-nodes'
 

@@ -2,12 +2,12 @@ import fs from 'fs'
 import path from 'path'
 import type { GatsbyNode } from 'gatsby'
 import PagesCreator from './lib/pages-creator'
-import { getOption, reportError } from './util'
+import { options, reporter } from './util'
 
 const createPages: GatsbyNode['createPages'] = async ({ graphql, actions, getNodesByType, cache }) => {
   const { createPage } = actions
 
-  const pageType = getOption('typeNames').page
+  const pageType = options.get('typeNames').page
   if (getNodesByType(pageType).length === 0) {
     return
   }
@@ -31,7 +31,7 @@ const createPages: GatsbyNode['createPages'] = async ({ graphql, actions, getNod
   `)
 
   if (result.errors) {
-    reportError('Failed running "create-pages" GraphQL Query', result.errors.shift())
+    reporter.error('Failed running "create-pages" GraphQL Query', result.errors.shift())
     return
   }
 
@@ -44,7 +44,7 @@ const createPages: GatsbyNode['createPages'] = async ({ graphql, actions, getNod
   try {
     fs.writeFileSync(routesFile, JSON.stringify(pageCreator.getRoutesExport()))
   } catch (e) {
-    reportError('Error writing route map export file', e)
+    reporter.error('Error writing route map export file', e)
   }
 }
 

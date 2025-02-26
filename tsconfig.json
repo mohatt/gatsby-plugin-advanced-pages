@@ -7,13 +7,15 @@
     "allowJs": true,
     "esModuleInterop": true,
     "resolveJsonModule": true,
+    "isolatedModules": true,
     "strict": false,
     "skipLibCheck": true,
     "noImplicitAny": false,
     "noImplicitReturns": true,
     "noUnusedParameters": true,
     "strictBindCallApply": true,
-    "jsx": "react-jsx",
+    "stripInternal": true,
+    "jsx": "react-jsx"
   },
   "include": ["src", "test"]
 }

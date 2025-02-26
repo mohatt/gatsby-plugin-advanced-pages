@@ -1,0 +1,10 @@
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "declaration": true,
+    "emitDeclarationOnly": true,
+    "stripInternal": true,
+    "declarationDir": "types"
+  },
+  "include": ["src/index.ts", "src/gatsby/index.ts"],
+}

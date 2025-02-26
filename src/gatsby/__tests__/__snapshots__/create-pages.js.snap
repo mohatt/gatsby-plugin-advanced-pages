@@ -229,11 +229,11 @@ exports[`createPages correctly creates pages on (page-context) 2`] = `"[{"name":
 
 exports[`createPages throws error on (bad-helper-empty-call) 1`] = `[Error: Route name passed to createAdvancedPage() at "/path/to/helper.js" must be a non-empty string]`;
 
-exports[`createPages throws error on (bad-helper-empty-pagination) 1`] = `[Error: Invalid pagination object passed to createAdvancedPage() at "/path/to/helper.js": "count" paramater is missing]`;
+exports[`createPages throws error on (bad-helper-empty-pagination) 1`] = `[Error: Invalid pagination object passed to createAdvancedPage() at "/path/to/helper.js": "count" parameter is missing]`;
 
-exports[`createPages throws error on (bad-helper-invalid-pagination-count) 1`] = `[Error: Invalid pagination object passed to createAdvancedPage() at "/path/to/helper.js": "count" paramater must be a valid non-negative number (got "-15")]`;
+exports[`createPages throws error on (bad-helper-invalid-pagination-count) 1`] = `[Error: Invalid pagination object passed to createAdvancedPage() at "/path/to/helper.js": "count" parameter must be a valid non-negative number (got "-15")]`;
 
-exports[`createPages throws error on (bad-helper-invalid-pagination-limit) 1`] = `[Error: Invalid pagination object passed to createAdvancedPage() at "/path/to/helper.js": "limit" paramater must be a valid positive number (got "-10")]`;
+exports[`createPages throws error on (bad-helper-invalid-pagination-limit) 1`] = `[Error: Invalid pagination object passed to createAdvancedPage() at "/path/to/helper.js": "limit" parameter must be a valid positive number (got "-10")]`;
 
 exports[`createPages throws error on (bad-helper-invalid-pagination-route) 1`] = `[Error: Invalid pagination object passed to createAdvancedPage() at "/path/to/helper.js": Unrecognized route "foo"]`;
 
