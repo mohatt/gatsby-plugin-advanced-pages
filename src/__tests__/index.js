@@ -7,15 +7,11 @@ import {
   useRoute,
   useIsRoute,
   getMatchingRoute,
-  generatePath
+  generatePath,
 } from '../index'
 
 // Create a virtual mock for routes.json
-jest.mock(
-  'gatsby-plugin-advanced-pages-cache/routes.json',
-  () => mockRoutes,
-  { virtual: true }
-)
+jest.mock('gatsby-plugin-advanced-pages-cache/routes.json', () => mockRoutes, { virtual: true })
 
 describe('API', () => {
   it('correctly fetchs routes', () => {

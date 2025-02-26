@@ -12,19 +12,23 @@ describe('onPluginInit', () => {
 
   it('correctly initializes custom options', () => {
     mountFile('./custom/templates/default.js')
-    expect(() => mountOptions({
-      basePath: '/blog',
-      template: 'default.js',
-      directories: {
-        templates: './custom/templates'
-      }
-    })).not.toThrow()
+    expect(() =>
+      mountOptions({
+        basePath: '/blog',
+        template: 'default.js',
+        directories: {
+          templates: './custom/templates',
+        },
+      }),
+    ).not.toThrow()
     expect(options.get()).toMatchSnapshot()
   })
 
   it('rejects invalid options and throws errors', () => {
-    expect(() => mountOptions({
-      template: 'whatever'
-    })).toThrowErrorMatchingSnapshot('Invalid Template')
+    expect(() =>
+      mountOptions({
+        template: 'whatever',
+      }),
+    ).toThrowErrorMatchingSnapshot('Invalid Template')
   })
 })

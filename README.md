@@ -37,7 +37,7 @@ yarn add gatsby-plugin-advanced-pages
 
 ## Demo
 
-Check out the [example directory](https://github.com/mohatt/gatsby-plugin-advanced-pages/tree/master/example) for sample implementations.  
+Check out the [example directory](https://github.com/mohatt/gatsby-plugin-advanced-pages/tree/master/example) for sample implementations.
 
 A **live demo** is available at: [mohatt.github.io/gatsby-plugin-advanced-pages](http://mohatt.github.io/gatsby-plugin-advanced-pages).
 
@@ -51,8 +51,8 @@ plugins: [
     resolve: `gatsby-plugin-advanced-pages`,
     options: {
       // Plugin options goes here
-    }
-  }
+    },
+  },
 ]
 ```
 
@@ -72,8 +72,8 @@ Next, create a corresponding template file under `src/templates`:
 
 ```javascript
 // src/templates/hello.js
-import * as React from "react"
-import { graphql } from "gatsby"
+import * as React from 'react'
+import { graphql } from 'gatsby'
 
 const PageTemplate = ({ data }) => (
   <div>
@@ -101,7 +101,7 @@ To create more advanced pages, you can define a **page helper**, a JavaScript fi
 
 For example, to create a **blog index page with pagination**, first update `pages.config.yaml`:
 
-> **Note:** You will need [gatsby-transformer-remark](https://www.gatsbyjs.org/packages/gatsby-transformer-remark/)  plugin installed for this example to work
+> **Note:** You will need [gatsby-transformer-remark](https://www.gatsbyjs.org/packages/gatsby-transformer-remark/) plugin installed for this example to work
 
 ```yaml
 # pages.config.yaml
@@ -134,7 +134,7 @@ module.exports = async function ({ graphql, page, createAdvancedPage }) {
     pagination: {
       count: result.data.allMarkdownRemark.totalCount,
       limit: 3,
-    }
+    },
   })
 }
 ```
@@ -155,10 +155,10 @@ const BlogTemplate = ({ data }) => (
         <div key={node.frontmatter.slug}>
           <h2>{node.frontmatter.title}</h2>
           <p>{node.excerpt}</p>
-        </div> 
+        </div>
       ))}
     </div>
-    <Pagination route="blog" pageInfo={data.allMarkdownRemark.pageInfo} ui="simple" />
+    <Pagination route='blog' pageInfo={data.allMarkdownRemark.pageInfo} ui='simple' />
   </div>
 )
 
@@ -167,7 +167,11 @@ export const query = graphql`
     page(id: { eq: $id }) {
       title
     }
-    allMarkdownRemark(limit: $limit, skip: $offset, filter: { frontmatter: { type: { eq: "post" } } }){
+    allMarkdownRemark(
+      limit: $limit
+      skip: $offset
+      filter: { frontmatter: { type: { eq: "post" } } }
+    ) {
       edges {
         node {
           frontmatter {
@@ -188,10 +192,11 @@ export default BlogTemplate
 ```
 
 Now assuming you have 12 blog posts (stored as Markdown files), the plugin will create the following pages:
- - /blog
- - blog/page/2
- - blog/page/3
- - blog/page/4
+
+- /blog
+- blog/page/2
+- blog/page/3
+- blog/page/4
 
 if you want to customize the paginated paths, you can include a `route` in your pagination object that's being passed to `createAdvancedPage()`. See below:
 
@@ -214,15 +219,16 @@ createAdvancedPage({
     route: 'blog.paginated',
     count: result.data.allMarkdownRemark.totalCount,
     limit: 3,
-  }
+  },
 })
 ```
 
 Now the plugin will create the following pages:
- - /blog
- - /blog/what/ever/2
- - /blog/what/ever/3
- - /blog/what/ever/4
+
+- /blog
+- /blog/what/ever/2
+- /blog/what/ever/3
+- /blog/what/ever/4
 
 ### Passing data to templates
 
@@ -246,18 +252,19 @@ Then, you can use that data in your template
 
 ```javascript
 // src/templates/skills.js
-import * as React from "react"
-import { graphql } from "gatsby"
+import * as React from 'react'
+import { graphql } from 'gatsby'
 
 const SkillsTemplate = ({ data: { page } }) => (
   <div>
     <h1>{page.title}</h1>
     <ul>
-    {page.data.sills.map(({ skill, level }) => {
-      <li key={skill}>
-        <label>{skill}:</label><span>{level}</span>
-      </li>
-    })}
+      {page.data.sills.map(({ skill, level }) => {
+        ;<li key={skill}>
+          <label>{skill}:</label>
+          <span>{level}</span>
+        </li>
+      })}
     </ul>
   </div>
 )
@@ -292,7 +299,7 @@ Assuming you have a route named `blog.post` with a value of `/blog/posts/:post`,
 import { Link } from 'gatsby-plugin-advanced-pages'
 
 // inside your component JSX
-<Link to="blog.post" params={{ post: "some-post-slug" }} />
+;<Link to='blog.post' params={{ post: 'some-post-slug' }} />
 ```
 
 #### generatePath() function
@@ -303,7 +310,7 @@ Alternatively, you can use `generatePath()` function to generate paths. see belo
 import { generatePath } from 'gatsby-plugin-advanced-pages'
 
 // Returns: /blog/posts/some-post-slug
-const postUrl = generatePath('blog.post', { post: "some-post-slug" })
+const postUrl = generatePath('blog.post', { post: 'some-post-slug' })
 ```
 
 ## Components
@@ -317,10 +324,10 @@ Wrapper around Gatsby's [core Link component](https://www.gatsbyjs.org/docs/gats
 #### Props
 
 | Name   | Type     | Description                                                                                |
-|--------|----------|--------------------------------------------------------------------------------------------|
+| ------ | -------- | ------------------------------------------------------------------------------------------ |
 | to     | `String` | **Required.** The name of the route to link to or a regular path                           |
 | params | `Object` | Route parameters                                                                           |
-| scope  | `String` | Route scope. *Available scopes:* `pagination`                                              |
+| scope  | `String` | Route scope. _Available scopes:_ `pagination`                                              |
 | ...    | `[...]`  | All props supported by [Gatsby Link component](https://www.gatsbyjs.org/docs/gatsby-link/) |
 
 #### Usage
@@ -356,15 +363,15 @@ Renders a pagination UI to paginate a set of results fetched using a GraphQL que
 #### Props
 
 | Name           | Type     | Description                                                                                                                                                                                                                                       |
-|----------------|----------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| -------------- | -------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | route          | `String` | **Required.** The name of the route to paginate                                                                                                                                                                                                   |
 | params         | `Object` | Route parameters                                                                                                                                                                                                                                  |
 | pageInfo       | `Object` | **Required.** `pageInfo` object fetched from GraphQL using `Pagination` fragment                                                                                                                                                                  |
-| ui             | `String` | UI mode (Defaults to `full`). *Available keys:* `mini`, `simple`, `full`                                                                                                                                                                          |
+| ui             | `String` | UI mode (Defaults to `full`). _Available keys:_ `mini`, `simple`, `full`                                                                                                                                                                          |
 | range          | `Number` | Maximum number of pages displayed (Defaults to 6)                                                                                                                                                                                                 |
 | className      | `String` | Class name applied to the pagination container                                                                                                                                                                                                    |
-| labels         | `Object` | Navigation items labels. *Available keys:* `prev`, `next`, `first`, `last`                                                                                                                                                                        |
-| theme          | `Object` | Elements class names (Defaults to [Bootstrap 4 classes](https://getbootstrap.com/docs/4.3/components/pagination/#overview)). *Available keys:* `inner`, `item`, `item.next`, `item.prev`, `item.first`, `item.last`, `link`, `active`, `disabled` |
+| labels         | `Object` | Navigation items labels. _Available keys:_ `prev`, `next`, `first`, `last`                                                                                                                                                                        |
+| theme          | `Object` | Elements class names (Defaults to [Bootstrap 4 classes](https://getbootstrap.com/docs/4.3/components/pagination/#overview)). _Available keys:_ `inner`, `item`, `item.next`, `item.prev`, `item.first`, `item.last`, `link`, `active`, `disabled` |
 | renderDisabled | `bool`   | Render disabled navigation items (Defaults to `true`)                                                                                                                                                                                             |
 
 #### Usage
@@ -403,11 +410,13 @@ Check out [example](https://github.com/mohatt/gatsby-plugin-advanced-pages/tree/
 The plugin exposes two hooks for getting and checking for the currently activated route.
 
 ### useRoute
+
 > `useRoute(): Route`
 
 Gets the current active route based on `@reach/router` location history.
 
 ### useIsRoute
+
 > `useIsRoute(route: string): boolean`
 
 Checks whether a given route is currently active.
@@ -417,41 +426,49 @@ Checks whether a given route is currently active.
 These are the functions exposed by the plugin.
 
 ### createAdvancedPage
+
 > `createAdvancedPage({ route: string, params?: object, pagination?: object, ...context }): void`
 
-Creates page(s) based on given input parameters. *Note: This function can only be called within [Page helpers](#page-helpers).*
+Creates page(s) based on given input parameters. _Note: This function can only be called within [Page helpers](#page-helpers)._
 
 ### generatePath
+
 > `generatePath(route: string, params?: object, scope?: string, ignorePrefix?: boolean): string`
 
 Generates a path for a specific route based on the given parameters.
 
 ### getPathGenerator
+
 > `getPathGenerator(route: string, scope?: string, ignorePrefix?: boolean): Function`
 
 Returns a function to be used to generate paths for a specific route.
 
 ### navigate
+
 > `navigate(to: string, params?: object, scope?: string, options?: object): void`
 
 Extends Gatsby's [navigate](https://www.gatsbyjs.org/docs/gatsby-link/#how-to-use-the-navigate-helper-function) to allow passing route names and params.
 
 ### getMatchingRoute
+
 > `getMatchingRoute(path: string, ignorePrefix?: boolean): Route`
 
 Gets the route that matches a given path.
 
 ### getRoutes
+
 > `getRoutes(parent?: string): Route[]`
 
 Gets an array of all routes or routes nested under a given parent route.
 
 ### getRoute
+
 > `getRoute(route: string): Route`
 
 Gets the Route object of a given route name.
 
 ### routeExists
+
 > `routeExists(route: string): boolean`
 
 Checks if a route is defined with the given name.
@@ -474,15 +491,15 @@ plugins: [
       // plugin options goes here
       pages: [
         {
-          title: "Hello, World",
-          template: "hello.js",
+          title: 'Hello, World',
+          template: 'hello.js',
           routes: {
-            hello: "/hello"
-          }
-        }
-      ]
-    }
-  }
+            hello: '/hello',
+          },
+        },
+      ],
+    },
+  },
 ]
 ```
 
@@ -491,6 +508,7 @@ plugins: [
 This file should be in the root of your Gatsby site and should be in one of these formats:
 
 ##### YAML
+
 `pages.config.yaml`
 
 ```yaml
@@ -501,6 +519,7 @@ This file should be in the root of your Gatsby site and should be in one of thes
 ```
 
 ##### JSON
+
 `pages.config.json`
 
 ```json
@@ -516,20 +535,20 @@ This file should be in the root of your Gatsby site and should be in one of thes
 ```
 
 ##### JavaScript
+
 `pages.config.js`
 
 ```js
 module.exports = [
   {
-    title: "Hello, World",
-    template: "hello.js",
+    title: 'Hello, World',
+    template: 'hello.js',
     routes: {
-      hello: "/hello"
-    }
-  }
+      hello: '/hello',
+    },
+  },
 ]
 ```
-
 
 ### Plugin options
 
@@ -552,58 +571,66 @@ plugins: [
       },
       pagination: {
         limit: 10,
-        suffix: '/page/:page'
+        suffix: '/page/:page',
       },
       typeNames: {
-        page: 'Page'
-      }
-    }
-  }
+        page: 'Page',
+      },
+    },
+  },
 ]
 ```
 
 #### basePath
+
 > Type: `String` Default: `"/"`
 
 Root url for all pages created through the plugin
 
 #### pages
+
 > Type: `Array` Default: `[]`
 
 Inline pages configuration to use instead of a separate pages.config.js file
 
 #### template
+
 > Type: `String` Default: `null`
 
 Default template to be used for pages with no `template` metadata defined. It could be a file name located under `{directories.templates}` or a path relative to your project's root directory.
 
 #### directories.templates
+
 > Type: `String` Default: `"src/templates"`
 
 Location of template components used to render pages. The path could either be relative to your project's root directory or an absolute path
 
 #### directories.helpers
+
 > Type: `String` Default: `"gatsby/pages"`
 
 Location of page helpers. The path could either be relative to your project's root directory or an absolute path
 
 #### pagination.limit
+
 > Type: `Number` Default: `10`
 
 Default page size to be used when no `limit` parameter is passed to `createAdvancedPage()`
 
 #### pagination.suffix
+
 > Type: `String` Default: `"/page/:page"`
 
 Suffix to be added to the original route to generate a paginated route. This is only used when no paginated route is passed to `createAdvancedPage()`
 
 #### typeNames.page
+
 > Type: `String` Default: `"Page"`
 
 Name of the page object type
 
-
 ## License
+
 [MIT][license-url]
 
 [npm-url]: https://www.npmjs.com/package/gatsby-plugin-advanced-pages

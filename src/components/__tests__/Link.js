@@ -4,11 +4,7 @@ import mockRoutes from '../../__tests__/__fixtures__/routes'
 import Link from '../Link'
 
 // Create a virtual mock for routes.json
-jest.mock(
-  'gatsby-plugin-advanced-pages-cache/routes.json',
-  () => mockRoutes,
-  { virtual: true }
-)
+jest.mock('gatsby-plugin-advanced-pages-cache/routes.json', () => mockRoutes, { virtual: true })
 
 describe('<Link />', () => {
   const render = (props = {}) => {
@@ -20,23 +16,27 @@ describe('<Link />', () => {
   })
 
   it('should render correctly with route params', () => {
-    expect(render({
-      to: 'blog.post',
-      params: {
-        post: 'hello-world'
-      }
-    })).toMatchSnapshot()
+    expect(
+      render({
+        to: 'blog.post',
+        params: {
+          post: 'hello-world',
+        },
+      }),
+    ).toMatchSnapshot()
   })
 
   it('should render correctly with route params and scope', () => {
-    expect(render({
-      to: 'blog.tag',
-      scope: 'pagination',
-      params: {
-        tag: 'news',
-        page: 5
-      }
-    })).toMatchSnapshot()
+    expect(
+      render({
+        to: 'blog.tag',
+        scope: 'pagination',
+        params: {
+          tag: 'news',
+          page: 5,
+        },
+      }),
+    ).toMatchSnapshot()
   })
 
   it('should log console error when called with invalid props', () => {
@@ -50,8 +50,8 @@ describe('<Link />', () => {
     render({
       to: 'blog.post',
       params: {
-        invalid: 'whatever'
-      }
+        invalid: 'whatever',
+      },
     })
     expect(error).toHaveBeenCalledTimes(1)
     error.mockRestore()

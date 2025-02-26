@@ -2,44 +2,44 @@ import { RouteParams } from '../lib/route-compiler'
 import type { CreatePagesArgs } from 'gatsby'
 
 export interface PageOptions {
-  title: string;
-  template?: string;
-  helper?: string;
-  data?: Record<string, any>;
-  routes: Record<string, string>;
+  title: string
+  template?: string
+  helper?: string
+  data?: Record<string, any>
+  routes: Record<string, string>
 }
 
 export interface PluginOptions {
-  basePath: string;
-  pages: PageOptions[];
-  template?: string;
+  basePath: string
+  pages: PageOptions[]
+  template?: string
   directories: {
-    templates: string;
-    helpers: string;
-  };
+    templates: string
+    helpers: string
+  }
   pagination: {
-    limit: number;
-    suffix: string;
-  };
+    limit: number
+    suffix: string
+  }
   typeNames: {
-    page: string;
-    pageRoute: string;
-  };
+    page: string
+    pageRoute: string
+  }
 }
 
 export interface PageRouteNode {
-  name: string;
-  path: string;
+  name: string
+  path: string
 }
 
 export interface PageNode {
-  id: string;
-  title: string;
-  template?: string;
-  templateName?: string;
-  helper?: string;
-  data?: Record<string, any>;
-  routes: PageRouteNode[];
+  id: string
+  title: string
+  template?: string
+  templateName?: string
+  helper?: string
+  data?: Record<string, any>
+  routes: PageRouteNode[]
 }
 
 export type RouteScope = 'pagination'

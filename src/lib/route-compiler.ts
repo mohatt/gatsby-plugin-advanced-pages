@@ -33,7 +33,7 @@ export class RouteCompiler {
    */
   static pick<T extends { realpath: string }>(routes: readonly T[], path: string) {
     const [pathname] = path.split('?') // Remove query parameters
-    return routes.find(obj => this.test(obj.realpath, pathname)) || null
+    return routes.find((obj) => this.test(obj.realpath, pathname)) || null
   }
 
   /**
@@ -50,19 +50,22 @@ export class RouteCompiler {
       return cached
     }
 
-    const generator = pathToRegexpCompile(this.normalize(route), encodeURI ? { encode: encodeURIComponent } : {})
+    const generator = pathToRegexpCompile(
+      this.normalize(route),
+      encodeURI ? { encode: encodeURIComponent } : {},
+    )
 
     // Cache and return the compiled path generator
-    return this.compileCache[route] = (data) => {
+    return (this.compileCache[route] = (data) => {
       try {
         return generator(data)
       } catch (e) {
         throw new TypeError(
           `Error generating a path for route "${route}" with ` +
-          `params "${JSON.stringify(data)}": ${e.message}`
+            `params "${JSON.stringify(data)}": ${e.message}`,
         )
       }
-    }
+    })
   }
 
   /**

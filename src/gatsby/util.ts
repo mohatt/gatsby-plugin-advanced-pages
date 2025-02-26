@@ -16,7 +16,7 @@ export interface ResolvedPluginOptions extends PluginOptions {
    * Absolute path to the root of the Gatsby project.
    * Used to resolve relative paths for templates, directories, etc.
    */
-  _root: string;
+  _root: string
 }
 
 /**
@@ -30,7 +30,11 @@ export const options = (() => {
   /**
    * Initializes and merges plugin options with defaults.
    */
-  const initialize = (args: { store: NodePluginArgs['store'], pluginOptions: Partial<PluginOptions>, defaultOptions: PluginOptions }): ResolvedPluginOptions => {
+  const initialize = (args: {
+    store: NodePluginArgs['store']
+    pluginOptions: Partial<PluginOptions>
+    defaultOptions: PluginOptions
+  }): ResolvedPluginOptions => {
     // Merge user-defined options with defaults
     const opts: ResolvedPluginOptions = _.merge(
       // set the root path of the project
@@ -45,7 +49,7 @@ export const options = (() => {
       // Ensure type names are Title case
       typeNames: _.mapValues(opts.typeNames, _.upperFirst),
       // Convert directory paths to absolute ones
-      directories: _.mapValues(opts.directories, dir => path.join(opts._root, dir)),
+      directories: _.mapValues(opts.directories, (dir) => path.join(opts._root, dir)),
     })
 
     // Cache the options object now so that subsequent
@@ -97,7 +101,6 @@ export const options = (() => {
   return { initialize, get }
 })()
 
-
 /**
  * Manages Gatsby's reporter instance, providing functionalities for structured error logging,
  * warnings, and instance management.
@@ -118,10 +121,10 @@ export const reporter = (() => {
     if (instance.setErrorMap) {
       instance.setErrorMap({
         10000: {
-          text: context => context.message,
+          text: (context) => context.message,
           level: 'ERROR',
-          type: 'PLUGIN'
-        }
+          type: 'PLUGIN',
+        },
       })
     }
 
@@ -163,18 +166,18 @@ export const reporter = (() => {
       return instance.panic({
         id: '10000',
         context: {
-          message: prefix
+          message: prefix,
         },
-        error: new Error(message)
+        error: new Error(message),
       })
     }
 
     return instance.panic({
       id: '10000',
       context: {
-        message: `${prefix}:\n ${message}`
+        message: `${prefix}:\n ${message}`,
       },
-      error
+      error,
     })
   }
 
@@ -235,6 +238,6 @@ export const ensurePath = (location: string, parent?: string) => {
 
   return reporter.error(
     `A path with value "${location}" could not be found at ` +
-    `any of the following locations:\n - "${search.join('\n - "')}"`
+      `any of the following locations:\n - "${search.join('\n - "')}"`,
   )
 }

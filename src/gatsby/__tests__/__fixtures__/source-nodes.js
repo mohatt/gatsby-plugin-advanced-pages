@@ -9,11 +9,11 @@ export default [
           title: 'foo',
           template: './src/templates/test.js',
           routes: {
-            foo: '/foo'
-          }
-        }
-      ]
-    }
+            foo: '/foo',
+          },
+        },
+      ],
+    },
   },
   {
     title: 'correctly creates page nodes from pages.config.js',
@@ -27,12 +27,12 @@ export default [
             title: 'foo',
             template: './src/templates/test.js',
             routes: {
-              foo: '/foo'
-            }
-          }
-        ]
-      }
-    ]
+              foo: '/foo',
+            },
+          },
+        ],
+      },
+    ],
   },
   {
     title: 'correctly creates page nodes from pages.config.json',
@@ -46,12 +46,12 @@ export default [
             title: 'foo',
             template: './src/templates/test.js',
             routes: {
-              foo: '/foo'
-            }
-          }
-        ]
-      }
-    ]
+              foo: '/foo',
+            },
+          },
+        ],
+      },
+    ],
   },
   {
     title: 'correctly creates page nodes from pages.config.yaml',
@@ -65,9 +65,9 @@ export default [
   template: ./src/templates/test.js
   routes:
     foo: /foo
-`
-      }
-    ]
+`,
+      },
+    ],
   },
   {
     title: 'correctly ignores pages config file in favor of inline pages config',
@@ -81,11 +81,11 @@ export default [
             title: 'foo',
             template: './src/templates/test.js',
             routes: {
-              foo: '/foo'
-            }
-          }
-        ]
-      }
+              foo: '/foo',
+            },
+          },
+        ],
+      },
     ],
     options: {
       pages: [
@@ -93,11 +93,11 @@ export default [
           title: 'foo-inline',
           template: './src/templates/test.js',
           routes: {
-            foo: '/foo-inline'
-          }
-        }
-      ]
-    }
+            foo: '/foo-inline',
+          },
+        },
+      ],
+    },
   },
   {
     title: 'correctly creates multiple page nodes with various configurations',
@@ -131,14 +131,14 @@ export default [
     ipsum: /ipsum
     dolor: /dolor
     sit: /sit/amet
-`
-      }
-    ]
+`,
+      },
+    ],
   },
   {
     title: 'throws and error for non existing pages config file',
     throws: true,
-    files: []
+    files: [],
   },
   {
     title: 'throws and error for invalid pages config file',
@@ -150,9 +150,9 @@ export default [
 - title: foo
   routes:
     foo: foo/bar
-`
-      }
-    ]
+`,
+      },
+    ],
   },
   {
     title: 'throws and error for pages with invalid template',
@@ -165,9 +165,9 @@ export default [
   template: ./no/template.js
   routes:
     foo: /foo
-`
-      }
-    ]
+`,
+      },
+    ],
   },
   {
     title: 'throws and error when pages don not have a valid template',
@@ -179,8 +179,8 @@ export default [
 - title: foo
   routes:
     foo: /foo
-`
-      }
-    ]
-  }
+`,
+      },
+    ],
+  },
 ]

@@ -3,7 +3,13 @@ import _ from 'lodash'
 import type { CreatePagesArgs, Page } from 'gatsby'
 import { RouteCompiler, PathGenerator } from '../../lib/route-compiler'
 import { reporter, options } from '../util'
-import { PageNode, SerializedRoute, RouteScope, PageHelperFunction, CreateAdvancedPageProps } from '../types'
+import {
+  PageNode,
+  SerializedRoute,
+  RouteScope,
+  PageHelperFunction,
+  CreateAdvancedPageProps,
+} from '../types'
 
 interface RouteNode {
   name: string
@@ -27,9 +33,9 @@ export default class PagesCreator {
   private currentPage?: PageNode
   private createPageAction?: CreatePagesProps['createPage']
 
-  constructor (pages: PageNode[]) {
+  constructor(pages: PageNode[]) {
     this.routeMap = {}
-    this.pages = pages.map(page => {
+    this.pages = pages.map((page) => {
       this.createRoutes(page)
       // Prevent page helpers from mutating page object
       return Object.freeze(page)
@@ -39,13 +45,13 @@ export default class PagesCreator {
   // Processes route objects and adds them to the route map
   // Adds basePath prefix to all route paths
   // Detects any duplicates
-  createRoutes (page: PageNode) {
+  createRoutes(page: PageNode) {
     for (const route of page.routes) {
       const { name } = route
       if (this.routeMap[name]) {
         reporter.error(
           `Unable to create a route with name "${name}". ` +
-          'Another route with the same name already exists'
+            'Another route with the same name already exists',
         )
         continue
       }
@@ -59,14 +65,11 @@ export default class PagesCreator {
   }
 
   // Auto generates a new route based scope and parent route
-  private generateRoute (parent: string, scope: RouteScope): ChildRouteNode {
+  private generateRoute(parent: string, scope: RouteScope): ChildRouteNode {
     let scopedPath: string
     switch (scope) {
       case 'pagination':
-        scopedPath = path.join(
-          this.routeMap[parent].path,
-          options.get('pagination').suffix
-        )
+        scopedPath = path.join(this.routeMap[parent].path, options.get('pagination').suffix)
         break
       default:
         return null
@@ -75,17 +78,17 @@ export default class PagesCreator {
     return {
       name: parent + '.' + scope,
       path: scopedPath,
-      pathGenerator: RouteCompiler.compile(scopedPath)
+      pathGenerator: RouteCompiler.compile(scopedPath),
     }
   }
 
-  async createPages ({ graphql, createPage }: CreatePagesProps) {
+  async createPages({ graphql, createPage }: CreatePagesProps) {
     this.createPageAction = createPage
     for (const page of this.pages) {
       this.currentPage = page
       // No page helper? Add static pages for all defined routes
       if (!page.helper) {
-        page.routes.map(route => this.createPage({ route: route.name }))
+        page.routes.map((route) => this.createPage({ route: route.name }))
         continue
       }
       // Run the page helper
@@ -99,25 +102,25 @@ export default class PagesCreator {
         await helperFn({
           graphql,
           page,
-          createAdvancedPage: props => this.createPage(props ?? { route: null })
+          createAdvancedPage: (props) => this.createPage(props ?? { route: null }),
         })
       } catch (e) {
         reporter.error(
           `Error occurred while running page helper function at "${page.helper}"`,
           // e[0] to catch thrown graphql errors
           // e.g. throw result.errors
-          (e[0] !== undefined) ? e[0] : e
+          e[0] !== undefined ? e[0] : e,
         )
       }
     }
   }
 
-  private createPage ({ route, params = {}, pagination, ...context }: CreateAdvancedPageProps) {
+  private createPage({ route, params = {}, pagination, ...context }: CreateAdvancedPageProps) {
     const { currentPage } = this
     if (typeof route !== 'string' || !route) {
       reporter.error(
         `Route name passed to createAdvancedPage() at "${currentPage.helper}"` +
-        ' must be a non-empty string'
+          ' must be a non-empty string',
       )
       return
     }
@@ -125,7 +128,7 @@ export default class PagesCreator {
     const routeNode = this.routeMap[route]
     if (!routeNode) {
       reporter.error(
-        `Unrecognized route "${route}" passed to createAdvancedPage() at "${currentPage.helper}"`
+        `Unrecognized route "${route}" passed to createAdvancedPage() at "${currentPage.helper}"`,
       )
       return
     }
@@ -136,8 +139,8 @@ export default class PagesCreator {
       context: {
         id: currentPage.id,
         ...params,
-        ...context
-      }
+        ...context,
+      },
     }
 
     if (pagination) {
@@ -145,7 +148,7 @@ export default class PagesCreator {
       if (typeof count === 'undefined') {
         reporter.error(
           `Invalid pagination object passed to createAdvancedPage() at "${currentPage.helper}": ` +
-          '"count" parameter is missing'
+            '"count" parameter is missing',
         )
         return
       }
@@ -153,7 +156,7 @@ export default class PagesCreator {
       if (!Number.isInteger(count) || count < 0) {
         reporter.error(
           `Invalid pagination object passed to createAdvancedPage() at "${currentPage.helper}": ` +
-          `"count" parameter must be a valid non-negative number (got "${count}")`
+            `"count" parameter must be a valid non-negative number (got "${count}")`,
         )
         return
       }
@@ -163,7 +166,7 @@ export default class PagesCreator {
       } else if (!Number.isInteger(limit) || limit <= 0) {
         reporter.error(
           `Invalid pagination object passed to createAdvancedPage() at "${currentPage.helper}": ` +
-          `"limit" parameter must be a valid positive number (got "${limit}")`
+            `"limit" parameter must be a valid positive number (got "${limit}")`,
         )
         return
       }
@@ -176,7 +179,7 @@ export default class PagesCreator {
           if (!this.routeMap[paginationRoute]) {
             reporter.error(
               `Invalid pagination object passed to createAdvancedPage() at "${currentPage.helper}": ` +
-              `Unrecognized route "${paginationRoute}"`
+                `Unrecognized route "${paginationRoute}"`,
             )
             return
           }
@@ -184,9 +187,8 @@ export default class PagesCreator {
         }
       }
 
-      const generatePagePath = (page: number) => routeNode.scopes.pagination.pathGenerator(
-        { page, ...params }
-      )
+      const generatePagePath = (page: number) =>
+        routeNode.scopes.pagination.pathGenerator({ page, ...params })
       const pagesCount = Math.ceil(count / limit)
       for (let i = 1; i <= pagesCount; i++) {
         const gatsbyPaginatedPage: Page = {
@@ -195,8 +197,8 @@ export default class PagesCreator {
           context: {
             ...gatsbyPage.context,
             limit,
-            offset: (i - 1) * limit
-          }
+            offset: (i - 1) * limit,
+          },
         }
 
         this.createPageAction(gatsbyPaginatedPage)
@@ -209,12 +211,12 @@ export default class PagesCreator {
   }
 
   // Creates a serializable form of the route map
-  getRoutesExport (): SerializedRoute[] {
-    return Object.values(this.routeMap).map(route => {
+  getRoutesExport(): SerializedRoute[] {
+    return Object.values(this.routeMap).map((route) => {
       return {
         name: route.name,
         path: route.path,
-        scopes: _.mapValues(route.scopes, 'path')
+        scopes: _.mapValues(route.scopes, 'path'),
       }
     })
   }

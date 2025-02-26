@@ -5,9 +5,9 @@ export default [
       basePath: '',
       pagination: {
         limit: 0,
-        suffix: ''
-      }
-    }
+        suffix: '',
+      },
+    },
   },
   {
     title: 'should invalidate options with incorrect data types',
@@ -17,19 +17,19 @@ export default [
       directories: '',
       pagination: {
         limit: '',
-        suffix: null
+        suffix: null,
       },
-      typeNames: false
-    }
+      typeNames: false,
+    },
   },
   {
     title: 'should invalidate options with incorrect values',
     options: {
       pagination: {
         limit: -15,
-        suffix: '/some/path'
-      }
-    }
+        suffix: '/some/path',
+      },
+    },
   },
   {
     title: 'should validate correct options',
@@ -38,16 +38,16 @@ export default [
       template: 'foobar',
       directories: {
         templates: 'foobar',
-        helpers: 'foobar'
+        helpers: 'foobar',
       },
       pagination: {
         limit: 5,
-        suffix: '/foobar/:page'
+        suffix: '/foobar/:page',
       },
       typeNames: {
         page: 'Foo',
         pageRoute: 'FooRoute',
-      }
-    }
-  }
+      },
+    },
+  },
 ]

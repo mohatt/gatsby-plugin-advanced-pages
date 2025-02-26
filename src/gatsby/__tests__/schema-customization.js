@@ -13,7 +13,7 @@ describe('createSchemaCustomization', () => {
     try {
       createSchemaCustomization({
         actions,
-        schema
+        schema,
       })
     } catch (e) {
       error = e

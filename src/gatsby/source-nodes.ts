@@ -37,7 +37,11 @@ const validatePagesConfig = async (pages: unknown) => {
   return value.pages as PageOptions[]
 }
 
-const sourceNodes: GatsbyNode['sourceNodes'] = async ({ actions, createNodeId, createContentDigest }) => {
+const sourceNodes: GatsbyNode['sourceNodes'] = async ({
+  actions,
+  createNodeId,
+  createContentDigest,
+}) => {
   const { createNode } = actions
   const opts = options.get()
 
@@ -47,7 +51,7 @@ const sourceNodes: GatsbyNode['sourceNodes'] = async ({ actions, createNodeId, c
     if (!configFile) {
       reporter.warning(
         '- No pages config is defined in plugin options.\n ' +
-        `- Unable to find a valid pages config file (eg. "pages.config.js") under "${opts._root}"`
+          `- Unable to find a valid pages config file (eg. "pages.config.js") under "${opts._root}"`,
       )
       return
     }
@@ -64,7 +68,7 @@ const sourceNodes: GatsbyNode['sourceNodes'] = async ({ actions, createNodeId, c
     if (!page.template && !opts.template) {
       reporter.error(
         `Missing "template" metadata for page[${i}]: "${page.title}". No default ` +
-        'template is set in plugin options either.'
+          'template is set in plugin options either.',
       )
       return
     }
@@ -75,7 +79,10 @@ const sourceNodes: GatsbyNode['sourceNodes'] = async ({ actions, createNodeId, c
       ...page,
       // Set template file path
       templateName: page.template,
-      template: page.template != null ? ensurePath(page.template, opts.directories.templates) : opts.template,
+      template:
+        page.template != null
+          ? ensurePath(page.template, opts.directories.templates)
+          : opts.template,
       // Set helper file path
       helper: page.helper != null ? ensurePath(page.helper, opts.directories.helpers) : undefined,
       // Set page routes
@@ -89,8 +96,8 @@ const sourceNodes: GatsbyNode['sourceNodes'] = async ({ actions, createNodeId, c
       internal: {
         type: opts.typeNames.page,
         description: `Advanced Page: ${page.title}`,
-        contentDigest: createContentDigest(pageNode)
-      }
+        contentDigest: createContentDigest(pageNode),
+      },
     } satisfies NodeInput & PageNode
 
     createNode(node)

@@ -4,7 +4,12 @@ import type { GatsbyNode } from 'gatsby'
 import PagesCreator from './lib/pages-creator'
 import { options, reporter } from './util'
 
-const createPages: GatsbyNode['createPages'] = async ({ graphql, actions, getNodesByType, cache }) => {
+const createPages: GatsbyNode['createPages'] = async ({
+  graphql,
+  actions,
+  getNodesByType,
+  cache,
+}) => {
   const { createPage } = actions
 
   const pageType = options.get('typeNames').page

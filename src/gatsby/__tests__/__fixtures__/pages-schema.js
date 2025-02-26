@@ -7,17 +7,17 @@ export default [
         template: '',
         helper: '',
         routes: {},
-        data: {}
-      }
-    ]
+        data: {},
+      },
+    ],
   },
   {
     title: 'should invalidate required fields with missing values',
     pages: [
       {
-        template: 'foo'
-      }
-    ]
+        template: 'foo',
+      },
+    ],
   },
   {
     title: 'should invalidate fields with incorrect data types',
@@ -27,9 +27,9 @@ export default [
         template: {},
         helper: false,
         routes: [],
-        data: 'foo'
-      }
-    ]
+        data: 'foo',
+      },
+    ],
   },
   {
     title: 'should invalidate unknown fields ',
@@ -37,14 +37,14 @@ export default [
       {
         title: 'foo',
         routes: {
-          foo: '/bar'
+          foo: '/bar',
         },
         foo: true,
         data: {
-          valid: 'foo'
-        }
-      }
-    ]
+          valid: 'foo',
+        },
+      },
+    ],
   },
   {
     title: 'should invalidate routes with invalid values',
@@ -52,22 +52,22 @@ export default [
       {
         title: 'foo',
         routes: {
-          foo: 'foo/bar'
-        }
+          foo: 'foo/bar',
+        },
       },
       {
         title: 'bar',
         routes: {
-          bar: ''
-        }
+          bar: '',
+        },
       },
       {
         title: 'third',
         routes: {
-          third: 15
-        }
-      }
-    ]
+          third: 15,
+        },
+      },
+    ],
   },
   {
     title: 'should validate correct fields',
@@ -77,12 +77,12 @@ export default [
         template: 'foo',
         helper: 'foo',
         routes: {
-          foo: '/bar'
+          foo: '/bar',
         },
         data: {
-          foo: 'bar'
-        }
-      }
-    ]
-  }
+          foo: 'bar',
+        },
+      },
+    ],
+  },
 ]

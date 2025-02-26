@@ -10,7 +10,10 @@ export const pluginOptionsSchema: GatsbyNode['pluginOptionsSchema'] = ({ Joi }) 
 }
 
 // Initializes plugin state
-export const onPluginInit: GatsbyNode['onPluginInit'] = (args, pluginOptions: GatsbyPluginOptions & PluginOptions) => {
+export const onPluginInit: GatsbyNode['onPluginInit'] = (
+  args,
+  pluginOptions: GatsbyPluginOptions & PluginOptions,
+) => {
   // Default values for options
   const defaultOptions: PluginOptions = {
     basePath: '/',
@@ -18,16 +21,16 @@ export const onPluginInit: GatsbyNode['onPluginInit'] = (args, pluginOptions: Ga
     template: null,
     directories: {
       templates: './src/templates',
-      helpers: './gatsby/pages'
+      helpers: './gatsby/pages',
     },
     pagination: {
       limit: 10,
-      suffix: '/page/:page'
+      suffix: '/page/:page',
     },
     typeNames: {
       page: 'Page',
       pageRoute: 'PageRoute',
-    }
+    },
   }
 
   // Initializes and validates options
@@ -35,7 +38,7 @@ export const onPluginInit: GatsbyNode['onPluginInit'] = (args, pluginOptions: Ga
   options.initialize({
     store: args.store,
     defaultOptions,
-    pluginOptions
+    pluginOptions,
   })
 
   // Initializes plugin reporter
@@ -44,17 +47,20 @@ export const onPluginInit: GatsbyNode['onPluginInit'] = (args, pluginOptions: Ga
 
 // Creates a webpack alias for the plugin cache directory
 // Usually located at <root>/.cache/caches/<plugin>
-export const onCreateWebpackConfig: GatsbyNode['onCreateWebpackConfig']  = ({ actions, cache }) => {
+export const onCreateWebpackConfig: GatsbyNode['onCreateWebpackConfig'] = ({ actions, cache }) => {
   actions.setWebpackConfig({
     resolve: {
       alias: {
-        'gatsby-plugin-advanced-pages-cache': cache.directory
-      }
-    }
+        'gatsby-plugin-advanced-pages-cache': cache.directory,
+      },
+    },
   })
 }
 
-export const createSchemaCustomization: GatsbyNode['createSchemaCustomization'] = ({ actions, schema }) => {
+export const createSchemaCustomization: GatsbyNode['createSchemaCustomization'] = ({
+  actions,
+  schema,
+}) => {
   const { createTypes } = actions
   const { page, pageRoute } = options.get('typeNames')
 
@@ -64,7 +70,7 @@ export const createSchemaCustomization: GatsbyNode['createSchemaCustomization'] 
       fields: {
         name: 'String!',
         path: 'String!',
-      }
+      },
     }),
     schema.buildObjectType({
       name: page,
@@ -76,8 +82,8 @@ export const createSchemaCustomization: GatsbyNode['createSchemaCustomization'] 
         data: 'JSON',
         routes: `[${pageRoute}!]!`,
       },
-      interfaces: ['Node']
-    })
+      interfaces: ['Node'],
+    }),
   ])
 }
 

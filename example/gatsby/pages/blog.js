@@ -1,9 +1,9 @@
-async function createFeedPages ({ graphql, page, createAdvancedPage }) {
+async function createFeedPages({ graphql, page, createAdvancedPage }) {
   const result = await graphql(`
     {
-      allMarkdownRemark(filter: {fileAbsolutePath: {regex: "/(blog)/.*\.md$/"}}) {
+      allMarkdownRemark(filter: { fileAbsolutePath: { regex: "/(blog)/.*.md$/" } }) {
         totalCount
-        group(field: {frontmatter: {tags: SELECT}}) {
+        group(field: { frontmatter: { tags: SELECT } }) {
           fieldValue
           totalCount
         }
@@ -24,9 +24,9 @@ async function createFeedPages ({ graphql, page, createAdvancedPage }) {
     },
     filter: {
       fileAbsolutePath: {
-        regex: "/(blog)/.*\\.md$/"
-      }
-    }
+        regex: '/(blog)/.*\\.md$/',
+      },
+    },
   })
 
   // tag feed pages
@@ -38,24 +38,24 @@ async function createFeedPages ({ graphql, page, createAdvancedPage }) {
       },
       pagination: {
         count: tag.totalCount,
-        limit: 3
+        limit: 3,
       },
       filter: {
         fileAbsolutePath: {
-          regex: "/(blog)/.*\\.md$/"
+          regex: '/(blog)/.*\\.md$/',
         },
         frontmatter: {
-          tags: { in: tag.fieldValue }
-        }
-      }
+          tags: { in: tag.fieldValue },
+        },
+      },
     })
   }
 }
 
-async function createPostPages ({ graphql, page, createAdvancedPage }) {
+async function createPostPages({ graphql, page, createAdvancedPage }) {
   const result = await graphql(`
     {
-      allMarkdownRemark(filter: {fileAbsolutePath: {regex: "/(blog)/.*\.md$/"}}) {
+      allMarkdownRemark(filter: { fileAbsolutePath: { regex: "/(blog)/.*.md$/" } }) {
         nodes {
           frontmatter {
             slug
@@ -73,18 +73,18 @@ async function createPostPages ({ graphql, page, createAdvancedPage }) {
   for (const post of result.data.allMarkdownRemark.nodes) {
     createAdvancedPage({
       route: 'blog.post',
-      params: { post: post.frontmatter.slug }
+      params: { post: post.frontmatter.slug },
     })
   }
 }
 
-module.exports = async args => {
+module.exports = async (args) => {
   switch (args.page.templateName) {
     case 'blog.js':
       await createFeedPages(args)
-      break;
+      break
     case 'post.js':
       await createPostPages(args)
-      break;
+      break
   }
 }

@@ -5,16 +5,16 @@ describe('RouteCompiler', () => {
     const routes = [
       {
         name: 'home',
-        realpath: '/'
+        realpath: '/',
       },
       {
         name: 'blog',
-        realpath: '/blog/'
+        realpath: '/blog/',
       },
       {
         name: 'post',
-        realpath: '/blog/:post'
-      }
+        realpath: '/blog/:post',
+      },
     ]
 
     expect(RouteCompiler.pick(routes, '/')).toHaveProperty('name', 'home')
@@ -27,8 +27,12 @@ describe('RouteCompiler', () => {
   it('compiles routes correctly', () => {
     expect(RouteCompiler.compile('/blog/:post')({ post: 'hello' })).toBe('/blog/hello')
     expect(RouteCompiler.compile('/blog/:post/')({ post: 'hello' })).toBe('/blog/hello')
-    expect(RouteCompiler.compile('/encode/:post', true)({ post: 'hello world' })).toBe('/encode/hello%20world')
-    expect(RouteCompiler.compile('/no-encode/:post', false)({ post: 'hello world' })).toBe('/no-encode/hello world')
+    expect(RouteCompiler.compile('/encode/:post', true)({ post: 'hello world' })).toBe(
+      '/encode/hello%20world',
+    )
+    expect(RouteCompiler.compile('/no-encode/:post', false)({ post: 'hello world' })).toBe(
+      '/no-encode/hello world',
+    )
     expect(() => RouteCompiler.compile('/blog/:post')()).toThrow()
   })
 })

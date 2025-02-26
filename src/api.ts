@@ -51,12 +51,10 @@ export const getRoutes = (parent?: string): readonly Route[] => {
  */
 export const getRoute = (route: string): Route => {
   if (typeof route !== 'string' || !route) {
-    throw new TypeError(
-      `Expected route name to be a non-empty string (got '${typeof route}')`
-    )
+    throw new TypeError(`Expected route name to be a non-empty string (got '${typeof route}')`)
   }
 
-  const ro = getRoutes().find(r => r.name === route)
+  const ro = getRoutes().find((r) => r.name === route)
   if (!ro) {
     throw new TypeError(`Unrecognized route name '${route}'`)
   }
@@ -68,7 +66,7 @@ export const getRoute = (route: string): Route => {
  * Checks if a route is defined with the given name
  */
 export const routeExists = (route: string): boolean => {
-  return getRoutes().some(r => r.name === route)
+  return getRoutes().some((r) => r.name === route)
 }
 
 /**
@@ -83,13 +81,17 @@ export const getMatchingRoute = (path: string, ignorePrefix = false): Route => {
  * Returns a function to be used to generate paths for a specific route
  * use `ignorePrefix` to ignore adding `pathPrefix` to generated paths
  */
-export const getPathGenerator = (route: string, scope: RouteScope, ignorePrefix = false): PathGenerator => {
+export const getPathGenerator = (
+  route: string,
+  scope: RouteScope,
+  ignorePrefix = false,
+): PathGenerator => {
   const ro = getRoute(route)
   if (!scope) {
     return RouteCompiler.compile(ignorePrefix ? ro.path : ro.realpath)
   }
 
-  const childRo = getRoutes(route).find(r => r.parent?.scope === scope)
+  const childRo = getRoutes(route).find((r) => r.parent?.scope === scope)
   if (!childRo) {
     throw new TypeError(`Unrecognized scope '${scope}' on route '${route}'`)
   }
@@ -100,15 +102,24 @@ export const getPathGenerator = (route: string, scope: RouteScope, ignorePrefix 
 /**
  * Generates a path for a specific route based on the given parameters
  */
-export const generatePath = (route: string, params: RouteParams = {}, scope?: RouteScope, ignorePrefix = false): string => {
+export const generatePath = (
+  route: string,
+  params: RouteParams = {},
+  scope?: RouteScope,
+  ignorePrefix = false,
+): string => {
   return getPathGenerator(route, scope, ignorePrefix)(params)
 }
 
 /**
  * Extends Gatsby's navigate to allow route names
  */
-export const navigate = (to: string, params: RouteParams = {}, scope?: RouteScope, options?: NavigateOptions<{}>): Promise<void> =>
-  gatsbyNavigate(generatePath(to, params, scope), options)
+export const navigate = (
+  to: string,
+  params: RouteParams = {},
+  scope?: RouteScope,
+  options?: NavigateOptions<{}>,
+): Promise<void> => gatsbyNavigate(generatePath(to, params, scope), options)
 
 /**
  * Gets the current active route based on `@reach/router` location history
@@ -124,5 +135,7 @@ export const useRoute = (): Route => {
 export const useIsRoute = (route: string): boolean => {
   const current = useRoute()
   const ro = getRoute(route)
-  return current ? Boolean(ro.name === current.name || (current.parent && current.parent.name === ro.name)) : false
+  return current
+    ? Boolean(ro.name === current.name || (current.parent && current.parent.name === ro.name))
+    : false
 }

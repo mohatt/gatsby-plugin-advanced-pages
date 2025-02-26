@@ -53,13 +53,13 @@ export class Pagination extends Component<PaginationProps> {
       pageCount: number.isRequired,
       currentPage: number.isRequired,
       hasNextPage: bool.isRequired,
-      hasPreviousPage: bool.isRequired
+      hasPreviousPage: bool.isRequired,
     }).isRequired,
     labels: shape({
       prev: oneOfType([string, element]),
       next: oneOfType([string, element]),
       first: oneOfType([string, element]),
-      last: oneOfType([string, element])
+      last: oneOfType([string, element]),
     }),
     theme: shape({
       inner: string,
@@ -70,9 +70,9 @@ export class Pagination extends Component<PaginationProps> {
       'item.last': string,
       link: string,
       active: string,
-      disabled: string
+      disabled: string,
     }),
-    renderDisabled: bool
+    renderDisabled: bool,
   }
 
   static defaultProps: Omit<PaginationProps, 'route' | 'pageInfo'> = {
@@ -82,7 +82,7 @@ export class Pagination extends Component<PaginationProps> {
       first: '« First',
       prev: '← Previous',
       next: 'Next →',
-      last: 'Last »'
+      last: 'Last »',
     },
     theme: {
       inner: 'pagination',
@@ -93,35 +93,30 @@ export class Pagination extends Component<PaginationProps> {
       'item.last': 'page-item__last',
       link: 'page-link',
       active: 'active',
-      disabled: 'disabled'
+      disabled: 'disabled',
     },
-    renderDisabled: true
+    renderDisabled: true,
   }
 
-  render () {
+  render() {
     // Assign default prop values
     const props: Readonly<PaginationProps> = {
       ...Pagination.defaultProps,
       ...this.props,
       labels: {
         ...Pagination.defaultProps.labels,
-        ...this.props.labels
+        ...this.props.labels,
       },
       theme: {
         ...Pagination.defaultProps.theme,
-        ...this.props.theme
-      }
+        ...this.props.theme,
+      },
     }
     const {
       ui,
       labels,
       theme,
-      pageInfo: {
-        pageCount,
-        currentPage,
-        hasNextPage,
-        hasPreviousPage
-      }
+      pageInfo: { pageCount, currentPage, hasNextPage, hasPreviousPage },
     } = props
 
     const pages: Array<{
@@ -139,7 +134,7 @@ export class Pagination extends Component<PaginationProps> {
         number: 1,
         type: 'first',
         label: labels.first,
-        disabled: !hasPreviousPage
+        disabled: !hasPreviousPage,
       })
     }
 
@@ -148,7 +143,7 @@ export class Pagination extends Component<PaginationProps> {
       number: currentPage - 1,
       type: 'prev',
       label: labels.prev,
-      disabled: !hasPreviousPage
+      disabled: !hasPreviousPage,
     })
 
     if (ui !== 'mini') {
@@ -159,7 +154,7 @@ export class Pagination extends Component<PaginationProps> {
           number: i,
           type: 'page',
           label: i.toString(),
-          active: i === currentPage
+          active: i === currentPage,
         })
       }
     }
@@ -169,7 +164,7 @@ export class Pagination extends Component<PaginationProps> {
       number: currentPage + 1,
       type: 'next',
       label: labels.next,
-      disabled: !hasNextPage
+      disabled: !hasNextPage,
     })
 
     if (ui === 'full') {
@@ -178,7 +173,7 @@ export class Pagination extends Component<PaginationProps> {
         number: pageCount,
         type: 'last',
         label: labels.last,
-        disabled: !hasNextPage
+        disabled: !hasNextPage,
       })
     }
 
@@ -198,7 +193,7 @@ export class Pagination extends Component<PaginationProps> {
 
             classes.push({
               [theme.active]: page.active,
-              [theme.disabled]: page.disabled
+              [theme.disabled]: page.disabled,
             })
 
             if (page.disabled) {
@@ -210,9 +205,10 @@ export class Pagination extends Component<PaginationProps> {
             }
 
             // Use non-paginated route for first page
-            const [params, scope] = page.number === 1
-              ? [props.params, null]
-              : [{ ...props.params, page: page.number }, 'pagination'] as const
+            const [params, scope] =
+              page.number === 1
+                ? [props.params, null]
+                : ([{ ...props.params, page: page.number }, 'pagination'] as const)
 
             return (
               <li key={page.key} className={clsx(classes)}>
@@ -227,16 +223,13 @@ export class Pagination extends Component<PaginationProps> {
     )
   }
 
-  private calcRange (pageCount: number, currentPage: number, range: number) {
+  private calcRange(pageCount: number, currentPage: number, range: number) {
     let fp = Math.max(1, currentPage - Math.floor(range / 2))
     let lp = Math.min(pageCount, currentPage + Math.floor(range / 2))
 
     if (lp - fp + 1 < range) {
       if (currentPage < pageCount / 2) {
-        lp = Math.min(
-          pageCount,
-          lp + (range - (lp - fp))
-        )
+        lp = Math.min(pageCount, lp + (range - (lp - fp)))
       } else {
         fp = Math.max(1, fp - (range - (lp - fp)))
       }

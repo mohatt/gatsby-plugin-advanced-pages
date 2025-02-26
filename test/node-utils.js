@@ -16,31 +16,34 @@ const programRoot = '/virtual/project'
 // the mounted options
 // Mae sure to wrap this in a try..catch block when you pass
 // custom options
-export function mountOptions (options = {}) {
-  onPluginInit({
-    store: {
-      getState: () => ({
-        program: { directory: programRoot }
-      })
+export function mountOptions(options = {}) {
+  onPluginInit(
+    {
+      store: {
+        getState: () => ({
+          program: { directory: programRoot },
+        }),
+      },
+      reporter: {
+        warn: jest.fn().mockImplementation((msg) => {
+          throw new Error(msg)
+        }),
+        panic: jest.fn().mockImplementation(({ error }) => {
+          throw error
+        }),
+      },
     },
-    reporter: {
-      warn: jest.fn().mockImplementation(msg => {
-        throw new Error(msg)
-      }),
-      panic: jest.fn().mockImplementation(({ error }) => {
-        throw error
-      })
-    }
-  }, options)
+    options,
+  )
 }
 
 // Filesystem helpers
-export function mountDir (name) {
+export function mountDir(name) {
   const dirPath = path.resolve(programRoot, name)
   return !fs.existsSync(dirPath) ? mkdirp.sync(dirPath) : null
 }
 
-export function mountFile (name, content = '//noop') {
+export function mountFile(name, content = '//noop') {
   mountDir(path.dirname(name))
   return fs.writeFileSync(path.resolve(programRoot, name), content.toString())
 }
@@ -48,6 +51,6 @@ export function mountFile (name, content = '//noop') {
 // Mocks a virtual module by path
 // Useful when requiring a module that doesn't
 // exist on the filesystem
-export function mountModule (name, exports) {
+export function mountModule(name, exports) {
   jest.doMock(path.resolve(programRoot, name), () => exports, { virtual: true })
 }
