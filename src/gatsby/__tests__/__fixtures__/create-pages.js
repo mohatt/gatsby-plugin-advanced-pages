@@ -7,9 +7,7 @@ export default [
         id: 'home-id',
         template: '/path/to/index.js',
         helper: null,
-        routes: [
-          { name: 'home', path: '/' }
-        ]
+        routes: [{ name: 'home', path: '/' }],
       },
       {
         id: 'about-id',
@@ -17,10 +15,10 @@ export default [
         helper: null,
         routes: [
           { name: 'about', path: '/about' },
-          { name: 'aboutme', path: '/aboutme' }
-        ]
-      }
-    ]
+          { name: 'aboutme', path: '/aboutme' },
+        ],
+      },
+    ],
   },
   {
     id: 'duplicated-routes',
@@ -30,19 +28,15 @@ export default [
         id: 'about-id',
         template: '/path/to/page.js',
         helper: null,
-        routes: [
-          { name: 'about', path: '/about' }
-        ]
+        routes: [{ name: 'about', path: '/about' }],
       },
       {
         id: 'about2-id',
         template: '/path/to/page.js',
         helper: null,
-        routes: [
-          { name: 'about', path: '/aboutdup' }
-        ]
-      }
-    ]
+        routes: [{ name: 'about', path: '/aboutdup' }],
+      },
+    ],
   },
   {
     id: 'invalid-helper',
@@ -51,11 +45,9 @@ export default [
       {
         id: 'about-id',
         helper: '/path/to/whatever.js',
-        routes: [
-          { name: 'about', path: '/about' }
-        ]
-      }
-    ]
+        routes: [{ name: 'about', path: '/about' }],
+      },
+    ],
   },
   {
     id: 'bad-helper-js-error',
@@ -64,12 +56,12 @@ export default [
       {
         id: 'about-id',
         helper,
-        routes: [
-          { name: 'about', path: '/about' }
-        ]
-      }
+        routes: [{ name: 'about', path: '/about' }],
+      },
     ],
-    helper: () => { throw new Error('some error') }
+    helper: () => {
+      throw new Error('some error')
+    },
   },
   {
     id: 'bad-helper-empty-call',
@@ -78,12 +70,10 @@ export default [
       {
         id: 'about-id',
         helper,
-        routes: [
-          { name: 'about', path: '/about' }
-        ]
-      }
+        routes: [{ name: 'about', path: '/about' }],
+      },
     ],
-    helper: ({ createAdvancedPage }) => createAdvancedPage()
+    helper: ({ createAdvancedPage }) => createAdvancedPage(),
   },
   {
     id: 'bad-helper-undefined-route',
@@ -92,12 +82,10 @@ export default [
       {
         id: 'about-id',
         helper,
-        routes: [
-          { name: 'about', path: '/about' }
-        ]
-      }
+        routes: [{ name: 'about', path: '/about' }],
+      },
     ],
-    helper: ({ createAdvancedPage }) => createAdvancedPage({ route: 'blog' })
+    helper: ({ createAdvancedPage }) => createAdvancedPage({ route: 'blog' }),
   },
   {
     id: 'bad-helper-invalid-route-params',
@@ -106,12 +94,10 @@ export default [
       {
         id: 'about-id',
         helper,
-        routes: [
-          { name: 'about', path: '/about/:name' }
-        ]
-      }
+        routes: [{ name: 'about', path: '/about/:name' }],
+      },
     ],
-    helper: ({ createAdvancedPage }) => createAdvancedPage({ route: 'about' })
+    helper: ({ createAdvancedPage }) => createAdvancedPage({ route: 'about' }),
   },
   {
     id: 'bad-helper-empty-pagination',
@@ -120,17 +106,15 @@ export default [
       {
         id: 'about-id',
         helper,
-        routes: [
-          { name: 'about', path: '/about' }
-        ]
-      }
+        routes: [{ name: 'about', path: '/about' }],
+      },
     ],
     helper: ({ createAdvancedPage }) => {
       createAdvancedPage({
         route: 'about',
-        pagination: {}
+        pagination: {},
       })
-    }
+    },
   },
   {
     id: 'bad-helper-invalid-pagination-count',
@@ -139,19 +123,17 @@ export default [
       {
         id: 'about-id',
         helper,
-        routes: [
-          { name: 'about', path: '/about' }
-        ]
-      }
+        routes: [{ name: 'about', path: '/about' }],
+      },
     ],
     helper: ({ createAdvancedPage }) => {
       createAdvancedPage({
         route: 'about',
         pagination: {
-          count: -15
-        }
+          count: -15,
+        },
       })
-    }
+    },
   },
   {
     id: 'bad-helper-invalid-pagination-limit',
@@ -160,20 +142,18 @@ export default [
       {
         id: 'about-id',
         helper,
-        routes: [
-          { name: 'about', path: '/about' }
-        ]
-      }
+        routes: [{ name: 'about', path: '/about' }],
+      },
     ],
     helper: ({ createAdvancedPage }) => {
       createAdvancedPage({
         route: 'about',
         pagination: {
           count: 10,
-          limit: -10
-        }
+          limit: -10,
+        },
       })
-    }
+    },
   },
   {
     id: 'bad-helper-invalid-pagination-route',
@@ -182,20 +162,18 @@ export default [
       {
         id: 'about-id',
         helper,
-        routes: [
-          { name: 'about', path: '/about' }
-        ]
-      }
+        routes: [{ name: 'about', path: '/about' }],
+      },
     ],
     helper: ({ createAdvancedPage }) => {
       createAdvancedPage({
         route: 'about',
         pagination: {
           count: 10,
-          route: 'foo'
-        }
+          route: 'foo',
+        },
       })
-    }
+    },
   },
   {
     id: 'blog-paginated-auto-route',
@@ -204,19 +182,17 @@ export default [
         id: 'blog-id',
         template: '/path/to/blog.js',
         helper,
-        routes: [
-          { name: 'blog', path: '/blog' }
-        ]
-      }
+        routes: [{ name: 'blog', path: '/blog' }],
+      },
     ],
     helper: ({ createAdvancedPage }) => {
       createAdvancedPage({
         route: 'blog',
         pagination: {
-          count: 25
-        }
+          count: 25,
+        },
       })
-    }
+    },
   },
   {
     id: 'blog-paginated-manual-route',
@@ -227,19 +203,19 @@ export default [
         helper,
         routes: [
           { name: 'blog', path: '/blog' },
-          { name: 'blog.paginated', path: '/blog/what/:page' }
-        ]
-      }
+          { name: 'blog.paginated', path: '/blog/what/:page' },
+        ],
+      },
     ],
     helper: ({ createAdvancedPage }) => {
       createAdvancedPage({
         route: 'blog',
         pagination: {
           route: 'blog.paginated',
-          count: 25
-        }
+          count: 25,
+        },
       })
-    }
+    },
   },
   {
     id: 'blog-paginated-custom-limit',
@@ -248,20 +224,18 @@ export default [
         id: 'blog-id',
         template: '/path/to/blog.js',
         helper,
-        routes: [
-          { name: 'blog', path: '/blog' }
-        ]
-      }
+        routes: [{ name: 'blog', path: '/blog' }],
+      },
     ],
     helper: ({ createAdvancedPage }) => {
       createAdvancedPage({
         route: 'blog',
         pagination: {
           count: 25,
-          limit: 8
-        }
+          limit: 8,
+        },
       })
-    }
+    },
   },
   {
     id: 'dynamic-page',
@@ -270,21 +244,19 @@ export default [
         id: 'page-id',
         template: '/path/to/page.js',
         helper,
-        routes: [
-          { name: 'page', path: '/pages/:page' }
-        ]
-      }
+        routes: [{ name: 'page', path: '/pages/:page' }],
+      },
     ],
     helper: ({ createAdvancedPage }) => {
       for (const slug of ['hello', 'world']) {
         createAdvancedPage({
           route: 'page',
           params: {
-            page: slug
-          }
+            page: slug,
+          },
         })
       }
-    }
+    },
   },
   {
     id: 'page-context',
@@ -293,32 +265,30 @@ export default [
         id: 'about-id',
         template: '/path/to/page.js',
         helper,
-        routes: [
-          { name: 'about', path: '/about/:name' }
-        ]
-      }
+        routes: [{ name: 'about', path: '/about/:name' }],
+      },
     ],
     helper: ({ createAdvancedPage }) => {
       createAdvancedPage({
         route: 'about',
         params: {
-          name: 'adam'
+          name: 'adam',
         },
         profile: {
           gender: 'male',
-          age: 25
-        }
+          age: 25,
+        },
       })
       createAdvancedPage({
         route: 'about',
         params: {
-          name: 'sara'
+          name: 'sara',
         },
         profile: {
           gender: 'female',
-          age: 28
-        }
+          age: 28,
+        },
       })
-    }
-  }
+    },
+  },
 ]

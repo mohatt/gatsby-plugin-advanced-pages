@@ -9,7 +9,7 @@ exports[`sourceNodes correctly creates multiple page nodes with various configur
       "helper": "/virtual/project/gatsby/pages/helper.js",
       "id": "ID-0 - FOO",
       "internal": {
-        "contentDigest": "{"id":"ID-0 - FOO","title":"foo","template":"/virtual/project/src/templates/default.js","helper":"/virtual/project/gatsby/pages/helper.js","routes":[{"name":"foo","path":"/foo"},{"name":"foo.bar","path":"/foo/bar"}],"data":{},"templateName":"default.js","parent":null,"children":[],"internal":{"type":"Page","description":"Advanced Page: foo"}}",
+        "contentDigest": "{"id":"ID-0 - FOO","title":"foo","template":"/virtual/project/src/templates/default.js","helper":"/virtual/project/gatsby/pages/helper.js","routes":[{"name":"foo","path":"/foo"},{"name":"foo.bar","path":"/foo/bar"}],"data":{},"templateName":"default.js"}",
         "description": "Advanced Page: foo",
         "type": "Page",
       },
@@ -33,9 +33,10 @@ exports[`sourceNodes correctly creates multiple page nodes with various configur
     {
       "children": [],
       "data": {},
+      "helper": undefined,
       "id": "ID-1 - LOREM",
       "internal": {
-        "contentDigest": "{"id":"ID-1 - LOREM","title":"lorem","template":"/virtual/project/src/templates/test.js","routes":[{"name":"lorem","path":"/lorem"}],"data":{},"templateName":"test.js","parent":null,"children":[],"internal":{"type":"Page","description":"Advanced Page: lorem"}}",
+        "contentDigest": "{"id":"ID-1 - LOREM","title":"lorem","template":"/virtual/project/src/templates/test.js","routes":[{"name":"lorem","path":"/lorem"}],"data":{},"templateName":"test.js"}",
         "description": "Advanced Page: lorem",
         "type": "Page",
       },
@@ -61,7 +62,7 @@ exports[`sourceNodes correctly creates multiple page nodes with various configur
       "helper": "/virtual/project/gatsby/custom/helper.js",
       "id": "ID-2 - IPSUM",
       "internal": {
-        "contentDigest": "{"id":"ID-2 - IPSUM","title":"ipsum","template":"/virtual/project/src/custom/template.js","helper":"/virtual/project/gatsby/custom/helper.js","data":{"name":"john","title":"don"},"routes":[{"name":"ipsum","path":"/ipsum"},{"name":"dolor","path":"/dolor"},{"name":"sit","path":"/sit/amet"}],"templateName":"./src/custom/template.js","parent":null,"children":[],"internal":{"type":"Page","description":"Advanced Page: ipsum"}}",
+        "contentDigest": "{"id":"ID-2 - IPSUM","title":"ipsum","template":"/virtual/project/src/custom/template.js","helper":"/virtual/project/gatsby/custom/helper.js","data":{"name":"john","title":"don"},"routes":[{"name":"ipsum","path":"/ipsum"},{"name":"dolor","path":"/dolor"},{"name":"sit","path":"/sit/amet"}],"templateName":"./src/custom/template.js"}",
         "description": "Advanced Page: ipsum",
         "type": "Page",
       },
@@ -93,9 +94,10 @@ exports[`sourceNodes correctly creates page nodes from inline pages config 1`] =
   [
     {
       "children": [],
+      "helper": undefined,
       "id": "ID-0 - FOO",
       "internal": {
-        "contentDigest": "{"id":"ID-0 - FOO","title":"foo","template":"/virtual/project/src/templates/test.js","routes":[{"name":"foo","path":"/foo"}],"templateName":"./src/templates/test.js","parent":null,"children":[],"internal":{"type":"Page","description":"Advanced Page: foo"}}",
+        "contentDigest": "{"id":"ID-0 - FOO","title":"foo","template":"/virtual/project/src/templates/test.js","routes":[{"name":"foo","path":"/foo"}],"templateName":"./src/templates/test.js"}",
         "description": "Advanced Page: foo",
         "type": "Page",
       },
@@ -120,9 +122,10 @@ exports[`sourceNodes correctly creates page nodes from pages.config.js 1`] = `
     {
       "children": [],
       "data": {},
+      "helper": undefined,
       "id": "ID-0 - FOO",
       "internal": {
-        "contentDigest": "{"id":"ID-0 - FOO","title":"foo","template":"/virtual/project/src/templates/test.js","routes":[{"name":"foo","path":"/foo"}],"data":{},"templateName":"./src/templates/test.js","parent":null,"children":[],"internal":{"type":"Page","description":"Advanced Page: foo"}}",
+        "contentDigest": "{"id":"ID-0 - FOO","title":"foo","template":"/virtual/project/src/templates/test.js","routes":[{"name":"foo","path":"/foo"}],"data":{},"templateName":"./src/templates/test.js"}",
         "description": "Advanced Page: foo",
         "type": "Page",
       },
@@ -147,9 +150,10 @@ exports[`sourceNodes correctly creates page nodes from pages.config.json 1`] = `
     {
       "children": [],
       "data": {},
+      "helper": undefined,
       "id": "ID-0 - FOO",
       "internal": {
-        "contentDigest": "{"id":"ID-0 - FOO","title":"foo","template":"/virtual/project/src/templates/test.js","routes":[{"name":"foo","path":"/foo"}],"data":{},"templateName":"./src/templates/test.js","parent":null,"children":[],"internal":{"type":"Page","description":"Advanced Page: foo"}}",
+        "contentDigest": "{"id":"ID-0 - FOO","title":"foo","template":"/virtual/project/src/templates/test.js","routes":[{"name":"foo","path":"/foo"}],"data":{},"templateName":"./src/templates/test.js"}",
         "description": "Advanced Page: foo",
         "type": "Page",
       },
@@ -174,9 +178,10 @@ exports[`sourceNodes correctly creates page nodes from pages.config.yaml 1`] = `
     {
       "children": [],
       "data": {},
+      "helper": undefined,
       "id": "ID-0 - FOO",
       "internal": {
-        "contentDigest": "{"id":"ID-0 - FOO","title":"foo","template":"/virtual/project/src/templates/test.js","routes":[{"name":"foo","path":"/foo"}],"data":{},"templateName":"./src/templates/test.js","parent":null,"children":[],"internal":{"type":"Page","description":"Advanced Page: foo"}}",
+        "contentDigest": "{"id":"ID-0 - FOO","title":"foo","template":"/virtual/project/src/templates/test.js","routes":[{"name":"foo","path":"/foo"}],"data":{},"templateName":"./src/templates/test.js"}",
         "description": "Advanced Page: foo",
         "type": "Page",
       },
@@ -200,9 +205,10 @@ exports[`sourceNodes correctly ignores pages config file in favor of inline page
   [
     {
       "children": [],
+      "helper": undefined,
       "id": "ID-0 - FOO-INLINE",
       "internal": {
-        "contentDigest": "{"id":"ID-0 - FOO-INLINE","title":"foo-inline","template":"/virtual/project/src/templates/test.js","routes":[{"name":"foo","path":"/foo-inline"}],"templateName":"./src/templates/test.js","parent":null,"children":[],"internal":{"type":"Page","description":"Advanced Page: foo-inline"}}",
+        "contentDigest": "{"id":"ID-0 - FOO-INLINE","title":"foo-inline","template":"/virtual/project/src/templates/test.js","routes":[{"name":"foo","path":"/foo-inline"}],"templateName":"./src/templates/test.js"}",
         "description": "Advanced Page: foo-inline",
         "type": "Page",
       },

@@ -4,9 +4,9 @@ exports[`pluginOptionsSchema should invalidate empty options 1`] = `false`;
 
 exports[`pluginOptionsSchema should invalidate empty options 2`] = `
 [
-  "\"basePath\" is not allowed to be empty",
-  "\"pagination.limit\" must be a positive number",
-  "\"pagination.suffix\" is not allowed to be empty",
+  ""basePath" is not allowed to be empty",
+  ""pagination.limit" must be a positive number",
+  ""pagination.suffix" is not allowed to be empty",
 ]
 `;
 
@@ -14,12 +14,12 @@ exports[`pluginOptionsSchema should invalidate options with incorrect data types
 
 exports[`pluginOptionsSchema should invalidate options with incorrect data types 2`] = `
 [
-  "\"basePath\" must be a string",
-  "\"template\" must be a string",
-  "\"directories\" must be of type object",
-  "\"pagination.limit\" must be a number",
-  "\"pagination.suffix\" must be a string",
-  "\"typeNames\" must be of type object",
+  ""basePath" must be a string",
+  ""template" must be a string",
+  ""directories" must be of type object",
+  ""pagination.limit" must be a number",
+  ""pagination.suffix" must be a string",
+  ""typeNames" must be of type object",
 ]
 `;
 
@@ -27,8 +27,8 @@ exports[`pluginOptionsSchema should invalidate options with incorrect values 1`]
 
 exports[`pluginOptionsSchema should invalidate options with incorrect values 2`] = `
 [
-  "\"pagination.limit\" must be a positive number",
-  "\"pagination.suffix\" with value \"/some/path\": Route suffix must contain the ':page' paramater (e.g '/pages/:page')",
+  ""pagination.limit" must be a positive number",
+  ""pagination.suffix" with value "/some/path": Route suffix must contain the ':page' paramater (e.g '/pages/:page')",
 ]
 `;
 

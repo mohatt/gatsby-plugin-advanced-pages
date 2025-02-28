@@ -4,18 +4,12 @@ import { mapValues, merge } from 'lodash'
 import Pagination from '../Pagination'
 import testCases, { defaultTestCase } from './__fixtures__/pagination'
 
-jest.mock(
-  'gatsby-plugin-advanced-pages-cache/routes.json',
-  () => [],
-  { virtual: true }
-)
+jest.mock('gatsby-plugin-advanced-pages-cache/routes.json', () => [], { virtual: true })
 
 describe('<Pagination />', () => {
   const render = (props = {}) => {
     props = merge({}, defaultTestCase, props)
-    return ShallowRenderer.createRenderer().render(
-      <Pagination {...props} />
-    )
+    return ShallowRenderer.createRenderer().render(<Pagination {...props} />)
   }
 
   it('should render correctly with defaults', () => {
@@ -23,15 +17,19 @@ describe('<Pagination />', () => {
   })
 
   it('should render correctly with custom theme', () => {
-    expect(render({
-      theme: mapValues(Pagination.defaultProps.theme, v => v + '-custom')
-    })).toMatchSnapshot()
+    expect(
+      render({
+        theme: mapValues(Pagination.defaultProps.theme, (v) => v + '-custom'),
+      }),
+    ).toMatchSnapshot()
   })
 
   it('should render correctly with custom labels', () => {
-    expect(render({
-      labels: mapValues(Pagination.defaultProps.labels, v => v + ' custom')
-    })).toMatchSnapshot()
+    expect(
+      render({
+        labels: mapValues(Pagination.defaultProps.labels, (v) => v + ' custom'),
+      }),
+    ).toMatchSnapshot()
   })
 
   it('should render correctly with mini ui', () => {
@@ -53,26 +51,32 @@ describe('<Pagination />', () => {
     expect(render({ range: 9 })).toMatchSnapshot()
   })
 
-  it('shouldn\'t render disabled nav items when renderDisabled is false', () => {
-    expect(render({
-      pageInfo: { currentPage: 1, hasPreviousPage: false },
-      renderDisabled: false
-    })).toMatchSnapshot()
-    expect(render({
-      pageInfo: { currentPage: defaultTestCase.pageInfo.pageCount, hasNextPage: false },
-      renderDisabled: false
-    })).toMatchSnapshot()
-    expect(render({
-      pageInfo: {
-        itemCount: 1,
-        perPage: 10,
-        pageCount: 1,
-        currentPage: 1,
-        hasNextPage: false,
-        hasPreviousPage: false
-      },
-      renderDisabled: false
-    })).toMatchSnapshot()
+  it("shouldn't render disabled nav items when renderDisabled is false", () => {
+    expect(
+      render({
+        pageInfo: { currentPage: 1, hasPreviousPage: false },
+        renderDisabled: false,
+      }),
+    ).toMatchSnapshot()
+    expect(
+      render({
+        pageInfo: { currentPage: defaultTestCase.pageInfo.pageCount, hasNextPage: false },
+        renderDisabled: false,
+      }),
+    ).toMatchSnapshot()
+    expect(
+      render({
+        pageInfo: {
+          itemCount: 1,
+          perPage: 10,
+          pageCount: 1,
+          currentPage: 1,
+          hasNextPage: false,
+          hasPreviousPage: false,
+        },
+        renderDisabled: false,
+      }),
+    ).toMatchSnapshot()
   })
 
   it('should be able to handle different pageInfos', () => {

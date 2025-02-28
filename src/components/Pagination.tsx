@@ -1,9 +1,46 @@
-import React from 'react'
+import React, { Component, ReactNode } from 'react'
 import { shape, number, string, object, bool, element, oneOf, oneOfType } from 'prop-types'
-import clsx from 'clsx'
-import Link from './Link'
+import { clsx, ClassArray } from 'clsx'
+import { Link } from './Link'
+import type { RouteParams } from '../lib/route-compiler'
 
-export default class Pagination extends React.Component {
+export interface PaginationInfo {
+  itemCount: number
+  perPage: number
+  pageCount: number
+  currentPage: number
+  hasNextPage: boolean
+  hasPreviousPage: boolean
+}
+
+export interface PaginationProps {
+  route: string
+  params?: RouteParams
+  ui?: 'mini' | 'simple' | 'full'
+  range?: number
+  className?: string
+  renderDisabled?: boolean
+  labels?: {
+    prev?: ReactNode
+    next?: ReactNode
+    first?: ReactNode
+    last?: ReactNode
+  }
+  theme?: {
+    inner?: string
+    item?: string
+    'item.next'?: string
+    'item.prev'?: string
+    'item.first'?: string
+    'item.last'?: string
+    link?: string
+    active?: string
+    disabled?: string
+  }
+  pageInfo: PaginationInfo
+}
+
+export class Pagination extends Component<PaginationProps> {
   static propTypes = {
     route: string.isRequired,
     params: object,
@@ -16,13 +53,13 @@ export default class Pagination extends React.Component {
       pageCount: number.isRequired,
       currentPage: number.isRequired,
       hasNextPage: bool.isRequired,
-      hasPreviousPage: bool.isRequired
+      hasPreviousPage: bool.isRequired,
     }).isRequired,
     labels: shape({
       prev: oneOfType([string, element]),
       next: oneOfType([string, element]),
       first: oneOfType([string, element]),
-      last: oneOfType([string, element])
+      last: oneOfType([string, element]),
     }),
     theme: shape({
       inner: string,
@@ -33,19 +70,19 @@ export default class Pagination extends React.Component {
       'item.last': string,
       link: string,
       active: string,
-      disabled: string
+      disabled: string,
     }),
-    renderDisabled: bool
+    renderDisabled: bool,
   }
 
-  static defaultProps = {
+  static defaultProps: Omit<PaginationProps, 'route' | 'pageInfo'> = {
     ui: 'full',
     range: 6,
     labels: {
       first: '« First',
       prev: '← Previous',
       next: 'Next →',
-      last: 'Last »'
+      last: 'Last »',
     },
     theme: {
       inner: 'pagination',
@@ -56,25 +93,40 @@ export default class Pagination extends React.Component {
       'item.last': 'page-item__last',
       link: 'page-link',
       active: 'active',
-      disabled: 'disabled'
+      disabled: 'disabled',
     },
-    renderDisabled: true
+    renderDisabled: true,
   }
 
-  render () {
+  render() {
+    // Assign default prop values
+    const props: Readonly<PaginationProps> = {
+      ...Pagination.defaultProps,
+      ...this.props,
+      labels: {
+        ...Pagination.defaultProps.labels,
+        ...this.props.labels,
+      },
+      theme: {
+        ...Pagination.defaultProps.theme,
+        ...this.props.theme,
+      },
+    }
     const {
       ui,
-      pageInfo: {
-        pageCount,
-        currentPage,
-        hasNextPage,
-        hasPreviousPage
-      }
-    } = this.props
+      labels,
+      theme,
+      pageInfo: { pageCount, currentPage, hasNextPage, hasPreviousPage },
+    } = props
 
-    const labels = Object.assign({}, Pagination.defaultProps.labels, this.props.labels)
-    const theme = Object.assign({}, Pagination.defaultProps.theme, this.props.theme)
-    const pages = []
+    const pages: Array<{
+      key: string | number
+      number: number
+      type: 'first' | 'prev' | 'page' | 'next' | 'last'
+      label: ReactNode
+      active?: boolean
+      disabled?: boolean
+    }> = []
 
     if (ui === 'full') {
       pages.push({
@@ -82,7 +134,7 @@ export default class Pagination extends React.Component {
         number: 1,
         type: 'first',
         label: labels.first,
-        disabled: !hasPreviousPage
+        disabled: !hasPreviousPage,
       })
     }
 
@@ -91,18 +143,18 @@ export default class Pagination extends React.Component {
       number: currentPage - 1,
       type: 'prev',
       label: labels.prev,
-      disabled: !hasPreviousPage
+      disabled: !hasPreviousPage,
     })
 
     if (ui !== 'mini') {
-      const [fp, lp] = this.calcRange()
+      const [fp, lp] = this.calcRange(pageCount, currentPage, props.range)
       for (let i = fp; i <= lp; i++) {
         pages.push({
           key: i,
           number: i,
           type: 'page',
           label: i.toString(),
-          active: i === currentPage
+          active: i === currentPage,
         })
       }
     }
@@ -112,7 +164,7 @@ export default class Pagination extends React.Component {
       number: currentPage + 1,
       type: 'next',
       label: labels.next,
-      disabled: !hasNextPage
+      disabled: !hasNextPage,
     })
 
     if (ui === 'full') {
@@ -121,19 +173,19 @@ export default class Pagination extends React.Component {
         number: pageCount,
         type: 'last',
         label: labels.last,
-        disabled: !hasNextPage
+        disabled: !hasNextPage,
       })
     }
 
     return (
-      <nav className={this.props.className} role='navigation' aria-label='Pagination Navigation'>
+      <nav className={props.className} role='navigation' aria-label='Pagination Navigation'>
         <ul className={theme.inner}>
           {pages.map((page) => {
-            if (page.disabled && !this.props.renderDisabled) {
+            if (page.disabled && !props.renderDisabled) {
               return null
             }
 
-            const classes = [theme.item]
+            const classes: ClassArray = [theme.item]
             const typeClass = theme['item.' + page.type]
             if (typeClass) {
               classes.push(typeClass)
@@ -141,7 +193,7 @@ export default class Pagination extends React.Component {
 
             classes.push({
               [theme.active]: page.active,
-              [theme.disabled]: page.disabled
+              [theme.disabled]: page.disabled,
             })
 
             if (page.disabled) {
@@ -153,13 +205,14 @@ export default class Pagination extends React.Component {
             }
 
             // Use non-paginated route for first page
-            const [params, scope] = page.number === 1
-              ? [this.props.params, null]
-              : [{ ...this.props.params, page: page.number }, 'pagination']
+            const [params, scope] =
+              page.number === 1
+                ? [props.params, null]
+                : ([{ ...props.params, page: page.number }, 'pagination'] as const)
 
             return (
               <li key={page.key} className={clsx(classes)}>
-                <Link to={this.props.route} params={params} scope={scope} className={theme.link}>
+                <Link to={props.route} params={params} scope={scope} className={theme.link}>
                   {page.label}
                 </Link>
               </li>
@@ -170,18 +223,13 @@ export default class Pagination extends React.Component {
     )
   }
 
-  calcRange () {
-    const { range, pageInfo: { currentPage, pageCount } } = this.props
-
+  private calcRange(pageCount: number, currentPage: number, range: number) {
     let fp = Math.max(1, currentPage - Math.floor(range / 2))
     let lp = Math.min(pageCount, currentPage + Math.floor(range / 2))
 
     if (lp - fp + 1 < range) {
       if (currentPage < pageCount / 2) {
-        lp = Math.min(
-          pageCount,
-          lp + (range - (lp - fp))
-        )
+        lp = Math.min(pageCount, lp + (range - (lp - fp)))
       } else {
         fp = Math.max(1, fp - (range - (lp - fp)))
       }
@@ -198,3 +246,5 @@ export default class Pagination extends React.Component {
     return [fp, lp]
   }
 }
+
+export default Pagination

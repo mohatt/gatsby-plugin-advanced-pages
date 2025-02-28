@@ -16,6 +16,7 @@ exports[`onPluginInit correctly initializes custom options 1`] = `
   "template": "/virtual/project/custom/templates/default.js",
   "typeNames": {
     "page": "Page",
+    "pageRoute": "PageRoute",
   },
 }
 `;
@@ -36,6 +37,7 @@ exports[`onPluginInit correctly initializes default options 1`] = `
   "template": null,
   "typeNames": {
     "page": "Page",
+    "pageRoute": "PageRoute",
   },
 }
 `;

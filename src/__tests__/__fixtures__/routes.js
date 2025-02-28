@@ -2,37 +2,37 @@ export default [
   {
     name: 'home',
     path: '/',
-    scopes: {}
+    scopes: {},
   },
   {
     name: 'about',
     path: '/about',
-    scopes: {}
+    scopes: {},
   },
   {
     name: 'blog',
     path: '/blog',
     scopes: {
-      pagination: '/blog/page/:page'
-    }
+      pagination: '/blog/page/:page',
+    },
   },
   {
     name: 'blog.author',
     path: '/blog/author/:author',
     scopes: {
-      pagination: '/blog/author/:author/page/:page'
-    }
+      pagination: '/blog/author/:author/page/:page',
+    },
   },
   {
     name: 'blog.tag',
     path: '/blog/tag/:tag',
     scopes: {
-      pagination: '/blog/tag/:tag/page/:page'
-    }
+      pagination: '/blog/tag/:tag/page/:page',
+    },
   },
   {
     name: 'blog.post',
     path: '/blog/post/:post',
-    scopes: {}
-  }
+    scopes: {},
+  },
 ]

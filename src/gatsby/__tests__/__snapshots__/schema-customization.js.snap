@@ -6,10 +6,19 @@ exports[`createSchemaCustomization correctly creates schema definitions 1`] = `
     [
       {
         "fields": {
+          "name": "String!",
+          "path": "String!",
+        },
+        "name": "PageRoute",
+      },
+      {
+        "fields": {
           "data": "JSON",
           "helper": "String",
+          "routes": "[PageRoute!]!",
           "template": "String",
           "templateName": "String",
+          "title": "String!",
         },
         "interfaces": [
           "Node",

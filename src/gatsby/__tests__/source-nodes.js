@@ -1,5 +1,5 @@
 import fs from 'fs'
-import { sourceNodes } from '../'
+import { sourceNodes } from '../plugin'
 import { mountFile, mountModule, mountOptions } from '../../../test/node-utils'
 import testCases from './__fixtures__/source-nodes'
 
@@ -25,11 +25,12 @@ describe('sourceNodes', () => {
   for (const { title, files, throws, options } of testCases) {
     test(title, async () => {
       options && mountOptions(options)
-      files.map(file => typeof file === 'string'
-        ? mountFile(file)
-        : Array.isArray(file.data)
-          ? mountFile(file.path) || mountModule(file.path, file.data)
-          : mountFile(file.path, file.data)
+      files.map((file) =>
+        typeof file === 'string'
+          ? mountFile(file)
+          : Array.isArray(file.data)
+            ? mountFile(file.path) || mountModule(file.path, file.data)
+            : mountFile(file.path, file.data),
       )
 
       let error = null
@@ -38,7 +39,7 @@ describe('sourceNodes', () => {
           actions,
           schema,
           createNodeId,
-          createContentDigest
+          createContentDigest,
         })
       } catch (e) {
         error = e

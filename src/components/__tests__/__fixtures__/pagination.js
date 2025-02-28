@@ -6,8 +6,8 @@ export const defaultTestCase = {
     pageCount: 9,
     currentPage: 4,
     hasNextPage: true,
-    hasPreviousPage: true
-  }
+    hasPreviousPage: true,
+  },
 }
 
 export default [
@@ -19,8 +19,8 @@ export default [
       pageCount: 1,
       currentPage: 1,
       hasNextPage: false,
-      hasPreviousPage: false
-    }
+      hasPreviousPage: false,
+    },
   },
   {
     route: 'whatever',
@@ -30,8 +30,8 @@ export default [
       pageCount: 3,
       currentPage: 3,
       hasNextPage: false,
-      hasPreviousPage: true
-    }
+      hasPreviousPage: true,
+    },
   },
   {
     route: 'whatever',
@@ -41,7 +41,7 @@ export default [
       pageCount: 12,
       currentPage: 8,
       hasNextPage: true,
-      hasPreviousPage: true
-    }
-  }
+      hasPreviousPage: true,
+    },
+  },
 ]

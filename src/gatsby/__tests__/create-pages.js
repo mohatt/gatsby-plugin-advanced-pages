@@ -1,6 +1,6 @@
 import fs from 'fs'
 import path from 'path'
-import { createPages } from '../'
+import { createPages } from '../plugin'
 import { mountOptions, mountFile, mountDir, mountModule } from '../../../test/node-utils'
 import testCases from './__fixtures__/create-pages'
 
@@ -25,9 +25,7 @@ describe('createPages', () => {
 
   for (const { id, throws, pages, helper } of testCases) {
     // Set test title
-    const title = throws
-      ? `throws error on (${id})`
-      : `correctly creates pages on (${id})`
+    const title = throws ? `throws error on (${id})` : `correctly creates pages on (${id})`
 
     test(title, async () => {
       if (helper) {
@@ -41,8 +39,8 @@ describe('createPages', () => {
 
       graphql.mockReturnValue({
         data: {
-          allPage: { nodes: pages }
-        }
+          allPage: { nodes: pages },
+        },
       })
 
       let error = null
@@ -51,7 +49,7 @@ describe('createPages', () => {
           graphql,
           actions,
           cache,
-          getNodesByType
+          getNodesByType,
         })
       } catch (e) {
         error = e
@@ -65,9 +63,7 @@ describe('createPages', () => {
 
       expect(error).toBeNull()
       expect(createPage.mock.calls).toMatchSnapshot()
-      expect(
-        fs.readFileSync(path.join(cache.directory, 'routes.json'), 'utf8')
-      ).toMatchSnapshot()
+      expect(fs.readFileSync(path.join(cache.directory, 'routes.json'), 'utf8')).toMatchSnapshot()
     })
   }
 })
