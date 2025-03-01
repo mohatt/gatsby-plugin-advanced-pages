@@ -2,7 +2,7 @@ import fs from 'fs'
 import path from 'path'
 import { createRequire } from 'module'
 import Yaml from 'js-yaml'
-import { validateOptionsSchema, Joi, PluginOptionsSchemaJoi } from 'gatsby-plugin-utils'
+import { validateOptionsSchema, Joi, PluginOptionsSchemaJoi, Schema } from 'gatsby-plugin-utils'
 import _ from 'lodash'
 import debug from 'debug'
 import type { GatsbyNode, NodePluginArgs, Reporter } from 'gatsby'
@@ -123,6 +123,7 @@ export const reporter = (() => {
       instance.setErrorMap({
         10000: {
           text: (context) => context.message,
+          category: 'USER',
           level: 'ERROR',
           type: 'PLUGIN',
         },
@@ -220,9 +221,7 @@ export const reporter = (() => {
  * @throws {ValidationError} Throws an error if the input does not meet the schema requirements.
  */
 export const validateSchema = async <E>(
-  schema:
-    | ReturnType<PluginOptionsSchemaJoi['any']>
-    | ((Joi: PluginOptionsSchemaJoi) => ReturnType<PluginOptionsSchemaJoi['any']>),
+  schema: Schema | ((Joi: PluginOptionsSchemaJoi) => Schema),
   data: unknown,
   name = 'data',
 ): Promise<E> => {

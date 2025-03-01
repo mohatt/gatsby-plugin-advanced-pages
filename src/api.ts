@@ -119,7 +119,7 @@ export const navigate = (
   params: RouteParams = {},
   scope?: RouteScope,
   options?: NavigateOptions<{}>,
-): Promise<void> => gatsbyNavigate(generatePath(to, params, scope), options)
+): void => gatsbyNavigate(generatePath(to, params, scope), options)
 
 /**
  * Gets the current active route based on `@reach/router` location history

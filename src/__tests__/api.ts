@@ -83,15 +83,15 @@ describe('API', () => {
   })
 
   describe('navigate', () => {
-    it('correctly calls gatsby.navigate()', async () => {
+    it('correctly calls gatsby.navigate()', () => {
       const gMock = <Mock>gatsbyNavigate
-      await navigate('home')
+      navigate('home')
       expect(gMock.mock.calls).toMatchSnapshot()
       gMock.mockClear()
-      await navigate('blog.post', { post: 'hello' })
+      navigate('blog.post', { post: 'hello' })
       expect(gMock.mock.calls).toMatchSnapshot()
       gMock.mockClear()
-      await navigate('blog', { page: 4 }, 'pagination', { replace: true })
+      navigate('blog', { page: 4 }, 'pagination', { replace: true })
       expect(gMock.mock.calls).toMatchSnapshot()
       gMock.mockClear()
     })

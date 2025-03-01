@@ -54,7 +54,7 @@
   "dependencies": {
     "clsx": "^2.1.1",
     "debug": "^4.4.0",
-    "gatsby-plugin-utils": "^3.19.0",
+    "gatsby-plugin-utils": "^4.10.0",
     "js-yaml": "^3.14.1",
     "lodash": "^4.17.21",
     "path-to-regexp": "^6.3.0"
@@ -72,7 +72,7 @@
     "@types/react-dom": "18.3.5",
     "@vitest/coverage-v8": "3.0.7",
     "@vitest/ui": "3.0.7",
-    "gatsby": "4.25.9",
+    "gatsby": "5.14.1",
     "jsdom": "26.0.0",
     "memfs": "4.17.0",
     "pkgroll": "2.11.2",
@@ -87,7 +87,7 @@
   },
   "peerDependencies": {
     "@types/react": "18.3.3",
-    "gatsby": ">=4.4.0",
+    "gatsby": ">=5.10.0",
     "react": ">=18.3.0"
   },
   "peerDependenciesMeta": {
