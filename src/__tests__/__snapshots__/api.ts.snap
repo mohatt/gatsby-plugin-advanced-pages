@@ -1,0 +1,180 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`API > generatePath > correctly generates paths 1`] = `"/site"`;
+
+exports[`API > generatePath > correctly generates paths 2`] = `"/site/blog/page/5"`;
+
+exports[`API > generatePath > correctly generates paths 3`] = `"/site/blog/post/hello"`;
+
+exports[`API > generatePath > throws for unrecognized scope 1`] = `[TypeError: Unrecognized scope 'pagination' on route 'about']`;
+
+exports[`API > getMatchingRoute > picks the correct matching route 1`] = `
+{
+  "name": "home",
+  "parent": null,
+  "path": "/",
+  "realpath": "/site/",
+}
+`;
+
+exports[`API > getMatchingRoute > picks the correct matching route 2`] = `
+{
+  "name": "home",
+  "parent": null,
+  "path": "/",
+  "realpath": "/site/",
+}
+`;
+
+exports[`API > getMatchingRoute > picks the correct matching route 3`] = `
+{
+  "name": "blog.tag.pagination",
+  "parent": {
+    "name": "blog.tag",
+    "scope": "pagination",
+  },
+  "path": "/blog/tag/:tag/page/:page",
+  "realpath": "/site/blog/tag/:tag/page/:page",
+}
+`;
+
+exports[`API > getMatchingRoute > picks the correct matching route 4`] = `
+{
+  "name": "blog.post",
+  "parent": null,
+  "path": "/blog/post/:post",
+  "realpath": "/site/blog/post/:post",
+}
+`;
+
+exports[`API > getRoute > correctly fetches routes 1`] = `
+{
+  "name": "blog.post",
+  "parent": null,
+  "path": "/blog/post/:post",
+  "realpath": "/site/blog/post/:post",
+}
+`;
+
+exports[`API > getRoutes > correctly fetches routes 1`] = `
+[
+  {
+    "name": "home",
+    "parent": null,
+    "path": "/",
+    "realpath": "/site/",
+  },
+  {
+    "name": "about",
+    "parent": null,
+    "path": "/about",
+    "realpath": "/site/about",
+  },
+  {
+    "name": "blog",
+    "parent": null,
+    "path": "/blog",
+    "realpath": "/site/blog",
+  },
+  {
+    "name": "blog.pagination",
+    "parent": {
+      "name": "blog",
+      "scope": "pagination",
+    },
+    "path": "/blog/page/:page",
+    "realpath": "/site/blog/page/:page",
+  },
+  {
+    "name": "blog.author",
+    "parent": null,
+    "path": "/blog/author/:author",
+    "realpath": "/site/blog/author/:author",
+  },
+  {
+    "name": "blog.author.pagination",
+    "parent": {
+      "name": "blog.author",
+      "scope": "pagination",
+    },
+    "path": "/blog/author/:author/page/:page",
+    "realpath": "/site/blog/author/:author/page/:page",
+  },
+  {
+    "name": "blog.tag",
+    "parent": null,
+    "path": "/blog/tag/:tag",
+    "realpath": "/site/blog/tag/:tag",
+  },
+  {
+    "name": "blog.tag.pagination",
+    "parent": {
+      "name": "blog.tag",
+      "scope": "pagination",
+    },
+    "path": "/blog/tag/:tag/page/:page",
+    "realpath": "/site/blog/tag/:tag/page/:page",
+  },
+  {
+    "name": "blog.post",
+    "parent": null,
+    "path": "/blog/post/:post",
+    "realpath": "/site/blog/post/:post",
+  },
+]
+`;
+
+exports[`API > getRoutes > correctly fetches routes 2`] = `
+[
+  {
+    "name": "blog.pagination",
+    "parent": {
+      "name": "blog",
+      "scope": "pagination",
+    },
+    "path": "/blog/page/:page",
+    "realpath": "/site/blog/page/:page",
+  },
+]
+`;
+
+exports[`API > navigate > correctly calls gatsby.navigate() 1`] = `
+[
+  [
+    "/site",
+    undefined,
+  ],
+]
+`;
+
+exports[`API > navigate > correctly calls gatsby.navigate() 2`] = `
+[
+  [
+    "/site/blog/post/hello",
+    undefined,
+  ],
+]
+`;
+
+exports[`API > navigate > correctly calls gatsby.navigate() 3`] = `
+[
+  [
+    "/site/blog/page/4",
+    {
+      "replace": true,
+    },
+  ],
+]
+`;
+
+exports[`API > useRoute > correctly gets the current active route 1`] = `
+{
+  "name": "blog.pagination",
+  "parent": {
+    "name": "blog",
+    "scope": "pagination",
+  },
+  "path": "/blog/page/:page",
+  "realpath": "/site/blog/page/:page",
+}
+`;

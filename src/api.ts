@@ -1,9 +1,9 @@
 import { navigate as gatsbyNavigate, withPrefix } from 'gatsby'
 import { useLocation, NavigateOptions } from '@reach/router'
 import { RouteCompiler, RouteParams, PathGenerator } from './lib/route-compiler'
-import type { RouteScope, SerializedRoute } from './gatsby/types'
+import type { RouteScope, SerializedRoute } from './node/api'
 
-// @ts-ignore
+// @ts-expect-error imported via a webpack alias
 import routes from 'gatsby-plugin-advanced-pages-cache/routes.json'
 
 export interface Route {

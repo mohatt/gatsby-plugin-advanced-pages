@@ -4,6 +4,11 @@
     "module": "esnext",
     "target": "esnext",
     "moduleResolution": "node",
+    "paths": {
+      "@/*": ["./src/*"],
+      "@test/*": ["./test/*"]
+    },
+    "types": ["node", "vitest/globals", "vitest/jsdom"],
     "allowJs": true,
     "esModuleInterop": true,
     "resolveJsonModule": true,

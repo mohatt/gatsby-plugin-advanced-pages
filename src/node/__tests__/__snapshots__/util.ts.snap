@@ -1,0 +1,47 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`util > ensurePath > throws if the file does not exist (/path/to/missing.txt) 1`] = `
+[Error: A path with value "/path/to/missing.txt" could not be found at any of the following locations:
+ - "/virtual/project/path/to/missing.txt
+ - "/path/to/missing.txt"]
+`;
+
+exports[`util > ensurePath > throws if the file does not exist (/path/to/missing.txt) 2`] = `
+[Error: A path with value "/path/to/missing.txt" could not be found at any of the following locations:
+ - "/parent/path/to/missing.txt
+ - "/virtual/project/path/to/missing.txt
+ - "/path/to/missing.txt"]
+`;
+
+exports[`util > ensurePath > throws if the file does not exist (missing.txt) 1`] = `
+[Error: A path with value "missing.txt" could not be found at any of the following locations:
+ - "/virtual/project/missing.txt"]
+`;
+
+exports[`util > getDefaultExport > import > throws for invalid default export (mock: test-module.cjs) 1`] = `
+{
+  "originalError": [Error: Couldn't find valid default export],
+}
+`;
+
+exports[`util > getDefaultExport > import > throws for invalid default export (mock: test-module.json) 1`] = `
+{
+  "originalError": [Error: Couldn't find valid default export],
+}
+`;
+
+exports[`util > getDefaultExport > import > throws for invalid default export (mock: test-module.mjs) 1`] = `
+{
+  "originalError": [Error: Couldn't find valid default export],
+}
+`;
+
+exports[`util > getDefaultExport > import > throws for invalid default export (mock: test-module-default.cjs) 1`] = `
+{
+  "originalError": [Error: Couldn't find valid default export],
+}
+`;
+
+exports[`util > getDefaultExport > import > throws if the module does not exist 1`] = `[Error: Unable to import ESM module "./non-existent.js"]`;
+
+exports[`util > getDefaultExport > require > throws if the module does not exist 1`] = `[Error: Unable to import module "./non-existent.js"]`;

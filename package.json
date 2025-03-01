@@ -2,43 +2,6 @@
   "name": "gatsby-plugin-advanced-pages",
   "version": "4.0.0",
   "description": "A Gatsby plugin that makes it easy to create pages with dynamic features like pagination and custom routing",
-  "main": "./dist/index.cjs",
-  "module": "./dist/index.mjs",
-  "types": "./dist/index.d.ts",
-  "sideEffects": false,
-  "files": [
-    "dist",
-    "gatsby-node.js"
-  ],
-  "exports": {
-    ".": {
-      "require": "./dist/index.cjs",
-      "import": "./dist/index.mjs",
-      "types": "./dist/index.d.ts"
-    },
-    "./gatsby-node.js": {
-      "node": {
-        "require": "./dist/gatsby/plugin.cjs",
-        "import": "./dist/gatsby/plugin.mjs",
-        "types": "./dist/gatsby/index.d.ts"
-      }
-    },
-    "./package.json": "./package.json"
-  },
-  "scripts": {
-    "build": "pnpm build:js && pnpm build:fragments",
-    "build:js": "pkgroll --clean-dist --sourcemap --target node18",
-    "build:fragments": "cp src/components/Pagination.fragment.ts dist/Pagination.fragment.mjs",
-    "test": "jest --runInBand",
-    "test:coverage": "jest --runInBand --coverage",
-    "release": "semantic-release --no-ci",
-    "release:inspect": "semantic-release --dry-run",
-    "typecheck": "tsc -p . --noEmit",
-    "format": "prettier --write .",
-    "lint": "ts-standard src",
-    "lint:fix": "ts-standard src --fix",
-    "prepare": "NODE_ENV=production pnpm build"
-  },
   "keywords": [
     "gatsby",
     "gatsby-plugin",
@@ -46,84 +9,94 @@
     "routing",
     "pagination"
   ],
-  "author": "Mohamed Elkholy <mohatt@pm.me>",
-  "license": "MIT",
+  "homepage": "https://github.com/mohatt/gatsby-plugin-advanced-pages",
+  "bugs": "https://github.com/mohatt/gatsby-plugin-advanced-pages/issues",
   "repository": {
     "type": "git",
     "url": "https://github.com/mohatt/gatsby-plugin-advanced-pages.git"
   },
-  "homepage": "https://github.com/mohatt/gatsby-plugin-advanced-pages",
-  "bugs": "https://github.com/mohatt/gatsby-plugin-advanced-pages/issues",
+  "license": "MIT",
+  "author": "Mohamed Elkholy <mohatt@pm.me>",
+  "sideEffects": false,
+  "type": "module",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "require": "./dist/index.cjs",
+      "import": "./dist/index.js"
+    },
+    "./node": {
+      "types": "./dist/node/index.d.ts",
+      "require": "./dist/node/plugin.cjs",
+      "import": "./dist/node/plugin.js"
+    },
+    "./package.json": "./package.json"
+  },
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "files": [
+    "dist",
+    "gatsby-node.js"
+  ],
+  "scripts": {
+    "build": "pnpm build:js && pnpm build:fragments",
+    "build:fragments": "cp src/components/Pagination.fragment.ts dist/Pagination.fragment.js",
+    "build:js": "pkgroll --clean-dist --sourcemap --target node18 --env.VITEST=false",
+    "format": "prettier --write .",
+    "lint": "prettier --check .",
+    "prepare": "NODE_ENV=production pnpm build",
+    "release": "semantic-release --no-ci",
+    "release:inspect": "semantic-release --dry-run",
+    "test": "vitest run",
+    "test:coverage": "vitest run --coverage",
+    "typecheck": "tsc -p . --noEmit"
+  },
   "dependencies": {
     "clsx": "^2.1.1",
     "debug": "^4.4.0",
+    "gatsby-plugin-utils": "^3.19.0",
     "js-yaml": "^3.14.1",
     "lodash": "^4.17.21",
-    "path-to-regexp": "^6.3.0",
-    "prop-types": "^15.8.1",
-    "gatsby-plugin-utils": "^3.19.0"
+    "path-to-regexp": "^6.3.0"
   },
   "devDependencies": {
-    "@types/lodash": "4.17.15",
-    "@types/jest": "29.5.14",
-    "@types/react": "18.3.3",
-    "@types/react-dom": "18.3.5",
-    "@types/reach__router": "1.3.15",
     "@semantic-release/changelog": "6.0.3",
     "@semantic-release/git": "10.0.1",
-    "jest": "29.7.0",
-    "mkdirp": "3.0.1",
-    "metro-memory-fs": "0.81.1",
+    "@testing-library/dom": "10.4.0",
+    "@testing-library/react": "16.2.0",
+    "@types/js-yaml": "3.12.10",
+    "@types/lodash": "4.17.16",
+    "@types/node": "18.19.76",
+    "@types/reach__router": "1.3.15",
+    "@types/react": "18.3.3",
+    "@types/react-dom": "18.3.5",
+    "@vitest/coverage-v8": "3.0.7",
+    "@vitest/ui": "3.0.7",
     "gatsby": "4.25.9",
+    "jsdom": "26.0.0",
+    "memfs": "4.17.0",
+    "pkgroll": "2.11.2",
+    "prettier": "3.5.2",
+    "prettier-plugin-packagejson": "2.5.9",
     "react": "18.3.1",
     "react-dom": "18.3.1",
-    "react-test-renderer": "18.3.1",
-    "rimraf": "6.0.1",
     "semantic-release": "22.0.12",
-    "prettier": "3.5.2",
-    "ts-standard": "12.0.2",
-    "ts-jest": "29.2.6",
     "typescript": "5.1.6",
-    "pkgroll": "2.11.0"
+    "vite": "6.2.0",
+    "vitest": "3.0.7"
   },
   "peerDependencies": {
+    "@types/react": "18.3.3",
     "gatsby": ">=4.4.0",
-    "react": ">=18.3.0",
-    "@types/react": "18.3.3"
+    "react": ">=18.3.0"
+  },
+  "peerDependenciesMeta": {
+    "@types/react": {
+      "optional": true
+    }
   },
   "engines": {
     "node": ">=18"
-  },
-  "jest": {
-    "preset": "ts-jest/presets/js-with-ts",
-    "roots": [
-      "<rootDir>/test/",
-      "<rootDir>/src/"
-    ],
-    "testPathIgnorePatterns": [
-      "/__tests__/__fixtures__/.*$"
-    ],
-    "collectCoverageFrom": [
-      "src/**/*.js"
-    ]
-  },
-  "ts-standard": {
-    "env": [
-      "jest"
-    ],
-    "project": "./tsconfig.json"
-  },
-  "release": {
-    "verifyConditions": [
-      "@semantic-release/changelog",
-      "@semantic-release/npm",
-      "@semantic-release/git"
-    ],
-    "prepare": [
-      "@semantic-release/changelog",
-      "@semantic-release/npm",
-      "@semantic-release/git"
-    ]
   },
   "renovate": {
     "extends": [

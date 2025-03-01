@@ -1,8 +1,7 @@
 import React, { Component, ReactNode } from 'react'
-import { shape, number, string, object, bool, element, oneOf, oneOfType } from 'prop-types'
 import { clsx, ClassArray } from 'clsx'
 import { Link } from './Link'
-import type { RouteParams } from '../lib/route-compiler'
+import type { RouteParams } from '@/lib/route-compiler'
 
 export interface PaginationInfo {
   itemCount: number
@@ -41,40 +40,6 @@ export interface PaginationProps {
 }
 
 export class Pagination extends Component<PaginationProps> {
-  static propTypes = {
-    route: string.isRequired,
-    params: object,
-    ui: oneOf(['mini', 'simple', 'full']),
-    range: number,
-    className: string,
-    pageInfo: shape({
-      itemCount: number.isRequired,
-      perPage: number.isRequired,
-      pageCount: number.isRequired,
-      currentPage: number.isRequired,
-      hasNextPage: bool.isRequired,
-      hasPreviousPage: bool.isRequired,
-    }).isRequired,
-    labels: shape({
-      prev: oneOfType([string, element]),
-      next: oneOfType([string, element]),
-      first: oneOfType([string, element]),
-      last: oneOfType([string, element]),
-    }),
-    theme: shape({
-      inner: string,
-      item: string,
-      'item.next': string,
-      'item.prev': string,
-      'item.first': string,
-      'item.last': string,
-      link: string,
-      active: string,
-      disabled: string,
-    }),
-    renderDisabled: bool,
-  }
-
   static defaultProps: Omit<PaginationProps, 'route' | 'pageInfo'> = {
     ui: 'full',
     range: 6,
@@ -223,27 +188,27 @@ export class Pagination extends Component<PaginationProps> {
     )
   }
 
-  private calcRange(pageCount: number, currentPage: number, range: number) {
-    let fp = Math.max(1, currentPage - Math.floor(range / 2))
-    let lp = Math.min(pageCount, currentPage + Math.floor(range / 2))
+  private calcRange(pageCount: number, currentPage: number, range: number): [number, number] {
+    const halfRange = Math.floor(range / 2)
+    let firstPage = Math.max(1, currentPage - halfRange)
+    let lastPage = Math.min(pageCount, currentPage + halfRange)
 
-    if (lp - fp + 1 < range) {
+    const currentRange = lastPage - firstPage + 1
+
+    if (currentRange < range) {
+      const adjustment = range - currentRange
       if (currentPage < pageCount / 2) {
-        lp = Math.min(pageCount, lp + (range - (lp - fp)))
+        lastPage = Math.min(pageCount, lastPage + adjustment)
       } else {
-        fp = Math.max(1, fp - (range - (lp - fp)))
+        firstPage = Math.max(1, firstPage - adjustment)
       }
     }
 
-    if (lp - fp + 1 > range) {
-      if (currentPage > pageCount / 2) {
-        fp = fp + 1
-      } else {
-        lp = lp - 1
-      }
+    if (lastPage - firstPage + 1 > range) {
+      currentPage > pageCount / 2 ? firstPage++ : lastPage--
     }
 
-    return [fp, lp]
+    return [firstPage, lastPage]
   }
 }
 
