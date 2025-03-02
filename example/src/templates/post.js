@@ -5,12 +5,13 @@ import { Link } from 'gatsby-plugin-advanced-pages'
 
 const PostTemplate = ({ data: { post } }) => (
   <Layout title={post.frontmatter.title}>
-    <div className="mb-4 text-muted">
+    <div className='mb-4 text-muted'>
       <p>Posted on August 24, 2014 at 9:00 PM</p>
       <p>
-        {post.frontmatter.tags.map(tag => (
-          <Link key={tag} to="blog.tag" params={{tag}}>
-          <span className="badge badge-pill badge-primary">{tag}</span> </Link>
+        {post.frontmatter.tags.map((tag) => (
+          <Link key={tag} to='blog.tag' params={{ tag }}>
+            <span className='badge badge-pill badge-primary'>{tag}</span>{' '}
+          </Link>
         ))}
       </p>
     </div>
@@ -23,7 +24,7 @@ export const query = graphql`
     page(id: { eq: $id }) {
       title
     }
-    post: markdownRemark(frontmatter: {slug: {eq: $post}}){
+    post: markdownRemark(frontmatter: { slug: { eq: $post } }) {
       html
       frontmatter {
         title

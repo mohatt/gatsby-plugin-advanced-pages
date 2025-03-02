@@ -15,8 +15,7 @@ yarn-error.log*
 /node_modules
 
 # Build artifacts
-cjs
-es
+/dist
 
 # Output of 'npm pack'
 *.tgz

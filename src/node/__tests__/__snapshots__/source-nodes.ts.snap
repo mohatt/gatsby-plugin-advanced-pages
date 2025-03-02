@@ -1,0 +1,281 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`sourceNodes > 'correctly creates multiple page nodes with various configurations' 1`] = `
+[
+  [
+    {
+      "children": [],
+      "data": {},
+      "helper": "/virtual/project/gatsby/pages/helper.js",
+      "id": "ID-0 - FOO",
+      "internal": {
+        "contentDigest": "{"id":"ID-0 - FOO","title":"foo","template":"/virtual/project/src/templates/default.js","helper":"/virtual/project/gatsby/pages/helper.js","routes":[{"name":"foo","path":"/foo"},{"name":"foo.bar","path":"/foo/bar"}],"data":{},"templateName":"default.js"}",
+        "description": "Advanced Page: foo",
+        "type": "Page",
+      },
+      "parent": null,
+      "routes": [
+        {
+          "name": "foo",
+          "path": "/foo",
+        },
+        {
+          "name": "foo.bar",
+          "path": "/foo/bar",
+        },
+      ],
+      "template": "/virtual/project/src/templates/default.js",
+      "templateName": "default.js",
+      "title": "foo",
+    },
+  ],
+  [
+    {
+      "children": [],
+      "data": {},
+      "helper": undefined,
+      "id": "ID-1 - LOREM",
+      "internal": {
+        "contentDigest": "{"id":"ID-1 - LOREM","title":"lorem","template":"/virtual/project/src/templates/test.js","routes":[{"name":"lorem","path":"/lorem"}],"data":{},"templateName":"test.js"}",
+        "description": "Advanced Page: lorem",
+        "type": "Page",
+      },
+      "parent": null,
+      "routes": [
+        {
+          "name": "lorem",
+          "path": "/lorem",
+        },
+      ],
+      "template": "/virtual/project/src/templates/test.js",
+      "templateName": "test.js",
+      "title": "lorem",
+    },
+  ],
+  [
+    {
+      "children": [],
+      "data": {
+        "name": "john",
+        "title": "don",
+      },
+      "helper": "/virtual/project/gatsby/custom/helper.js",
+      "id": "ID-2 - IPSUM",
+      "internal": {
+        "contentDigest": "{"id":"ID-2 - IPSUM","title":"ipsum","template":"/virtual/project/src/custom/template.js","helper":"/virtual/project/gatsby/custom/helper.js","data":{"name":"john","title":"don"},"routes":[{"name":"ipsum","path":"/ipsum"},{"name":"dolor","path":"/dolor"},{"name":"sit","path":"/sit/amet"}],"templateName":"./src/custom/template.js"}",
+        "description": "Advanced Page: ipsum",
+        "type": "Page",
+      },
+      "parent": null,
+      "routes": [
+        {
+          "name": "ipsum",
+          "path": "/ipsum",
+        },
+        {
+          "name": "dolor",
+          "path": "/dolor",
+        },
+        {
+          "name": "sit",
+          "path": "/sit/amet",
+        },
+      ],
+      "template": "/virtual/project/src/custom/template.js",
+      "templateName": "./src/custom/template.js",
+      "title": "ipsum",
+    },
+  ],
+]
+`;
+
+exports[`sourceNodes > 'correctly creates page nodes from inline pages config' 1`] = `
+[
+  [
+    {
+      "children": [],
+      "helper": undefined,
+      "id": "ID-0 - FOO",
+      "internal": {
+        "contentDigest": "{"id":"ID-0 - FOO","title":"foo","template":"/virtual/project/src/templates/test.js","routes":[{"name":"foo","path":"/foo"}],"templateName":"./src/templates/test.js"}",
+        "description": "Advanced Page: foo",
+        "type": "Page",
+      },
+      "parent": null,
+      "routes": [
+        {
+          "name": "foo",
+          "path": "/foo",
+        },
+      ],
+      "template": "/virtual/project/src/templates/test.js",
+      "templateName": "./src/templates/test.js",
+      "title": "foo",
+    },
+  ],
+]
+`;
+
+exports[`sourceNodes > 'correctly creates page nodes from pages.config.js' 1`] = `
+[
+  [
+    {
+      "children": [],
+      "data": {},
+      "helper": undefined,
+      "id": "ID-0 - FOO",
+      "internal": {
+        "contentDigest": "{"id":"ID-0 - FOO","title":"foo","template":"/virtual/project/src/templates/test.js","routes":[{"name":"foo","path":"/foo"}],"data":{},"templateName":"./src/templates/test.js"}",
+        "description": "Advanced Page: foo",
+        "type": "Page",
+      },
+      "parent": null,
+      "routes": [
+        {
+          "name": "foo",
+          "path": "/foo",
+        },
+      ],
+      "template": "/virtual/project/src/templates/test.js",
+      "templateName": "./src/templates/test.js",
+      "title": "foo",
+    },
+  ],
+]
+`;
+
+exports[`sourceNodes > 'correctly creates page nodes from pages.config.json' 1`] = `
+[
+  [
+    {
+      "children": [],
+      "data": {},
+      "helper": undefined,
+      "id": "ID-0 - FOO",
+      "internal": {
+        "contentDigest": "{"id":"ID-0 - FOO","title":"foo","template":"/virtual/project/src/templates/test.js","routes":[{"name":"foo","path":"/foo"}],"data":{},"templateName":"./src/templates/test.js"}",
+        "description": "Advanced Page: foo",
+        "type": "Page",
+      },
+      "parent": null,
+      "routes": [
+        {
+          "name": "foo",
+          "path": "/foo",
+        },
+      ],
+      "template": "/virtual/project/src/templates/test.js",
+      "templateName": "./src/templates/test.js",
+      "title": "foo",
+    },
+  ],
+]
+`;
+
+exports[`sourceNodes > 'correctly creates page nodes from pages.config.yaml' 1`] = `
+[
+  [
+    {
+      "children": [],
+      "data": {},
+      "helper": undefined,
+      "id": "ID-0 - FOO",
+      "internal": {
+        "contentDigest": "{"id":"ID-0 - FOO","title":"foo","template":"/virtual/project/src/templates/test.js","routes":[{"name":"foo","path":"/foo"}],"data":{},"templateName":"./src/templates/test.js"}",
+        "description": "Advanced Page: foo",
+        "type": "Page",
+      },
+      "parent": null,
+      "routes": [
+        {
+          "name": "foo",
+          "path": "/foo",
+        },
+      ],
+      "template": "/virtual/project/src/templates/test.js",
+      "templateName": "./src/templates/test.js",
+      "title": "foo",
+    },
+  ],
+]
+`;
+
+exports[`sourceNodes > 'correctly ignores pages config file in favor of inline pages config' 1`] = `
+[
+  [
+    {
+      "children": [],
+      "helper": undefined,
+      "id": "ID-0 - FOO-INLINE",
+      "internal": {
+        "contentDigest": "{"id":"ID-0 - FOO-INLINE","title":"foo-inline","template":"/virtual/project/src/templates/test.js","routes":[{"name":"foo","path":"/foo-inline"}],"templateName":"./src/templates/test.js"}",
+        "description": "Advanced Page: foo-inline",
+        "type": "Page",
+      },
+      "parent": null,
+      "routes": [
+        {
+          "name": "foo",
+          "path": "/foo-inline",
+        },
+      ],
+      "template": "/virtual/project/src/templates/test.js",
+      "templateName": "./src/templates/test.js",
+      "title": "foo-inline",
+    },
+  ],
+]
+`;
+
+exports[`sourceNodes > 'does not throw for an empty pages config file' 1`] = `[]`;
+
+exports[`sourceNodes > 'shows a warning for non existing pages config file' 1`] = `
+{
+  "error": [Warning: "gatsby-plugin-advanced-pages" might not be working properly:
+ - No pages config is defined in plugin options.
+ - Unable to find a valid pages config file (eg. "pages.config.js") under "/virtual/project"],
+  "text": "The plugin threw an error during "sourceNodes" hook",
+}
+`;
+
+exports[`sourceNodes > 'throws for invalid JSON syntax in pages.config.json' 1`] = `
+{
+  "error": [SyntaxError: Unexpected end of JSON input],
+  "text": "The plugin threw an error during "sourceNodes" hook:
+ Failed to load config file "/virtual/project/pages.config.json"",
+}
+`;
+
+exports[`sourceNodes > 'throws for invalid YAML syntax in pages.config.yaml' 1`] = `
+{
+  "error": [YAMLException: can not read an implicit mapping pair; a colon is missed in "/virtual/project/pages.config.yaml" at line 7, column 21:
+      invalid_yaml_entry
+                        ^],
+  "text": "The plugin threw an error during "sourceNodes" hook:
+ Failed to load config file "/virtual/project/pages.config.yaml"",
+}
+`;
+
+exports[`sourceNodes > 'throws for invalid pages config file schema' 1`] = `
+{
+  "error": [ValidationError: "pages[0].routes.foo": Route path must be a string starting with '/'],
+  "text": "The plugin threw an error during "sourceNodes" hook:
+ Unable to validate pages config file "/virtual/project/pages.config.yaml"",
+}
+`;
+
+exports[`sourceNodes > 'throws for pages with invalid template' 1`] = `
+{
+  "error": [Error: A path with value "./no/template.js" could not be found at any of the following locations:
+ - "/virtual/project/src/templates/no/template.js
+ - "/virtual/project/no/template.js"],
+  "text": "The plugin threw an error during "sourceNodes" hook",
+}
+`;
+
+exports[`sourceNodes > 'throws for pages with no template' 1`] = `
+{
+  "error": [Error: Missing "template" metadata for page[0]: "foo". No default template is set in plugin options either.],
+  "text": "The plugin threw an error during "sourceNodes" hook",
+}
+`;

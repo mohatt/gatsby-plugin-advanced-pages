@@ -1,0 +1,366 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`createPages > 'correctly creates no pages' > createPage 1`] = `[]`;
+
+exports[`createPages > 'correctly creates no pages' > routes.json 1`] = `"[]"`;
+
+exports[`createPages > 'correctly creates pages (blog-paginated-auto-route)' > createPage 1`] = `
+[
+  [
+    {
+      "component": "/path/to/blog.js",
+      "context": {
+        "id": "blog-id",
+        "limit": 10,
+        "offset": 0,
+      },
+      "path": "/blog",
+    },
+  ],
+  [
+    {
+      "component": "/path/to/blog.js",
+      "context": {
+        "id": "blog-id",
+        "limit": 10,
+        "offset": 10,
+      },
+      "path": "/blog/page/2",
+    },
+  ],
+  [
+    {
+      "component": "/path/to/blog.js",
+      "context": {
+        "id": "blog-id",
+        "limit": 10,
+        "offset": 20,
+      },
+      "path": "/blog/page/3",
+    },
+  ],
+]
+`;
+
+exports[`createPages > 'correctly creates pages (blog-paginated-auto-route)' > routes.json 1`] = `"[{"name":"blog","path":"/blog","scopes":{"pagination":"/blog/page/:page"}}]"`;
+
+exports[`createPages > 'correctly creates pages (blog-paginated-custom-limit)' > createPage 1`] = `
+[
+  [
+    {
+      "component": "/path/to/blog.js",
+      "context": {
+        "id": "blog-id",
+        "limit": 8,
+        "offset": 0,
+      },
+      "path": "/blog",
+    },
+  ],
+  [
+    {
+      "component": "/path/to/blog.js",
+      "context": {
+        "id": "blog-id",
+        "limit": 8,
+        "offset": 8,
+      },
+      "path": "/blog/page/2",
+    },
+  ],
+  [
+    {
+      "component": "/path/to/blog.js",
+      "context": {
+        "id": "blog-id",
+        "limit": 8,
+        "offset": 16,
+      },
+      "path": "/blog/page/3",
+    },
+  ],
+  [
+    {
+      "component": "/path/to/blog.js",
+      "context": {
+        "id": "blog-id",
+        "limit": 8,
+        "offset": 24,
+      },
+      "path": "/blog/page/4",
+    },
+  ],
+]
+`;
+
+exports[`createPages > 'correctly creates pages (blog-paginated-custom-limit)' > routes.json 1`] = `"[{"name":"blog","path":"/blog","scopes":{"pagination":"/blog/page/:page"}}]"`;
+
+exports[`createPages > 'correctly creates pages (blog-paginated-manual-route)' > createPage 1`] = `
+[
+  [
+    {
+      "component": "/path/to/blog.js",
+      "context": {
+        "id": "blog-id",
+        "limit": 10,
+        "offset": 0,
+      },
+      "path": "/blog",
+    },
+  ],
+  [
+    {
+      "component": "/path/to/blog.js",
+      "context": {
+        "id": "blog-id",
+        "limit": 10,
+        "offset": 10,
+      },
+      "path": "/blog/what/2",
+    },
+  ],
+  [
+    {
+      "component": "/path/to/blog.js",
+      "context": {
+        "id": "blog-id",
+        "limit": 10,
+        "offset": 20,
+      },
+      "path": "/blog/what/3",
+    },
+  ],
+]
+`;
+
+exports[`createPages > 'correctly creates pages (blog-paginated-manual-route)' > routes.json 1`] = `"[{"name":"blog","path":"/blog","scopes":{"pagination":"/blog/what/:page"}},{"name":"blog.paginated","path":"/blog/what/:page","scopes":{}}]"`;
+
+exports[`createPages > 'correctly creates pages (dynamic-page)' > createPage 1`] = `
+[
+  [
+    {
+      "component": "/path/to/page.js",
+      "context": {
+        "id": "page-id",
+        "page": "hello",
+      },
+      "path": "/pages/hello",
+    },
+  ],
+  [
+    {
+      "component": "/path/to/page.js",
+      "context": {
+        "id": "page-id",
+        "page": "world",
+      },
+      "path": "/pages/world",
+    },
+  ],
+]
+`;
+
+exports[`createPages > 'correctly creates pages (dynamic-page)' > routes.json 1`] = `"[{"name":"page","path":"/pages/:page","scopes":{}}]"`;
+
+exports[`createPages > 'correctly creates pages (home-about)' > createPage 1`] = `
+[
+  [
+    {
+      "component": "/path/to/index.js",
+      "context": {
+        "id": "home-id",
+      },
+      "path": "/",
+    },
+  ],
+  [
+    {
+      "component": "/path/to/page.js",
+      "context": {
+        "id": "about-id",
+      },
+      "path": "/about",
+    },
+  ],
+  [
+    {
+      "component": "/path/to/page.js",
+      "context": {
+        "id": "about-id",
+      },
+      "path": "/aboutme",
+    },
+  ],
+]
+`;
+
+exports[`createPages > 'correctly creates pages (home-about)' > routes.json 1`] = `"[{"name":"home","path":"/","scopes":{}},{"name":"about","path":"/about","scopes":{}},{"name":"aboutme","path":"/aboutme","scopes":{}}]"`;
+
+exports[`createPages > 'correctly creates pages (page-context)' > createPage 1`] = `
+[
+  [
+    {
+      "component": "/path/to/page.js",
+      "context": {
+        "id": "about-id",
+        "name": "adam",
+        "profile": {
+          "age": 25,
+          "gender": "male",
+        },
+      },
+      "path": "/about/adam",
+    },
+  ],
+  [
+    {
+      "component": "/path/to/page.js",
+      "context": {
+        "id": "about-id",
+        "name": "sara",
+        "profile": {
+          "age": 28,
+          "gender": "female",
+        },
+      },
+      "path": "/about/sara",
+    },
+  ],
+]
+`;
+
+exports[`createPages > 'correctly creates pages (page-context)' > routes.json 1`] = `"[{"name":"about","path":"/about/:name","scopes":{}}]"`;
+
+exports[`createPages > 'throws error for (bad-helper-empty)' > error 1`] = `
+{
+  "error": [Error: Unable to import module "/path/to/helper.js"],
+  "text": "The plugin threw an error during "createPages" hook:
+ Error while running page helper function at "/path/to/helper.js"",
+}
+`;
+
+exports[`createPages > 'throws error for (bad-helper-empty-call)' > error 1`] = `
+{
+  "error": [Error: Route name passed to createAdvancedPage() at "/path/to/helper.js" must be a non-empty string],
+  "text": "The plugin threw an error during "createPages" hook",
+}
+`;
+
+exports[`createPages > 'throws error for (bad-helper-empty-pagination)' > error 1`] = `
+{
+  "error": [Error: Invalid pagination object passed to createAdvancedPage() at "/path/to/helper.js": "count" parameter is missing],
+  "text": "The plugin threw an error during "createPages" hook",
+}
+`;
+
+exports[`createPages > 'throws error for (bad-helper-invalid-pagination-count)' > error 1`] = `
+{
+  "error": [Error: Invalid pagination object passed to createAdvancedPage() at "/path/to/helper.js": "count" parameter must be a non-negative integer. Got: "-15"],
+  "text": "The plugin threw an error during "createPages" hook",
+}
+`;
+
+exports[`createPages > 'throws error for (bad-helper-invalid-pagination-limit)' > error 1`] = `
+{
+  "error": [Error: Invalid pagination object passed to createAdvancedPage() at "/path/to/helper.js": "limit" parameter must be a positive integer. Got: "-10"],
+  "text": "The plugin threw an error during "createPages" hook",
+}
+`;
+
+exports[`createPages > 'throws error for (bad-helper-invalid-pagination-route)' > error 1`] = `
+{
+  "error": [Error: Invalid pagination object passed to createAdvancedPage() at "/path/to/helper.js": Unrecognized route "foo"],
+  "text": "The plugin threw an error during "createPages" hook",
+}
+`;
+
+exports[`createPages > 'throws error for (bad-helper-invalid-route-params)' > error 1`] = `
+{
+  "error": [TypeError: Error generating a path for route "/about/:name" with params "{}": Expected "name" to be a string],
+  "text": "The plugin threw an error during "createPages" hook:
+ Error while running page helper function at "/path/to/helper.js"",
+}
+`;
+
+exports[`createPages > 'throws error for (bad-helper-invalid-type)' > error 1`] = `
+{
+  "error": [TypeError: helperFn is not a function],
+  "text": "The plugin threw an error during "createPages" hook:
+ Error while running page helper function at "/path/to/helper.js"",
+}
+`;
+
+exports[`createPages > 'throws error for (bad-helper-js-error)' > error 1`] = `
+{
+  "error": [Error: some error],
+  "text": "The plugin threw an error during "createPages" hook:
+ Error while running page helper function at "/path/to/helper.js"",
+}
+`;
+
+exports[`createPages > 'throws error for (bad-helper-undefined-route)' > error 1`] = `
+{
+  "error": [Error: Unrecognized route "blog" passed to createAdvancedPage() at "/path/to/helper.js"],
+  "text": "The plugin threw an error during "createPages" hook",
+}
+`;
+
+exports[`createPages > 'throws error for (duplicated-routes)' > error 1`] = `
+{
+  "error": [Error: Unable to create route with name "about". Route name already exists.],
+  "text": "The plugin threw an error during "createPages" hook",
+}
+`;
+
+exports[`createPages > 'throws error for (invalid-helper)' > error 1`] = `
+{
+  "error": [Error: Unable to import ESM module "/path/to/whatever.js"],
+  "text": "The plugin threw an error during "createPages" hook:
+ Error while running page helper function at "/path/to/whatever.js"",
+}
+`;
+
+exports[`createPages > correctly calls graphql pages query 1`] = `
+[
+  [
+    "{
+      allPage {
+        nodes {
+          id
+          routes {
+            name
+            path
+          }
+          title
+          templateName
+          template
+          helper
+        }
+      }
+    }",
+  ],
+]
+`;
+
+exports[`createPages > correctly handles graphql errors 1`] = `
+{
+  "error": [Error: Some fatal error],
+  "text": "The plugin threw an error during "createPages" hook",
+}
+`;
+
+exports[`createPages > correctly handles graphql result errors 1`] = `
+{
+  "error": [Error: Some error],
+  "text": "The plugin threw an error during "createPages" hook:
+ Failed running "create-pages" GraphQL Query",
+}
+`;
+
+exports[`createPages > correctly handles routeMap write errors 1`] = `
+{
+  "error": [Error: ENOENT: no such file or directory,  '/path/to/.cache'],
+  "text": "The plugin threw an error during "createPages" hook:
+ Error writing route map export file",
+}
+`;

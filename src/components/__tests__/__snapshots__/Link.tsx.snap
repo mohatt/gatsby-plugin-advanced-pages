@@ -1,0 +1,37 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`<Link /> > should render correctly 1`] = `
+<a
+  href="/site/"
+/>
+`;
+
+exports[`<Link /> > should render correctly when called with a non-existent route 1`] = `
+<a
+  href="/site/invalid-route"
+/>
+`;
+
+exports[`<Link /> > should render correctly when called with a non-existent route 2`] = `
+<a
+  href="/site/some/path"
+/>
+`;
+
+exports[`<Link /> > should render correctly with route params 1`] = `
+<a
+  href="/site/blog/post/hello-world"
+/>
+`;
+
+exports[`<Link /> > should render correctly with route params and scope 1`] = `
+<a
+  href="/site/blog/tag/news/page/5"
+/>
+`;
+
+exports[`<Link /> > should render correctly with with no route prop 1`] = `
+<a
+  href="?!"
+/>
+`;

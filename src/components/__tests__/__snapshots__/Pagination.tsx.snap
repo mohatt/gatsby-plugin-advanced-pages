@@ -1,0 +1,1099 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`<Pagination /> > correctly defines pagination fragment 1`] = `
+[
+  [
+    [
+      "
+  fragment Pagination on PageInfo {
+    perPage
+    pageCount
+    itemCount
+    currentPage
+    hasNextPage
+    hasPreviousPage
+  }
+",
+    ],
+  ],
+]
+`;
+
+exports[`<Pagination /> > correctly handles pageInfo options ('1-page-first') 1`] = `
+<nav
+  aria-label="Pagination Navigation"
+  role="navigation"
+>
+  <ul
+    class="pagination"
+  >
+    <li
+      class="page-item page-item__first disabled"
+    >
+      <a
+        class="page-link"
+      >
+        « First
+      </a>
+    </li>
+    <li
+      class="page-item page-item__prev disabled"
+    >
+      <a
+        class="page-link"
+      >
+        ← Previous
+      </a>
+    </li>
+    <li
+      class="page-item active"
+    >
+      <a>
+        {"to":"whatever","scope":null,"className":"page-link","children":"1"}
+      </a>
+    </li>
+    <li
+      class="page-item page-item__next disabled"
+    >
+      <a
+        class="page-link"
+      >
+        Next →
+      </a>
+    </li>
+    <li
+      class="page-item page-item__last disabled"
+    >
+      <a
+        class="page-link"
+      >
+        Last »
+      </a>
+    </li>
+  </ul>
+</nav>
+`;
+
+exports[`<Pagination /> > correctly handles pageInfo options ('3-page-last') 1`] = `
+<nav
+  aria-label="Pagination Navigation"
+  role="navigation"
+>
+  <ul
+    class="pagination"
+  >
+    <li
+      class="page-item page-item__first"
+    >
+      <a>
+        {"to":"whatever","scope":null,"className":"page-link","children":"« First"}
+      </a>
+    </li>
+    <li
+      class="page-item page-item__prev"
+    >
+      <a>
+        {"to":"whatever","params":{"page":2},"scope":"pagination","className":"page-link","children":"← Previous"}
+      </a>
+    </li>
+    <li
+      class="page-item"
+    >
+      <a>
+        {"to":"whatever","scope":null,"className":"page-link","children":"1"}
+      </a>
+    </li>
+    <li
+      class="page-item"
+    >
+      <a>
+        {"to":"whatever","params":{"page":2},"scope":"pagination","className":"page-link","children":"2"}
+      </a>
+    </li>
+    <li
+      class="page-item active"
+    >
+      <a>
+        {"to":"whatever","params":{"page":3},"scope":"pagination","className":"page-link","children":"3"}
+      </a>
+    </li>
+    <li
+      class="page-item page-item__next disabled"
+    >
+      <a
+        class="page-link"
+      >
+        Next →
+      </a>
+    </li>
+    <li
+      class="page-item page-item__last disabled"
+    >
+      <a
+        class="page-link"
+      >
+        Last »
+      </a>
+    </li>
+  </ul>
+</nav>
+`;
+
+exports[`<Pagination /> > correctly handles pageInfo options ('12-page-8th') 1`] = `
+<nav
+  aria-label="Pagination Navigation"
+  role="navigation"
+>
+  <ul
+    class="pagination"
+  >
+    <li
+      class="page-item page-item__first"
+    >
+      <a>
+        {"to":"whatever","scope":null,"className":"page-link","children":"« First"}
+      </a>
+    </li>
+    <li
+      class="page-item page-item__prev"
+    >
+      <a>
+        {"to":"whatever","params":{"page":7},"scope":"pagination","className":"page-link","children":"← Previous"}
+      </a>
+    </li>
+    <li
+      class="page-item"
+    >
+      <a>
+        {"to":"whatever","params":{"page":6},"scope":"pagination","className":"page-link","children":"6"}
+      </a>
+    </li>
+    <li
+      class="page-item"
+    >
+      <a>
+        {"to":"whatever","params":{"page":7},"scope":"pagination","className":"page-link","children":"7"}
+      </a>
+    </li>
+    <li
+      class="page-item active"
+    >
+      <a>
+        {"to":"whatever","params":{"page":8},"scope":"pagination","className":"page-link","children":"8"}
+      </a>
+    </li>
+    <li
+      class="page-item"
+    >
+      <a>
+        {"to":"whatever","params":{"page":9},"scope":"pagination","className":"page-link","children":"9"}
+      </a>
+    </li>
+    <li
+      class="page-item"
+    >
+      <a>
+        {"to":"whatever","params":{"page":10},"scope":"pagination","className":"page-link","children":"10"}
+      </a>
+    </li>
+    <li
+      class="page-item"
+    >
+      <a>
+        {"to":"whatever","params":{"page":11},"scope":"pagination","className":"page-link","children":"11"}
+      </a>
+    </li>
+    <li
+      class="page-item page-item__next"
+    >
+      <a>
+        {"to":"whatever","params":{"page":9},"scope":"pagination","className":"page-link","children":"Next →"}
+      </a>
+    </li>
+    <li
+      class="page-item page-item__last"
+    >
+      <a>
+        {"to":"whatever","params":{"page":12},"scope":"pagination","className":"page-link","children":"Last »"}
+      </a>
+    </li>
+  </ul>
+</nav>
+`;
+
+exports[`<Pagination /> > renders correctly with custom labels 1`] = `
+<nav
+  aria-label="Pagination Navigation"
+  role="navigation"
+>
+  <ul
+    class="pagination"
+  >
+    <li
+      class="page-item page-item__first"
+    >
+      <a>
+        {"to":"whatever","scope":null,"className":"page-link","children":"« First custom"}
+      </a>
+    </li>
+    <li
+      class="page-item page-item__prev"
+    >
+      <a>
+        {"to":"whatever","params":{"page":3},"scope":"pagination","className":"page-link","children":"← Previous custom"}
+      </a>
+    </li>
+    <li
+      class="page-item"
+    >
+      <a>
+        {"to":"whatever","scope":null,"className":"page-link","children":"1"}
+      </a>
+    </li>
+    <li
+      class="page-item"
+    >
+      <a>
+        {"to":"whatever","params":{"page":2},"scope":"pagination","className":"page-link","children":"2"}
+      </a>
+    </li>
+    <li
+      class="page-item"
+    >
+      <a>
+        {"to":"whatever","params":{"page":3},"scope":"pagination","className":"page-link","children":"3"}
+      </a>
+    </li>
+    <li
+      class="page-item active"
+    >
+      <a>
+        {"to":"whatever","params":{"page":4},"scope":"pagination","className":"page-link","children":"4"}
+      </a>
+    </li>
+    <li
+      class="page-item"
+    >
+      <a>
+        {"to":"whatever","params":{"page":5},"scope":"pagination","className":"page-link","children":"5"}
+      </a>
+    </li>
+    <li
+      class="page-item"
+    >
+      <a>
+        {"to":"whatever","params":{"page":6},"scope":"pagination","className":"page-link","children":"6"}
+      </a>
+    </li>
+    <li
+      class="page-item page-item__next"
+    >
+      <a>
+        {"to":"whatever","params":{"page":5},"scope":"pagination","className":"page-link","children":"Next → custom"}
+      </a>
+    </li>
+    <li
+      class="page-item page-item__last"
+    >
+      <a>
+        {"to":"whatever","params":{"page":9},"scope":"pagination","className":"page-link","children":"Last » custom"}
+      </a>
+    </li>
+  </ul>
+</nav>
+`;
+
+exports[`<Pagination /> > renders correctly with custom range 1`] = `
+<nav
+  aria-label="Pagination Navigation"
+  role="navigation"
+>
+  <ul
+    class="pagination"
+  >
+    <li
+      class="page-item page-item__first"
+    >
+      <a>
+        {"to":"whatever","scope":null,"className":"page-link","children":"« First"}
+      </a>
+    </li>
+    <li
+      class="page-item page-item__prev"
+    >
+      <a>
+        {"to":"whatever","params":{"page":3},"scope":"pagination","className":"page-link","children":"← Previous"}
+      </a>
+    </li>
+    <li
+      class="page-item active"
+    >
+      <a>
+        {"to":"whatever","params":{"page":4},"scope":"pagination","className":"page-link","children":"4"}
+      </a>
+    </li>
+    <li
+      class="page-item page-item__next"
+    >
+      <a>
+        {"to":"whatever","params":{"page":5},"scope":"pagination","className":"page-link","children":"Next →"}
+      </a>
+    </li>
+    <li
+      class="page-item page-item__last"
+    >
+      <a>
+        {"to":"whatever","params":{"page":9},"scope":"pagination","className":"page-link","children":"Last »"}
+      </a>
+    </li>
+  </ul>
+</nav>
+`;
+
+exports[`<Pagination /> > renders correctly with custom range 2`] = `
+<nav
+  aria-label="Pagination Navigation"
+  role="navigation"
+>
+  <ul
+    class="pagination"
+  >
+    <li
+      class="page-item page-item__first"
+    >
+      <a>
+        {"to":"whatever","scope":null,"className":"page-link","children":"« First"}
+      </a>
+    </li>
+    <li
+      class="page-item page-item__prev"
+    >
+      <a>
+        {"to":"whatever","params":{"page":3},"scope":"pagination","className":"page-link","children":"← Previous"}
+      </a>
+    </li>
+    <li
+      class="page-item"
+    >
+      <a>
+        {"to":"whatever","params":{"page":3},"scope":"pagination","className":"page-link","children":"3"}
+      </a>
+    </li>
+    <li
+      class="page-item active"
+    >
+      <a>
+        {"to":"whatever","params":{"page":4},"scope":"pagination","className":"page-link","children":"4"}
+      </a>
+    </li>
+    <li
+      class="page-item"
+    >
+      <a>
+        {"to":"whatever","params":{"page":5},"scope":"pagination","className":"page-link","children":"5"}
+      </a>
+    </li>
+    <li
+      class="page-item page-item__next"
+    >
+      <a>
+        {"to":"whatever","params":{"page":5},"scope":"pagination","className":"page-link","children":"Next →"}
+      </a>
+    </li>
+    <li
+      class="page-item page-item__last"
+    >
+      <a>
+        {"to":"whatever","params":{"page":9},"scope":"pagination","className":"page-link","children":"Last »"}
+      </a>
+    </li>
+  </ul>
+</nav>
+`;
+
+exports[`<Pagination /> > renders correctly with custom range 3`] = `
+<nav
+  aria-label="Pagination Navigation"
+  role="navigation"
+>
+  <ul
+    class="pagination"
+  >
+    <li
+      class="page-item page-item__first"
+    >
+      <a>
+        {"to":"whatever","scope":null,"className":"page-link","children":"« First"}
+      </a>
+    </li>
+    <li
+      class="page-item page-item__prev"
+    >
+      <a>
+        {"to":"whatever","params":{"page":3},"scope":"pagination","className":"page-link","children":"← Previous"}
+      </a>
+    </li>
+    <li
+      class="page-item"
+    >
+      <a>
+        {"to":"whatever","scope":null,"className":"page-link","children":"1"}
+      </a>
+    </li>
+    <li
+      class="page-item"
+    >
+      <a>
+        {"to":"whatever","params":{"page":2},"scope":"pagination","className":"page-link","children":"2"}
+      </a>
+    </li>
+    <li
+      class="page-item"
+    >
+      <a>
+        {"to":"whatever","params":{"page":3},"scope":"pagination","className":"page-link","children":"3"}
+      </a>
+    </li>
+    <li
+      class="page-item active"
+    >
+      <a>
+        {"to":"whatever","params":{"page":4},"scope":"pagination","className":"page-link","children":"4"}
+      </a>
+    </li>
+    <li
+      class="page-item"
+    >
+      <a>
+        {"to":"whatever","params":{"page":5},"scope":"pagination","className":"page-link","children":"5"}
+      </a>
+    </li>
+    <li
+      class="page-item"
+    >
+      <a>
+        {"to":"whatever","params":{"page":6},"scope":"pagination","className":"page-link","children":"6"}
+      </a>
+    </li>
+    <li
+      class="page-item"
+    >
+      <a>
+        {"to":"whatever","params":{"page":7},"scope":"pagination","className":"page-link","children":"7"}
+      </a>
+    </li>
+    <li
+      class="page-item page-item__next"
+    >
+      <a>
+        {"to":"whatever","params":{"page":5},"scope":"pagination","className":"page-link","children":"Next →"}
+      </a>
+    </li>
+    <li
+      class="page-item page-item__last"
+    >
+      <a>
+        {"to":"whatever","params":{"page":9},"scope":"pagination","className":"page-link","children":"Last »"}
+      </a>
+    </li>
+  </ul>
+</nav>
+`;
+
+exports[`<Pagination /> > renders correctly with custom range 4`] = `
+<nav
+  aria-label="Pagination Navigation"
+  role="navigation"
+>
+  <ul
+    class="pagination"
+  >
+    <li
+      class="page-item page-item__first"
+    >
+      <a>
+        {"to":"whatever","scope":null,"className":"page-link","children":"« First"}
+      </a>
+    </li>
+    <li
+      class="page-item page-item__prev"
+    >
+      <a>
+        {"to":"whatever","params":{"page":3},"scope":"pagination","className":"page-link","children":"← Previous"}
+      </a>
+    </li>
+    <li
+      class="page-item"
+    >
+      <a>
+        {"to":"whatever","scope":null,"className":"page-link","children":"1"}
+      </a>
+    </li>
+    <li
+      class="page-item"
+    >
+      <a>
+        {"to":"whatever","params":{"page":2},"scope":"pagination","className":"page-link","children":"2"}
+      </a>
+    </li>
+    <li
+      class="page-item"
+    >
+      <a>
+        {"to":"whatever","params":{"page":3},"scope":"pagination","className":"page-link","children":"3"}
+      </a>
+    </li>
+    <li
+      class="page-item active"
+    >
+      <a>
+        {"to":"whatever","params":{"page":4},"scope":"pagination","className":"page-link","children":"4"}
+      </a>
+    </li>
+    <li
+      class="page-item"
+    >
+      <a>
+        {"to":"whatever","params":{"page":5},"scope":"pagination","className":"page-link","children":"5"}
+      </a>
+    </li>
+    <li
+      class="page-item"
+    >
+      <a>
+        {"to":"whatever","params":{"page":6},"scope":"pagination","className":"page-link","children":"6"}
+      </a>
+    </li>
+    <li
+      class="page-item"
+    >
+      <a>
+        {"to":"whatever","params":{"page":7},"scope":"pagination","className":"page-link","children":"7"}
+      </a>
+    </li>
+    <li
+      class="page-item"
+    >
+      <a>
+        {"to":"whatever","params":{"page":8},"scope":"pagination","className":"page-link","children":"8"}
+      </a>
+    </li>
+    <li
+      class="page-item"
+    >
+      <a>
+        {"to":"whatever","params":{"page":9},"scope":"pagination","className":"page-link","children":"9"}
+      </a>
+    </li>
+    <li
+      class="page-item page-item__next"
+    >
+      <a>
+        {"to":"whatever","params":{"page":5},"scope":"pagination","className":"page-link","children":"Next →"}
+      </a>
+    </li>
+    <li
+      class="page-item page-item__last"
+    >
+      <a>
+        {"to":"whatever","params":{"page":9},"scope":"pagination","className":"page-link","children":"Last »"}
+      </a>
+    </li>
+  </ul>
+</nav>
+`;
+
+exports[`<Pagination /> > renders correctly with custom theme 1`] = `
+<nav
+  aria-label="Pagination Navigation"
+  role="navigation"
+>
+  <ul
+    class="pagination-custom"
+  >
+    <li
+      class="page-item-custom page-item__first-custom"
+    >
+      <a>
+        {"to":"whatever","scope":null,"className":"page-link-custom","children":"« First"}
+      </a>
+    </li>
+    <li
+      class="page-item-custom page-item__prev-custom"
+    >
+      <a>
+        {"to":"whatever","params":{"page":3},"scope":"pagination","className":"page-link-custom","children":"← Previous"}
+      </a>
+    </li>
+    <li
+      class="page-item-custom"
+    >
+      <a>
+        {"to":"whatever","scope":null,"className":"page-link-custom","children":"1"}
+      </a>
+    </li>
+    <li
+      class="page-item-custom"
+    >
+      <a>
+        {"to":"whatever","params":{"page":2},"scope":"pagination","className":"page-link-custom","children":"2"}
+      </a>
+    </li>
+    <li
+      class="page-item-custom"
+    >
+      <a>
+        {"to":"whatever","params":{"page":3},"scope":"pagination","className":"page-link-custom","children":"3"}
+      </a>
+    </li>
+    <li
+      class="page-item-custom active-custom"
+    >
+      <a>
+        {"to":"whatever","params":{"page":4},"scope":"pagination","className":"page-link-custom","children":"4"}
+      </a>
+    </li>
+    <li
+      class="page-item-custom"
+    >
+      <a>
+        {"to":"whatever","params":{"page":5},"scope":"pagination","className":"page-link-custom","children":"5"}
+      </a>
+    </li>
+    <li
+      class="page-item-custom"
+    >
+      <a>
+        {"to":"whatever","params":{"page":6},"scope":"pagination","className":"page-link-custom","children":"6"}
+      </a>
+    </li>
+    <li
+      class="page-item-custom page-item__next-custom"
+    >
+      <a>
+        {"to":"whatever","params":{"page":5},"scope":"pagination","className":"page-link-custom","children":"Next →"}
+      </a>
+    </li>
+    <li
+      class="page-item-custom page-item__last-custom"
+    >
+      <a>
+        {"to":"whatever","params":{"page":9},"scope":"pagination","className":"page-link-custom","children":"Last »"}
+      </a>
+    </li>
+  </ul>
+</nav>
+`;
+
+exports[`<Pagination /> > renders correctly with defaults 1`] = `
+<nav
+  aria-label="Pagination Navigation"
+  role="navigation"
+>
+  <ul
+    class="pagination"
+  >
+    <li
+      class="page-item page-item__first"
+    >
+      <a>
+        {"to":"whatever","scope":null,"className":"page-link","children":"« First"}
+      </a>
+    </li>
+    <li
+      class="page-item page-item__prev"
+    >
+      <a>
+        {"to":"whatever","params":{"page":3},"scope":"pagination","className":"page-link","children":"← Previous"}
+      </a>
+    </li>
+    <li
+      class="page-item"
+    >
+      <a>
+        {"to":"whatever","scope":null,"className":"page-link","children":"1"}
+      </a>
+    </li>
+    <li
+      class="page-item"
+    >
+      <a>
+        {"to":"whatever","params":{"page":2},"scope":"pagination","className":"page-link","children":"2"}
+      </a>
+    </li>
+    <li
+      class="page-item"
+    >
+      <a>
+        {"to":"whatever","params":{"page":3},"scope":"pagination","className":"page-link","children":"3"}
+      </a>
+    </li>
+    <li
+      class="page-item active"
+    >
+      <a>
+        {"to":"whatever","params":{"page":4},"scope":"pagination","className":"page-link","children":"4"}
+      </a>
+    </li>
+    <li
+      class="page-item"
+    >
+      <a>
+        {"to":"whatever","params":{"page":5},"scope":"pagination","className":"page-link","children":"5"}
+      </a>
+    </li>
+    <li
+      class="page-item"
+    >
+      <a>
+        {"to":"whatever","params":{"page":6},"scope":"pagination","className":"page-link","children":"6"}
+      </a>
+    </li>
+    <li
+      class="page-item page-item__next"
+    >
+      <a>
+        {"to":"whatever","params":{"page":5},"scope":"pagination","className":"page-link","children":"Next →"}
+      </a>
+    </li>
+    <li
+      class="page-item page-item__last"
+    >
+      <a>
+        {"to":"whatever","params":{"page":9},"scope":"pagination","className":"page-link","children":"Last »"}
+      </a>
+    </li>
+  </ul>
+</nav>
+`;
+
+exports[`<Pagination /> > renders correctly with full ui 1`] = `
+<nav
+  aria-label="Pagination Navigation"
+  role="navigation"
+>
+  <ul
+    class="pagination"
+  >
+    <li
+      class="page-item page-item__first"
+    >
+      <a>
+        {"to":"whatever","scope":null,"className":"page-link","children":"« First"}
+      </a>
+    </li>
+    <li
+      class="page-item page-item__prev"
+    >
+      <a>
+        {"to":"whatever","params":{"page":3},"scope":"pagination","className":"page-link","children":"← Previous"}
+      </a>
+    </li>
+    <li
+      class="page-item"
+    >
+      <a>
+        {"to":"whatever","scope":null,"className":"page-link","children":"1"}
+      </a>
+    </li>
+    <li
+      class="page-item"
+    >
+      <a>
+        {"to":"whatever","params":{"page":2},"scope":"pagination","className":"page-link","children":"2"}
+      </a>
+    </li>
+    <li
+      class="page-item"
+    >
+      <a>
+        {"to":"whatever","params":{"page":3},"scope":"pagination","className":"page-link","children":"3"}
+      </a>
+    </li>
+    <li
+      class="page-item active"
+    >
+      <a>
+        {"to":"whatever","params":{"page":4},"scope":"pagination","className":"page-link","children":"4"}
+      </a>
+    </li>
+    <li
+      class="page-item"
+    >
+      <a>
+        {"to":"whatever","params":{"page":5},"scope":"pagination","className":"page-link","children":"5"}
+      </a>
+    </li>
+    <li
+      class="page-item"
+    >
+      <a>
+        {"to":"whatever","params":{"page":6},"scope":"pagination","className":"page-link","children":"6"}
+      </a>
+    </li>
+    <li
+      class="page-item page-item__next"
+    >
+      <a>
+        {"to":"whatever","params":{"page":5},"scope":"pagination","className":"page-link","children":"Next →"}
+      </a>
+    </li>
+    <li
+      class="page-item page-item__last"
+    >
+      <a>
+        {"to":"whatever","params":{"page":9},"scope":"pagination","className":"page-link","children":"Last »"}
+      </a>
+    </li>
+  </ul>
+</nav>
+`;
+
+exports[`<Pagination /> > renders correctly with mini ui 1`] = `
+<nav
+  aria-label="Pagination Navigation"
+  role="navigation"
+>
+  <ul
+    class="pagination"
+  >
+    <li
+      class="page-item page-item__prev"
+    >
+      <a>
+        {"to":"whatever","params":{"page":3},"scope":"pagination","className":"page-link","children":"← Previous"}
+      </a>
+    </li>
+    <li
+      class="page-item page-item__next"
+    >
+      <a>
+        {"to":"whatever","params":{"page":5},"scope":"pagination","className":"page-link","children":"Next →"}
+      </a>
+    </li>
+  </ul>
+</nav>
+`;
+
+exports[`<Pagination /> > renders correctly with simple ui 1`] = `
+<nav
+  aria-label="Pagination Navigation"
+  role="navigation"
+>
+  <ul
+    class="pagination"
+  >
+    <li
+      class="page-item page-item__prev"
+    >
+      <a>
+        {"to":"whatever","params":{"page":3},"scope":"pagination","className":"page-link","children":"← Previous"}
+      </a>
+    </li>
+    <li
+      class="page-item"
+    >
+      <a>
+        {"to":"whatever","scope":null,"className":"page-link","children":"1"}
+      </a>
+    </li>
+    <li
+      class="page-item"
+    >
+      <a>
+        {"to":"whatever","params":{"page":2},"scope":"pagination","className":"page-link","children":"2"}
+      </a>
+    </li>
+    <li
+      class="page-item"
+    >
+      <a>
+        {"to":"whatever","params":{"page":3},"scope":"pagination","className":"page-link","children":"3"}
+      </a>
+    </li>
+    <li
+      class="page-item active"
+    >
+      <a>
+        {"to":"whatever","params":{"page":4},"scope":"pagination","className":"page-link","children":"4"}
+      </a>
+    </li>
+    <li
+      class="page-item"
+    >
+      <a>
+        {"to":"whatever","params":{"page":5},"scope":"pagination","className":"page-link","children":"5"}
+      </a>
+    </li>
+    <li
+      class="page-item"
+    >
+      <a>
+        {"to":"whatever","params":{"page":6},"scope":"pagination","className":"page-link","children":"6"}
+      </a>
+    </li>
+    <li
+      class="page-item page-item__next"
+    >
+      <a>
+        {"to":"whatever","params":{"page":5},"scope":"pagination","className":"page-link","children":"Next →"}
+      </a>
+    </li>
+  </ul>
+</nav>
+`;
+
+exports[`<Pagination /> > shouldn't render disabled nav items when renderDisabled is false 1`] = `
+<nav
+  aria-label="Pagination Navigation"
+  role="navigation"
+>
+  <ul
+    class="pagination"
+  >
+    <li
+      class="page-item active"
+    >
+      <a>
+        {"to":"whatever","scope":null,"className":"page-link","children":"1"}
+      </a>
+    </li>
+    <li
+      class="page-item"
+    >
+      <a>
+        {"to":"whatever","params":{"page":2},"scope":"pagination","className":"page-link","children":"2"}
+      </a>
+    </li>
+    <li
+      class="page-item"
+    >
+      <a>
+        {"to":"whatever","params":{"page":3},"scope":"pagination","className":"page-link","children":"3"}
+      </a>
+    </li>
+    <li
+      class="page-item"
+    >
+      <a>
+        {"to":"whatever","params":{"page":4},"scope":"pagination","className":"page-link","children":"4"}
+      </a>
+    </li>
+    <li
+      class="page-item"
+    >
+      <a>
+        {"to":"whatever","params":{"page":5},"scope":"pagination","className":"page-link","children":"5"}
+      </a>
+    </li>
+    <li
+      class="page-item"
+    >
+      <a>
+        {"to":"whatever","params":{"page":6},"scope":"pagination","className":"page-link","children":"6"}
+      </a>
+    </li>
+    <li
+      class="page-item page-item__next"
+    >
+      <a>
+        {"to":"whatever","params":{"page":2},"scope":"pagination","className":"page-link","children":"Next →"}
+      </a>
+    </li>
+    <li
+      class="page-item page-item__last"
+    >
+      <a>
+        {"to":"whatever","params":{"page":9},"scope":"pagination","className":"page-link","children":"Last »"}
+      </a>
+    </li>
+  </ul>
+</nav>
+`;
+
+exports[`<Pagination /> > shouldn't render disabled nav items when renderDisabled is false 2`] = `
+<nav
+  aria-label="Pagination Navigation"
+  role="navigation"
+>
+  <ul
+    class="pagination"
+  >
+    <li
+      class="page-item page-item__first"
+    >
+      <a>
+        {"to":"whatever","scope":null,"className":"page-link","children":"« First"}
+      </a>
+    </li>
+    <li
+      class="page-item page-item__prev"
+    >
+      <a>
+        {"to":"whatever","params":{"page":8},"scope":"pagination","className":"page-link","children":"← Previous"}
+      </a>
+    </li>
+    <li
+      class="page-item"
+    >
+      <a>
+        {"to":"whatever","params":{"page":4},"scope":"pagination","className":"page-link","children":"4"}
+      </a>
+    </li>
+    <li
+      class="page-item"
+    >
+      <a>
+        {"to":"whatever","params":{"page":5},"scope":"pagination","className":"page-link","children":"5"}
+      </a>
+    </li>
+    <li
+      class="page-item"
+    >
+      <a>
+        {"to":"whatever","params":{"page":6},"scope":"pagination","className":"page-link","children":"6"}
+      </a>
+    </li>
+    <li
+      class="page-item"
+    >
+      <a>
+        {"to":"whatever","params":{"page":7},"scope":"pagination","className":"page-link","children":"7"}
+      </a>
+    </li>
+    <li
+      class="page-item"
+    >
+      <a>
+        {"to":"whatever","params":{"page":8},"scope":"pagination","className":"page-link","children":"8"}
+      </a>
+    </li>
+    <li
+      class="page-item active"
+    >
+      <a>
+        {"to":"whatever","params":{"page":9},"scope":"pagination","className":"page-link","children":"9"}
+      </a>
+    </li>
+  </ul>
+</nav>
+`;
+
+exports[`<Pagination /> > shouldn't render disabled nav items when renderDisabled is false 3`] = `
+<nav
+  aria-label="Pagination Navigation"
+  role="navigation"
+>
+  <ul
+    class="pagination"
+  >
+    <li
+      class="page-item active"
+    >
+      <a>
+        {"to":"whatever","scope":null,"className":"page-link","children":"1"}
+      </a>
+    </li>
+  </ul>
+</nav>
+`;

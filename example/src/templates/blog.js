@@ -23,48 +23,54 @@ const BlogTemplate = ({ data, pageContext }) => {
   return (
     <Layout title={title}>
       <div>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ducimus, vero, obcaecati, aut, error quam sapiente nemo saepe.</p>
+        <p>
+          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ducimus, vero, obcaecati, aut,
+          error quam sapiente nemo saepe.
+        </p>
       </div>
-      <div class="row">
-        <div className="col-md-9">
-        {feed.edges.map(({ node }) => (
-          <div key={node.frontmatter.slug} className="card mb-4">
-            <div className="card-body">
-              <h2 className="card-title">{node.frontmatter.title}</h2>
-              <p className="card-text">{node.excerpt}</p>
-              <Link to="blog.post" params={{post: node.frontmatter.slug}}>Read More →</Link>
+      <div class='row'>
+        <div className='col-md-9'>
+          {feed.edges.map(({ node }) => (
+            <div key={node.frontmatter.slug} className='card mb-4'>
+              <div className='card-body'>
+                <h2 className='card-title'>{node.frontmatter.title}</h2>
+                <p className='card-text'>{node.excerpt}</p>
+                <Link to='blog.post' params={{ post: node.frontmatter.slug }}>
+                  Read More →
+                </Link>
+              </div>
+              <div className='card-footer text-muted'>Posted on January 1, 2017</div>
             </div>
-            <div className="card-footer text-muted">Posted on January 1, 2017</div>
-          </div> 
-        ))}
+          ))}
         </div>
-        <div className="col-md-3">
-          <div className="card mb-4">
-            <h5 className="card-header">Tags</h5>
-            <div className="card-body">
-              <ul className="list-unstyled mb-0">
+        <div className='col-md-3'>
+          <div className='card mb-4'>
+            <h5 className='card-header'>Tags</h5>
+            <div className='card-body'>
+              <ul className='list-unstyled mb-0'>
                 {tags.group.map(({ fieldValue, totalCount }) => (
                   <li key={fieldValue}>
-                    <Link to="blog.tag" params={{tag: fieldValue}}>
-                      {fieldValue} <label className="badge-pill badge-primary">{totalCount}</label>
+                    <Link to='blog.tag' params={{ tag: fieldValue }}>
+                      {fieldValue} <label className='badge-pill badge-primary'>{totalCount}</label>
                     </Link>
                   </li>
                 ))}
               </ul>
             </div>
           </div>
-        </div> 
+        </div>
       </div>
-      <Pagination route={route} params={params} pageInfo={feed.pageInfo} ui="simple" />
+      <Pagination route={route} params={params} pageInfo={feed.pageInfo} ui='simple' />
     </Layout>
-)}
+  )
+}
 
 export const query = graphql`
   query Blog($id: String!, $limit: Int!, $offset: Int!, $filter: MarkdownRemarkFilterInput!) {
     page(id: { eq: $id }) {
       title
     }
-    feed: allMarkdownRemark(limit: $limit, skip: $offset, filter: $filter){
+    feed: allMarkdownRemark(limit: $limit, skip: $offset, filter: $filter) {
       edges {
         node {
           excerpt(pruneLength: 200)
@@ -80,7 +86,7 @@ export const query = graphql`
       }
     }
     tags: allMarkdownRemark {
-      group(field: {frontmatter: {tags: SELECT}}) {
+      group(field: { frontmatter: { tags: SELECT } }) {
         fieldValue
         totalCount
       }

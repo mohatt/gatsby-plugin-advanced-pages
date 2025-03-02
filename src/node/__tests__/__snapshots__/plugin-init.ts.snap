@@ -1,0 +1,58 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`onPluginInit > correctly initializes custom options 1`] = `
+{
+  "_root": "/virtual/project",
+  "basePath": "/blog",
+  "directories": {
+    "helpers": "/virtual/project/gatsby/pages",
+    "templates": "/virtual/project/custom/templates",
+  },
+  "pages": [],
+  "pagination": {
+    "limit": 10,
+    "suffix": "/page/:page",
+  },
+  "plugins": [],
+  "template": "/virtual/project/custom/templates/default.js",
+  "typeNames": {
+    "page": "Page",
+    "pageRoute": "PageRoute",
+  },
+}
+`;
+
+exports[`onPluginInit > correctly initializes default options 1`] = `
+{
+  "_root": "/virtual/project",
+  "basePath": "/",
+  "directories": {
+    "helpers": "/virtual/project/gatsby/pages",
+    "templates": "/virtual/project/src/templates",
+  },
+  "pages": [],
+  "pagination": {
+    "limit": 10,
+    "suffix": "/page/:page",
+  },
+  "plugins": [],
+  "template": null,
+  "typeNames": {
+    "page": "Page",
+    "pageRoute": "PageRoute",
+  },
+}
+`;
+
+exports[`onPluginInit > options.get() throws when options are not initialized 1`] = `[Error: Cant fetch options because they are not initialized]`;
+
+exports[`onPluginInit > rejects invalid options and throws errors > Invalid Template 1`] = `
+{
+  "error": [Error: A path with value "whatever" could not be found at any of the following locations:
+ - "/virtual/project/src/templates/whatever
+ - "/virtual/project/whatever"],
+  "text": "The plugin threw an error during "onPluginInit" hook",
+}
+`;
+
+exports[`onPluginInit > reporter.get() throws when reporter is not initialized 1`] = `[Error: Cant fetch reporter instance because it is not initialized]`;

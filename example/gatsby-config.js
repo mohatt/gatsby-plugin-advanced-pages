@@ -9,6 +9,6 @@ module.exports = {
       },
     },
     `gatsby-transformer-remark`,
-    `gatsby-plugin-advanced-pages`
-  ]
+    `gatsby-plugin-advanced-pages`,
+  ],
 }
