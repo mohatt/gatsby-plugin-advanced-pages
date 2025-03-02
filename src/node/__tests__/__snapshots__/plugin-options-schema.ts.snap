@@ -28,7 +28,7 @@ exports[`pluginOptionsSchema > should invalidate options with incorrect values 1
 exports[`pluginOptionsSchema > should invalidate options with incorrect values 2`] = `
 [
   ""pagination.limit" must be a positive number",
-  ""pagination.suffix" with value "/some/path": Route suffix must contain the ':page' paramater (e.g '/pages/:page')",
+  ""pagination.suffix" with value "/some/path" must contain ':page' (e.g., '/pages/:page') to support pagination.",
 ]
 `;
 

@@ -36,7 +36,7 @@ exports[`pagesSchema > 'should invalidate routes with invalid values' 1`] = `fal
 
 exports[`pagesSchema > 'should invalidate routes with invalid values' 2`] = `
 [
-  ""pages[0].routes.foo": Route path must be a string starting with '/'",
+  ""pages[0].routes.foo": Route paths must be strings that start with '/'",
   ""pages[1].routes.bar" is not allowed to be empty",
   ""pages[2].routes.third" must be a string",
 ]

@@ -258,7 +258,7 @@ exports[`sourceNodes > 'throws for invalid YAML syntax in pages.config.yaml' 1`]
 
 exports[`sourceNodes > 'throws for invalid pages config file schema' 1`] = `
 {
-  "error": [ValidationError: "pages[0].routes.foo": Route path must be a string starting with '/'],
+  "error": [ValidationError: "pages[0].routes.foo": Route paths must be strings that start with '/'],
   "text": "The plugin threw an error during "sourceNodes" hook:
  Unable to validate pages config file "/virtual/project/pages.config.yaml"",
 }
