@@ -1,3 +1,21 @@
+# [5.0.0](https://github.com/mohatt/gatsby-plugin-advanced-pages/compare/v4.0.0...v5.0.0) (2025-03-02)
+
+
+### Features
+
+* **plugin:** refactor plugin source to TypeScript for better type safety ([51117ef](https://github.com/mohatt/gatsby-plugin-advanced-pages/commit/51117ef2f8f1614911e24cd93fff26029ff77834))
+* **plugin:** migrate the plugin to native ES modules, add CJS & ESM builds ([e12f0a0](https://github.com/mohatt/gatsby-plugin-advanced-pages/commit/e12f0a0c98a7dee4d2f589a9f0c73ec610f6826e))
+
+### chore
+
+* **deps:** update deps ([cde2a69](https://github.com/mohatt/gatsby-plugin-advanced-pages/commit/cde2a697cec4a7b453ac6076593b94100a5ff209))
+
+
+### BREAKING CHANGES
+
+* **plugin:** The plugin is now built with native ES module syntax.
+* **plugin:** The plugin now requires at least Gatsby v5.10
+
 # [4.0.0](https://github.com/mohatt/gatsby-plugin-advanced-pages/compare/v3.0.1...v4.0.0) (2025-02-23)
 
 
