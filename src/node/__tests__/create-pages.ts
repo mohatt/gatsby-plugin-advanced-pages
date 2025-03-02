@@ -18,13 +18,11 @@ describe('createPages', () => {
   const helperFile = '/path/to/helper.js'
 
   beforeEach(() => {
+    setupPlugin()
+    resetVFS()
     graphql.mockReset()
     createPage.mockReset()
     getNodesByType.mockClear()
-    resetVFS()
-    vi.resetModules()
-    vi.doUnmock(helperFile)
-    setupPlugin()
   })
 
   it('correctly calls graphql pages query', async () => {

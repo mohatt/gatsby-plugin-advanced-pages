@@ -1,8 +1,8 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`pagesSchema > should invalidate empty fields 1`] = `false`;
+exports[`pagesSchema > 'should invalidate empty fields' 1`] = `false`;
 
-exports[`pagesSchema > should invalidate empty fields 2`] = `
+exports[`pagesSchema > 'should invalidate empty fields' 2`] = `
 [
   ""pages[0].title" is not allowed to be empty",
   ""pages[0].template" is not allowed to be empty",
@@ -11,9 +11,9 @@ exports[`pagesSchema > should invalidate empty fields 2`] = `
 ]
 `;
 
-exports[`pagesSchema > should invalidate fields with incorrect data types 1`] = `false`;
+exports[`pagesSchema > 'should invalidate fields with incorrect data types' 1`] = `false`;
 
-exports[`pagesSchema > should invalidate fields with incorrect data types 2`] = `
+exports[`pagesSchema > 'should invalidate fields with incorrect data types' 2`] = `
 [
   ""pages[0].title" must be a string",
   ""pages[0].template" must be a string",
@@ -23,18 +23,18 @@ exports[`pagesSchema > should invalidate fields with incorrect data types 2`] = 
 ]
 `;
 
-exports[`pagesSchema > should invalidate required fields with missing values 1`] = `false`;
+exports[`pagesSchema > 'should invalidate required fields with missing values' 1`] = `false`;
 
-exports[`pagesSchema > should invalidate required fields with missing values 2`] = `
+exports[`pagesSchema > 'should invalidate required fields with missing values' 2`] = `
 [
   ""pages[0].title" is required",
   ""pages[0].routes" is required",
 ]
 `;
 
-exports[`pagesSchema > should invalidate routes with invalid values 1`] = `false`;
+exports[`pagesSchema > 'should invalidate routes with invalid values' 1`] = `false`;
 
-exports[`pagesSchema > should invalidate routes with invalid values 2`] = `
+exports[`pagesSchema > 'should invalidate routes with invalid values' 2`] = `
 [
   ""pages[0].routes.foo": Route path must be a string starting with '/'",
   ""pages[1].routes.bar" is not allowed to be empty",
@@ -42,14 +42,14 @@ exports[`pagesSchema > should invalidate routes with invalid values 2`] = `
 ]
 `;
 
-exports[`pagesSchema > should invalidate unknown fields  1`] = `false`;
+exports[`pagesSchema > 'should invalidate unknown fields ' 1`] = `false`;
 
-exports[`pagesSchema > should invalidate unknown fields  2`] = `
+exports[`pagesSchema > 'should invalidate unknown fields ' 2`] = `
 [
   ""pages[0].foo" is not allowed",
 ]
 `;
 
-exports[`pagesSchema > should validate correct fields 1`] = `true`;
+exports[`pagesSchema > 'should validate correct fields' 1`] = `true`;
 
-exports[`pagesSchema > should validate correct fields 2`] = `[]`;
+exports[`pagesSchema > 'should validate correct fields' 2`] = `[]`;

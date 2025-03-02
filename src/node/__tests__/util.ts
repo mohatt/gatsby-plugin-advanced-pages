@@ -1,5 +1,6 @@
 import path from 'path'
 import lodash from 'lodash'
+import { onTestFinished } from 'vitest'
 import { mountFile, setupPlugin, resetVFS, projectRoot } from '@test/util'
 import { createPluginExport, getDefaultExport, ensurePath, reporter } from '../util'
 
@@ -101,8 +102,8 @@ describe('util', () => {
         it.each(localModules)('throws for invalid default export (mock: %s)', async (fileName) => {
           const modulePath = getModulePath(fileName)
           vi.doMock(modulePath, () => ({ default: null }))
+          onTestFinished(() => vi.doUnmock(modulePath))
           await expect(getDefaultExport(modulePath)).rejects.toMatchSnapshot({} as any)
-          vi.doUnmock(modulePath)
         })
       }
     })

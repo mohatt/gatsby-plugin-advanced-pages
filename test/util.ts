@@ -1,6 +1,7 @@
 import fs from 'fs'
 import path from 'path'
 import { vol, IFs } from 'memfs'
+import { onTestFinished } from 'vitest'
 import { onPluginInit } from '../src/node/plugin'
 import type { PluginOptions, PluginErrorMeta } from '../src/node/api'
 
@@ -11,6 +12,7 @@ export const projectRoot = '/virtual/project'
  * Changes plugin options by invoking the onPluginInit hook
  */
 export const setupPlugin = (options?: PluginOptions) => {
+  // Tracks internal plugin state
   const state = {
     errMap: {} as Record<
       PluginErrorMeta['id'],
@@ -18,6 +20,10 @@ export const setupPlugin = (options?: PluginOptions) => {
     >,
   }
 
+  // Make sure projectRoot directory is mounted
+  mountDir('.')
+
+  // Initialize plugin state
   onPluginInit(
     <any>{
       store: {
@@ -65,6 +71,11 @@ export const mountModule = (name: string, exports: any) => {
   const mountPath = path.resolve(projectRoot, name)
   vol.fromJSON({ [mountPath]: '//noop' })
   vi.doMock(mountPath, () => ({ default: exports }))
+  onTestFinished(() => {
+    vi.doUnmock(mountPath)
+    vi.resetModules()
+    vol.unlinkSync(mountPath)
+  })
 }
 
 /**

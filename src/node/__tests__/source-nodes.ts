@@ -14,10 +14,9 @@ describe('sourceNodes', () => {
   }
 
   beforeEach(() => {
-    createNode.mockReset()
-    vi.resetModules()
-    resetVFS()
     setupPlugin()
+    resetVFS()
+    createNode.mockReset()
   })
 
   it.each(testCases)('$title', async ({ files, throws, options }) => {
