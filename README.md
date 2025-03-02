@@ -7,6 +7,7 @@
 - [Installation](#installation)
 - [Demo](#demo)
 - [Usage](#usage)
+  - [TypeScript](#typescript)
   - [Creating pages](#creating-pages)
   - [Page helpers](#page-helpers)
   - [Passing data to templates](#passing-data-to-templates)
@@ -56,7 +57,7 @@ plugins: [
 ]
 ```
 
-### Usage in TypeScript Projects
+### TypeScript
 
 The plugin is fully **type-safe** and provides comprehensive TypeScript typings for all its exports.
 
@@ -423,13 +424,13 @@ The plugin exposes two hooks for getting and checking for the currently activate
 
 ### useRoute
 
-> `useRoute(): Route`
+> `(): Route`
 
 Gets the current active route based on `@reach/router` location history.
 
 ### useIsRoute
 
-> `useIsRoute(route: string): boolean`
+> `(route: string): boolean`
 
 Checks whether a given route is currently active.
 
@@ -439,49 +440,49 @@ These are the functions exposed by the plugin.
 
 ### createAdvancedPage
 
-> `createAdvancedPage({ route: string, params?: object, pagination?: object, ...context: any[] }): void`
+> `({ route: string, params?: object, pagination?: object, ...context: any[] }): void`
 
 Creates page(s) based on given input parameters. _Note: This function can only be called within [Page helpers](#page-helpers)._
 
 ### generatePath
 
-> `generatePath(route: string, params?: object, scope?: string, ignorePrefix?: boolean): string`
+> `(route: string, params?: object, scope?: string, ignorePrefix?: boolean): string`
 
 Generates a path for a specific route based on the given parameters.
 
 ### getPathGenerator
 
-> `getPathGenerator(route: string, scope?: string, ignorePrefix?: boolean): Function`
+> `(route: string, scope?: string, ignorePrefix?: boolean): Function`
 
 Returns a function to be used to generate paths for a specific route.
 
 ### navigate
 
-> `navigate(to: string, params?: object, scope?: string, options?: object): void`
+> `(to: string, params?: object, scope?: string, options?: object): void`
 
 Extends Gatsby's [navigate](https://www.gatsbyjs.org/docs/gatsby-link/#how-to-use-the-navigate-helper-function) to allow passing route names and params.
 
 ### getMatchingRoute
 
-> `getMatchingRoute(path: string, ignorePrefix?: boolean): Route`
+> `(path: string, ignorePrefix?: boolean): Route`
 
 Gets the route that matches a given path.
 
 ### getRoutes
 
-> `getRoutes(parent?: string): Route[]`
+> `(parent?: string): Route[]`
 
 Gets an array of all routes or routes nested under a given parent route.
 
 ### getRoute
 
-> `getRoute(route: string): Route`
+> `(route: string): Route`
 
 Gets the Route object of a given route name.
 
 ### routeExists
 
-> `routeExists(route: string): boolean`
+> `(route: string): boolean`
 
 Checks if a route is defined with the given name.
 
