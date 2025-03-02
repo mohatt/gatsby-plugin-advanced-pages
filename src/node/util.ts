@@ -6,7 +6,7 @@ import { validateOptionsSchema, Joi, PluginOptionsSchemaJoi, Schema } from 'gats
 import _ from 'lodash'
 import debug from 'debug'
 import type { GatsbyNode, NodePluginArgs, Reporter } from 'gatsby'
-import type { DefaultPluginOptions, PluginOptions } from './api'
+import type { DefaultPluginOptions, PluginOptions, PluginErrorMeta } from './api'
 
 /**
  * Represents the resolved internal options for the plugin.
@@ -119,16 +119,14 @@ export const reporter = (() => {
    * for better debugging in Gatsby's CLI.
    */
   const initialize = (instance: Reporter): Reporter => {
-    if (instance.setErrorMap != null) {
-      instance.setErrorMap({
-        10000: {
-          text: (context) => context.message,
-          category: 'USER',
-          level: 'ERROR',
-          type: 'PLUGIN',
-        },
-      })
-    }
+    instance.setErrorMap({
+      ['1500' satisfies PluginErrorMeta['id']]: {
+        text: (context: PluginErrorMeta['context']) => context.message,
+        category: 'THIRD_PARTY',
+        level: 'ERROR',
+        type: 'PLUGIN',
+      },
+    })
 
     ref = instance
     return instance
@@ -155,39 +153,28 @@ export const reporter = (() => {
    * - Otherwise, creates a new error instance from the given message.
    *
    * @param api The Gatsby Node API that caused the error.
-   *
-   * @param titleOrError The error message or PluginError object to display.
-   *
-   * @param error (Optional) The original error instance.
+   * @param err The error message or PluginError object to display.
    *
    * @throws - This function never returns; it always terminates execution.
    */
-  const error = (
-    api: keyof GatsbyNode,
-    titleOrError: string | PluginError | Error,
-    error?: Error,
-  ): never => {
+  const error = (api: keyof GatsbyNode, err: string | PluginError | Error): never => {
     const instance = get()
-    const prefix = `"gatsby-plugin-advanced-pages" threw an error during "${api}" hook`
+    const prefix = `The plugin threw an error during "${api}" hook`
 
     let title: string | undefined
     let mainError: Error | undefined
 
-    if (titleOrError instanceof PluginError) {
-      title = titleOrError.message
-      mainError = titleOrError.originalError
-    } else if (titleOrError instanceof Error) {
-      mainError = titleOrError
+    if (err instanceof PluginError) {
+      title = err.message
+      mainError = err.originalError
+    } else if (err instanceof Error) {
+      mainError = err
     } else {
-      title = titleOrError
+      title = err
     }
 
-    if (error) {
-      mainError = error
-    }
-
-    return instance.panic({
-      id: '10000',
+    return instance.panic(<PluginErrorMeta>{
+      id: '1500',
       context: {
         message: mainError && title ? `${prefix}:\n ${title}` : prefix,
       },

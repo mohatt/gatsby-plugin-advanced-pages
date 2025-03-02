@@ -1,4 +1,4 @@
-import { mountFile, mountModule, mountOptions, resetVFS } from '@test/util'
+import { mountFile, mountModule, setupPlugin, resetVFS } from '@test/util'
 import testCases from './__fixtures__/source-nodes'
 import { sourceNodes } from '../plugin'
 
@@ -17,11 +17,11 @@ describe('sourceNodes', () => {
     createNode.mockReset()
     vi.resetModules()
     resetVFS()
-    mountOptions()
+    setupPlugin()
   })
 
   it.each(testCases)('$title', async ({ files, throws, options }) => {
-    if (options) mountOptions(options)
+    if (options) setupPlugin(options)
     files.forEach((file) => {
       if (typeof file === 'string') mountFile(file)
       else if (Array.isArray(file.data)) mountModule(file.path, file.data)

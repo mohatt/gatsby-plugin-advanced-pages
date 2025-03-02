@@ -1,5 +1,5 @@
 import path from 'path'
-import { mountOptions, mountDir, mountModule, readFile, resetVFS } from '@test/util'
+import { setupPlugin, mountDir, mountModule, readFile, resetVFS } from '@test/util'
 import testCases from './__fixtures__/create-pages'
 import { createPages } from '../plugin'
 
@@ -24,7 +24,7 @@ describe('createPages', () => {
     resetVFS()
     vi.resetModules()
     vi.doUnmock(helperFile)
-    mountOptions()
+    setupPlugin()
   })
 
   it('correctly calls graphql pages query', async () => {

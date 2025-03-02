@@ -1,4 +1,4 @@
-import { mountOptions, mountFile } from '@test/util'
+import { setupPlugin, mountFile } from '@test/util'
 import { options, reporter } from '../util'
 
 describe('onPluginInit', () => {
@@ -11,14 +11,14 @@ describe('onPluginInit', () => {
   })
 
   it('correctly initializes default options', () => {
-    expect(() => mountOptions()).not.toThrow()
+    expect(() => setupPlugin()).not.toThrow()
     expect(options.get()).toMatchSnapshot()
   })
 
   it('correctly initializes custom options', () => {
     mountFile('./custom/templates/default.js')
     expect(() =>
-      mountOptions({
+      setupPlugin({
         basePath: '/blog',
         template: 'default.js',
         directories: {
@@ -31,7 +31,7 @@ describe('onPluginInit', () => {
 
   it('rejects invalid options and throws errors', () => {
     expect(() =>
-      mountOptions({
+      setupPlugin({
         template: 'whatever',
       }),
     ).toThrowErrorMatchingSnapshot('Invalid Template')

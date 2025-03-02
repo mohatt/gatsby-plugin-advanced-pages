@@ -234,14 +234,14 @@ exports[`sourceNodes > 'shows a warning for non existing pages config file' 1`] 
   "error": [Warning: "gatsby-plugin-advanced-pages" might not be working properly:
  - No pages config is defined in plugin options.
  - Unable to find a valid pages config file (eg. "pages.config.js") under "/virtual/project"],
-  "title": ""gatsby-plugin-advanced-pages" threw an error during "sourceNodes" hook",
+  "text": "The plugin threw an error during "sourceNodes" hook",
 }
 `;
 
 exports[`sourceNodes > 'throws for invalid JSON syntax in pages.config.json' 1`] = `
 {
   "error": [SyntaxError: Unexpected end of JSON input],
-  "title": ""gatsby-plugin-advanced-pages" threw an error during "sourceNodes" hook:
+  "text": "The plugin threw an error during "sourceNodes" hook:
  Failed to load config file "/virtual/project/pages.config.json"",
 }
 `;
@@ -251,7 +251,7 @@ exports[`sourceNodes > 'throws for invalid YAML syntax in pages.config.yaml' 1`]
   "error": [YAMLException: can not read an implicit mapping pair; a colon is missed in "/virtual/project/pages.config.yaml" at line 7, column 21:
       invalid_yaml_entry
                         ^],
-  "title": ""gatsby-plugin-advanced-pages" threw an error during "sourceNodes" hook:
+  "text": "The plugin threw an error during "sourceNodes" hook:
  Failed to load config file "/virtual/project/pages.config.yaml"",
 }
 `;
@@ -259,7 +259,7 @@ exports[`sourceNodes > 'throws for invalid YAML syntax in pages.config.yaml' 1`]
 exports[`sourceNodes > 'throws for invalid pages config file schema' 1`] = `
 {
   "error": [ValidationError: "pages[0].routes.foo": Route path must be a string starting with '/'],
-  "title": ""gatsby-plugin-advanced-pages" threw an error during "sourceNodes" hook:
+  "text": "The plugin threw an error during "sourceNodes" hook:
  Unable to validate pages config file "/virtual/project/pages.config.yaml"",
 }
 `;
@@ -269,13 +269,13 @@ exports[`sourceNodes > 'throws for pages with invalid template' 1`] = `
   "error": [Error: A path with value "./no/template.js" could not be found at any of the following locations:
  - "/virtual/project/src/templates/no/template.js
  - "/virtual/project/no/template.js"],
-  "title": ""gatsby-plugin-advanced-pages" threw an error during "sourceNodes" hook",
+  "text": "The plugin threw an error during "sourceNodes" hook",
 }
 `;
 
 exports[`sourceNodes > 'throws for pages with no template' 1`] = `
 {
   "error": [Error: Missing "template" metadata for page[0]: "foo". No default template is set in plugin options either.],
-  "title": ""gatsby-plugin-advanced-pages" threw an error during "sourceNodes" hook",
+  "text": "The plugin threw an error during "sourceNodes" hook",
 }
 `;

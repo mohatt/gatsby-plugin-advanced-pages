@@ -86,6 +86,17 @@ export interface DefaultPluginOptions {
 export type PluginOptions = DeepPartial<DefaultPluginOptions>
 
 /**
+ * The main plugin error representation in Gatsby's error map.
+ */
+export interface PluginErrorMeta {
+  id: '1500'
+  context: {
+    message: string
+  }
+  error: Error
+}
+
+/**
  * Represents a single page route node.
  * Used to define individual routes associated with a page.
  */

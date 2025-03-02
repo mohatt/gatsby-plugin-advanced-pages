@@ -51,7 +51,7 @@ exports[`onPluginInit > rejects invalid options and throws errors > Invalid Temp
   "error": [Error: A path with value "whatever" could not be found at any of the following locations:
  - "/virtual/project/src/templates/whatever
  - "/virtual/project/whatever"],
-  "title": ""gatsby-plugin-advanced-pages" threw an error during "onPluginInit" hook",
+  "text": "The plugin threw an error during "onPluginInit" hook",
 }
 `;
 

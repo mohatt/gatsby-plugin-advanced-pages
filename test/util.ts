@@ -1,9 +1,8 @@
 import fs from 'fs'
 import path from 'path'
-import { vi } from 'vitest'
 import { vol, IFs } from 'memfs'
 import { onPluginInit } from '../src/node/plugin'
-import type { PluginOptions } from '../src/node/api'
+import type { PluginOptions, PluginErrorMeta } from '../src/node/api'
 
 // Virtual Project Root
 export const projectRoot = '/virtual/project'
@@ -11,7 +10,14 @@ export const projectRoot = '/virtual/project'
 /**
  * Changes plugin options by invoking the onPluginInit hook
  */
-export function mountOptions(options?: PluginOptions) {
+export const setupPlugin = (options?: PluginOptions) => {
+  const state = {
+    errMap: {} as Record<
+      PluginErrorMeta['id'],
+      { text(context: PluginErrorMeta['context']): string }
+    >,
+  }
+
   onPluginInit(
     <any>{
       store: {
@@ -20,14 +26,15 @@ export function mountOptions(options?: PluginOptions) {
         }),
       },
       reporter: {
-        warn: vi.fn().mockImplementation((msg) => {
-          const error = new Error(msg)
+        warn: vi.fn().mockImplementation((message) => {
+          const error = new Error(message)
           error.name = 'Warning'
           throw error
         }),
-        panic: vi.fn().mockImplementation(({ error, context: { message: title } }) => {
-          throw { title, error }
+        panic: vi.fn().mockImplementation(({ id, error, context }: PluginErrorMeta) => {
+          throw { text: state.errMap[id].text(context), error }
         }),
+        setErrorMap: vi.fn().mockImplementation((map) => Object.assign(state.errMap, map)),
       },
     },
     { ...options, plugins: [] },

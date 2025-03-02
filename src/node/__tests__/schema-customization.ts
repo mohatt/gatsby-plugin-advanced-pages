@@ -1,4 +1,4 @@
-import { mountOptions } from '@test/util'
+import { setupPlugin } from '@test/util'
 import { createSchemaCustomization } from '../plugin'
 
 describe('createSchemaCustomization', () => {
@@ -7,7 +7,7 @@ describe('createSchemaCustomization', () => {
   const schema = { buildObjectType: (obj) => obj }
 
   it('correctly creates schema definitions', () => {
-    mountOptions()
+    setupPlugin()
 
     let error = null
     try {

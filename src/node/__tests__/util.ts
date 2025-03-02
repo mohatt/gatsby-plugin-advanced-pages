@@ -1,6 +1,6 @@
 import path from 'path'
 import lodash from 'lodash'
-import { mountFile, mountOptions, resetVFS, projectRoot } from '@test/util'
+import { mountFile, setupPlugin, resetVFS, projectRoot } from '@test/util'
 import { createPluginExport, getDefaultExport, ensurePath, reporter } from '../util'
 
 describe('util', () => {
@@ -8,7 +8,7 @@ describe('util', () => {
     vi.clearAllMocks()
     vi.resetAllMocks()
     resetVFS()
-    mountOptions()
+    setupPlugin()
   })
 
   describe('createPluginExport', () => {
