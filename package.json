@@ -1,6 +1,6 @@
 {
   "name": "gatsby-plugin-advanced-pages",
-  "version": "5.0.0",
+  "version": "5.0.1",
   "description": "A Gatsby plugin that makes it easy to create pages with dynamic features like pagination and custom routing",
   "keywords": [
     "gatsby",

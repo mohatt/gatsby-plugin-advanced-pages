@@ -1,3 +1,10 @@
+## [5.0.1](https://github.com/mohatt/gatsby-plugin-advanced-pages/compare/v5.0.0...v5.0.1) (2025-03-02)
+
+
+### Bug Fixes
+
+* **schema:** correct typo in plugin options schema ([50f1373](https://github.com/mohatt/gatsby-plugin-advanced-pages/commit/50f1373001bc18b6cc17be9b493f7d7fed619f78))
+
 # [5.0.0](https://github.com/mohatt/gatsby-plugin-advanced-pages/compare/v4.0.0...v5.0.0) (2025-03-02)
 
 
