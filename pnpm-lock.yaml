@@ -76,11 +76,11 @@ importers:
         specifier: 2.11.2
         version: 2.11.2(typescript@5.1.6)
       prettier:
-        specifier: 3.5.2
-        version: 3.5.2
+        specifier: 3.6.2
+        version: 3.6.2
       prettier-plugin-packagejson:
         specifier: 2.5.9
-        version: 2.5.9(prettier@3.5.2)
+        version: 2.5.9(prettier@3.6.2)
       react:
         specifier: 18.3.1
         version: 18.3.1
@@ -757,6 +757,7 @@ packages:
 
   '@builder.io/partytown@0.7.6':
     resolution: {integrity: sha512-snXIGNiZpqjno3XYQN2lbBB+05hsQR/LSttbtIW1c0gmZ7Kh/DIo0YrxlDxCDulAMFPFM8J+4voLwvYepSj3sw==}
+    deprecated: Package no longer supported. Contact Support at https://www.npmjs.com/support for more info.
     hasBin: true
 
   '@colors/colors@1.5.0':
@@ -5074,6 +5075,7 @@ packages:
   multer@1.4.5-lts.1:
     resolution: {integrity: sha512-ywPWvcDMeH+z9gQq5qYHCCy+ethsk4goepZ45GLD63fOu0YcNecQxi64nDs3qluZB+murG3/D4dJ7+dGctcCQQ==}
     engines: {node: '>= 6.0.0'}
+    deprecated: Multer 1.x is impacted by a number of vulnerabilities, which have been patched in 2.x. You should upgrade to the latest 2.x version.
 
   mute-stream@0.0.8:
     resolution: {integrity: sha512-nnbWWOkoWyUsTjKrhgD0dcz22mdkSnpYqbEjIm2nhwhuxlSkpywJmBo8h0ZqJdkp73mb90SssHkN4rsRaBAfAA==}
@@ -5815,8 +5817,8 @@ packages:
       prettier:
         optional: true
 
-  prettier@3.5.2:
-    resolution: {integrity: sha512-lc6npv5PH7hVqozBR7lkBNOGXV9vMwROAPlumdBkX0wTbbzPu/U1hk5yL8p2pt4Xoc+2mkT8t/sow2YrV/M5qg==}
+  prettier@3.6.2:
+    resolution: {integrity: sha512-I7AIg5boAr5R0FFtJ6rCfD+LFsWHp81dolrFD8S79U9tb8Az2nGrJncnMSnys+bpQJfRUzqs9hnA81OAA3hCuQ==}
     engines: {node: '>=14'}
     hasBin: true
 
@@ -7280,6 +7282,7 @@ packages:
   yurnalist@2.1.0:
     resolution: {integrity: sha512-PgrBqosQLM3gN2xBFIMDLACRTV9c365VqityKKpSTWpwR+U4LAFR3rSVyEoscWlu3EzX9+Y0I86GXUKxpHFl6w==}
     engines: {node: '>=4.0.0'}
+    deprecated: Package no longer supported. Contact Support at https://www.npmjs.com/support for more info.
 
 snapshots:
 
@@ -13844,14 +13847,14 @@ snapshots:
 
   prelude-ls@1.2.1: {}
 
-  prettier-plugin-packagejson@2.5.9(prettier@3.5.2):
+  prettier-plugin-packagejson@2.5.9(prettier@3.6.2):
     dependencies:
       sort-package-json: 2.15.0
       synckit: 0.9.2
     optionalDependencies:
-      prettier: 3.5.2
+      prettier: 3.6.2
 
-  prettier@3.5.2: {}
+  prettier@3.6.2: {}
 
   pretty-error@2.1.2:
     dependencies:
