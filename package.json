@@ -62,8 +62,8 @@
   "devDependencies": {
     "@semantic-release/changelog": "6.0.3",
     "@semantic-release/git": "10.0.1",
-    "@testing-library/dom": "10.4.0",
-    "@testing-library/react": "16.2.0",
+    "@testing-library/dom": "10.4.1",
+    "@testing-library/react": "16.3.0",
     "@types/js-yaml": "3.12.10",
     "@types/lodash": "4.17.16",
     "@types/node": "18.19.76",
