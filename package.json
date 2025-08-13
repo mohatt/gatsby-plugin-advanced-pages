@@ -75,7 +75,7 @@
     "gatsby": "5.14.1",
     "jsdom": "26.0.0",
     "memfs": "4.17.0",
-    "pkgroll": "2.11.2",
+    "pkgroll": "2.15.3",
     "prettier": "3.5.2",
     "prettier-plugin-packagejson": "2.5.9",
     "react": "18.3.1",
