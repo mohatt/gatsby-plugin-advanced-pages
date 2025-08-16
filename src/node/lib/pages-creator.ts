@@ -124,9 +124,9 @@ export default class PagesCreator {
     }
 
     const template = currentPage.template
-    const templateQuery =
-      templateArgs &&
-      new URLSearchParams(Object.entries(templateArgs).map(([k, v]) => [k, String(v)])).toString()
+    const templateQuery = templateArgs && Object.entries(templateArgs)
+      .map(([k, v]) => `${k}=${v}`) // no encodeURIComponent
+      .join('&')
     const templateUrl = templateQuery ? `${template}?${templateQuery}` : template
 
     const gatsbyPage: Page = {

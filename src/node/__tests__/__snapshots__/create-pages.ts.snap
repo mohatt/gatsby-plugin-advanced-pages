@@ -166,7 +166,7 @@ exports[`createPages > 'correctly creates pages (dynamic-template-args)' > creat
 [
   [
     {
-      "component": "/path/to/page.js?contentPath=content%2Fhello.mdx",
+      "component": "/path/to/page.js?contentPath=content/hello.mdx",
       "context": {
         "id": "page-id",
         "page": "hello",
@@ -176,7 +176,7 @@ exports[`createPages > 'correctly creates pages (dynamic-template-args)' > creat
   ],
   [
     {
-      "component": "/path/to/page.js?contentPath=content%2Fworld.mdx",
+      "component": "/path/to/page.js?contentPath=content/world.mdx",
       "context": {
         "id": "page-id",
         "page": "world",
