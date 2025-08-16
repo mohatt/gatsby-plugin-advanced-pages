@@ -46,7 +46,7 @@ jobs:
           key: ${{ runner.os }}-build-example-${{ hashFiles('**/example/package.json') }}
           restore-keys: |
             ${{ runner.os }}-build-example-npm-
-      - uses: actions/download-artifact@v4
+      - uses: actions/download-artifact@v5
         with:
           name: package-art
           path: example
@@ -64,7 +64,7 @@ jobs:
     runs-on: ubuntu-latest
     name: Deploy Example App
     steps:
-      - uses: actions/download-artifact@v4
+      - uses: actions/download-artifact@v5
         with:
           name: example-art
           path: public
