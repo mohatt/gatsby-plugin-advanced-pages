@@ -1,3 +1,10 @@
+## [5.1.1](https://github.com/mohatt/gatsby-plugin-advanced-pages/compare/v5.1.0...v5.1.1) (2025-08-16)
+
+
+### Bug Fixes
+
+* **plugin:** disable encodeURIComponent for custom template args ([438908a](https://github.com/mohatt/gatsby-plugin-advanced-pages/commit/438908ac321314712e2393f30b7befd3423765d0))
+
 # [5.1.0](https://github.com/mohatt/gatsby-plugin-advanced-pages/compare/v5.0.1...v5.1.0) (2025-08-16)
 
 
