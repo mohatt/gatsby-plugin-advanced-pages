@@ -106,7 +106,13 @@ export default class PagesCreator {
   /**
    * Creates a Gatsby page with optional pagination.
    */
-  private createPage({ route, params = {}, pagination, ...context }: CreateAdvancedPageProps) {
+  private createPage({
+    route,
+    params = {},
+    templateArgs,
+    pagination,
+    ...context
+  }: CreateAdvancedPageProps) {
     const { currentPage } = this
     if (typeof route !== 'string' || !route) {
       throw new PageHelperError('Route name', ' must be a non-empty string')
@@ -117,9 +123,15 @@ export default class PagesCreator {
       throw new PageHelperError(`Unrecognized route "${route}"`)
     }
 
+    const template = currentPage.template
+    const templateQuery =
+      templateArgs &&
+      new URLSearchParams(Object.entries(templateArgs).map(([k, v]) => [k, String(v)])).toString()
+    const templateUrl = templateQuery ? `${template}?${templateQuery}` : template
+
     const gatsbyPage: Page = {
       path: routeNode.pathGenerator(params),
-      component: currentPage.template,
+      component: templateUrl,
       context: {
         id: currentPage.id,
         ...params,

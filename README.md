@@ -440,7 +440,7 @@ These are the functions exposed by the plugin.
 
 ### createAdvancedPage
 
-> `({ route: string, params?: object, pagination?: object, ...context: any[] }): void`
+> `({ route: string, params?: object, templateArgs?: object, pagination?: object, ...context: any[] }): void`
 
 Creates page(s) based on given input parameters. _Note: This function can only be called within [Page helpers](#page-helpers)._
 

@@ -276,6 +276,30 @@ export default <
     },
   },
   {
+    title: 'correctly creates pages (dynamic-template-args)',
+    pages: [
+      {
+        id: 'page-id',
+        template: '/path/to/page.js',
+        helper,
+        routes: [{ name: 'page', path: '/pages/:page' }],
+      },
+    ],
+    helper: ({ createAdvancedPage }) => {
+      for (const slug of ['hello', 'world']) {
+        createAdvancedPage({
+          route: 'page',
+          params: {
+            page: slug,
+          },
+          templateArgs: {
+            contentPath: `content/${slug}.mdx`,
+          },
+        })
+      }
+    },
+  },
+  {
     title: 'correctly creates pages (dynamic-page)',
     pages: [
       {

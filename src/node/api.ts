@@ -150,6 +150,13 @@ export interface CreateAdvancedPageProps {
   params?: RouteParams
 
   /**
+   * Additional arguments to be passed to the page template.
+   */
+  templateArgs?: {
+    [k: string]: string | number
+  }
+
+  /**
    * Optional pagination settings for paginated pages.
    */
   pagination?: {

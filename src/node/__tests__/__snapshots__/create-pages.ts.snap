@@ -162,6 +162,33 @@ exports[`createPages > 'correctly creates pages (dynamic-page)' > createPage 1`]
 
 exports[`createPages > 'correctly creates pages (dynamic-page)' > routes.json 1`] = `"[{"name":"page","path":"/pages/:page","scopes":{}}]"`;
 
+exports[`createPages > 'correctly creates pages (dynamic-template-args)' > createPage 1`] = `
+[
+  [
+    {
+      "component": "/path/to/page.js?contentPath=content%2Fhello.mdx",
+      "context": {
+        "id": "page-id",
+        "page": "hello",
+      },
+      "path": "/pages/hello",
+    },
+  ],
+  [
+    {
+      "component": "/path/to/page.js?contentPath=content%2Fworld.mdx",
+      "context": {
+        "id": "page-id",
+        "page": "world",
+      },
+      "path": "/pages/world",
+    },
+  ],
+]
+`;
+
+exports[`createPages > 'correctly creates pages (dynamic-template-args)' > routes.json 1`] = `"[{"name":"page","path":"/pages/:page","scopes":{}}]"`;
+
 exports[`createPages > 'correctly creates pages (home-about)' > createPage 1`] = `
 [
   [

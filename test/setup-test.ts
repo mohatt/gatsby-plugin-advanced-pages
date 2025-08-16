@@ -1,4 +1,4 @@
-// Use virtual file system for testing (see test/__mocks__/fs)
+// Use virtual file system for testing (see /__mocks__/fs)
 vi.mock('fs')
 vi.mock('fs/promises')
 
