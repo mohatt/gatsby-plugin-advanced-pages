@@ -1,3 +1,10 @@
+# [5.1.0](https://github.com/mohatt/gatsby-plugin-advanced-pages/compare/v5.0.1...v5.1.0) (2025-08-16)
+
+
+### Features
+
+* **plugin:** support custom template args per page ([c8c2f32](https://github.com/mohatt/gatsby-plugin-advanced-pages/commit/c8c2f3249ec471e0ff1baf902f1eb0f11d08d8fa))
+
 ## [5.0.1](https://github.com/mohatt/gatsby-plugin-advanced-pages/compare/v5.0.0...v5.0.1) (2025-03-02)
 
 
