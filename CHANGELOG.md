@@ -1,3 +1,10 @@
+# [5.2.0](https://github.com/mohatt/gatsby-plugin-advanced-pages/compare/v5.1.1...v5.2.0) (2025-09-15)
+
+
+### Features
+
+* **plugin:** support inline helper functions ([2af9e8e](https://github.com/mohatt/gatsby-plugin-advanced-pages/commit/2af9e8ef0e9422dd9702725d2db04327fc29eaf9))
+
 ## [5.1.1](https://github.com/mohatt/gatsby-plugin-advanced-pages/compare/v5.1.0...v5.1.1) (2025-08-16)
 
 
