@@ -8,7 +8,7 @@ import type { DeepPartial } from '@/types'
 export interface PageOptions {
   title: string
   template?: string
-  helper?: string
+  helper?: string | PageHelperFunction
   data?: Record<string, any>
   routes: Record<string, string>
 }

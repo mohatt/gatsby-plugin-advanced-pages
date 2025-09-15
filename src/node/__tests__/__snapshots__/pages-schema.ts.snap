@@ -17,7 +17,7 @@ exports[`pagesSchema > 'should invalidate fields with incorrect data types' 2`] 
 [
   ""pages[0].title" must be a string",
   ""pages[0].template" must be a string",
-  ""pages[0].helper" must be a string",
+  ""pages[0].helper" must be one of [string, function]",
   ""pages[0].routes" must be of type object",
   ""pages[0].data" must be of type object",
 ]

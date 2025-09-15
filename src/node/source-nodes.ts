@@ -8,6 +8,7 @@ import {
   createPluginExport,
   PluginError,
   validateSchema,
+  PAGE_HELPER_FUNCTION,
 } from './util'
 import { getPagesSchema } from './schema'
 
@@ -34,12 +35,23 @@ const sourceNodes = createPluginExport(
       }
     }
 
+    // Set pages dict so it can be accessed later by other APIs
+    opts._pages = {}
+
     pages.forEach((page, i) => {
       if (!page.template && !opts.template) {
         throw new PluginError(
           `Missing "template" metadata for page[${i}]: "${page.title}". ` +
             'No default template is set in plugin options either.',
         )
+      }
+
+      let pageHelper: string
+      if (page.helper != null) {
+        pageHelper =
+          typeof page.helper === 'function'
+            ? PAGE_HELPER_FUNCTION // String placeholder for helper function
+            : ensurePath(page.helper, opts.directories.helpers) // Set helper file path
       }
 
       // Create the page node data
@@ -52,8 +64,7 @@ const sourceNodes = createPluginExport(
           page.template != null
             ? ensurePath(page.template, opts.directories.templates)
             : opts.template,
-        // Set helper file path
-        helper: page.helper != null ? ensurePath(page.helper, opts.directories.helpers) : undefined,
+        helper: pageHelper,
         // Set page routes
         routes: Object.entries(page.routes).map(([name, path]) => ({ name, path })),
       }
@@ -70,6 +81,9 @@ const sourceNodes = createPluginExport(
       } satisfies NodeInput & PageNode
 
       createNode(node)
+
+      // Set page object for later use
+      opts._pages[node.id] = page
     })
   },
 )

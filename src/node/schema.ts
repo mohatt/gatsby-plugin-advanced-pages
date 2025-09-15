@@ -10,7 +10,7 @@ export const getPagesSchema = (Joi: PluginOptionsSchemaJoi) => {
     Joi.object({
       title: Joi.string().required(),
       template: Joi.string(),
-      helper: Joi.string(),
+      helper: Joi.alternatives().try(Joi.string(), Joi.function()),
       routes: Joi.object({})
         .required()
         .min(1)

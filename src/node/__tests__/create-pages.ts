@@ -1,6 +1,7 @@
 import path from 'path'
 import { setupPlugin, mountDir, mountModule, readFile, resetVFS } from '@test/util'
 import testCases from './__fixtures__/create-pages'
+import { options } from '../util'
 import { createPages } from '../plugin'
 
 describe('createPages', () => {
@@ -31,8 +32,9 @@ describe('createPages', () => {
     expect(graphql.mock.calls).toMatchSnapshot()
   })
 
-  it.each(testCases)('$title', async ({ throws, pages, helper }) => {
+  it.each(testCases)('$title', async ({ throws, pages, _pages, helper }) => {
     if (helper !== undefined) mountModule(helperFile, helper)
+    if (_pages !== undefined) options.get()._pages = _pages as any
 
     // Create a virtual directory for cache.directory
     // so that routes.json file can be written virtually

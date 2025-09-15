@@ -1,5 +1,6 @@
 import { mountFile, mountModule, setupPlugin, resetVFS } from '@test/util'
 import testCases from './__fixtures__/source-nodes'
+import { options as pluginOptions } from '../util'
 import { sourceNodes } from '../plugin'
 
 describe('sourceNodes', () => {
@@ -35,5 +36,6 @@ describe('sourceNodes', () => {
 
     await promise.resolves.toBeUndefined()
     expect(createNode.mock.calls).toMatchSnapshot()
+    expect(pluginOptions.get('_pages')).toMatchSnapshot()
   })
 })

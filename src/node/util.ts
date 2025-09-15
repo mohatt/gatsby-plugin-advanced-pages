@@ -6,7 +6,7 @@ import { validateOptionsSchema, Joi, PluginOptionsSchemaJoi, Schema } from 'gats
 import _ from 'lodash'
 import debug from 'debug'
 import type { GatsbyNode, NodePluginArgs, Reporter } from 'gatsby'
-import type { DefaultPluginOptions, PluginOptions, PluginErrorMeta } from './api'
+import type { DefaultPluginOptions, PluginOptions, PluginErrorMeta, PageOptions } from './api'
 
 /**
  * Represents the resolved internal options for the plugin.
@@ -18,6 +18,13 @@ interface ResolvedPluginOptions extends DefaultPluginOptions {
    * Used to resolve relative paths for templates, directories, etc.
    */
   _root: string
+
+  /**
+   * Compiled pages options we got from the user, either from plugin
+   * options or from the pages.config file.
+   * This is set during `sourceNodes` API.
+   */
+  _pages?: Record<string, PageOptions>
 }
 
 /**
@@ -398,3 +405,6 @@ export class PluginError extends Error {
     super(message)
   }
 }
+
+// Used to identify function page helpers in graphql queries
+export const PAGE_HELPER_FUNCTION = '[Function]'

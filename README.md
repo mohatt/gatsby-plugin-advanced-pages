@@ -159,6 +159,8 @@ module.exports = async function ({ graphql, page, createAdvancedPage }) {
 }
 ```
 
+> **Note:** Page helpers can also be defined as **inline functions** using `pages.config.js` or as [inline plugin options](#configuration) in `gatsby-config.js`.
+
 Finally, create the template file under `src/templates`:
 
 ```javascript

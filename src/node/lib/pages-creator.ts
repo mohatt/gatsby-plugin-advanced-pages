@@ -2,7 +2,7 @@ import path from 'path'
 import _ from 'lodash'
 import type { CreatePagesArgs, Page } from 'gatsby'
 import { RouteCompiler, PathGenerator } from '@/lib/route-compiler'
-import { options, getDefaultExport, PluginError } from '../util'
+import { options, getDefaultExport, PluginError, PAGE_HELPER_FUNCTION } from '../util'
 import {
   PageNode,
   SerializedRoute,
@@ -65,9 +65,16 @@ export default class PagesCreator {
         continue
       }
 
+      const isHelperFn = page.helper === PAGE_HELPER_FUNCTION
+      let helperFn = isHelperFn
+        ? (options.get('_pages')[page.id].helper as PageHelperFunction)
+        : undefined
+
       // Run the page helper
       try {
-        const helperFn = await getDefaultExport<PageHelperFunction>(page.helper)
+        if (!isHelperFn) {
+          helperFn = await getDefaultExport<PageHelperFunction>(page.helper)
+        }
         await helperFn({
           graphql,
           page,
@@ -124,9 +131,11 @@ export default class PagesCreator {
     }
 
     const template = currentPage.template
-    const templateQuery = templateArgs && Object.entries(templateArgs)
-      .map(([k, v]) => `${k}=${v}`) // no encodeURIComponent
-      .join('&')
+    const templateQuery =
+      templateArgs &&
+      Object.entries(templateArgs)
+        .map(([k, v]) => `${k}=${v}`) // no encodeURIComponent
+        .join('&')
     const templateUrl = templateQuery ? `${template}?${templateQuery}` : template
 
     const gatsbyPage: Page = {

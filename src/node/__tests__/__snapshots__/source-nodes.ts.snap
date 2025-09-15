@@ -89,6 +89,43 @@ exports[`sourceNodes > 'correctly creates multiple page nodes with various confi
 ]
 `;
 
+exports[`sourceNodes > 'correctly creates multiple page nodes with various configurations' 2`] = `
+{
+  "ID-0 - FOO": {
+    "data": {},
+    "helper": "helper.js",
+    "routes": {
+      "foo": "/foo",
+      "foo.bar": "/foo/bar",
+    },
+    "template": "default.js",
+    "title": "foo",
+  },
+  "ID-1 - LOREM": {
+    "data": {},
+    "routes": {
+      "lorem": "/lorem",
+    },
+    "template": "test.js",
+    "title": "lorem",
+  },
+  "ID-2 - IPSUM": {
+    "data": {
+      "name": "john",
+      "title": "don",
+    },
+    "helper": "./gatsby/custom/helper.js",
+    "routes": {
+      "dolor": "/dolor",
+      "ipsum": "/ipsum",
+      "sit": "/sit/amet",
+    },
+    "template": "./src/custom/template.js",
+    "title": "ipsum",
+  },
+}
+`;
+
 exports[`sourceNodes > 'correctly creates page nodes from inline pages config' 1`] = `
 [
   [
@@ -113,7 +150,79 @@ exports[`sourceNodes > 'correctly creates page nodes from inline pages config' 1
       "title": "foo",
     },
   ],
+  [
+    {
+      "children": [],
+      "helper": "/virtual/project/gatsby/custom/helper.js",
+      "id": "ID-1 - BAR-FILE",
+      "internal": {
+        "contentDigest": "{"id":"ID-1 - BAR-FILE","title":"bar-file","template":"/virtual/project/src/templates/test.js","helper":"/virtual/project/gatsby/custom/helper.js","routes":[{"name":"bar1","path":"/bar-file"}],"templateName":"./src/templates/test.js"}",
+        "description": "Advanced Page: bar-file",
+        "type": "Page",
+      },
+      "parent": null,
+      "routes": [
+        {
+          "name": "bar1",
+          "path": "/bar-file",
+        },
+      ],
+      "template": "/virtual/project/src/templates/test.js",
+      "templateName": "./src/templates/test.js",
+      "title": "bar-file",
+    },
+  ],
+  [
+    {
+      "children": [],
+      "helper": "[Function]",
+      "id": "ID-2 - BAR-INLINE",
+      "internal": {
+        "contentDigest": "{"id":"ID-2 - BAR-INLINE","title":"bar-inline","template":"/virtual/project/src/templates/test.js","helper":"[Function]","routes":[{"name":"bar2","path":"/bar-inline"}],"templateName":"./src/templates/test.js"}",
+        "description": "Advanced Page: bar-inline",
+        "type": "Page",
+      },
+      "parent": null,
+      "routes": [
+        {
+          "name": "bar2",
+          "path": "/bar-inline",
+        },
+      ],
+      "template": "/virtual/project/src/templates/test.js",
+      "templateName": "./src/templates/test.js",
+      "title": "bar-inline",
+    },
+  ],
 ]
+`;
+
+exports[`sourceNodes > 'correctly creates page nodes from inline pages config' 2`] = `
+{
+  "ID-0 - FOO": {
+    "routes": {
+      "foo": "/foo",
+    },
+    "template": "./src/templates/test.js",
+    "title": "foo",
+  },
+  "ID-1 - BAR-FILE": {
+    "helper": "./gatsby/custom/helper.js",
+    "routes": {
+      "bar1": "/bar-file",
+    },
+    "template": "./src/templates/test.js",
+    "title": "bar-file",
+  },
+  "ID-2 - BAR-INLINE": {
+    "helper": [Function],
+    "routes": {
+      "bar2": "/bar-inline",
+    },
+    "template": "./src/templates/test.js",
+    "title": "bar-inline",
+  },
+}
 `;
 
 exports[`sourceNodes > 'correctly creates page nodes from pages.config.js' 1`] = `
@@ -141,7 +250,84 @@ exports[`sourceNodes > 'correctly creates page nodes from pages.config.js' 1`] =
       "title": "foo",
     },
   ],
+  [
+    {
+      "children": [],
+      "data": {},
+      "helper": "/virtual/project/gatsby/pages/test.js",
+      "id": "ID-1 - BAR",
+      "internal": {
+        "contentDigest": "{"id":"ID-1 - BAR","title":"bar","template":"/virtual/project/src/templates/test.js","helper":"/virtual/project/gatsby/pages/test.js","routes":[{"name":"bar","path":"/bar"}],"data":{},"templateName":"./src/templates/test.js"}",
+        "description": "Advanced Page: bar",
+        "type": "Page",
+      },
+      "parent": null,
+      "routes": [
+        {
+          "name": "bar",
+          "path": "/bar",
+        },
+      ],
+      "template": "/virtual/project/src/templates/test.js",
+      "templateName": "./src/templates/test.js",
+      "title": "bar",
+    },
+  ],
+  [
+    {
+      "children": [],
+      "data": {},
+      "helper": "[Function]",
+      "id": "ID-2 - BAR-INLINE",
+      "internal": {
+        "contentDigest": "{"id":"ID-2 - BAR-INLINE","title":"bar-inline","template":"/virtual/project/src/templates/test.js","helper":"[Function]","routes":[{"name":"bar2","path":"/bar-inline"}],"data":{},"templateName":"./src/templates/test.js"}",
+        "description": "Advanced Page: bar-inline",
+        "type": "Page",
+      },
+      "parent": null,
+      "routes": [
+        {
+          "name": "bar2",
+          "path": "/bar-inline",
+        },
+      ],
+      "template": "/virtual/project/src/templates/test.js",
+      "templateName": "./src/templates/test.js",
+      "title": "bar-inline",
+    },
+  ],
 ]
+`;
+
+exports[`sourceNodes > 'correctly creates page nodes from pages.config.js' 2`] = `
+{
+  "ID-0 - FOO": {
+    "data": {},
+    "routes": {
+      "foo": "/foo",
+    },
+    "template": "./src/templates/test.js",
+    "title": "foo",
+  },
+  "ID-1 - BAR": {
+    "data": {},
+    "helper": "test.js",
+    "routes": {
+      "bar": "/bar",
+    },
+    "template": "./src/templates/test.js",
+    "title": "bar",
+  },
+  "ID-2 - BAR-INLINE": {
+    "data": {},
+    "helper": [Function],
+    "routes": {
+      "bar2": "/bar-inline",
+    },
+    "template": "./src/templates/test.js",
+    "title": "bar-inline",
+  },
+}
 `;
 
 exports[`sourceNodes > 'correctly creates page nodes from pages.config.json' 1`] = `
@@ -172,6 +358,19 @@ exports[`sourceNodes > 'correctly creates page nodes from pages.config.json' 1`]
 ]
 `;
 
+exports[`sourceNodes > 'correctly creates page nodes from pages.config.json' 2`] = `
+{
+  "ID-0 - FOO": {
+    "data": {},
+    "routes": {
+      "foo": "/foo",
+    },
+    "template": "./src/templates/test.js",
+    "title": "foo",
+  },
+}
+`;
+
 exports[`sourceNodes > 'correctly creates page nodes from pages.config.yaml' 1`] = `
 [
   [
@@ -200,6 +399,19 @@ exports[`sourceNodes > 'correctly creates page nodes from pages.config.yaml' 1`]
 ]
 `;
 
+exports[`sourceNodes > 'correctly creates page nodes from pages.config.yaml' 2`] = `
+{
+  "ID-0 - FOO": {
+    "data": {},
+    "routes": {
+      "foo": "/foo",
+    },
+    "template": "./src/templates/test.js",
+    "title": "foo",
+  },
+}
+`;
+
 exports[`sourceNodes > 'correctly ignores pages config file in favor of inline pages config' 1`] = `
 [
   [
@@ -224,10 +436,54 @@ exports[`sourceNodes > 'correctly ignores pages config file in favor of inline p
       "title": "foo-inline",
     },
   ],
+  [
+    {
+      "children": [],
+      "helper": "[Function]",
+      "id": "ID-1 - BAR-INLINE",
+      "internal": {
+        "contentDigest": "{"id":"ID-1 - BAR-INLINE","title":"bar-inline","template":"/virtual/project/src/templates/test.js","helper":"[Function]","routes":[{"name":"bar","path":"/bar-inline"}],"templateName":"./src/templates/test.js"}",
+        "description": "Advanced Page: bar-inline",
+        "type": "Page",
+      },
+      "parent": null,
+      "routes": [
+        {
+          "name": "bar",
+          "path": "/bar-inline",
+        },
+      ],
+      "template": "/virtual/project/src/templates/test.js",
+      "templateName": "./src/templates/test.js",
+      "title": "bar-inline",
+    },
+  ],
 ]
 `;
 
+exports[`sourceNodes > 'correctly ignores pages config file in favor of inline pages config' 2`] = `
+{
+  "ID-0 - FOO-INLINE": {
+    "routes": {
+      "foo": "/foo-inline",
+    },
+    "template": "./src/templates/test.js",
+    "title": "foo-inline",
+  },
+  "ID-1 - BAR-INLINE": {
+    "helper": [Function],
+    "routes": {
+      "bar": "/bar-inline",
+    },
+    "template": "./src/templates/test.js",
+    "title": "bar-inline",
+  },
+}
+`;
+
 exports[`sourceNodes > 'does not throw for an empty pages config file' 1`] = `[]`;
+
+exports[`sourceNodes > 'does not throw for an empty pages config file' 2`] = `{}`;
 
 exports[`sourceNodes > 'shows a warning for non existing pages config file' 1`] = `
 {

@@ -11,7 +11,7 @@ export default <
   {
     title: 'correctly creates page nodes from inline pages config',
     throws: false,
-    files: ['./src/templates/test.js'],
+    files: ['./src/templates/test.js', './gatsby/custom/helper.js'],
     options: {
       pages: [
         {
@@ -19,6 +19,22 @@ export default <
           template: './src/templates/test.js',
           routes: {
             foo: '/foo',
+          },
+        },
+        {
+          title: 'bar-file',
+          template: './src/templates/test.js',
+          helper: './gatsby/custom/helper.js',
+          routes: {
+            bar1: '/bar-file',
+          },
+        },
+        {
+          title: 'bar-inline',
+          template: './src/templates/test.js',
+          helper: () => {},
+          routes: {
+            bar2: '/bar-inline',
           },
         },
       ],
@@ -29,6 +45,7 @@ export default <
     throws: false,
     files: [
       './src/templates/test.js',
+      './gatsby/pages/test.js',
       {
         path: './pages.config.js',
         data: [
@@ -37,6 +54,22 @@ export default <
             template: './src/templates/test.js',
             routes: {
               foo: '/foo',
+            },
+          },
+          {
+            title: 'bar',
+            template: './src/templates/test.js',
+            helper: 'test.js',
+            routes: {
+              bar: '/bar',
+            },
+          },
+          {
+            title: 'bar-inline',
+            template: './src/templates/test.js',
+            helper: () => {},
+            routes: {
+              bar2: '/bar-inline',
             },
           },
         ],
@@ -107,6 +140,14 @@ export default <
           template: './src/templates/test.js',
           routes: {
             foo: '/foo-inline',
+          },
+        },
+        {
+          title: 'bar-inline',
+          template: './src/templates/test.js',
+          helper: () => {},
+          routes: {
+            bar: '/bar-inline',
           },
         },
       ],

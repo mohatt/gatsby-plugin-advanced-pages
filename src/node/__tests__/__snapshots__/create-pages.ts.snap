@@ -296,7 +296,7 @@ exports[`createPages > 'throws error for (bad-helper-invalid-pagination-limit)' 
 
 exports[`createPages > 'throws error for (bad-helper-invalid-pagination-route)' > error 1`] = `
 {
-  "error": [Error: Invalid pagination object passed to createAdvancedPage() at "/path/to/helper.js": Unrecognized route "foo"],
+  "error": [Error: Invalid pagination object passed to createAdvancedPage() at "[Function]": Unrecognized route "foo"],
   "text": "The plugin threw an error during "createPages" hook",
 }
 `;

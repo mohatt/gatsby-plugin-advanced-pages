@@ -1,6 +1,7 @@
-import type { PageHelperFunction, PageNode } from '@/node'
+import type { PageHelperFunction, PageNode, PageOptions } from '@/node'
 
 const helper = '/path/to/helper.js'
+const helperFn = '[Function]'
 
 export default <
   Array<{
@@ -8,6 +9,7 @@ export default <
     throws?: boolean
     helper?: PageHelperFunction
     pages: PageNode[]
+    _pages?: Record<string, Pick<PageOptions, 'helper'>>
   }>
 >[
   {
@@ -199,18 +201,22 @@ export default <
     pages: [
       {
         id: 'about-id',
-        helper,
+        helper: helperFn,
         routes: [{ name: 'about', path: '/about' }],
       },
     ],
-    helper: ({ createAdvancedPage }) => {
-      createAdvancedPage({
-        route: 'about',
-        pagination: {
-          count: 10,
-          route: 'foo',
+    _pages: {
+      'about-id': {
+        helper: ({ createAdvancedPage }) => {
+          createAdvancedPage({
+            route: 'about',
+            pagination: {
+              count: 10,
+              route: 'foo',
+            },
+          })
         },
-      })
+      },
     },
   },
   {
@@ -305,19 +311,23 @@ export default <
       {
         id: 'page-id',
         template: '/path/to/page.js',
-        helper,
+        helper: helperFn,
         routes: [{ name: 'page', path: '/pages/:page' }],
       },
     ],
-    helper: ({ createAdvancedPage }) => {
-      for (const slug of ['hello', 'world']) {
-        createAdvancedPage({
-          route: 'page',
-          params: {
-            page: slug,
-          },
-        })
-      }
+    _pages: {
+      'page-id': {
+        helper: ({ createAdvancedPage }) => {
+          for (const slug of ['hello', 'world']) {
+            createAdvancedPage({
+              route: 'page',
+              params: {
+                page: slug,
+              },
+            })
+          }
+        },
+      },
     },
   },
   {

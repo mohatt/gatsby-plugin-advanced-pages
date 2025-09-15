@@ -82,7 +82,18 @@ export default <Array<{ title: string; pages: PageOptions[] }>>[
           foo: '/bar',
         },
         data: {
-          foo: 'bar',
+          foo: 'foo',
+        },
+      },
+      {
+        title: 'bar',
+        template: 'bar',
+        helper: () => {},
+        routes: {
+          bar: '/bar',
+        },
+        data: {
+          bar: 'bar',
         },
       },
     ],
