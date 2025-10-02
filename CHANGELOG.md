@@ -1,3 +1,10 @@
+## [5.2.1](https://github.com/mohatt/gatsby-plugin-advanced-pages/compare/v5.2.0...v5.2.1) (2025-10-02)
+
+
+### Bug Fixes
+
+* **build:** omit sourcemaps from build artifacts ([9a679b8](https://github.com/mohatt/gatsby-plugin-advanced-pages/commit/9a679b8573e6d97a6ddee0053a31397d355d6d76))
+
 # [5.2.0](https://github.com/mohatt/gatsby-plugin-advanced-pages/compare/v5.1.1...v5.2.0) (2025-09-15)
 
 
