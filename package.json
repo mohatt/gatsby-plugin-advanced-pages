@@ -41,7 +41,7 @@
   "scripts": {
     "build": "pnpm build:js && pnpm build:fragments",
     "build:fragments": "cp src/components/Pagination.fragment.ts dist/Pagination.fragment.js",
-    "build:js": "pkgroll --clean-dist --sourcemap --target node18 --env.VITEST=false",
+    "build:js": "pkgroll --clean-dist --target node18 --env.VITEST=false",
     "format": "prettier --write .",
     "lint": "prettier --check .",
     "prepare": "NODE_ENV=production pnpm build",
