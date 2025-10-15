@@ -1,3 +1,10 @@
+# [5.3.0](https://github.com/mohatt/gatsby-plugin-advanced-pages/compare/v5.2.1...v5.3.0) (2025-10-15)
+
+
+### Features
+
+* **plugin:** support for `defer` and `slices` parameters ([a786aa6](https://github.com/mohatt/gatsby-plugin-advanced-pages/commit/a786aa63dea66401bf66f4cc0bd560bae01243f9))
+
 ## [5.2.1](https://github.com/mohatt/gatsby-plugin-advanced-pages/compare/v5.2.0...v5.2.1) (2025-10-02)
 
 
