@@ -99,9 +99,14 @@
   "engines": {
     "node": ">=18"
   },
+  "packageManager": "pnpm@10.17.0",
   "renovate": {
+    "enabled": true,
     "extends": [
-      "config:js-lib"
-    ]
+      "config:recommended"
+    ],
+    "major": {
+      "enabled": false
+    }
   }
 }

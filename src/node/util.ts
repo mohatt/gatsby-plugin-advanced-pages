@@ -129,9 +129,10 @@ export const reporter = (() => {
     instance.setErrorMap({
       ['1500' satisfies PluginErrorMeta['id']]: {
         text: (context: PluginErrorMeta['context']) => context.message,
-        category: 'THIRD_PARTY',
-        level: 'ERROR',
         type: 'PLUGIN',
+        level: 'ERROR',
+        category: 'USER',
+        docsUrl: 'https://github.com/mohatt/gatsby-plugin-advanced-pages',
       },
     })
 

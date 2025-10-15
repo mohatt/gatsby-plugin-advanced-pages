@@ -1,4 +1,4 @@
-import type { CreatePagesArgs } from 'gatsby'
+import type { CreatePagesArgs, Page } from 'gatsby'
 import type { RouteParams } from '@/lib/route-compiler'
 import type { DeepPartial } from '@/types'
 
@@ -138,7 +138,7 @@ export interface SerializedRoute {
 /**
  * Represents properties required to create an advanced page in Gatsby.
  */
-export interface CreateAdvancedPageProps {
+export interface CreateAdvancedPageProps extends Pick<Page, 'slices'> {
   /**
    * The base route for the page.
    */
@@ -175,6 +175,12 @@ export interface CreateAdvancedPageProps {
      */
     route?: string
   }
+
+  /**
+   * When set to true, Gatsby will exclude the page from the build step and instead generate it during the first HTTP request.
+   * Can be a function that returns a boolean to conditionally defer the page generation.
+   */
+  defer?: boolean | ((page: number) => boolean)
 
   /**
    * Other unknown page context props.

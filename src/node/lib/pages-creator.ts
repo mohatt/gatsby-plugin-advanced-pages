@@ -113,13 +113,16 @@ export default class PagesCreator {
   /**
    * Creates a Gatsby page with optional pagination.
    */
-  private createPage({
-    route,
-    params = {},
-    templateArgs,
-    pagination,
-    ...context
-  }: CreateAdvancedPageProps) {
+  private createPage(props: CreateAdvancedPageProps) {
+    const {
+      route,
+      params = {},
+      templateArgs,
+      pagination,
+      slices,
+      defer,
+      ...context
+    } = props
     const { currentPage } = this
     if (typeof route !== 'string' || !route) {
       throw new PageHelperError('Route name', ' must be a non-empty string')
@@ -138,15 +141,23 @@ export default class PagesCreator {
         .join('&')
     const templateUrl = templateQuery ? `${template}?${templateQuery}` : template
 
+    const isPageDeferred = (page: number) => {
+      if (defer == null) return false
+      if (typeof defer === 'boolean') return defer
+      return defer(page)
+    }
+
     const gatsbyPage: Page = {
       path: routeNode.pathGenerator(params),
       component: templateUrl,
+      defer: isPageDeferred(1),
       context: {
         id: currentPage.id,
         ...params,
         ...context,
       },
     }
+    if (slices) gatsbyPage.slices = slices
 
     if (!pagination) {
       return this.createPageAction(gatsbyPage)
@@ -194,8 +205,9 @@ export default class PagesCreator {
     const pagesCount = Math.ceil(count / limit)
     for (let i = 1; i <= pagesCount; i++) {
       this.createPageAction({
+        ...gatsbyPage,
         path: i === 1 ? gatsbyPage.path : generatePagePath(i),
-        component: gatsbyPage.component,
+        defer: isPageDeferred(i),
         context: {
           ...gatsbyPage.context,
           limit,
