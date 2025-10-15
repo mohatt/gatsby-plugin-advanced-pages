@@ -252,6 +252,37 @@ Now the plugin will create the following pages:
 - /blog/what/ever/3
 - /blog/what/ever/4
 
+#### Deferring page generation
+
+You can opt into Gatsby's Deferred Static Generation (DSG) by passing a `defer` flag or function to `createAdvancedPage()`. When a function is provided it receives the current page number, so you can defer only specific paginated results.
+
+```javascript
+createAdvancedPage({
+  route: 'blog',
+  pagination: {
+    count: result.data.allMarkdownRemark.totalCount,
+    limit: 3,
+  },
+  defer: (page) => page > 1,
+})
+```
+
+The example above keeps the first page in the initial build while deferring the rest.
+
+#### Using Gatsby slices
+
+Attach Gatsby slices to the generated page by supplying a `slices` object. Each property name becomes the slice placeholder and the value points to the slice template.
+
+```javascript
+createAdvancedPage({
+  route: 'blog',
+  slices: {
+    hero: 'content/hero',
+    sidebar: 'content/sidebar',
+  },
+})
+```
+
 ### Passing data to templates
 
 You can pass structured data from your `pages.config.yaml` to your template component by setting the `data` field. See below
@@ -442,7 +473,7 @@ These are the functions exposed by the plugin.
 
 ### createAdvancedPage
 
-> `({ route: string, params?: object, templateArgs?: object, pagination?: object, ...context: any[] }): void`
+> `({ route: string, params?: object, templateArgs?: object, pagination?: object, slices?: Record<string, string>, defer?: boolean | ((page: number) => boolean), ...context: any[] }): void`
 
 Creates page(s) based on given input parameters. _Note: This function can only be called within [Page helpers](#page-helpers)._
 
