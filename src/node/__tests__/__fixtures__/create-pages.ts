@@ -363,4 +363,62 @@ export default <
       })
     },
   },
+  {
+    title: 'correctly creates pages (blog-defer)',
+    pages: [
+      {
+        id: 'blog-id',
+        template: '/path/to/blog.js',
+        helper,
+        routes: [{ name: 'blog', path: '/blog' }],
+      },
+    ],
+    helper: ({ createAdvancedPage }) => {
+      createAdvancedPage({
+        route: 'blog',
+        defer: true,
+      })
+    },
+  },
+  {
+    title: 'correctly creates pages (blog-defer-function)',
+    pages: [
+      {
+        id: 'blog-id',
+        template: '/path/to/blog.js',
+        helper,
+        routes: [{ name: 'blog', path: '/blog' }],
+      },
+    ],
+    helper: ({ createAdvancedPage }) => {
+      createAdvancedPage({
+        route: 'blog',
+        pagination: {
+          count: 12,
+          limit: 5,
+        },
+        defer: (page) => page > 1,
+      })
+    },
+  },
+  {
+    title: 'correctly creates pages (blog-slices)',
+    pages: [
+      {
+        id: 'blog-id',
+        template: '/path/to/blog.js',
+        helper,
+        routes: [{ name: 'blog', path: '/blog' }],
+      },
+    ],
+    helper: ({ createAdvancedPage }) => {
+      createAdvancedPage({
+        route: 'blog',
+        slices: {
+          hero: 'content/hero',
+          sidebar: 'content/sidebar',
+        },
+      })
+    },
+  },
 ]

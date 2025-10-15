@@ -4,6 +4,66 @@ exports[`createPages > 'correctly creates no pages' > createPage 1`] = `[]`;
 
 exports[`createPages > 'correctly creates no pages' > routes.json 1`] = `"[]"`;
 
+exports[`createPages > 'correctly creates pages (blog-defer)' > createPage 1`] = `
+[
+  [
+    {
+      "component": "/path/to/blog.js",
+      "context": {
+        "id": "blog-id",
+      },
+      "defer": true,
+      "path": "/blog",
+    },
+  ],
+]
+`;
+
+exports[`createPages > 'correctly creates pages (blog-defer)' > routes.json 1`] = `"[{"name":"blog","path":"/blog","scopes":{}}]"`;
+
+exports[`createPages > 'correctly creates pages (blog-defer-function)' > createPage 1`] = `
+[
+  [
+    {
+      "component": "/path/to/blog.js",
+      "context": {
+        "id": "blog-id",
+        "limit": 5,
+        "offset": 0,
+      },
+      "defer": false,
+      "path": "/blog",
+    },
+  ],
+  [
+    {
+      "component": "/path/to/blog.js",
+      "context": {
+        "id": "blog-id",
+        "limit": 5,
+        "offset": 5,
+      },
+      "defer": true,
+      "path": "/blog/page/2",
+    },
+  ],
+  [
+    {
+      "component": "/path/to/blog.js",
+      "context": {
+        "id": "blog-id",
+        "limit": 5,
+        "offset": 10,
+      },
+      "defer": true,
+      "path": "/blog/page/3",
+    },
+  ],
+]
+`;
+
+exports[`createPages > 'correctly creates pages (blog-defer-function)' > routes.json 1`] = `"[{"name":"blog","path":"/blog","scopes":{"pagination":"/blog/page/:page"}}]"`;
+
 exports[`createPages > 'correctly creates pages (blog-paginated-auto-route)' > createPage 1`] = `
 [
   [
@@ -144,6 +204,27 @@ exports[`createPages > 'correctly creates pages (blog-paginated-manual-route)' >
 `;
 
 exports[`createPages > 'correctly creates pages (blog-paginated-manual-route)' > routes.json 1`] = `"[{"name":"blog","path":"/blog","scopes":{"pagination":"/blog/what/:page"}},{"name":"blog.paginated","path":"/blog/what/:page","scopes":{}}]"`;
+
+exports[`createPages > 'correctly creates pages (blog-slices)' > createPage 1`] = `
+[
+  [
+    {
+      "component": "/path/to/blog.js",
+      "context": {
+        "id": "blog-id",
+      },
+      "defer": false,
+      "path": "/blog",
+      "slices": {
+        "hero": "content/hero",
+        "sidebar": "content/sidebar",
+      },
+    },
+  ],
+]
+`;
+
+exports[`createPages > 'correctly creates pages (blog-slices)' > routes.json 1`] = `"[{"name":"blog","path":"/blog","scopes":{}}]"`;
 
 exports[`createPages > 'correctly creates pages (dynamic-page)' > createPage 1`] = `
 [
