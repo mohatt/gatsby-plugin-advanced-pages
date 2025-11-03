@@ -1,3 +1,10 @@
+## [5.3.1](https://github.com/mohatt/gatsby-plugin-advanced-pages/compare/v5.3.0...v5.3.1) (2025-11-03)
+
+
+### Bug Fixes
+
+* **deps:** update / fix dependencies ([44309a4](https://github.com/mohatt/gatsby-plugin-advanced-pages/commit/44309a4c471e7a7ea826067f29a05d20d3cabbc1))
+
 # [5.3.0](https://github.com/mohatt/gatsby-plugin-advanced-pages/compare/v5.2.1...v5.3.0) (2025-10-15)
 
 
